@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, Damageable {
     Stats stats;
+
+    Controller2D controller;
 	// Use this for initialization
 	void Start () {
         stats = GetComponent<Stats>();
+        controller = GetComponent<Controller2D>();
 	}
 	
 	// Update is called once per frame
