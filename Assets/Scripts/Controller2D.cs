@@ -10,6 +10,8 @@ public class Controller2D : MonoBehaviour {
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
 
+    public float maxClimbAngle = 80;
+
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
@@ -96,6 +98,12 @@ public class Controller2D : MonoBehaviour {
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
+                //Recalculate velocity.x if there are collisions along a slope to stop jittering
+                if(collisions.climbingSlope)
+                {
+                    velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
+                }
+
                 //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
                 collisions.below = directionY == -1;
                 collisions.above = directionY == 1;
@@ -121,14 +129,65 @@ public class Controller2D : MonoBehaviour {
 
             if (hit)
             {
-                velocity.x = (hit.distance - skinWidth) * directionX;
-                rayLength = hit.distance;
 
-                //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
-                collisions.left = directionX == -1;
-                collisions.right = directionX == 1;
+                //Check for angle of hit surface from bottom ray - is the character on a slope? Compare player's normal and global up to find the angle
+
+                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+                if(i == 0 && slopeAngle <= maxClimbAngle)
+                {
+                    print(slopeAngle);
+
+                    float distanceToSlopeStart = 0;
+
+                    //Make sure that we are actually on the slope before starting to climb it
+                    if(slopeAngle != collisions.slopeAngleOld)
+                    {
+                        distanceToSlopeStart = hit.distance - skinWidth;
+                        velocity.x -= distanceToSlopeStart * directionX;
+
+                    }
+                    ClimbSlope(ref velocity, slopeAngle);
+                    velocity.x += distanceToSlopeStart * directionX;
+                }
+                if (!collisions.climbingSlope || slopeAngle > maxClimbAngle)
+                {
+
+                    velocity.x = (hit.distance - skinWidth) * directionX;
+                    rayLength = hit.distance;
+
+                    //Make sure that velocity.y is getting updated if collisions are detected when climbing slope to stop jittering
+                    if(collisions.climbingSlope)
+                    {
+                        velocity.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(velocity.x);
+                    }
+
+                    //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
+                    collisions.left = directionX == -1;
+                    collisions.right = directionX == 1;
+                }
 
             }
+        }
+
+    }
+
+    //Use velocity in X-axis as total distance up the slope - use target distance and slopeAngle to find the velocity in both axis while climbing
+    //Set collisions.below to true to enable jumping, since normally vertical movement stops jumping
+    //Also - see if velocity in Y is higher than the climb velocity to see if player is jumping
+
+    void ClimbSlope(ref Vector3 velocity, float slopeAngle)
+    {
+        float moveDistance = Mathf.Abs(velocity.x);
+        float climbVelocityY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
+
+        if (velocity.y <= climbVelocityY)
+
+        {
+            velocity.y = climbVelocityY;
+            velocity.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign(velocity.x);
+            collisions.below = true;
+            collisions.climbingSlope = true;
+            collisions.slopeAngle = slopeAngle;
         }
 
     }
@@ -139,11 +198,17 @@ public class Controller2D : MonoBehaviour {
     {
         public bool above, below;
         public bool left, right;
+        public bool climbingSlope;
+        public float slopeAngle, slopeAngleOld;
 
         public void Reset()
         {
             above = below = false;
             left = right = false;
+            climbingSlope = false;
+
+            slopeAngleOld = slopeAngle;
+            slopeAngle = 0;
         }
 
     }
