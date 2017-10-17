@@ -6,9 +6,10 @@ public class Bullet : MonoBehaviour {
     int bulletDamage;
     float bulletSpeed;
     Vector2 bulletDirection;
+    public Transform graphics;
+    Transform player;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

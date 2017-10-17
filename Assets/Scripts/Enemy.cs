@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour, Damageable{
     Stats stats;
     GameObject player;
+
     public GameObject bullet;
     public Transform bulletPosition;
     public TimerManager timer;
@@ -14,7 +15,7 @@ public class Enemy : MonoBehaviour, Damageable{
 	void Start () {
         stats = GetComponent<Stats>();
         player = GameObject.FindGameObjectWithTag("Player");
-        timer.AddTimer(ShootingTimer, 16, true);
+        timer.AddTimer(ShootingTimer, stats.burstInterval, true);
     }
     
     void Update () {

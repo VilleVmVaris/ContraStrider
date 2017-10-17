@@ -200,6 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickInterval: 0.2
+--- !u!4 &284646025 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4309714534090022, guid: db844470cbdde334aae0cf537fbd78bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 310370818}
 --- !u!1001 &310370818
 Prefab:
   m_ObjectHideFlags: 0
@@ -239,6 +244,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114066466071253266, guid: db844470cbdde334aae0cf537fbd78bb,
+        type: 2}
+      propertyPath: graphics
+      value: 
+      objectReference: {fileID: 284646025}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db844470cbdde334aae0cf537fbd78bb, type: 2}
   m_IsPrefabParent: 0
@@ -593,6 +603,11 @@ Prefab:
       propertyPath: timer
       value: 
       objectReference: {fileID: 242265321}
+    - target: {fileID: 114633332022681990, guid: 2c37cc3f157ad2d438137e327fbe8614,
+        type: 2}
+      propertyPath: burstInterval
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c37cc3f157ad2d438137e327fbe8614, type: 2}
   m_IsPrefabParent: 0
