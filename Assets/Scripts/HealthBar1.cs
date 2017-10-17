@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBar1 : MonoBehaviour {
     float healthBarFull;
+    public float maxHealth = 50f;
     float health;
     float healthBarHeight;
 
@@ -26,7 +27,9 @@ public class HealthBar : MonoBehaviour {
 
     }
     public void SetHealthBar(float damage) {
-        health -= (healthBarFull / 50) * damage;
+        // health -= damage;
+        health -= (healthBarFull / maxHealth) * damage;
+        //transform.localScale = new Vector3(health , 1, 1);
         GetComponent<RectTransform>().sizeDelta = new Vector2(health, healthBarHeight);
     }
 }
