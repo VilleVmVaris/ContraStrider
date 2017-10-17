@@ -20,9 +20,17 @@ public class Bullet : MonoBehaviour {
         bulletSpeed = speed;
         bulletDirection = direction;
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
+    //private void OnCollisionEnter2D(Collision2D collision) {
+    //    GameObject go = collision.gameObject;
+    //    if(go.tag == "Player") {
+    //        print("Player hit");
+    //        go.GetComponent<Damageable>().TakeDamage(bulletDamage);
+    //        Destroy(gameObject);
+    //    }
+    //}
+    private void OnTriggerEnter2D(Collider2D collision) {
         GameObject go = collision.gameObject;
-        if(go.tag == "Player") {
+        if (go.tag == "Player") {
             print("Player hit");
             go.GetComponent<Damageable>().TakeDamage(bulletDamage);
             Destroy(gameObject);

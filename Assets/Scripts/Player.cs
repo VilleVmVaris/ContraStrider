@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, Damageable {
 	}
     public void TakeDamage(int damage) {
         stats.health -= damage;
-        if(stats.health == 0) {
+        if(stats.health <= 0) {
             print("Player died");
             Die();
         }
