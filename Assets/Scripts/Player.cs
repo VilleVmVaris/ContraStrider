@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour, Damageable {
     Stats stats;
 
+    Vector3 velocity;
+    float gravity = -20;
+
     Controller2D controller;
 	// Use this for initialization
 	void Start () {
@@ -14,6 +17,9 @@ public class Player : MonoBehaviour, Damageable {
 	
 	// Update is called once per frame
 	void Update () {
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 		
 	}
     public void TakeDamage(int damage) {
