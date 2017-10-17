@@ -22,15 +22,17 @@ public class HealthBar2 : MonoBehaviour {
             SetHealthBar(1);
         }
         //***Testing***
-        if (health <= 0) {
+        if (health >= healthBarFull) {
             print("Game Over!!!");
         }
 
     }
     public void SetHealthBar(float damage) {
         // health -= damage;
+        if (health < healthBarFull) { 
         health += (healthBarFull / maxHealth) * damage;
         //transform.localScale = new Vector3(health , 1, 1);
         GetComponent<RectTransform>().sizeDelta = new Vector2(health, healthBarHeight);
+        }
     }
 }
