@@ -18,6 +18,8 @@ public class Controller2D : MonoBehaviour {
 
     public LayerMask collisionMask;
 
+    public CollisionInfo collisions;
+
     // Use this for initialization
     void Start () {
         collider = GetComponent<BoxCollider2D>();
@@ -44,7 +46,7 @@ public class Controller2D : MonoBehaviour {
     }
 
 
-    //Distripute raycasts evenly
+    //Distripute raycasts evenly across player's own collider
     void CalculateRaySpacing()
     {
         Bounds bounds = collider.bounds;
@@ -57,9 +59,10 @@ public class Controller2D : MonoBehaviour {
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
     }
 
+    //Moves the player after checking with raycasts that there are no collisions in the direction where the player is headed
     public void Move(Vector3 velocity)
     {
-
+        collisions.Reset();
         UpdaterayCastOrigins();
         if (velocity.x != 0)
         {
@@ -74,7 +77,7 @@ public class Controller2D : MonoBehaviour {
         transform.Translate(velocity);
     }
 
-
+    //Raycasts detect colliders with layer "Obstacle" and bring velocity to 0 when next to them
     void VerticalCollisions(ref Vector3 velocity)
     {
 
@@ -92,12 +95,16 @@ public class Controller2D : MonoBehaviour {
             {
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
+
+                //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
+                collisions.below = directionY == -1;
+                collisions.above = directionY == 1;
             }
         }
 
     }
 
-
+   
     void HorizontalCollisions(ref Vector3 velocity)
     {
 
@@ -116,10 +123,29 @@ public class Controller2D : MonoBehaviour {
             {
                 velocity.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
+
+                //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
+                collisions.left = directionX == -1;
+                collisions.right = directionX == 1;
+
             }
         }
 
     }
 
+    //Contains information on locations of collisions
+
+    public struct CollisionInfo
+    {
+        public bool above, below;
+        public bool left, right;
+
+        public void Reset()
+        {
+            above = below = false;
+            left = right = false;
+        }
+
+    }
 
 }
