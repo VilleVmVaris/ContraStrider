@@ -10,6 +10,11 @@ public class Bullet : MonoBehaviour {
     Transform player;
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //var angle = Vector2.Angle(transform.position, player.position);
+        var angle = AngleInDeg(player.position, transform.position);
+
+        graphics.Rotate(Vector3.forward, angle);
 	}
 	
 	// Update is called once per frame
@@ -36,5 +41,11 @@ public class Bullet : MonoBehaviour {
             go.GetComponent<Damageable>().TakeDamage(bulletDamage);
             Destroy(gameObject);
         }
+    }
+    public static float AngleInRad(Vector3 vec1, Vector3 vec2) {
+        return Mathf.Atan2(vec2.y - vec1.y, vec2.x - vec1.x);
+    }
+    public static float AngleInDeg(Vector3 vec1, Vector3 vec2) {
+        return AngleInRad(vec1, vec2) * 180 / Mathf.PI;
     }
 }
