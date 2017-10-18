@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour {
 	float targetLookAheadX;
 	float lookAheadDirectionX;
 	float smoothLookVelocityX;
-	float smoothVelocityY;
+	float smoothVelocityY; // TBD when Controler2D is ready
 
 	struct FocusArea {
 		public Vector2 center;
