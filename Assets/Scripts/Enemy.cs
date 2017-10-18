@@ -7,7 +7,7 @@ public enum EnemyType { Grounded, Flying }
 public class Enemy : MonoBehaviour, Damageable{
     Stats stats;
     GameObject player;
-    Vector2 startPosition;
+    Vector3 startPosition;
 
     public GameObject bullet;
     public Transform bulletPosition;
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, Damageable{
     
     void Update () {
         RotateY();
-        canShoot = CheckDistanceX(transform.position, player.transform.position, stats.shootingDistance);
+        Move();
     }
     void ShootPlayer() {
         if (player != null && canShoot) {
@@ -37,9 +37,18 @@ public class Enemy : MonoBehaviour, Damageable{
     }
     
     void Move() {
-        if(enemyBehaviour == EnemyType.Flying) {
-            if (!canShoot) {
-                bool chasing = CheckDistanceX(startPosition, player.transform.position, stats.chaseDistance);
+        canShoot = CheckDistanceX(transform.position, player.transform.position, stats.shootingDistance);
+        Vector2 offset = transform.position - player.transform.position;
+        Vector2 startPosOffset = transform.position - startPosition;
+        if (enemyBehaviour == EnemyType.Flying) {
+            if (CheckDistanceX(startPosition, player.transform.position, stats.chaseDistance)) {
+                if (canShoot && Mathf.Abs(offset.x) > stats.shootingDistance / 2) {
+                    transform.Translate(Vector2.left * Time.deltaTime * stats.moveSpeed / 2);
+                } else if (!canShoot) {
+                    transform.Translate(Vector2.left * Time.deltaTime * stats.moveSpeed);
+                }
+            } else if(Mathf.Abs(startPosOffset.x) > stats.chaseDistance / 2 && !canShoot){
+                transform.Translate(Vector2.right * Time.deltaTime * stats.moveSpeed);
             }
         }
     }
