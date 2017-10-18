@@ -7,10 +7,12 @@ public class Stats : MonoBehaviour {
     public int health;
     public int damage;
     public int burstInterval; // Amount of Ticks
+    public int burstAmount;
 
     [Header("Float")]
     public float projectileSpeed;
     public float moveSpeed;
-    public float destroyDelay;
+    public float bulletDestroyDelay;
     public float shootingDistance;
+    public float chaseDistance;
 }
