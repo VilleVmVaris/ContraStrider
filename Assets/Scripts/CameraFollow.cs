@@ -13,6 +13,9 @@ public class CameraFollow : MonoBehaviour {
 	Controller2D followTarget;
 	FocusArea focusArea;
 
+	Camera currentCamera;
+	bool indoors = false;
+
 	float currentLookAheadX;
 	float targetLookAheadX;
 	float lookAheadDirectionX;
@@ -58,6 +61,7 @@ public class CameraFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		currentCamera = GetComponent<Camera>();
 		followTarget = GameObject.Find("Player").GetComponent<Controller2D>();
 		focusArea = new FocusArea(followTarget.GetComponent<Collider2D>().bounds, focusAreaSize);
 	}
@@ -83,5 +87,16 @@ public class CameraFollow : MonoBehaviour {
 	void OnDrawGizmos() {
 		Gizmos.color = new Color(1, 0, 0, .5f);
 		Gizmos.DrawCube(focusArea.center, focusAreaSize);
+	}
+
+	public void ToggleIndoorsMode() {
+		indoors = !indoors;
+
+		// TODO: zoom effect?
+		if (indoors) {
+			currentCamera.orthographicSize = 3;
+		} else {
+			currentCamera.orthographicSize = 5;
+		}
 	}
 }
