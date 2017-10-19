@@ -374,7 +374,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998914128531374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4235773683758604}
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586196
+  m_Length: 2.4586227
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4766344132618310}
   m_AttachedIK: {fileID: 0}
@@ -694,7 +694,17 @@ MonoBehaviour:
   bullet: {fileID: 1918939347452766, guid: db844470cbdde334aae0cf537fbd78bb, type: 2}
   bulletPosition: {fileID: 4014193608078378}
   timer: {fileID: 0}
+  anim: {fileID: 95545567684292994}
+  deathAnimations:
+  - {fileID: 7400000, guid: 1a47ee69aff620a4598b006cebd764d3, type: 2}
+  - {fileID: 7400000, guid: e59afb6fbfd38c64ca7f313cd862eabb, type: 2}
+  sprites:
+  - {fileID: 114592011501722694}
+  - {fileID: 114768952249790444}
+  - {fileID: 114449866309601226}
+  - {fileID: 114185461859534224}
   enemyBehaviour: 1
+  weaponType: 0
 --- !u!114 &114753260790559738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.1580472
+  m_Length: 2.1580477
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4383163535111618}
   m_AttachedIK: {fileID: 0}
@@ -761,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4961238
+  m_Length: 2.4961224
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4725816655901742}
   m_AttachedIK: {fileID: 0}
