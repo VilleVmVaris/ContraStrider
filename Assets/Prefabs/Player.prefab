@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4960295506355820}
-  - component: {fileID: 50581324741185820}
   - component: {fileID: 61821077712056528}
   - component: {fileID: 114322574509703824}
   - component: {fileID: 114820504358465122}
@@ -67,33 +66,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657960399845552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.83, y: 0, z: 0}
+  m_LocalPosition: {x: -53, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013818794282502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50581324741185820
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1657960399845552}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &61821077712056528
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -133,9 +112,12 @@ MonoBehaviour:
   health: 241
   damage: 2
   burstInterval: 0
+  burstAmount: 0
   projectileSpeed: 0
   moveSpeed: 0
-  destroyDelay: 0
+  bulletDestroyDelay: 0
+  shootingDistance: 0
+  chaseDistance: 0
 --- !u!114 &114780019789696102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,9 +132,10 @@ MonoBehaviour:
   horizontalRayCount: 4
   verticalRayCount: 4
   maxClimbAngle: 80
+  maxDescentAngle: 75
   collisionMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!114 &114820504358465122
 MonoBehaviour:
   m_ObjectHideFlags: 1
