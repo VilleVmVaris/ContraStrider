@@ -2,74 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Controller2D : MonoBehaviour {
-
-    const float skinWidth = .015f;
-
-    public int horizontalRayCount = 4;
-    public int verticalRayCount = 4;
-
+public class Controller2D : RaycastController {
+    
     public float maxClimbAngle = 80;
     public float maxDescentAngle = 75;
 
-    float horizontalRaySpacing;
-    float verticalRaySpacing;
-
-    BoxCollider2D collider;
-    RaycastOrigins raycastOrigins;
-
-    public LayerMask collisionMask;
 
     public CollisionInfo collisions;
 
-    // Use this for initialization
-    void Start () {
-        collider = GetComponent<BoxCollider2D>();
-        CalculateRaySpacing();
-    }
-
-
-    struct RaycastOrigins
+    public override void Start()
     {
-        public Vector2 topLeft, topRight;
-        public Vector2 bottomLeft, bottomRight;
+        base.Start();
     }
 
-    //Adds the raycast origin points to the corners of the collider
-    void UpdaterayCastOrigins()
-    {
-        Bounds bounds = collider.bounds;
-        bounds.Expand(skinWidth * -2);
-
-        raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
-        raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
-        raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
-        raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
-    }
-
-
-    //Distripute raycasts evenly across player's own collider
-    void CalculateRaySpacing()
-    {
-        Bounds bounds = collider.bounds;
-        bounds.Expand(skinWidth * -2);
-
-        horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
-        verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
-
-        horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
-        verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
-    }
 
     //Moves the player after checking with raycasts that there are no collisions in the direction where the player is headed
-    public void Move(Vector3 velocity)
+    public void Move(Vector2 velocity)
     {
         UpdaterayCastOrigins();
         collisions.Reset();
         collisions.velocityOld = velocity;
 
-        if(velocity.y < 0)
+        if (velocity.y < 0)
         {
             DescentSlope(ref velocity);
         }
@@ -77,17 +31,18 @@ public class Controller2D : MonoBehaviour {
         {
             HorizontalCollisions(ref velocity);
         }
-
         if (velocity.y != 0)
         {
             VerticalCollisions(ref velocity);
         }
 
         transform.Translate(velocity);
+
+
     }
 
     //Raycasts detect colliders with layer "Obstacle" and bring velocity to 0 when next to them
-    void VerticalCollisions(ref Vector3 velocity)
+    void VerticalCollisions(ref Vector2 velocity)
     {
 
         float directionY = Mathf.Sign(velocity.y);
@@ -98,20 +53,19 @@ public class Controller2D : MonoBehaviour {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
-            Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+
+            Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.green);
 
             if (hit)
             {
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
-                //Recalculate velocity.x if there are collisions along a slope to stop jittering
-                if(collisions.climbingSlope)
+                if (collisions.climbingSlope)
                 {
                     velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
                 }
 
-                //if the player collides with something, this sets the collisions to true based on the direction that the player is moving
                 collisions.below = directionY == -1;
                 collisions.above = directionY == 1;
             }
@@ -138,8 +92,9 @@ public class Controller2D : MonoBehaviour {
     }
 
    
-    void HorizontalCollisions(ref Vector3 velocity)
+    void HorizontalCollisions(ref Vector2 velocity)
     {
+       
 
         float directionX = Mathf.Sign(velocity.x);
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
@@ -149,7 +104,7 @@ public class Controller2D : MonoBehaviour {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
-            Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.green);
 
 
             if (hit)
@@ -207,28 +162,26 @@ public class Controller2D : MonoBehaviour {
     //Set collisions.below to true to enable jumping, since normally vertical movement stops jumping
     //Also - see if velocity in Y is higher than the climb velocity to see if player is jumping
 
-    void ClimbSlope(ref Vector3 velocity, float slopeAngle)
+    void ClimbSlope(ref Vector2 velocity, float slopeAngle)
     {
         float moveDistance = Mathf.Abs(velocity.x);
-        float climbVelocityY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
+        float climbmoveAmountY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
 
-        if (velocity.y <= climbVelocityY)
-
+        if (velocity.y <= climbmoveAmountY)
         {
-            velocity.y = climbVelocityY;
+            velocity.y = climbmoveAmountY;
             velocity.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign(velocity.x);
             collisions.below = true;
             collisions.climbingSlope = true;
             collisions.slopeAngle = slopeAngle;
         }
-
     }
 
-    void DescentSlope(ref Vector3 velocity)
+    void DescentSlope(ref Vector2 velocity)
     {
         float directionX = Mathf.Sign(velocity.x);
 
-        Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomRight : raycastOrigins.bottomRight;
+        Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomRight : raycastOrigins.bottomLeft;
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, -Vector2.up, Mathf.Infinity, collisionMask);
 
         if(hit)
@@ -264,7 +217,7 @@ public class Controller2D : MonoBehaviour {
         public bool climbingSlope;
         public bool descendingSlope;
         public float slopeAngle, slopeAngleOld;
-        public Vector3 velocityOld;
+        public Vector2 velocityOld;
 
         public void Reset()
         {

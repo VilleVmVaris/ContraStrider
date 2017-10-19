@@ -20,6 +20,8 @@ public class Player : MonoBehaviour, Damageable {
 
     Controller2D controller;
 
+    Vector2 directionalInput;
+
 
 
     float jumpVelocity = 8;
@@ -33,6 +35,11 @@ public class Player : MonoBehaviour, Damageable {
 
         print("Gravity: " + gravity + " Jump velocity: " + jumpVelocity);
 	}
+
+    public void SetDirectionalInput(Vector2 input)
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,14 +50,14 @@ public class Player : MonoBehaviour, Damageable {
             velocity.y = 0;
         }
 
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if(Input.GetKey(KeyCode.Space) && controller.collisions.below)
         {
             velocity.y = jumpVelocity;
         }
 
-        float targetVelocityX = input.x * moveSpeed;
+        float targetVelocityX = directionalInput.x * moveSpeed;
 
         //Smoothen change from initial velocity to target velocity, by default making it slower while airborne but faster while grounded
         //Will want to test this and see what feels better
