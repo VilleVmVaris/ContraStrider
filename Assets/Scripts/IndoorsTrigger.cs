@@ -12,7 +12,8 @@ public class IndoorsTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
-		// TODO: check player
-		mainCamera.ToggleIndoorsMode();
+		if (c.CompareTag("Player")) {
+			mainCamera.ToggleIndoorsMode();	
+		}
 	}
 }
