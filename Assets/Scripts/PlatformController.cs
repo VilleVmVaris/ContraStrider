@@ -94,6 +94,7 @@ public class PlatformController : RaycastController
 
         if (directionY == -1 || velocity.y == 0 && velocity.x != 0)
         {
+            
             float rayLength = skinWidth * 2;
 
             for (int i = 0; i < verticalRayCount; i++)
@@ -103,6 +104,7 @@ public class PlatformController : RaycastController
 
                 if (hit)
                 {
+                   
                     if (!movedPassengers.Contains(hit.transform))
                     {
                         movedPassengers.Add(hit.transform);
