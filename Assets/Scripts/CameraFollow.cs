@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour {
 	float targetLookAheadX;
 	float lookAheadDirectionX;
 	float smoothLookVelocityX;
-	float smoothVelocityY; // TBD when Controler2D is ready
+	float smoothVelocityY; // TBD when Controller2D is ready
 
 	struct FocusArea {
 		public Vector2 center;
@@ -82,6 +82,13 @@ public class CameraFollow : MonoBehaviour {
 		focusPosition += Vector2.right * currentLookAheadX;
 
 		transform.position = (Vector3)focusPosition + Vector3.forward * -10;
+
+		// Zoom camera during state transition
+		if (indoors && currentCamera.orthographicSize > 3) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, 3, Time.deltaTime * 5f);
+		} else if (!indoors && currentCamera.orthographicSize < 5) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, 5, Time.deltaTime * 5f);
+		}
 	}
 
 	void OnDrawGizmos() {
@@ -91,12 +98,5 @@ public class CameraFollow : MonoBehaviour {
 
 	public void ToggleIndoorsMode() {
 		indoors = !indoors;
-
-		// TODO: zoom effect?
-		if (indoors) {
-			currentCamera.orthographicSize = 3;
-		} else {
-			currentCamera.orthographicSize = 5;
-		}
 	}
 }
