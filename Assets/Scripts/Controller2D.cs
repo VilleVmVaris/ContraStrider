@@ -17,7 +17,7 @@ public class Controller2D : RaycastController {
 
 
     //Moves the player after checking with raycasts that there are no collisions in the direction where the player is headed
-    public void Move(Vector2 velocity)
+    public void Move(Vector2 velocity, bool standingOnPlatform = false)
     {
         UpdaterayCastOrigins();
         collisions.Reset();
@@ -37,6 +37,11 @@ public class Controller2D : RaycastController {
         }
 
         transform.Translate(velocity);
+
+        if(standingOnPlatform)
+        {
+            collisions.below = true;
+        }
 
 
     }
@@ -109,7 +114,10 @@ public class Controller2D : RaycastController {
 
             if (hit)
             {
-
+                if(hit.distance == 0)
+                {
+                    continue;
+                }
                 //Check for angle of hit surface from bottom ray - is the character on a slope? Compare player's normal and global up to find the angle
 
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
