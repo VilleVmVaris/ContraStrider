@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour, Damageable {
-
 
     Stats stats;
 
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour, Damageable {
     public Vector2 wallLeap;
     public float wallStickTime = .25f;
     float timeToWallUnstick;
+    bool wallSliding;
+    int wallDirX;
 
     Vector3 velocity;
     float gravity = -20;
@@ -32,8 +35,6 @@ public class Player : MonoBehaviour, Damageable {
     float maxJumpVelocity = 8;
     float minJumpVelocity;
 
-    bool wallSliding;
-
 	// Use this for initialization
 	void Start () {
         stats = GetComponent<Stats>();
@@ -46,18 +47,23 @@ public class Player : MonoBehaviour, Damageable {
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
 	}
 
-    public void SetDirectionalInput(Vector2 input)
-    {
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        print(controller.canFallThrough);
+    // Update is called once per frame
+    void Update () {
         
+        CalculateVelocity();
+        HandleWallSliding();
 
-        Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        int wallDirX = (controller.collisions.left) ? -1 : 1;
+        controller.Move(velocity * Time.deltaTime, directionalInput);
+
+        //This stops gravity from accumulating if the controllers detects collisions above or below
+        if (controller.collisions.above || controller.collisions.below)
+        {
+            velocity.y = 0;
+        }
+    }
+
+    void CalculateVelocity()
+    {
 
         float targetVelocityX = directionalInput.x * moveSpeed;
 
@@ -65,9 +71,15 @@ public class Player : MonoBehaviour, Damageable {
         //Will want to test this and see what feels better
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
 
+        velocity.y += gravity * Time.deltaTime;
+    }
+
+    void HandleWallSliding ()
+    {
+        wallDirX = (controller.collisions.left) ? -1 : 1;
 
         //Check for collisions on sides and below and make sure velocity.y is negative to enable wall slide
-        bool wallSliding = false;
+        wallSliding = false;
         if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
         {
             wallSliding = true;
@@ -90,73 +102,68 @@ public class Player : MonoBehaviour, Damageable {
                 {
                     timeToWallUnstick = wallStickTime;
                 }
-            } else
+            }
+            else
             {
                 timeToWallUnstick = wallStickTime;
             }
         }
+    }
 
+    public void SetDirectionalInput(Vector2 input)
+    {
+        directionalInput = input;
+    }
 
-        if(Input.GetKey(KeyCode.Space))
+    public void JumpInputDown()
+    {
+        if (wallSliding)
         {
-            if(wallSliding)
+
+            if (directionalInput.y == -1 && controller.collisions.below)
             {
-
-                if(directionalInput.y == -1 && controller.collisions.below)
-                {
-
-                }
-
-                //Wall-hop is direction of the wall is equal to the input, as in player is holding towards the wall
-                //Might want to change later so that input doesn't have to be exactly 1?
-                //Will want to test out different values
-                if (wallDirX == directionalInput.x)
-                {
-                    velocity.x = -wallDirX * wallJumpClimb.x;
-                    velocity.y = wallJumpClimb.y;
-                }
-                else if (directionalInput.x == 0)
-                {
-                    velocity.x = -wallDirX * wallJumpOff.x;
-                    velocity.y = wallJumpOff.y;
-                }
-                else
-                {
-                    velocity.x = -wallDirX * wallLeap.x;
-                    velocity.y = wallLeap.y;
-                }
 
             }
-            if (controller.collisions.below && !controller.canFallThrough)
-            {
-                velocity.y = maxJumpVelocity;
 
-            } else if (controller.canFallThrough)
+            //Wall-hop is direction of the wall is equal to the input, as in player is holding towards the wall
+            //Might want to change later so that input doesn't have to be exactly 1?
+            //Will want to test out different values
+            if (wallDirX == directionalInput.x)
             {
-                controller.collisions.fallingThroughPlatform = true;
-                Invoke("ResetFallingThroughPlatform", .5f);
-
+                velocity.x = -wallDirX * wallJumpClimb.x;
+                velocity.y = wallJumpClimb.y;
             }
-        }
-
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            if (velocity.y > minJumpVelocity)
+            else if (directionalInput.x == 0)
             {
-                velocity.y = minJumpVelocity;
+                velocity.x = -wallDirX * wallJumpOff.x;
+                velocity.y = wallJumpOff.y;
             }
+            else
+            {
+                velocity.x = -wallDirX * wallLeap.x;
+                velocity.y = wallLeap.y;
+            }
+
         }
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime, directionalInput);
-
-        //This stops gravity from accumulating if the controllers detects collisions above or below
-        if (controller.collisions.above || controller.collisions.below)
+        if (controller.collisions.below && !controller.canFallThrough)
         {
-            velocity.y = 0;
+            velocity.y = maxJumpVelocity;
+
         }
+        else if (controller.canFallThrough)
+        {
+            controller.collisions.fallingThroughPlatform = true;
+            Invoke("ResetFallingThroughPlatform", .5f);
 
+        }
+    }
 
+    public void JumpInputUp()
+    {
+        if (velocity.y > minJumpVelocity)
+        {
+            velocity.y = minJumpVelocity;
+        }
     }
 
     void ResetFallingThroughPlatform()

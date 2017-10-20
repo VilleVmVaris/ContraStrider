@@ -23,37 +23,37 @@ public class Controller2D : RaycastController {
     }
 
     // Overload for the platformmover, so that it doesn't look for the input variable
-    public void Move(Vector3 velocity, bool standingOnPlatform)
+    public void Move(Vector2 moveAmount, bool standingOnPlatform)
     {
-        Move(velocity, Vector2.zero, standingOnPlatform);
+        Move(moveAmount, Vector2.zero, standingOnPlatform);
     }
     //Moves the player after checking with raycasts that there are no collisions in the direction where the player is headed
-    public void Move(Vector2 velocity, Vector2 input, bool standingOnPlatform = false)
+    public void Move(Vector2 moveAmount, Vector2 input, bool standingOnPlatform = false)
     {
         UpdaterayCastOrigins();
         collisions.Reset();
-        collisions.velocityOld = velocity;
+        collisions.moveAmountOld = moveAmount;
         playerInput = input;
 
         //Change the way that the character is facing
-        if(velocity.x != 0)
+        if(moveAmount.x != 0)
         {
-            collisions.faceDir = (int) Mathf.Sign(velocity.x);
+            collisions.faceDir = (int) Mathf.Sign(moveAmount.x);
         }
 
-        if (velocity.y < 0)
+        if (moveAmount.y < 0)
         {
-            DescentSlope(ref velocity);
+            DescentSlope(ref moveAmount);
         }
 
-        HorizontalCollisions(ref velocity);
+        HorizontalCollisions(ref moveAmount);
         
-        if (velocity.y != 0)
+        if (moveAmount.y != 0)
         {
-            VerticalCollisions(ref velocity);
+            VerticalCollisions(ref moveAmount);
         }
 
-        transform.Translate(velocity);
+        transform.Translate(moveAmount);
 
         if(standingOnPlatform)
         {
@@ -63,17 +63,17 @@ public class Controller2D : RaycastController {
 
     }
 
-    //Raycasts detect colliders with layer "Obstacle" and bring velocity to 0 when next to them
-    void VerticalCollisions(ref Vector2 velocity)
+    //Raycasts detect colliders with layer "Obstacle" and bring moveAmount to 0 when next to them
+    void VerticalCollisions(ref Vector2 moveAmount)
     {
 
-        float directionY = Mathf.Sign(velocity.y);
-        float rayLength = Mathf.Abs(velocity.y) + skinWidth;
+        float directionY = Mathf.Sign(moveAmount.y);
+        float rayLength = Mathf.Abs(moveAmount.y) + skinWidth;
 
         for (int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
-            rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+            rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
             Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.green);
@@ -113,12 +113,12 @@ public class Controller2D : RaycastController {
                    
                 }
 
-                velocity.y = (hit.distance - skinWidth) * directionY;
+                moveAmount.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
                 if (collisions.climbingSlope)
                 {
-                    velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
+                    moveAmount.x = moveAmount.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(moveAmount.x);
                 }
 
                 collisions.below = directionY == -1;
@@ -128,9 +128,9 @@ public class Controller2D : RaycastController {
         //Check for new slopes while already climbing one to stop jitters
         if(collisions.climbingSlope)
         {
-            float directionX = Mathf.Sign(velocity.x);
-            rayLength = Mathf.Abs(velocity.x) + skinWidth;
-            Vector2 rayOrigin = ((directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight) + Vector2.up * velocity.y;
+            float directionX = Mathf.Sign(moveAmount.x);
+            rayLength = Mathf.Abs(moveAmount.x) + skinWidth;
+            Vector2 rayOrigin = ((directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight) + Vector2.up * moveAmount.y;
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             if(hit)
@@ -138,7 +138,7 @@ public class Controller2D : RaycastController {
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
                 if(slopeAngle != collisions.slopeAngle)
                 {
-                    velocity.x = (hit.distance - skinWidth) * directionX;
+                    moveAmount.x = (hit.distance - skinWidth) * directionX;
                     collisions.slopeAngle = slopeAngle;
                 }
             }
@@ -193,7 +193,7 @@ public class Controller2D : RaycastController {
                     if(collisions.descendingSlope)
                     {
                         collisions.descendingSlope = false;
-                        velocity = collisions.velocityOld;
+                        velocity = collisions.moveAmountOld;
                     }
 
                     float distanceToSlopeStart = 0;
@@ -291,7 +291,7 @@ public class Controller2D : RaycastController {
         public bool climbingSlope;
         public bool descendingSlope;
         public float slopeAngle, slopeAngleOld;
-        public Vector2 velocityOld;
+        public Vector2 moveAmountOld;
         public bool fallingThroughPlatform;
 
         //Used for remembering which way the character is facing

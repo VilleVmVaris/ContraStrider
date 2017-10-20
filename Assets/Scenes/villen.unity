@@ -1036,6 +1036,7 @@ GameObject:
   - component: {fileID: 2051051031}
   - component: {fileID: 2051051030}
   - component: {fileID: 2051051035}
+  - component: {fileID: 2051051036}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1166,3 +1167,14 @@ MonoBehaviour:
   wallLeap: {x: 20, y: 17}
   wallStickTime: 0.15
   moveSpeed: 6
+--- !u!114 &2051051036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2051051029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786ffc93dffa77146950103d48eecfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
