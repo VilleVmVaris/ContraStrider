@@ -13,6 +13,8 @@ public class Controller2D : RaycastController {
     public override void Start()
     {
         base.Start();
+
+        collisions.faceDir = 1;
     }
 
 
@@ -23,14 +25,19 @@ public class Controller2D : RaycastController {
         collisions.Reset();
         collisions.velocityOld = velocity;
 
+        //Change the way that the character is facing
+        if(velocity.x != 0)
+        {
+            collisions.faceDir = (int) Mathf.Sign(velocity.x);
+        }
+
         if (velocity.y < 0)
         {
             DescentSlope(ref velocity);
         }
-        if (velocity.x != 0)
-        {
-            HorizontalCollisions(ref velocity);
-        }
+
+        HorizontalCollisions(ref velocity);
+        
         if (velocity.y != 0)
         {
             VerticalCollisions(ref velocity);
@@ -99,19 +106,28 @@ public class Controller2D : RaycastController {
    
     void HorizontalCollisions(ref Vector2 velocity)
     {
-       
-
-        float directionX = Mathf.Sign(velocity.x);
+        //Check for collisions where character is facing
+        float directionX = collisions.faceDir;
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
+
+        if(Mathf.Abs(velocity.x) < skinWidth)
+        {
+            rayLength = 2 * skinWidth;
+        }
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
+            // Check which way character is facing before starting raycasts
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+
+            //Check spacing of raycasts
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+
+            // ... raycast
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.green);
 
-
+            //Check for collisions
             if (hit)
             {
                 if(hit.distance == 0)
@@ -226,6 +242,9 @@ public class Controller2D : RaycastController {
         public bool descendingSlope;
         public float slopeAngle, slopeAngleOld;
         public Vector2 velocityOld;
+
+        //Used for remembering which way the character is facing
+        public int faceDir;
 
         public void Reset()
         {
