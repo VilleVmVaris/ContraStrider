@@ -24,7 +24,7 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 0.16666667
-        value: {x: 0, y: 0, z: 310.431}
+        value: {x: 0, y: 0, z: 302.211}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -118,15 +118,15 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 0.16666667
-        value: {x: 0, y: 0, z: -25.36}
+        value: {x: 0, y: 0, z: -48.503002}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.41666666
-        value: {x: 0, y: 0, z: -56.726}
-        inSlope: {x: 0, y: 0, z: -137.10242}
-        outSlope: {x: 0, y: 0, z: -137.10242}
+        value: {x: 0, y: 0, z: -78.381004}
+        inSlope: {x: 0, y: 0, z: -39.407955}
+        outSlope: {x: 0, y: 0, z: -39.407955}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5833333
@@ -149,7 +149,7 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 0.16666667
-        value: {x: 0, y: 0, z: -138.57}
+        value: {x: 0, y: 0, z: -152.455}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -237,19 +237,25 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 0, z: 62.083004}
+        value: {x: 0, y: 0, z: 35.639}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.16666667
-        value: {x: 0, y: 0, z: 10.733001}
+        value: {x: 0, y: 0, z: 34.345}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.41666666
-        value: {x: 0, y: 0, z: 44.215004}
+        value: {x: 0, y: 0, z: 37.84}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5833333
+        value: {x: 0, y: 0, z: 14.200001}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -295,6 +301,101 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: 6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: -4.9100003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 52.001003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5833333
+        value: {x: 0, y: 0, z: 52.125004}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 32.980003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5833333
+        value: {x: 0, y: 0, z: 32.098003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 8.990001}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5833333
+        value: {x: 0, y: 0, z: 7.839}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 23.777}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.16666667
+        value: {x: 0, y: 0, z: 54.588}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.41666666
+        value: {x: 0, y: 0, z: 44.121002}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -321,6 +422,57 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: 6vartalosprite/core
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.6754344, y: 0.8123405, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.16666667
+        value: {x: -0.69817877, y: 0.55764055, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5833333
+        value: {x: -0.67543507, y: 0.7895957, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.34688377, y: -2.1710742, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 1.0000001, y: -0.0000003427267, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -333,6 +485,13 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 2210432298
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2959079770
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -409,6 +568,48 @@ AnimationClip:
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 2112518013
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1018447905
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 383949736
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1728835474
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2112518013
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 383949736
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
       path: 606843960
       attribute: 4
       script: {fileID: 0}
@@ -417,6 +618,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 2945930743
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2959079770
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -511,7 +719,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.16666667
-        value: 310.431
+        value: 302.211
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -841,15 +1049,15 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.16666667
-        value: -25.36
+        value: -48.503002
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.41666666
-        value: -56.726
-        inSlope: -137.10242
-        outSlope: -137.10242
+        value: -78.381004
+        inSlope: -39.407955
+        outSlope: -39.407955
         tangentMode: 136
       - serializedVersion: 2
         time: 0.5833333
@@ -931,7 +1139,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.16666667
-        value: -138.57
+        value: -152.455
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1203,6 +1411,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1231,6 +1445,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1243,19 +1463,25 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 62.083004
+        value: 35.639
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.16666667
-        value: 10.733001
+        value: 34.345
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.41666666
-        value: 44.215004
+        value: 37.84
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 14.200001
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1482,6 +1708,516 @@ AnimationClip:
     path: 6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -4.9100003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.6754344
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: -0.69817877
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: -0.67543507
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.8123405
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: 0.55764055
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0.7895957
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 52.001003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 52.125004
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 32.980003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 32.098003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 8.990001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.5833333
+        value: 7.839
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.34688377
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -2.1710742
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1.0000001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.0000003427267
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.41666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.41666666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 23.777
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.16666667
+        value: 54.588
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.41666666
+        value: 44.121002
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
+    classID: 4
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
@@ -1610,7 +2346,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
+    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1620,7 +2356,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
+    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1630,7 +2366,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
+    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1670,7 +2406,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1680,7 +2416,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1690,7 +2426,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: 6vartalosprite/5vasenjalkasprite/vasenreisi
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1730,7 +2466,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1740,7 +2476,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1750,7 +2486,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1841,6 +2577,156 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
     path: 6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: "6vartalosprite/3vy\xF6sprite/vy\xF6luu"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: "6vartalosprite/core/rinta/9vasensprite/vasenhauis/vasenarm/vasenk\xE4si/7miekka1sprite/8miekka2sprite/miekkaala/miekkakeski/miekkayl\xE4"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: "6vartalosprite/5vasenjalkasprite/vasenreisi/vasens\xE4\xE4ri/vasennilkka/vasenvarvas"
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
