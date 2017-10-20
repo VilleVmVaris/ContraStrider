@@ -7,6 +7,11 @@ public class Controller2D : RaycastController {
     public float maxClimbAngle = 80;
     public float maxDescentAngle = 75;
 
+    Vector2 playerInput;
+
+    [HideInInspector]
+    public bool canFallThrough;
+
 
     public CollisionInfo collisions;
 
@@ -17,13 +22,18 @@ public class Controller2D : RaycastController {
         collisions.faceDir = 1;
     }
 
-
+    // Overload for the platformmover, so that it doesn't look for the input variable
+    public void Move(Vector3 velocity, bool standingOnPlatform)
+    {
+        Move(velocity, Vector2.zero, standingOnPlatform);
+    }
     //Moves the player after checking with raycasts that there are no collisions in the direction where the player is headed
-    public void Move(Vector2 velocity, bool standingOnPlatform = false)
+    public void Move(Vector2 velocity, Vector2 input, bool standingOnPlatform = false)
     {
         UpdaterayCastOrigins();
         collisions.Reset();
         collisions.velocityOld = velocity;
+        playerInput = input;
 
         //Change the way that the character is facing
         if(velocity.x != 0)
@@ -70,6 +80,39 @@ public class Controller2D : RaycastController {
 
             if (hit)
             {
+                //Check is platform is passable
+
+                if(hit.collider.tag == "PassablePlatform")
+                {
+                    if(directionY == 1 || hit.distance == 0)
+                    {
+                        continue;
+                    }
+
+                    if(collisions.fallingThroughPlatform)
+                    {
+                        continue;
+                    }
+
+                    if(playerInput.y == -1)
+                    {
+                        canFallThrough = true;
+                       // collisions.fallingThroughPlatform = true;
+                       
+                       //continue;
+
+                    } else
+                    {
+                        canFallThrough = false;
+                    }
+                    
+                    
+                } else if ((hit && hit.collider.tag != "PassablePlatform"))
+                {
+                    canFallThrough = false;
+                   
+                }
+
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
@@ -131,6 +174,11 @@ public class Controller2D : RaycastController {
             if (hit)
             {
                 if(hit.distance == 0)
+                {
+                    continue;
+                }
+
+                if(playerInput.y == -1)
                 {
                     continue;
                 }
@@ -232,6 +280,8 @@ public class Controller2D : RaycastController {
         }
     }
 
+
+
     //Contains information on locations of collisions
 
     public struct CollisionInfo
@@ -242,6 +292,7 @@ public class Controller2D : RaycastController {
         public bool descendingSlope;
         public float slopeAngle, slopeAngleOld;
         public Vector2 velocityOld;
+        public bool fallingThroughPlatform;
 
         //Used for remembering which way the character is facing
         public int faceDir;
