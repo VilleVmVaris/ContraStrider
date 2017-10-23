@@ -6,7 +6,8 @@ public class Controller2D : RaycastController {
     
     public float maxSlopeAngle = 80;
 
-    Vector2 playerInput;
+    [HideInInspector]
+    public Vector2 playerInput;
 
     [HideInInspector]
     public bool canFallThrough;

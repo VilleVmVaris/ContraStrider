@@ -22,6 +22,8 @@ public class CameraFollow : MonoBehaviour {
 	float smoothLookVelocityX;
 	float smoothVelocityY; // TBD when Controller2D is ready
 
+	bool lookAheadStopped;
+
 	struct FocusArea {
 		public Vector2 center;
 		public Vector2 velocity;
@@ -63,24 +65,33 @@ public class CameraFollow : MonoBehaviour {
 	void Start () {
 		currentCamera = GetComponent<Camera>();
 		followTarget = GameObject.Find("Player").GetComponent<Controller2D>();
-		focusArea = new FocusArea(followTarget.GetComponent<Collider2D>().bounds, focusAreaSize);
+		focusArea = new FocusArea(followTarget.collider.bounds, focusAreaSize);
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		//TODO: Public collider in controller!
-		focusArea.Update(followTarget.GetComponent<Collider2D>().bounds);
-
+		focusArea.Update(followTarget.collider.bounds);
 
 		Vector2 focusPosition = focusArea.center + Vector2.up * verticalOffset;
 		if (!Mathf.Approximately(focusArea.velocity.x, 0)) {
 			lookAheadDirectionX = Mathf.Sign(focusArea.velocity.x);
+			if (Mathf.Approximately(Mathf.Sign(followTarget.playerInput.x), Mathf.Sign(focusArea.velocity.x) ) 
+				&& !Mathf.Approximately(followTarget.playerInput.x, 0)) {
+				lookAheadStopped = false;
+				targetLookAheadX = lookAheadDirectionX * lookAheadX;
+			} else {
+				if (!lookAheadStopped) {
+					lookAheadStopped = true;
+					targetLookAheadX = currentLookAheadX + (lookAheadDirectionX * lookAheadX - currentLookAheadX) / 4f;	
+				}
+			}
 		}
 
-		targetLookAheadX = lookAheadDirectionX * lookAheadX;
 		currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
+		focusPosition.y = Mathf.SmoothDamp(transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
 		focusPosition += Vector2.right * currentLookAheadX;
 
+		// Move camera
 		transform.position = (Vector3)focusPosition + Vector3.forward * -10;
 
 		// Zoom camera during state transition
