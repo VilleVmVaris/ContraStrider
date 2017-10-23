@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 436106398}
   - component: {fileID: 436106395}
   - component: {fileID: 436106396}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: IndoorsTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ MonoBehaviour:
   verticalOffset: 1
   lookAheadX: 2
   lookSmoothTimeX: 0.2
-  verticalSmoothTime: 0.2
+  verticalSmoothTime: 0.1
   focusAreaSize: {x: 3, y: 4}
 --- !u!114 &1003221464
 MonoBehaviour:
