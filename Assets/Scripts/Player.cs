@@ -127,11 +127,6 @@ public class Player : MonoBehaviour, Damageable {
         if (wallSliding)
         {
 
-            if (directionalInput.y == -1 && controller.collisions.below)
-            {
-
-            }
-
             //Wall-hop is direction of the wall is equal to the input, as in player is holding towards the wall
             //Might want to change later so that input doesn't have to be exactly 1?
             //Will want to test out different values
