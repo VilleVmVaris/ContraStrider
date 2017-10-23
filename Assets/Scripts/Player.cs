@@ -58,7 +58,14 @@ public class Player : MonoBehaviour, Damageable {
         //This stops gravity from accumulating if the controllers detects collisions above or below
         if (controller.collisions.above || controller.collisions.below)
         {
-            velocity.y = 0;
+            if (controller.collisions.slidingDownMaxSlope)
+            {
+                velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
+            }
+            else
+            {
+                velocity.y = 0;
+            }
         }
     }
 
@@ -145,9 +152,19 @@ public class Player : MonoBehaviour, Damageable {
             }
 
         }
-        if (controller.collisions.below && !controller.canFallThrough)
+        if (controller.collisions.below)
         {
-            velocity.y = maxJumpVelocity;
+            if (controller.collisions.slidingDownMaxSlope)
+            {
+                if (directionalInput.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
+                { // not jumping against max slope
+                    velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
+                    velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
+                }
+            } else
+            {
+                velocity.y = maxJumpVelocity;
+            }
 
         }
         else if (controller.canFallThrough)
