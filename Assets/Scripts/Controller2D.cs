@@ -95,7 +95,7 @@ public class Controller2D : RaycastController {
                         continue;
                     }
 
-                    if(playerInput.y == -1)
+                    if(playerInput.y == -1 && playerInput.x == 0)
                     {
                         canFallThrough = true;
                        // collisions.fallingThroughPlatform = true;
@@ -179,10 +179,6 @@ public class Controller2D : RaycastController {
                     continue;
                 }
 
-                if(playerInput.y == -1)
-                {
-                    continue;
-                }
                 //Check for angle of hit surface from bottom ray - is the character on a slope? Compare player's normal and global up to find the angle
 
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);

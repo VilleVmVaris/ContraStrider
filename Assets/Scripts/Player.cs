@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, Damageable {
 
     // Update is called once per frame
     void Update () {
+        print(controller.canFallThrough);
         
         CalculateVelocity();
         HandleWallSliding();
@@ -158,16 +159,20 @@ public class Player : MonoBehaviour, Damageable {
                 }
             } else
             {
-                velocity.y = maxJumpVelocity;
+                if (controller.canFallThrough)
+                {
+                    controller.collisions.fallingThroughPlatform = true;
+                    Invoke("ResetFallingThroughPlatform", .5f);
+
+                }
+                else
+                {
+                    velocity.y = maxJumpVelocity;
+                }
             }
 
         }
-        else if (controller.canFallThrough)
-        {
-            controller.collisions.fallingThroughPlatform = true;
-            Invoke("ResetFallingThroughPlatform", .5f);
-
-        }
+        
     }
 
     public void JumpInputUp()
