@@ -159,10 +159,10 @@ MonoBehaviour:
   accelerationTimeAirborne: 0.2
   accelerationTimeGrounded: 0.1
   wallSlideSpeedMax: 3
-  wallJumpClimb: {x: 0, y: 0}
-  wallJumpOff: {x: 0, y: 0}
-  wallLeap: {x: 0, y: 0}
-  wallStickTime: 0.25
+  wallJumpClimb: {x: 7.5, y: 16}
+  wallJumpOff: {x: 8, y: 7}
+  wallLeap: {x: 20, y: 17}
+  wallStickTime: 0.15
   moveSpeed: 6
 --- !u!114 &114950326096605386
 MonoBehaviour:
