@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, Damageable {
         stats = GetComponent<Stats>();
         player = GameObject.FindGameObjectWithTag("Player");
         startPosition = transform.position;
-        timer.AddTimer(ShootingTimer, stats.burstInterval, true);
+		timer.Continuously(ShootingTimer, stats.burstInterval);
     }
     
     void Update () {
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, Damageable {
     void ShootingTimer() {
         if (player != null) {
             for (int i = 0; i <= stats.burstAmount; i++) {
-                timer.AddTimer(ShootPlayer, i * 2);
+                timer.Once(ShootPlayer, i * 2);
             }
         }
     }
