@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour, Damageable {
 
-    Stats stats;
+	public int health;
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -37,7 +37,6 @@ public class Player : MonoBehaviour, Damageable {
 
 	// Use this for initialization
 	void Start () {
-        stats = GetComponent<Stats>();
         controller = GetComponent<Controller2D>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
@@ -189,8 +188,8 @@ public class Player : MonoBehaviour, Damageable {
     }
 
     public void TakeDamage(int damage) {
-        stats.health -= damage;
-        if(stats.health <= 0) {
+        health -= damage;
+        if(health <= 0) {
             print("Player died");
             Die();
         }

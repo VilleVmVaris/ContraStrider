@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4960295506355820}
   - component: {fileID: 61821077712056528}
-  - component: {fileID: 114322574509703824}
+  - component: {fileID: 50094118806481482}
   - component: {fileID: 114820504358465122}
   - component: {fileID: 114780019789696102}
-  - component: {fileID: 50094118806481482}
+  - component: {fileID: 114950326096605386}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,26 +119,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.43, y: 1.24}
   m_EdgeRadius: 0
---- !u!114 &114322574509703824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1657960399845552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3ad2d780ff7e540bdda57e003b120a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 241
-  damage: 2
-  burstInterval: 0
-  burstAmount: 0
-  projectileSpeed: 0
-  moveSpeed: 0
-  bulletDestroyDelay: 0
-  shootingDistance: 0
-  chaseDistance: 0
 --- !u!114 &114780019789696102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,13 +130,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77424bafea755734e82d29927a0b2c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  collider: {fileID: 0}
   horizontalRayCount: 4
   verticalRayCount: 4
-  maxClimbAngle: 80
-  maxDescentAngle: 75
   collisionMask:
     serializedVersion: 2
     m_Bits: 2560
+  maxSlopeAngle: 80
+  playerInput: {x: 0, y: 0}
+  canFallThrough: 0
 --- !u!114 &114820504358465122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,11 +152,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1702a4fdcd457b746afb3e97b3cd3c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 4
+  health: 10
+  maxJumpHeight: 4
+  minJumpHeight: 1
   timeToJumpApex: 0.4
   accelerationTimeAirborne: 0.2
   accelerationTimeGrounded: 0.1
+  wallSlideSpeedMax: 3
+  wallJumpClimb: {x: 0, y: 0}
+  wallJumpOff: {x: 0, y: 0}
+  wallLeap: {x: 0, y: 0}
+  wallStickTime: 0.25
   moveSpeed: 6
+--- !u!114 &114950326096605386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657960399845552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786ffc93dffa77146950103d48eecfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212552877866650484
 SpriteRenderer:
   m_ObjectHideFlags: 1
