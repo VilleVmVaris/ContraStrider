@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
 
-    public float damageAmount;
+    public int damageAmount;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class AttackScript : MonoBehaviour {
     {
         if (collision.gameObject.layer == 11)
         {
-            print("apuva");
+            collision.GetComponent<EggRobot>().TakeDamage(damageAmount);
         }
     }
 }
