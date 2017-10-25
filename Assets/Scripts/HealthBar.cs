@@ -4,33 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
-    float healthBarFull;
-    public float maxHealth;
-    float health;
-    float healthBarHeight;
 
-    void Awake() {
-        healthBarHeight = GetComponent<RectTransform>().rect.height;
-        healthBarFull = GetComponent<RectTransform>().rect.width;
-        health = 0;
-        SetHealthBar(health);
+    public Image bar;
+    public float health;
+    public float fullHealth;
+
+    void Start () {
+        health = fullHealth;
     }
+	
 
-    void Update() {
+	void Update () {
         //***Testing***
         if (Input.GetKeyDown(KeyCode.Delete)) {
-            SetHealthBar(1);
+            health -= 10;
+            SetHealthBar(health);
         }
         //***Testing***
-        if (health >= healthBarFull) {
-            print("Game Over!!!");
-        }
-
     }
-    public void SetHealthBar(float damage) {
-        if (health < healthBarFull) { 
-        health += (healthBarFull / maxHealth) * damage;
-        GetComponent<RectTransform>().sizeDelta = new Vector2(health, healthBarHeight);
+    public void SetHealthBar(float healthNow) {
+        if (healthNow >= 0) {
+            bar.fillAmount = healthNow / fullHealth;
+            if (healthNow <= 0) {
+                print("GAME OVER");
+            }
         }
     }
 }
