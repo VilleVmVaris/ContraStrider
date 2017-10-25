@@ -22,6 +22,8 @@ public class Player : MonoBehaviour, Damageable {
     bool wallSliding;
     int wallDirX;
 
+    public int attackDurationTicks;
+
     public GameObject groundAttackObject;
 
     Vector3 velocity;
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour, Damageable {
     float maxJumpVelocity = 8;
     float minJumpVelocity;
 
+    TimerManager timer;
+
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<Controller2D>();
@@ -46,6 +50,8 @@ public class Player : MonoBehaviour, Damageable {
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
+
+        timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 	}
 
     // Update is called once per frame
@@ -86,8 +92,15 @@ public class Player : MonoBehaviour, Damageable {
         groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 
         groundAttackObject.SetActive(true);
-
+        timer.Once(EndAttackEffect, attackDurationTicks);
     }
+
+    void EndAttackEffect()
+    {
+
+        groundAttackObject.SetActive(false);
+    }
+
     void CalculateVelocity()
     {
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
 
+    public float damageAmount;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,9 +17,9 @@ public class AttackScript : MonoBehaviour {
 	}
 
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(other.gameObject.layer == 11)
+        if (collision.gameObject.layer == 11)
         {
             print("apuva");
         }
