@@ -48,8 +48,6 @@ public class Player : MonoBehaviour, Damageable {
 
     // Update is called once per frame
     void Update () {
-        print(controller.canFallThrough);
-        
         CalculateVelocity();
         HandleWallSliding();
 
