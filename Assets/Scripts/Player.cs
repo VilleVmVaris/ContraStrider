@@ -66,7 +66,26 @@ public class Player : MonoBehaviour, Damageable {
             }
         }
     }
+    public void Attack(Vector2 input)
+    {
+        if (input.x == 0 && input.y == 0)
+        {
+            input.x = controller.collisions.faceDir;
+        }
+        int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
+        if (input.x < 0)
+        {
+            attackDir = 360 - attackDir;
+        }
+
+        attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
+
+        groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+
+        groundAttackObject.SetActive(true);
+
+    }
     void CalculateVelocity()
     {
 

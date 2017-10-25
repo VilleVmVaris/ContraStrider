@@ -4,43 +4,22 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
 
-    BoxCollider2D boxcollider;
-    public float maxAttackRange;
-
-    Vector2 attackDirection;
-
-
-    public LayerMask wallMask;
-
-
-
-
 	// Use this for initialization
 	void Start () {
-
-        boxcollider = GetComponent<BoxCollider2D>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            Attack();
-        }
-        
-    }
+		
+	}
 
 
-    public void Attack()
+    private void OnTriggerStay(Collider other)
     {
-
-
-        if(Physics2D.Raycast(transform.position, Vector2.right, maxAttackRange, wallMask))
+        if(other.gameObject.layer == 11)
         {
-            Debug.DrawRay(transform.position, Vector2.right, Color.blue);
+            print("apuva");
         }
-
-
     }
 }

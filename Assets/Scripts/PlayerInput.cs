@@ -30,6 +30,11 @@ public class PlayerInput : MonoBehaviour {
             player.JumpInputUp();
         }
 
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            player.Attack(directionalInput);
+        }
+
     }
 
 
