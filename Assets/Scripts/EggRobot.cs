@@ -12,6 +12,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public float moveSpeed;
 	public float chaseDistance;
 
+    public bool damageable = true;
+
 	[Header("Weapon Use")]
 	public float shootingDistance;
 	public int burstAmount;
@@ -40,7 +42,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		weapon = GetComponent<EnemyWeapon>();
 		animator = GetComponentInChildren<Animator>();
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
-		timer = GameObject.Find("TimerManager").GetComponent<TimerManager>();
+		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
 	}
 
@@ -109,11 +111,18 @@ public class EggRobot : MonoBehaviour, Damageable {
 		}
 	}
 
+    void ChangeDamageable()
+    {
+        damageable = true;
+    }
+
 	#region Damageable implementation
 
 	public void TakeDamage(int damage) {
         print("osuma");
 		health -= damage;
+        damageable = false;
+        timer.Once(ChangeDamageable, 1);
 		animator.SetTrigger("munaosuma");
 		if(health <= 0) {
 			Die();

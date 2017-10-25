@@ -718,6 +718,7 @@ MonoBehaviour:
   health: 5
   moveSpeed: 2.2
   chaseDistance: 10
+  damageable: 1
   shootingDistance: 7
   burstAmount: 5
   burstInterval: 15
