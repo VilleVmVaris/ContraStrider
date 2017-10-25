@@ -22,6 +22,8 @@ public class Player : MonoBehaviour, Damageable {
     bool wallSliding;
     int wallDirX;
 
+    public GameObject groundAttackObject;
+
     Vector3 velocity;
     float gravity = -20;
 
