@@ -19,7 +19,7 @@ public class AttackScript : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 11)
+        if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EggRobot>().damageable)
         {
             collision.GetComponent<EggRobot>().TakeDamage(damageAmount);
         }
