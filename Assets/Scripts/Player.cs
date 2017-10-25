@@ -39,7 +39,11 @@ public class Player : MonoBehaviour, Damageable {
     float maxJumpVelocity = 8;
     float minJumpVelocity;
 
+
     TimerManager timer;
+
+	[HideInInspector]
+	public BladeDash dash;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour, Damageable {
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+
+		dash = GetComponent<BladeDash>();
 
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
 
@@ -59,7 +65,13 @@ public class Player : MonoBehaviour, Damageable {
         CalculateVelocity();
         HandleWallSliding();
 
-        controller.Move(velocity * Time.deltaTime, directionalInput);
+		if (dash.dashing) {
+			var dashvelocity = Vector2.right * 10f; // TODO: Blade Dash aiming
+			controller.Move(dashvelocity * Time.deltaTime, directionalInput);
+		} else {
+			controller.Move(velocity * Time.deltaTime, directionalInput);	
+		}
+        
 
         //This stops gravity from accumulating if the controllers detects collisions above or below
         if (controller.collisions.above || controller.collisions.below)

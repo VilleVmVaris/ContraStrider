@@ -35,6 +35,14 @@ public class PlayerInput : MonoBehaviour {
             player.Attack(directionalInput);
         }
 
+		if (Input.GetKeyDown(KeyCode.LeftShift)) {
+			if (!player.dash.aiming) {
+				player.dash.StartAiming();	
+			} else {
+				player.dash.DoDash();
+			}
+
+		}
     }
 
 

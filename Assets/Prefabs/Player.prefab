@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 50094118806481482}
   - component: {fileID: 114820504358465122}
   - component: {fileID: 114780019789696102}
+  - component: {fileID: 114738808646633716}
   - component: {fileID: 114950326096605386}
   m_Layer: 0
   m_Name: Player
@@ -255,6 +256,7 @@ MonoBehaviour:
   attackDurationTicks: 1
   groundAttackObject: {fileID: 1249578112112104}
   moveSpeed: 6
+  dash: {fileID: 0}
 --- !u!114 &114950326096605386
 MonoBehaviour:
   m_ObjectHideFlags: 1
