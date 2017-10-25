@@ -15,7 +15,7 @@ public class BladeDash : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timer = GameObject.Find("TimerManager").GetComponent<TimerManager>();
+		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 	}
 	
 	// Update is called once per frame
