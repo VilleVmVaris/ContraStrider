@@ -25,6 +25,9 @@ public class Player : MonoBehaviour, Damageable {
     public int attackDurationTicks;
 
     public GameObject groundAttackObject;
+    public GameObject chargeAttackObject;
+
+    bool swordCharged;
 
     Vector3 velocity;
     float gravity = -20;
@@ -105,10 +108,45 @@ public class Player : MonoBehaviour, Damageable {
         timer.Once(EndAttackEffect, attackDurationTicks);
     }
 
+    public void ChargedAttack(Vector2 input)
+    {
+        if (swordCharged)
+        {
+            if (input.x == 0 && input.y == 0)
+            {
+                input.x = controller.collisions.faceDir;
+            }
+            int attackDir = (int)(Vector2.Angle(input, Vector3.up));
+
+            if (input.x < 0)
+            {
+                attackDir = 360 - attackDir;
+            }
+
+            attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
+
+
+            chargeAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+
+            chargeAttackObject.SetActive(true);
+
+            timer.Once(EndAttackEffect, attackDurationTicks);
+        }
+        else Attack(input);
+
+    }
+
     void EndAttackEffect()
     {
+        if (groundAttackObject.activeSelf)
+        {
 
-        groundAttackObject.SetActive(false);
+            groundAttackObject.SetActive(false);
+
+        } else if (chargeAttackObject.activeSelf)
+        {
+            chargeAttackObject.SetActive(false);
+        }
     }
 
     void CalculateVelocity()
