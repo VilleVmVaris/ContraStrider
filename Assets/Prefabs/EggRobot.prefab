@@ -434,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292986533851408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: -2, z: 0}
+  m_LocalPosition: {x: 33, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470216261233724}
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4961238
+  m_Length: 2.4961245
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4343735075165502}
   m_AttachedIK: {fileID: 0}
@@ -720,12 +720,13 @@ MonoBehaviour:
   chaseDistance: 10
   damageable: 1
   shootingDistance: 7
-  burstAmount: 5
-  burstInterval: 15
+  burstAmount: 3
+  burstInterval: 35
   deathAnimations:
   - {fileID: 7400000, guid: 1a47ee69aff620a4598b006cebd764d3, type: 2}
   - {fileID: 7400000, guid: e59afb6fbfd38c64ca7f313cd862eabb, type: 2}
   fadeTime: 1
+  shotTimers: []
 --- !u!114 &114743577119946278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -770,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586225
+  m_Length: 2.458619
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4436227326209812}
   m_AttachedIK: {fileID: 0}
