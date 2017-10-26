@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour {
             player.Attack(directionalInput);
         }
 
-		if (Input.GetButtonDown("Fire2")) {
+		if (Input.GetButtonDown("Fire2") && !player.dash.dashing) {
 			if (!player.dash.aiming) {
 				player.dash.StartAiming(directionalInput);	
 			} else {

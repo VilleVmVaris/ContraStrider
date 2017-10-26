@@ -62,8 +62,8 @@ public class Player : MonoBehaviour, Damageable {
 
     // Update is called once per frame
     void Update () {
-        CalculateVelocity();
-        HandleWallSliding();
+		CalculateVelocity();
+		HandleWallSliding();
 
 		if (dash.dashing) {
 			controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
@@ -71,8 +71,8 @@ public class Player : MonoBehaviour, Damageable {
 			controller.Move(velocity * Time.deltaTime, directionalInput);	
 		}
 
-        //This stops gravity from accumulating if the controllers detects collisions above or below
-        if (controller.collisions.above || controller.collisions.below)
+        //This stops gravity from accumulating if the controllers detects collisions above or below or while dashing
+		if (controller.collisions.above || controller.collisions.below || dash.dashing)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
@@ -113,7 +113,6 @@ public class Player : MonoBehaviour, Damageable {
 
     void CalculateVelocity()
     {
-
         float targetVelocityX = directionalInput.x * moveSpeed;
 
         //Smoothen change from initial velocity to target velocity, by default making it slower while airborne but faster while grounded
