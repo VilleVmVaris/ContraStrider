@@ -66,12 +66,10 @@ public class Player : MonoBehaviour, Damageable {
         HandleWallSliding();
 
 		if (dash.dashing) {
-			var dashvelocity = Vector2.right * 10f; // TODO: Blade Dash aiming
-			controller.Move(dashvelocity * Time.deltaTime, directionalInput);
+			controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
 		} else {
 			controller.Move(velocity * Time.deltaTime, directionalInput);	
 		}
-        
 
         //This stops gravity from accumulating if the controllers detects collisions above or below
         if (controller.collisions.above || controller.collisions.below)

@@ -17,9 +17,12 @@ public class PlayerInput : MonoBehaviour {
 		
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        player.SetDirectionalInput(directionalInput);
-
-
+		if (player.dash.aiming) {
+			player.dash.Aim(directionalInput);
+		} else {
+			player.SetDirectionalInput(directionalInput);	
+		}
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
             player.JumpInputDown();
@@ -37,11 +40,10 @@ public class PlayerInput : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.LeftShift)) {
 			if (!player.dash.aiming) {
-				player.dash.StartAiming();	
+				player.dash.StartAiming(directionalInput);	
 			} else {
 				player.dash.DoDash();
 			}
-
 		}
     }
 
