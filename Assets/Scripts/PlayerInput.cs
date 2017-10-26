@@ -23,22 +23,22 @@ public class PlayerInput : MonoBehaviour {
 			player.SetDirectionalInput(directionalInput);	
 		}
         
-        if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.GetButtonDown("Jump"))
         {
             player.JumpInputDown();
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+		if(Input.GetButtonUp("Jump"))
         {
             player.JumpInputUp();
         }
 
-        if(Input.GetKeyDown(KeyCode.K))
+		if(Input.GetButtonUp("Fire1"))
         {
             player.Attack(directionalInput);
         }
 
-		if (Input.GetKeyDown(KeyCode.LeftShift)) {
+		if (Input.GetButtonDown("Fire2")) {
 			if (!player.dash.aiming) {
 				player.dash.StartAiming(directionalInput);	
 			} else {
