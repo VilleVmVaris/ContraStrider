@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Controller2D))]
-public class Player : MonoBehaviour, Damageable {
 
-	public int health;
+[RequireComponent(typeof(Controller2D))]
+public class Player : MonoBehaviour, Damageable
+{
+
+    public int health;
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -55,39 +57,44 @@ public class Player : MonoBehaviour, Damageable {
 
     TimerManager timer;
 
-	[HideInInspector]
-	public BladeDash dash;
+    [HideInInspector]
+    public BladeDash dash;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         controller = GetComponent<Controller2D>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
-		dash = GetComponent<BladeDash>();
+        dash = GetComponent<BladeDash>();
 
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
 
-	}
+    }
 
     // Update is called once per frame
-    void Update () {
-		CalculateVelocity();
-		HandleWallSliding();
+    void Update()
+    {
+        CalculateVelocity();
+        HandleWallSliding();
 
-		if (dash.dashing) {
-			controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
-		} else {
-			controller.Move(velocity * Time.deltaTime, directionalInput);	
-		}
+        if (dash.dashing)
+        {
+            controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
+        }
+        else
+        {
+            controller.Move(velocity * Time.deltaTime, directionalInput);
+        }
 
         //This stops gravity from accumulating if the controllers detects collisions above or below or while dashing
-		if (controller.collisions.above || controller.collisions.below || dash.dashing)
+        if (controller.collisions.above || controller.collisions.below || dash.dashing)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
@@ -99,11 +106,11 @@ public class Player : MonoBehaviour, Damageable {
             }
         }
 
-        if(chargingSword)
+        if (chargingSword)
         {
             charged += Time.deltaTime;
 
-            if(charged >= chargeTime)
+            if (charged >= chargeTime)
             {
                 swordCharged = true;
             }
@@ -189,7 +196,8 @@ public class Player : MonoBehaviour, Damageable {
 
             groundAttackObject.SetActive(false);
 
-        } else if (chargeAttackObject.activeSelf)
+        }
+        else if (chargeAttackObject.activeSelf)
         {
             chargeAttackObject.SetActive(false);
         }
@@ -206,7 +214,7 @@ public class Player : MonoBehaviour, Damageable {
         velocity.y += gravity * Time.deltaTime;
     }
 
-    void HandleWallSliding ()
+    void HandleWallSliding()
     {
         wallDirX = (controller.collisions.left) ? -1 : 1;
 
@@ -281,7 +289,8 @@ public class Player : MonoBehaviour, Damageable {
                     velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
                     velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
                 }
-            } else
+            }
+            else
             {
                 if (controller.canFallThrough)
                 {
@@ -296,7 +305,7 @@ public class Player : MonoBehaviour, Damageable {
             }
 
         }
-        
+
     }
 
     public void JumpInputUp()
@@ -312,14 +321,19 @@ public class Player : MonoBehaviour, Damageable {
         controller.collisions.fallingThroughPlatform = false;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage)
+    {
         health -= damage;
-        if(health <= 0) {
+        if (health <= 0)
+        {
             print("Player died");
             Die();
         }
     }
-    void Die() {
+    void Die()
+    {
         Destroy(gameObject);
     }
 }
+
+

@@ -2,74 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof (Player))]
-public class PlayerInput : MonoBehaviour {
+
+[RequireComponent(typeof(Player))]
+public class PlayerInput : MonoBehaviour
+{
 
     Player player;
-    
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start()
+    {
         player = GetComponent<Player>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-		if (player.dash.aiming) {
-			player.dash.Aim(directionalInput);
-		} else {
-			player.SetDirectionalInput(directionalInput);	
-		}
-        
-		if(Input.GetButtonDown("Jump"))
+        if (player.dash.aiming)
+        {
+            player.dash.Aim(directionalInput);
+        }
+        else
+        {
+            player.SetDirectionalInput(directionalInput);
+        }
+
+        if (Input.GetButtonDown("Jump"))
         {
             player.JumpInputDown();
         }
 
-		if(Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump"))
         {
             player.JumpInputUp();
         }
 
-		if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             player.Attack(directionalInput);
         }
 
-        if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             player.timeToCharge += Time.deltaTime;
 
-            if(player.timeToCharge >= player.timeBeforeCharge)
+            if (player.timeToCharge >= player.timeBeforeCharge)
             {
                 player.StartChargingSword();
             }
         }
 
-        if(Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
-            if(player.chargingSword)
+            if (player.chargingSword)
             {
                 player.ChargedAttack(directionalInput);
 
-            } else
+            }
+            else
             {
                 player.ResetCharge();
             }
         }
 
-		if (Input.GetButtonDown("Fire2") && !player.dash.dashing) {
-			if (!player.dash.aiming) {
-				player.dash.StartAiming(directionalInput);	
-			} else {
-				player.dash.DoDash();
-			}
-		}
+        if (Input.GetButtonDown("Fire2") && !player.dash.dashing)
+        {
+            if (!player.dash.aiming)
+            {
+                player.dash.StartAiming(directionalInput);
+            }
+            else
+            {
+                player.dash.DoDash();
+            }
+        }
     }
-
-
-
 }
+
+
