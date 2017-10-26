@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
     Player player;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -33,9 +34,31 @@ public class PlayerInput : MonoBehaviour {
             player.JumpInputUp();
         }
 
-		if(Input.GetButtonUp("Fire1"))
+		if(Input.GetButtonDown("Fire1"))
         {
             player.Attack(directionalInput);
+        }
+
+        if(Input.GetButton("Fire1"))
+        {
+            player.timeToCharge += Time.deltaTime;
+
+            if(player.timeToCharge >= player.timeBeforeCharge)
+            {
+                player.StartChargingSword();
+            }
+        }
+
+        if(Input.GetButtonUp("Fire1"))
+        {
+            if(player.chargingSword)
+            {
+                player.ChargedAttack(directionalInput);
+
+            } else
+            {
+                player.ResetCharge();
+            }
         }
 
 		if (Input.GetButtonDown("Fire2") && !player.dash.dashing) {

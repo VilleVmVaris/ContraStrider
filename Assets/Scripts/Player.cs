@@ -29,6 +29,16 @@ public class Player : MonoBehaviour, Damageable {
 
     bool swordCharged;
 
+    [HideInInspector]
+    public bool chargingSword;
+
+    public float chargeTime;
+    float charged;
+    public float timeBeforeCharge;
+
+    [HideInInspector]
+    public float timeToCharge;
+
     Vector3 velocity;
     float gravity = -20;
 
@@ -61,6 +71,8 @@ public class Player : MonoBehaviour, Damageable {
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
+
+
 	}
 
     // Update is called once per frame
@@ -86,6 +98,17 @@ public class Player : MonoBehaviour, Damageable {
                 velocity.y = 0;
             }
         }
+
+        if(chargingSword)
+        {
+            charged += Time.deltaTime;
+
+            if(charged >= chargeTime)
+            {
+                swordCharged = true;
+            }
+        }
+
     }
     public void Attack(Vector2 input)
     {
@@ -131,8 +154,31 @@ public class Player : MonoBehaviour, Damageable {
             chargeAttackObject.SetActive(true);
 
             timer.Once(EndAttackEffect, attackDurationTicks);
+
+            ResetCharge();
+
         }
-        else Attack(input);
+        else
+        {
+            Attack(input);
+            ResetCharge();
+            print("päästettiin ennen chargea");
+        }
+
+    }
+
+    public void StartChargingSword()
+    {
+        chargingSword = true;
+
+    }
+
+    public void ResetCharge()
+    {
+        timeToCharge = 0;
+        charged = 0;
+        chargingSword = false;
+        swordCharged = false;
 
     }
 
