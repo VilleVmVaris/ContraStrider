@@ -12,7 +12,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public float moveSpeed;
 	public float chaseDistance;
 
-    public bool damageable = true;
+	public bool damageable = true;
 
 	[Header("Weapon Use")]
 	public float shootingDistance;
@@ -48,8 +48,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	// Update is called once per frame
 	void Update() {
-		RotateY();
-		CalculateActions();
+		if (health != 0) { // Alive
+			RotateY();
+			CalculateActions(); 
+		}
 
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
 
@@ -65,8 +67,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	void CalculateActions() {
 		// Moving
-		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && !IsShooting()) {
-			var moveDirection = transform.position.x < player.transform.position.x ? Vector2.right.x : Vector2.left.x ;
+		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove()) {
+			var moveDirection = transform.position.x < player.transform.position.x ? Vector2.right.x : Vector2.left.x;
 			velocity.x = moveDirection * moveSpeed;
 			animator.SetBool("munaanimation", true);
 		} else {
@@ -83,7 +85,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	void RotateY() { // Rotates enemy sprite to face player
-		if(player != null) {
+		if (player != null) {
 			if (transform.position.x < player.transform.position.x) {
 				robotSprite.transform.rotation = new Quaternion(0, 180f, 0, 0);
 			} else {
@@ -91,9 +93,12 @@ public class EggRobot : MonoBehaviour, Damageable {
 			}
 		}
 	}
-
-	bool IsShooting() {
-		return animator.GetBool("munaammus");
+		
+	bool CanMove() {
+		// Stop while shooting or taking damage
+		return !animator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
+		&& !animator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
+		&& !animator.IsInTransition(0); 
 	}
 
 	void ShootPlayer() {
@@ -106,25 +111,24 @@ public class EggRobot : MonoBehaviour, Damageable {
 	void ShootingTimer() {
 		if (player != null && canShoot) {
 			for (int i = 0; i <= burstAmount; i++) {
-				timer.Once(ShootPlayer, i * 2);
+				timer.Once(ShootPlayer, i + 1); 
 			}
 		}
 	}
 
-    void ChangeDamageable()
-    {
-        damageable = true;
-    }
+	void ChangeDamageable() {
+		damageable = true;
+	}
 
 	#region Damageable implementation
 
 	public void TakeDamage(int damage) {
-        print("osuma");
+		print("osuma");
 		health -= damage;
-        damageable = false;
-        timer.Once(ChangeDamageable, 1);
+		damageable = false;
+		timer.Once(ChangeDamageable, 1);
 		animator.SetTrigger("munaosuma");
-		if(health <= 0) {
+		if (health <= 0) {
 			Die();
 		}
 	}
@@ -132,6 +136,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 	#endregion
 
 	void Die() {
+		velocity.x = 0;
+		canShoot = false;
 		int i = Random.Range(0, deathAnimations.Count);
 		animator.SetTrigger(deathAnimations[i].name);
 		GetComponent<Collider2D>().enabled = false;
