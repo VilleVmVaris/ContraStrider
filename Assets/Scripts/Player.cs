@@ -37,6 +37,7 @@ public class Player : MonoBehaviour, Damageable
     public GameObject groundAttackObject;
     public GameObject chargeAttackObject;
 	public GameObject dashAttack;
+	public ParticleSystem attackEffect;
 
     bool swordCharged;
 
@@ -146,8 +147,11 @@ public class Player : MonoBehaviour, Damageable
 
         attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
-        groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+		// TODO: Proper flipping of effects & sprites
+		attackEffect.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+		attackEffect.Play();
 
+        groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
         groundAttackObject.SetActive(true);
         timer.Once(EndAttackEffect, attackDurationTicks);
     }
