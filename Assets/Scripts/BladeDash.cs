@@ -33,7 +33,7 @@ public class BladeDash : MonoBehaviour {
 	public void StartAiming(Vector2 input) {
 		var aimDirection = input.normalized;
 		if (aimDirection == Vector2.zero) {
-			direction.x = controller.collisions.faceDir;
+			aimDirection.x = controller.collisions.faceDir;
 		}
 		direction = aimDirection;
 		Time.timeScale = 0.2f;
@@ -44,7 +44,7 @@ public class BladeDash : MonoBehaviour {
 
 	public void Aim(Vector2 input) {
 
-		// TODO: Aim in 8 directions
+		// TODO: Aim in 8 directions, smarter arrow default position
 
 		var aimDirection = input.normalized;
 		if (aimDirection == Vector2.zero) {
@@ -68,6 +68,7 @@ public class BladeDash : MonoBehaviour {
 
 	public void StopDash() {
 		dashing = false;
+		direction = Vector2.zero;
 	}
 		
 }
