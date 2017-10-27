@@ -81,6 +81,17 @@ public class PlayerInput : MonoBehaviour
                 player.dash.DoDash();
             }
         }
+
+        if (directionalInput.y < -0.7)
+        {
+            player.Crouch();
+        }
+
+        if (directionalInput.y > -0.7)
+        {
+            player.StandUp();
+        }
+
     }
 }
 

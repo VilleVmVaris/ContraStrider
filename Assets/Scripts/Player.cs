@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour, Damageable
 {
-
+    BoxCollider2D collider;
     public int health;
 
     public float maxJumpHeight = 4;
@@ -23,6 +23,14 @@ public class Player : MonoBehaviour, Damageable
     float timeToWallUnstick;
     bool wallSliding;
     int wallDirX;
+
+
+    bool crouching;
+
+    float origColliderX;
+    float origColliderY;
+    float colliderOffSet;
+    float crouchColliderY;
 
     public int attackDurationTicks;
 
@@ -76,7 +84,12 @@ public class Player : MonoBehaviour, Damageable
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
+        collider = GetComponent<BoxCollider2D>();
 
+        origColliderX = collider.size.x;
+        origColliderY = collider.size.y;
+        crouchColliderY = collider.size.y / 2;
+        colliderOffSet = -collider.size.y / 4;
     }
 
     // Update is called once per frame
@@ -267,6 +280,35 @@ public class Player : MonoBehaviour, Damageable
             {
                 timeToWallUnstick = wallStickTime;
             }
+        }
+    }
+
+    public void Crouch()
+    {
+        if (controller.collisions.below && crouching == false)
+        {
+
+            crouching = true;
+
+            var crouchCollider = new Vector2(collider.size.x, crouchColliderY);
+
+            var offset = colliderOffSet;
+
+            collider.size = crouchCollider;
+
+            collider.offset = new Vector2(0, offset);
+
+        }
+    }
+
+    public void StandUp()
+    {
+        if (controller.collisions.below && crouching == true)
+        {
+            var origSize = new Vector2(origColliderX, origColliderY);
+            collider.size = origSize;
+            collider.offset = new Vector2(0, 0);
+            crouching = false;
         }
     }
 
