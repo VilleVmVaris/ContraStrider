@@ -51,7 +51,7 @@ public class BladeDash : MonoBehaviour {
 			return;
 		}
 		direction = aimDirection;
-		dashArrow.transform.localPosition = aimDirection;
+		dashArrow.transform.localPosition = aimDirection * 1.5f;
 		// Rotate aiming arrow towards outside
 		var dir = dashArrow.transform.position - transform.position;
 		var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
