@@ -102,7 +102,7 @@ public class Player : MonoBehaviour, Damageable
         {
             controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
         }
-        else
+        else if(!crouching)
         {
             controller.Move(velocity * Time.deltaTime, directionalInput);
         }
