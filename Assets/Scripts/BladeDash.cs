@@ -16,10 +16,12 @@ public class BladeDash : MonoBehaviour {
 	public Vector2 direction;
 
 	TimerManager timer;
+	Controller2D controller;
 
 	// Use this for initialization
 	void Start () {
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
+		controller = GetComponent<Controller2D>();
 		dashArrow.SetActive(false);
 	}
 	
@@ -31,7 +33,7 @@ public class BladeDash : MonoBehaviour {
 	public void StartAiming(Vector2 input) {
 		var aimDirection = input.normalized;
 		if (aimDirection == Vector2.zero) {
-			direction = Vector2.right; // TODO: OK default?
+			direction.x = controller.collisions.faceDir;
 		}
 		direction = aimDirection;
 		Time.timeScale = 0.2f;
@@ -41,6 +43,9 @@ public class BladeDash : MonoBehaviour {
 	}
 
 	public void Aim(Vector2 input) {
+
+		// TODO: Aim in 8 directions
+
 		var aimDirection = input.normalized;
 		if (aimDirection == Vector2.zero) {
 			return;

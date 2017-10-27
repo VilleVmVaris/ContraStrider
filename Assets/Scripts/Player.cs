@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, Damageable
 
     public GameObject groundAttackObject;
     public GameObject chargeAttackObject;
+	public GameObject dashAttack;
 
     bool swordCharged;
 
@@ -189,6 +190,23 @@ public class Player : MonoBehaviour, Damageable
 
     }
 
+	public void BladeDashAttack(Vector2 input) {
+		if (input == Vector2.zero) {
+			input.x = controller.collisions.faceDir;
+		}
+
+		int attackDir = (int)(Vector2.Angle(input, Vector3.up));
+
+		if (input.x < 0) {
+			attackDir = 360 - attackDir;
+		}
+
+		attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
+		dashAttack.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+		dashAttack.SetActive(true);
+		timer.Once(EndAttackEffect, dash.dashTicks);
+	}
+
     void EndAttackEffect()
     {
         if (groundAttackObject.activeSelf)
@@ -200,7 +218,9 @@ public class Player : MonoBehaviour, Damageable
         else if (chargeAttackObject.activeSelf)
         {
             chargeAttackObject.SetActive(false);
-        }
+		} else if (dashAttack.activeSelf) {
+			dashAttack.SetActive(false);
+		}
     }
 
     void CalculateVelocity()

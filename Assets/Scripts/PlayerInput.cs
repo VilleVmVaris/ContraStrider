@@ -77,6 +77,7 @@ public class PlayerInput : MonoBehaviour
             }
             else
             {
+				player.BladeDashAttack(directionalInput);
                 player.dash.DoDash();
             }
         }
