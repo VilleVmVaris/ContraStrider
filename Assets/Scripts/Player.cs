@@ -167,9 +167,9 @@ public class Player : MonoBehaviour, Damageable
         }
         else
         {
-            Attack(input);
+           
             ResetCharge();
-            print("päästettiin ennen chargea");
+            
         }
 
     }
