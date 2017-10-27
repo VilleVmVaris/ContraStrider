@@ -5,11 +5,11 @@ using UnityEngine;
 using System.IO;
 
 public class PowerUpS : MonoBehaviour {
-    public HealthBar healthBar;
+    //public HealthBar healthBar;
 	// Use this for initialization
 	void Start () {
-        SaveData data = new SaveData() { health = healthBar.fullHealth, powerUpS = new List<string>() };
-        data.powerUpS.Add("heal");
+ //       SaveData data = new SaveData() { health = healthBar.fullHealth, powerUpS = new List<string>() };
+ //       data.powerUpS.Add("heal");
         
     }
 	

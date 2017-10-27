@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBarScript : MonoBehaviour {
 
     public Image bar;
-    public float health;
-    public float fullHealth;
+    public float health = 0;
+    public float fullHealth = 100;
 
     void Start () {
-        health = fullHealth;
+        SetFullHealth();
     }
 	
 
@@ -29,5 +29,9 @@ public class HealthBar : MonoBehaviour {
                 print("GAME OVER");
             }
         }
+    }
+    public void SetFullHealth() {
+        health = fullHealth;
+        SetHealthBar(health);
     }
 }
