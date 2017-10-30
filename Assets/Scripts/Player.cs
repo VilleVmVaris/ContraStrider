@@ -26,6 +26,8 @@ public class Player : MonoBehaviour, Damageable
 
 
     bool crouching;
+    bool midAir;
+    bool justJumped;
 
     float origColliderX;
     float origColliderY;
@@ -96,14 +98,20 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
+        if(crouching)
+        {
+            velocity.x = 0;
+        }
+        
         CalculateVelocity();
         HandleWallSliding();
+        CheckCollisionStatus();
 
         if (dash.dashing)
         {
             controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
         }
-        else if(!crouching)
+        else
         {
             controller.Move(velocity * Time.deltaTime, directionalInput);
         }
@@ -190,6 +198,20 @@ public class Player : MonoBehaviour, Damageable
             
         }
 
+    }
+
+    public bool CheckCollisionStatus()
+    {
+        if (!controller.collisions.below && !controller.collisions.right && !controller.collisions.left)
+        {
+            return false;
+        }
+        else return true;
+    }
+
+    void EnableCrouch()
+    {
+        justJumped = false;
     }
 
     public void StartChargingSword()
@@ -289,7 +311,7 @@ public class Player : MonoBehaviour, Damageable
 
     public void Crouch()
     {
-        if (controller.collisions.below && crouching == false)
+        if (controller.collisions.below && crouching == false && !justJumped)
         {
 
             crouching = true;
@@ -366,7 +388,10 @@ public class Player : MonoBehaviour, Damageable
                 }
                 else
                 {
+                    StandUp();
                     velocity.y = maxJumpVelocity;
+                    justJumped = true;
+                    Invoke("EnableCrouch", .1f);
                 }
             }
 
