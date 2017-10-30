@@ -344,6 +344,8 @@ public class Player : MonoBehaviour, Damageable
             collider.offset = new Vector2(0, offset);
 
         }
+
+		animator.SetBool("ninjacrouch", crouching);
     }
 
     public void StandUp()
@@ -354,7 +356,9 @@ public class Player : MonoBehaviour, Damageable
             collider.size = origSize;
             collider.offset = new Vector2(0, 0);
             crouching = false;
+
         }
+		animator.SetBool("ninjacrouch", crouching);
     }
 
     public void SetDirectionalInput(Vector2 input)
