@@ -17,11 +17,13 @@ public class BladeDash : MonoBehaviour {
 
 	TimerManager timer;
 	Controller2D controller;
+	Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		controller = GetComponent<Controller2D>();
+		animator = GetComponentInChildren<Animator>();
 		dashArrow.SetActive(false);
 	}
 	
@@ -39,6 +41,7 @@ public class BladeDash : MonoBehaviour {
 		Time.timeScale = 0.2f;
 		Time.fixedDeltaTime = Time.timeScale * .2f;
 		aiming = true;
+		animator.SetBool("ninjastance", true);
 		dashArrow.SetActive(true);
 	}
 

@@ -251,6 +251,7 @@ public class Player : MonoBehaviour, Damageable
 		dashAttack.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 		dashAttack.SetActive(true);
 		animator.SetBool("ninjadash", true);
+		animator.SetBool("ninjastance", false);
 		timer.Once(EndAttackEffect, dash.dashTicks);
 	}
 
