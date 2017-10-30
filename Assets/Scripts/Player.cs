@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, Damageable
     float maxJumpVelocity = 8;
     float minJumpVelocity;
 
-
+	Animator animator;
     TimerManager timer;
 
     [HideInInspector]
@@ -93,7 +93,9 @@ public class Player : MonoBehaviour, Damageable
         origColliderY = collider.size.y;
         crouchColliderY = collider.size.y / 2;
         colliderOffSet = -collider.size.y / 4;
-    }
+    
+		animator = GetComponentInChildren<Animator>();
+	}
 
     // Update is called once per frame
     void Update()
@@ -122,7 +124,9 @@ public class Player : MonoBehaviour, Damageable
             else
             {
                 velocity.y = 0;
+				animator.SetBool("jumpdown", true);	
             }
+
         }
 
         if (chargingSword)
@@ -134,6 +138,12 @@ public class Player : MonoBehaviour, Damageable
                 swordCharged = true;
             }
         }
+
+		if (velocity.x > 0.1f && controller.collisions.below && !wallSliding && !dash.dashing) {
+			animator.SetBool("ninjarun", true);	
+		} else {
+			animator.SetBool("ninjarun", false);	
+		}
 
     }
     public void Attack(Vector2 input)
@@ -154,6 +164,7 @@ public class Player : MonoBehaviour, Damageable
 		// TODO: Proper flipping of effects & sprites
 		attackEffect.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 		attackEffect.Play();
+		animator.SetBool("ninjasword", true);
 
         groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
         groundAttackObject.SetActive(true);
@@ -239,6 +250,7 @@ public class Player : MonoBehaviour, Damageable
 		attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 		dashAttack.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 		dashAttack.SetActive(true);
+		animator.SetBool("ninjadash", true);
 		timer.Once(EndAttackEffect, dash.dashTicks);
 	}
 
@@ -256,6 +268,8 @@ public class Player : MonoBehaviour, Damageable
 		} else if (dashAttack.activeSelf) {
 			dashAttack.SetActive(false);
 		}
+
+		animator.SetBool("ninjadash", false);
     }
 
     void CalculateVelocity()
@@ -303,6 +317,8 @@ public class Player : MonoBehaviour, Damageable
                 timeToWallUnstick = wallStickTime;
             }
         }
+
+		animator.SetBool("ninjaslidedown", wallSliding);
     }
 
     public void Crouch()
@@ -376,6 +392,7 @@ public class Player : MonoBehaviour, Damageable
             }
             else
             {
+				animator.SetBool("jumpup", true);
                 if (controller.canFallThrough)
                 {
                     controller.collisions.fallingThroughPlatform = true;
@@ -419,7 +436,8 @@ public class Player : MonoBehaviour, Damageable
     }
     void Die()
     {
-        Destroy(gameObject);
+		animator.SetBool("ninjadeath", true);
+        Destroy(gameObject, 2f);
     }
 }
 
