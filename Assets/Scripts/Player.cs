@@ -363,6 +363,12 @@ public class Player : MonoBehaviour, Damageable
 
     public void SetDirectionalInput(Vector2 input)
     {
+
+        if (crouching)
+        {
+            input.x = 0;
+        }
+
         directionalInput = input;
     }
 
