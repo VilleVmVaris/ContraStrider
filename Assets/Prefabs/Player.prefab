@@ -180,7 +180,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1232475288008114
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -598,6 +598,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1707845931388744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4685663820549904}
+  m_Layer: 0
+  m_Name: SpriteHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1712670860322012
 GameObject:
   m_ObjectHideFlags: 1
@@ -954,7 +969,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4960295506355820}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4050285811217444
 Transform:
@@ -1405,6 +1420,20 @@ Transform:
   m_Father: {fileID: 4094583797060344}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5930002}
+--- !u!4 &4685663820549904
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707845931388744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.725, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4759161518478294}
+  m_Father: {fileID: 4960295506355820}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4691372205523552
 Transform:
   m_ObjectHideFlags: 1
@@ -1520,13 +1549,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1232475288008114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0.04, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.14, y: 0.14, z: 1}
   m_Children:
   - {fileID: 4634659908243868}
-  m_Father: {fileID: 4960295506355820}
-  m_RootOrder: 4
+  m_Father: {fileID: 4685663820549904}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4765938540839060
 Transform:
@@ -1651,8 +1680,8 @@ Transform:
   - {fileID: 4552260780390978}
   - {fileID: 4436434781341996}
   - {fileID: 4391903065834402}
-  - {fileID: 4759161518478294}
   - {fileID: 4047494460320328}
+  - {fileID: 4685663820549904}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2062,7 +2091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.095904
+  m_Length: 1.0959051
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4252929414558084}
   m_AttachedIK: {fileID: 0}
@@ -2122,7 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.6688292
+  m_Length: 2.66883
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4745966486925376}
   m_AttachedIK: {fileID: 0}
@@ -2419,7 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.8540063
+  m_Length: 2.8540058
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4259183838453418}
   m_AttachedIK: {fileID: 0}
@@ -2517,7 +2546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.831399
+  m_Length: 2.8313987
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4056595454624294}
   m_AttachedIK: {fileID: 0}
@@ -2645,7 +2674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.6329818
+  m_Length: 1.632982
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4598977281569364}
   m_AttachedIK: {fileID: 0}
@@ -2876,7 +2905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.310502
+  m_Length: 2.3105018
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4974487303310374}
   m_AttachedIK: {fileID: 0}
@@ -2952,7 +2981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.829745
+  m_Length: 1.8297443
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4310028959780440}
   m_AttachedIK: {fileID: 0}
@@ -2994,6 +3023,7 @@ MonoBehaviour:
   wallJumpOff: {x: 8, y: 7}
   wallLeap: {x: 20, y: 17}
   wallStickTime: 0.15
+  crouching: 0
   attackDurationTicks: 1
   groundAttackObject: {fileID: 1216720481883984}
   chargeAttackObject: {fileID: 1249578112112104}
@@ -3017,7 +3047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 3.1600013
+  m_Length: 3.1600003
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4594031810988694}
   m_AttachedIK: {fileID: 0}
@@ -3093,7 +3123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.7144387
+  m_Length: 1.7144382
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4388473993997172}
   m_AttachedIK: {fileID: 0}
@@ -3125,7 +3155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.3275988
+  m_Length: 2.327599
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4676067758164794}
   m_AttachedIK: {fileID: 0}
