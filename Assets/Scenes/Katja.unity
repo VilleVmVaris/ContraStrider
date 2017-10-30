@@ -512,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1681956ca0e259448e8376d4c3c9adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PWU: {fileID: 2051051036}
   bar: {fileID: 1358950358}
   health: 0
   fullHealth: 100
@@ -681,7 +682,8 @@ GameObject:
   - component: {fileID: 2034149920}
   - component: {fileID: 2034149919}
   - component: {fileID: 2034149918}
-  m_Layer: 20
+  - component: {fileID: 2034149922}
+  m_Layer: 21
   m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,6 +789,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2034149916}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2034149922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034149916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1b30bf4b64a9d41a4ce79a72ed28d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
 --- !u!1 &2051051029
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,8 +813,8 @@ GameObject:
   - component: {fileID: 2051051032}
   - component: {fileID: 2051051031}
   - component: {fileID: 2051051030}
-  - component: {fileID: 2051051035}
   - component: {fileID: 2051051036}
+  - component: {fileID: 2051051035}
   - component: {fileID: 2051051037}
   m_Layer: 0
   m_Name: Player
@@ -921,8 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802273b8f9bca324d93e6925fe24c0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
 --- !u!114 &2051051036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,6 +949,7 @@ MonoBehaviour:
   powerUpS: []
   HBS: {fileID: 1358950357}
   SS: {fileID: 1873784667}
+  CPS: {fileID: 2034149922}
 --- !u!50 &2051051037
 Rigidbody2D:
   serializedVersion: 4
