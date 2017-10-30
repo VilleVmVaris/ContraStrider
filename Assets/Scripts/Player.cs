@@ -24,8 +24,8 @@ public class Player : MonoBehaviour, Damageable
     bool wallSliding;
     int wallDirX;
 
-
-    bool crouching;
+    [HideInInspector]
+    public bool crouching;
     bool midAir;
     bool justJumped;
 
@@ -98,10 +98,6 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
-        if(crouching)
-        {
-            velocity.x = 0;
-        }
         
         CalculateVelocity();
         HandleWallSliding();

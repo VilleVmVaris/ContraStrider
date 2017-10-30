@@ -82,12 +82,12 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        if (directionalInput.y < -0.8)
+        if (directionalInput.y == -1)
         {
             player.Crouch();
         }
 
-        if (directionalInput.y > -0.8)
+        if (player.crouching && directionalInput.y > -1)
         {
             player.StandUp();
         }
