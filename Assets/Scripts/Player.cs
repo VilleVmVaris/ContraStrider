@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, Damageable
     public bool crouching;
     bool midAir;
     bool justJumped;
+    bool canDoubleJump;
 
     float origColliderX;
     float origColliderY;
@@ -104,6 +105,11 @@ public class Player : MonoBehaviour, Damageable
         CalculateVelocity();
         HandleWallSliding();
         CheckCollisionStatus();
+
+        if(CheckCollisionStatus())
+        {
+            canDoubleJump = true;
+        }
 
         if (dash.dashing)
         {
@@ -397,7 +403,7 @@ public class Player : MonoBehaviour, Damageable
                 if (controller.canFallThrough)
                 {
                     controller.collisions.fallingThroughPlatform = true;
-                    Invoke("ResetFallingThroughPlatform", .5f);
+                    Invoke("ResetFallingThroughPlatform", .15f);
 
                 }
                 else
@@ -409,6 +415,10 @@ public class Player : MonoBehaviour, Damageable
                 }
             }
 
+        } else if (!CheckCollisionStatus() && canDoubleJump)
+        {
+            velocity.y = maxJumpVelocity;
+            canDoubleJump = false;
         }
 
     }
