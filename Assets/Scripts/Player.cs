@@ -101,7 +101,10 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
-        
+		if (health <= 0) {
+			return; // TODO: Proper handling of death 
+		}
+		
         CalculateVelocity();
         HandleWallSliding();
         CheckCollisionStatus();
@@ -458,7 +461,6 @@ public class Player : MonoBehaviour, Damageable
     void Die()
     {
 		animator.SetBool("ninjadeath", true);
-        Destroy(gameObject, 2f);
     }
 }
 

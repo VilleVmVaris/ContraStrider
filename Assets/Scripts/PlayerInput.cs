@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(Player))]
@@ -92,6 +93,10 @@ public class PlayerInput : MonoBehaviour
             player.StandUp();
         }
 
+		if (Input.GetButtonDown("Start")) {
+			// Just reload the scene for testing during development
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
     }
 }
 
