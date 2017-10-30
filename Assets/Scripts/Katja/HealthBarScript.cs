@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarScript : MonoBehaviour {
-
+    public PowerUP PWU;
     public Image bar;
     public float health = 0;
     public float fullHealth = 100;
@@ -33,5 +33,7 @@ public class HealthBarScript : MonoBehaviour {
     public void SetFullHealth() {
         health = fullHealth;
         SetHealthBar(health);
+        // PWU.powerUpS.Remove("HealthKit");
+        Debug.Log("health Full");
     }
 }

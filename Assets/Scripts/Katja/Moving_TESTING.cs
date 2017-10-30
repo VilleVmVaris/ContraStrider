@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingTESTING: MonoBehaviour {
+public class Moving_TESTING: MonoBehaviour {
     float x;
     float y;
 

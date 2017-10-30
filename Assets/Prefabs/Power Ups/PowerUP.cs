@@ -7,6 +7,7 @@ public class PowerUP : MonoBehaviour {
     public List<string> powerUpS = new List<string>();
     public HealthBarScript HBS;
     public ScoreScript SS;
+    public CheckpointScript CPS;
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.layer == 20) {
@@ -14,24 +15,22 @@ public class PowerUP : MonoBehaviour {
             powerUpS.Add("" + power);
             Destroy(other.gameObject);
             SetPowerUp();
+        } else if (other.gameObject.layer == 21) {
+
         }
     }
     void SetPowerUp() {
-        // Case: HealthKit
-        //      HealthMeter_Panel_Health_HealthBar.health = FullHealth
+
         foreach (string pw in powerUpS) {
             if (pw == ("HealthKit")) {
                 HBS.SetFullHealth();
+//                int i = powerUpS.FindIndex("HealthKit");
+//                powerUpS.RemoveAt(i);
             }
+
             if (pw == ("DoubleScore")) {
-                SS.scoreFactor = 2;
+                SS.scoreFactor = 2; //(Timelimit?)
             }
         }
-
-        // Case: DoubleScore
-        //      ScoreScript.scoreFactor; // Time?
-
-        // Case: Checkpoint?
-        // .......
     }
 }
