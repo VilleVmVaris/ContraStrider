@@ -387,7 +387,7 @@ public class Player : MonoBehaviour, Damageable
 
     public void StandUp()
     {
-        if (controller.collisions.below && crouching == true)
+        if (crouching == true)
         {
             var origSize = new Vector2(origColliderX, origColliderY);
             collider.size = origSize;
@@ -451,6 +451,7 @@ public class Player : MonoBehaviour, Damageable
                 {
                     controller.collisions.fallingThroughPlatform = true;
                     Invoke("ResetFallingThroughPlatform", .15f);
+                    Invoke("StandUp", .15f);
 
                 }
                 else
