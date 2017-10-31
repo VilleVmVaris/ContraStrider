@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public static class Helpers {
 
+	//Transforms
+	public static readonly Quaternion FlipYRotation = new Quaternion(0, 180f, 0, 0);
+
     //Masks
     public static readonly int DefaultLayerMask = 1 << LayerMask.NameToLayer("Default");
 	public static readonly int ObstacleLayerMask = 1 << LayerMask.NameToLayer("Obstacle");

@@ -174,10 +174,19 @@ public class Player : MonoBehaviour, Damageable
 
         attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
-		// TODO: Proper flipping of effects & sprites
-		attackEffect.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+		// FIXME: Make sure slash goes to right direction
+		//attackEffect.transform.rotation = Quaternion.Euler(0, 0, -attackDir);	
 		attackEffect.Play();
-		animator.SetBool("ninjasword", true);
+
+		if (attackDir == 0 || attackDir == 180) {
+			animator.SetBool("ninjasword", true);	
+		} else if (attackDir == -90) {
+			animator.SetBool("ninjaswordUP", true);
+		} else if (attackDir == -45 || attackDir == 225) {
+			animator.SetBool("ninjaswordUpcorner", true);
+		} else if (attackDir == 45 || attackDir == 135) {
+			animator.SetBool("ninjaswordDOWN", true);
+		}
 
         groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
         groundAttackObject.SetActive(true);
@@ -456,13 +465,16 @@ public class Player : MonoBehaviour, Damageable
 
 	// Rotates player sprite to movement direction
 	void RotateY() { 
-	
+		
 		if (velocity.x < -0.1f ) {
-			ninjaSprite.transform.rotation = new Quaternion(0, 180f, 0, 0);
+			ninjaSprite.transform.rotation = Helpers.FlipYRotation;
+			attackEffect.transform.rotation = Helpers.FlipYRotation;
+
 			// HAX: Animation positioning
 			ninjaSprite.transform.localPosition = new Vector3(0.725f, 0f, 0f);	
 		} else if (velocity.x > 0.1f ) {
 			ninjaSprite.transform.rotation = Quaternion.identity;
+			attackEffect.transform.rotation = Quaternion.identity;
 			// HAX: Animation positioning 
 			ninjaSprite.transform.localPosition = new Vector3(-0.725f, 0f, 0f);
 		}
