@@ -157,9 +157,10 @@ public class Player : MonoBehaviour, Damageable
     }
     public void Attack(Vector2 input)
     {
-        if (input.x == 0 && input.y == 0)
+        if ((input.x == 0 && input.y == 0) || crouching)
         {
             input.x = controller.collisions.faceDir;
+            input.y = 0;
         }
         int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
@@ -184,9 +185,10 @@ public class Player : MonoBehaviour, Damageable
     {
         if (swordCharged)
         {
-            if (input.x == 0 && input.y == 0)
+            if ((input.x == 0 && input.y == 0) || crouching)
             {
                 input.x = controller.collisions.faceDir;
+                input.y = 0;
             }
             int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
