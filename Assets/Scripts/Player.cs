@@ -39,6 +39,7 @@ public class Player : MonoBehaviour, Damageable
 
     public GameObject groundAttackObject;
     public GameObject chargeAttackObject;
+	public GameObject ninjaSprite;
 	public GameObject dashAttack;
 	public ParticleSystem attackEffect;
 
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour, Damageable
         CalculateVelocity();
         HandleWallSliding();
         CheckCollisionStatus();
+		RotateY();
 
         if(CheckCollisionStatus())
         {
@@ -148,7 +150,8 @@ public class Player : MonoBehaviour, Damageable
             }
         }
 
-		if (velocity.x > 0.1f && controller.collisions.below && !wallSliding && !dash.dashing) {
+		if ((velocity.x > 0.15f || velocity.x < -0.15f ) 
+			&& controller.collisions.below && !wallSliding && !dash.dashing) {
 			animator.SetBool("ninjarun", true);	
 		} else {
 			animator.SetBool("ninjarun", false);	
@@ -450,6 +453,21 @@ public class Player : MonoBehaviour, Damageable
     {
         controller.collisions.fallingThroughPlatform = false;
     }
+
+	// Rotates player sprite to movement direction
+	void RotateY() { 
+	
+		if (velocity.x < -0.1f ) {
+			ninjaSprite.transform.rotation = new Quaternion(0, 180f, 0, 0);
+			// HAX: Animation positioning
+			ninjaSprite.transform.localPosition = new Vector3(0.725f, 0f, 0f);	
+		} else if (velocity.x > 0.1f ) {
+			ninjaSprite.transform.rotation = Quaternion.identity;
+			// HAX: Animation positioning 
+			ninjaSprite.transform.localPosition = new Vector3(-0.725f, 0f, 0f);
+		}
+
+	}
 
     public void TakeDamage(int damage)
     {
