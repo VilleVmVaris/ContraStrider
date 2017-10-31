@@ -111,10 +111,14 @@ public class Player : MonoBehaviour, Damageable
         CheckCollisionStatus();
 		RotateY();
 
-        if(CheckCollisionStatus())
-        {
+        if(CheckCollisionStatus()) {
             canDoubleJump = true;
-        }
+
+		} else {
+			if (animator.GetCurrentAnimatorStateInfo(0).IsName("ninjaidle") && !dash.dashing && !dash.aiming) {
+				animator.SetBool("jumpup", true); // FIXME: A little too trigger happy with the jump...
+			}
+		}
 
         if (dash.dashing)
         {
@@ -152,9 +156,17 @@ public class Player : MonoBehaviour, Damageable
 
 		if ((velocity.x > 0.15f || velocity.x < -0.15f ) 
 			&& controller.collisions.below && !wallSliding && !dash.dashing) {
-			animator.SetBool("ninjarun", true);	
+			if (velocity.x > 2f || velocity.x < -2f ) {
+				animator.SetBool("ninjarun", true);
+				animator.SetBool("ninjawalk", false);
+			} else {
+				animator.SetBool("ninjawalk", true);
+				animator.SetBool("ninjarun", false);
+			}
+
 		} else {
-			animator.SetBool("ninjarun", false);	
+			animator.SetBool("ninjarun", false);
+			animator.SetBool("ninjawalk", false);	
 		}
 
     }
