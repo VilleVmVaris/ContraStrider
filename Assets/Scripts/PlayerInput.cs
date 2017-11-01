@@ -76,12 +76,12 @@ public class PlayerInput : MonoBehaviour
             {
                 player.dash.StartAiming(directionalInput);
             }
-            else
-            {
-				player.BladeDashAttack(directionalInput);
-                player.dash.DoDash();
-            }
+            
         }
+		if (Input.GetButtonUp("Fire2") && !player.dash.dashing) {
+			player.BladeDashAttack(directionalInput);
+			player.dash.DoDash();
+		}
 
         if (directionalInput.y <= -.8f)
         {
