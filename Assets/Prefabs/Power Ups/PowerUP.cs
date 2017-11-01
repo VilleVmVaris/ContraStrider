@@ -3,34 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUP : MonoBehaviour {
-    // Lisätään GameManageriin
-    public List<string> powerUpS = new List<string>();
+
     public HealthBarScript HBS;
     public ScoreScript SS;
     public CheckpointScript CPS;
 
     void OnTriggerEnter2D(Collider2D other) {
+
         if (other.gameObject.layer == 20) {
-            var power = other.gameObject.name;
-            powerUpS.Add("" + power);
+            string power = other.gameObject.name;
+            // powerUpS.Add("" + power);
             Destroy(other.gameObject);
-            SetPowerUp();
-        } else if (other.gameObject.layer == 21) {
+            SetPowerUp(power);
+        }
+
+        if (other.gameObject.layer == 21) {
+            string power = other.gameObject.name;
+            SetPowerUp(power);
 
         }
     }
-    void SetPowerUp() {
 
-        foreach (string pw in powerUpS) {
-            if (pw == ("HealthKit")) {
+
+    void SetPowerUp(string power) {
+        
+        if (power == ("HealthKit")) {
                 HBS.SetFullHealth();
-//                int i = powerUpS.FindIndex("HealthKit");
-//                powerUpS.RemoveAt(i);
             }
 
-            if (pw == ("DoubleScore")) {
+        if (power == ("DoubleScore")) {
                 SS.scoreFactor = 2; //(Timelimit?)
             }
+
+        if (power == ("Checkpoint")) {
+                PlayerPrefs.SetFloat("PlayerX", transform.position.x);
+                PlayerPrefs.SetFloat("PlayerY", transform.position.y);
+                // PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
+            // What else need to save?
         }
+
     }
 }
