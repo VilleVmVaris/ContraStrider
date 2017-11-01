@@ -431,7 +431,7 @@ public class Player : MonoBehaviour, Damageable
             //Wall-hop is direction of the wall is equal to the input, as in player is holding towards the wall
             //Might want to change later so that input doesn't have to be exactly 1?
             //Will want to test out different values
-            if (wallDirX == directionalInput.x)
+            if (Mathf.Abs(wallDirX - directionalInput.x) < 0.5f)
             {
                 velocity.x = -wallDirX * wallJumpClimb.x;
                 velocity.y = wallJumpClimb.y;
