@@ -102,6 +102,15 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
+        //see if character has moved since last frame
+        if (dash.dashing)
+       {
+         if (controller.collisions.left || controller.collisions.right)
+            {
+              dash.StopDash();
+              EndAttackEffect();
+            }
+        }
 		if (health <= 0) {
 			return; // TODO: Proper handling of death 
 		}
@@ -172,6 +181,7 @@ public class Player : MonoBehaviour, Damageable
 			animator.SetBool("ninjarun", false);
 			animator.SetBool("ninjawalk", false);	
 		}
+
 
     }
     public void Attack(Vector2 input)

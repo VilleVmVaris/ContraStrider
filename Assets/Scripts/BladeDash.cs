@@ -18,6 +18,7 @@ public class BladeDash : MonoBehaviour {
 	TimerManager timer;
 	Controller2D controller;
 	Animator animator;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -26,11 +27,13 @@ public class BladeDash : MonoBehaviour {
 		animator = GetComponentInChildren<Animator>();
 		dashArrow.SetActive(false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+    }
 
 	public void StartAiming(Vector2 input) {
 		var aimDirection = input.normalized;
