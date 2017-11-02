@@ -294,6 +294,7 @@ public class Player : MonoBehaviour, Damageable
     }
 
 	public void BladeDashAttack(Vector2 input) {
+        if(!dash.onCooldown) { 
 		if (input == Vector2.zero) {
 			input.x = controller.collisions.faceDir;
 		}
@@ -311,6 +312,7 @@ public class Player : MonoBehaviour, Damageable
 		animator.SetBool("ninjastance", false);
 		timer.Once(EndAttackEffect, dash.dashTicks);
 	}
+    }
 
     void EndAttackEffect()
     {
