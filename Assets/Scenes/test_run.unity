@@ -5120,6 +5120,26 @@ Prefab:
       propertyPath: coolDown
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 114962334816705610, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: stunTicks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680772843170200, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: chargeAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091124697558122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: damageAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091124697558122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: stunTicks
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
   m_IsPrefabParent: 0

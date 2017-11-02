@@ -8,6 +8,8 @@ public class AttackScript : MonoBehaviour {
 
     public bool chargeAttack;
 
+    public int stunTicks;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +26,7 @@ public class AttackScript : MonoBehaviour {
         if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EggRobot>().damageable && !collision.gameObject.GetComponent<EggRobot>().shielded)
         {
             collision.GetComponent<EggRobot>().TakeDamage(damageAmount);
+            collision.GetComponent<EggRobot>().GetStunned(stunTicks);
 
         } else if(collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EggRobot>().damageable && collision.gameObject.GetComponent<EggRobot>().shielded)
         {

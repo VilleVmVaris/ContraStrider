@@ -127,8 +127,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public void TakeDamage(int damage) {
 		print("osuma");
 		health -= damage;
-		damageable = false;
-		timer.Once(ChangeDamageable, 1);
 		animator.SetTrigger("munaosuma");
 		if (health <= 0) {
 			Die();
@@ -136,6 +134,12 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	#endregion
+
+    public void GetStunned(int invulTicks)
+    {
+        damageable = false;
+        timer.Once(ChangeDamageable, invulTicks);
+    }
 
     public void DestroyShield()
     {
