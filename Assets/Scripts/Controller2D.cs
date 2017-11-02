@@ -20,6 +20,7 @@ public class Controller2D : RaycastController {
         base.Start();
 
         collisions.faceDir = 1;
+
     }
 
     // Overload for the platformmover, so that it doesn't look for the input variable
@@ -81,6 +82,7 @@ public class Controller2D : RaycastController {
 
             if (hit)
             {
+
                 //Check is platform is passable
 
                 if(hit.collider.tag == "PassablePlatform")
@@ -174,7 +176,8 @@ public class Controller2D : RaycastController {
             //Check for collisions
             if (hit)
             {
-                if(hit.distance == 0)
+
+                if (hit.distance == 0)
                 {
                     continue;
                 }

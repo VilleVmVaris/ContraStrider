@@ -19,6 +19,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public int burstAmount;
 	public int burstInterval;
 
+    public bool shielded;
+
 	[Header("Effects")]
 	public List<AnimationClip> deathAnimations;
 	public float fadeTime;
@@ -134,6 +136,11 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	#endregion
+
+    public void DestroyShield()
+    {
+        shielded = false;
+    }
 
 	void Die() {
 		velocity.x = 0;
