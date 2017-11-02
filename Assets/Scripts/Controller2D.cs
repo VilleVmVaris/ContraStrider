@@ -12,6 +12,9 @@ public class Controller2D : RaycastController {
     [HideInInspector]
     public bool canFallThrough;
 
+    [HideInInspector]
+    public bool dashingThroughEnemy;
+
 
     public CollisionInfo collisions;
 
@@ -83,9 +86,10 @@ public class Controller2D : RaycastController {
             if (hit)
             {
 
+
                 //Check is platform is passable
 
-                if(hit.collider.tag == "PassablePlatform")
+                if (hit.collider.tag == "PassablePlatform" || (hit.collider.tag == "Enemy" && dashingThroughEnemy))
                 {
                     if(directionY == 1 || hit.distance == 0)
                     {
@@ -176,6 +180,10 @@ public class Controller2D : RaycastController {
             //Check for collisions
             if (hit)
             {
+                if(hit.collider.tag == "Enemy" && dashingThroughEnemy)
+                {
+                    continue;
+                }
 
                 if (hit.distance == 0)
                 {

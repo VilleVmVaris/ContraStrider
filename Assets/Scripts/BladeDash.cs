@@ -83,6 +83,7 @@ public class BladeDash : MonoBehaviour {
             Time.timeScale = 1f;
             timer.Once(StopDash, dashTicks);
             timer.Once(EndCoolDown, coolDown);
+            controller.dashingThroughEnemy = true;
 
 
     }
@@ -91,6 +92,7 @@ public class BladeDash : MonoBehaviour {
 	public void StopDash() {
 		dashing = false;
 		direction = Vector2.zero;
+        controller.dashingThroughEnemy = false;
 	}
 		
 
