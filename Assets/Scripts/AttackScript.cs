@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
 
-    public int damageAmount;
+	public int damageAmount;
 
-    public bool chargeAttack;
+	public bool chargeAttack;
 
-    public int stunTicks;
+	public int stunTicks;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 		
 	}
 
+	void OnTriggerStay2D(Collider2D collision) {
+		if (collision.CompareTag("Enemy")) {
+			var robot = collision.gameObject.GetComponent<EggRobot>(); //TODO: Generic enemy interface?
+			if (!robot.IsNullOrDestroyed()) {
+				if (robot.damageable && !robot.shielded) {
+					robot.TakeDamage(damageAmount);
+					robot.GetStunned(stunTicks);
+				} else if (robot.damageable && robot.shielded) {
+					robot.DestroyShield();
+				}
+			}
+		}
+	}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EggRobot>().damageable && !collision.gameObject.GetComponent<EggRobot>().shielded)
-        {
-            collision.GetComponent<EggRobot>().TakeDamage(damageAmount);
-            collision.GetComponent<EggRobot>().GetStunned(stunTicks);
-
-        } else if(collision.gameObject.layer == 11 && collision.gameObject.GetComponent<EggRobot>().damageable && collision.gameObject.GetComponent<EggRobot>().shielded)
-        {
-            collision.gameObject.GetComponent<EggRobot>().DestroyShield();
-        }
-    }
 }
