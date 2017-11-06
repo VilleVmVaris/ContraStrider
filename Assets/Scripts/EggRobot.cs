@@ -37,7 +37,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	Vector2 velocity;
 	float moveDirection;
 	bool canShoot;
-	TimerManager.Timer rotateTimer;
+	System.Guid rotateTimer;
 
 	// Use this for initialization
 	void Start() {

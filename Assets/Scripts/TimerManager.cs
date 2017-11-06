@@ -11,6 +11,7 @@ public class TimerManager : MonoBehaviour {
 	readonly List<Timer> timers = new List<Timer>();
 
 	public struct Timer {
+		public System.Guid id;
 		public UnityAction action;
 		public int ticks;
 		public int tickCount;
@@ -74,38 +75,46 @@ public class TimerManager : MonoBehaviour {
 		}
 	}
 
-	public Timer Once(UnityAction action, int ticks) {
+	public System.Guid Once(UnityAction action, int ticks) {
 		Timer t = new Timer();
+		t.id = System.Guid.NewGuid();
 		t.action = action;
 		t.ticks = ticks;
 		t.tickCount = ticks;
 		t.schedule = Schedule.Once;
 		timers.Add(t);
-		return t;
+		return t.id;
 	}
 
 
-	public Timer Continuously(UnityAction action, int ticksInterval) {
+	public System.Guid Continuously(UnityAction action, int ticksInterval) {
 		Timer t = new Timer();
+		t.id = System.Guid.NewGuid();
 		t.action = action;
 		t.ticks = ticksInterval;
 		t.tickCount = ticksInterval;
 		t.schedule = Schedule.Continuous;
 		timers.Add(t);
-		return t;
+		return t.id;
 	}
 
-	public Timer During(UnityAction action, int untilTicks) {
+	public System.Guid During(UnityAction action, int untilTicks) {
 		Timer t = new Timer();
+		t.id = System.Guid.NewGuid();
 		t.action = action;
 		t.ticks = untilTicks;
 		t.tickCount = untilTicks;
 		t.schedule = Schedule.During;
 		timers.Add(t);
-		return t;
+		return t.id;
 	}
 
-	public void RemoveTimer(Timer timer) {
-		timers.Remove(timer);
+	public void RemoveTimer(System.Guid id) {
+		for (int i = 0; i < timers.Count; i++) {
+			if (timers[i].id == id) {
+				timers.RemoveAt(i);
+				i--;
+			}
+		}
 	}
 }
