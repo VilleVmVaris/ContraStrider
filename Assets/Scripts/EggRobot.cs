@@ -35,7 +35,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 	readonly float gravity = -20f;
 
 	Vector2 velocity;
+	float moveDirection;
 	bool canShoot;
+	TimerManager.Timer rotateTimer;
 
 	// Use this for initialization
 	void Start() {
@@ -46,13 +48,15 @@ public class EggRobot : MonoBehaviour, Damageable {
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
+		rotateTimer = timer.Continuously(RotateY, 3);
 	}
 
 	// Update is called once per frame
 	void Update() {
 		if (health != 0) { // Alive
-			RotateY();
 			CalculateActions(); 
+		} else {
+			timer.RemoveTimer(rotateTimer);
 		}
 
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
@@ -70,7 +74,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 	void CalculateActions() {
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove()) {
-			var moveDirection = transform.position.x < player.transform.position.x ? Vector2.right.x : Vector2.left.x;
 			velocity.x = moveDirection * moveSpeed;
 			animator.SetBool("munaanimation", true);
 		} else {
@@ -93,6 +96,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 			} else {
 				robotSprite.transform.rotation = Quaternion.identity;
 			}
+			moveDirection = transform.position.x < player.transform.position.x ? Vector2.right.x : Vector2.left.x;
 		}
 	}
 		

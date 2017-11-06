@@ -9,6 +9,7 @@ public static class Helpers {
     //Masks
     public static readonly int DefaultLayerMask = 1 << LayerMask.NameToLayer("Default");
 	public static readonly int ObstacleLayerMask = 1 << LayerMask.NameToLayer("Obstacle");
+	public static readonly int EnemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
 
     //Raycast check functions
     public static bool Check(Vector3 dir, Vector3 position, int mask, out RaycastHit hit) {
