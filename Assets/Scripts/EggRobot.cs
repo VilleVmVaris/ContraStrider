@@ -55,8 +55,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 	void Update() {
 		if (health != 0) { // Alive
 			CalculateActions(); 
-		} else {
-			timer.RemoveTimer(rotateTimer);
 		}
 
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
@@ -153,6 +151,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	void Die() {
 		velocity.x = 0;
 		canShoot = false;
+		timer.RemoveTimer(rotateTimer);
 		int i = Random.Range(0, deathAnimations.Count);
 		animator.SetTrigger(deathAnimations[i].name);
 		GetComponent<Collider2D>().enabled = false;
