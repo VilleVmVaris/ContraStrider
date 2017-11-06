@@ -204,19 +204,21 @@ public class Player : MonoBehaviour, Damageable
 
         attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
-		// FIXME: Make sure slash goes to right direction
-		//attackEffect.transform.rotation = Quaternion.Euler(0, 0, -attackDir);	
-		attackEffect.Play();
-
+		var effect = attackEffect.main; // Particle effect 
 		if (attackDir == 0 || attackDir == 180) {
-			animator.SetBool("ninjasword", true);	
+			animator.SetBool("ninjasword", true);
+			effect.startRotationZ = Mathf.Deg2Rad * 45f;
 		} else if (attackDir == -90) {
 			animator.SetBool("ninjaswordUP", true);
+			effect.startRotationZ = Mathf.Deg2Rad * 135f;
 		} else if (attackDir == -45 || attackDir == 225) {
 			animator.SetBool("ninjaswordUpcorner", true);
+			effect.startRotationZ = Mathf.Deg2Rad * 90f;
 		} else if (attackDir == 45 || attackDir == 135) {
 			animator.SetBool("ninjaswordDOWN", true);
+			effect.startRotationZ = Mathf.Deg2Rad * 0f;
 		}
+		attackEffect.Play();
 
         groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
         groundAttackObject.SetActive(true);
@@ -505,13 +507,14 @@ public class Player : MonoBehaviour, Damageable
 		
 		if (velocity.x < -0.1f ) {
 			ninjaSprite.transform.rotation = Helpers.FlipYRotation;
-			attackEffect.transform.rotation = Helpers.FlipYRotation;
-
+			var effect = attackEffect.main;
+			effect.startRotationY = Mathf.Deg2Rad * 180f;
 			// HAX: Animation positioning
 			ninjaSprite.transform.localPosition = new Vector3(0.725f, 0f, 0f);	
 		} else if (velocity.x > 0.1f ) {
 			ninjaSprite.transform.rotation = Quaternion.identity;
-			attackEffect.transform.rotation = Quaternion.identity;
+			var effect = attackEffect.main;
+			effect.startRotationY = 0f;
 			// HAX: Animation positioning 
 			ninjaSprite.transform.localPosition = new Vector3(-0.725f, 0f, 0f);
 		}
