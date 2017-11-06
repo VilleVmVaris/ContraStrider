@@ -504,14 +504,14 @@ public class Player : MonoBehaviour, Damageable
 
 	// Rotates player sprite to movement direction
 	void RotateY() { 
-		
-		if (velocity.x < -0.1f ) {
+
+		if (velocity.x < -0.1f || (wallSliding && controller.collisions.right) ) {
 			ninjaSprite.transform.rotation = Helpers.FlipYRotation;
 			var effect = attackEffect.main;
 			effect.startRotationY = Mathf.Deg2Rad * 180f;
 			// HAX: Animation positioning
 			ninjaSprite.transform.localPosition = new Vector3(0.725f, 0f, 0f);	
-		} else if (velocity.x > 0.1f ) {
+		} else if (velocity.x > 0.1f || (wallSliding && controller.collisions.left) ) {
 			ninjaSprite.transform.rotation = Quaternion.identity;
 			var effect = attackEffect.main;
 			effect.startRotationY = 0f;
