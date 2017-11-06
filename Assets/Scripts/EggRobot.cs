@@ -4,7 +4,10 @@ using UnityEngine;
 using Anima2D;
 
 public class EggRobot : MonoBehaviour, Damageable {
-	
+	public enum RobotType {Normal, Flying};
+
+    public RobotType type;
+
 	public GameObject robotSprite;
 	public int health;
 
@@ -49,6 +52,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
 		rotateTimer = timer.Continuously(RotateY, 3);
+
 	}
 
 	// Update is called once per frame
@@ -78,7 +82,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 			animator.SetBool("munaanimation", false);
 			velocity.x = 0f;
 		}
-		velocity.y += gravity * Time.deltaTime;
+        if (type == RobotType.Normal)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
 		// Shooting
 		if (Vector3.Distance(player.transform.position, transform.position) < shootingDistance) {
 			canShoot = true;
