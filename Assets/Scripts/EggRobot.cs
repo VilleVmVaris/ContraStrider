@@ -82,7 +82,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 			animator.SetBool("munaanimation", false);
 			velocity.x = 0f;
 		}
-        if (type == RobotType.Normal)
+        //Stops flying robots from being affected by gravity 
+        if (type != RobotType.Flying)
         {
             velocity.y += gravity * Time.deltaTime;
         }
