@@ -33,7 +33,7 @@ public class BossScript : MonoBehaviour {
 
         arcmover = GetComponent<ArcMover2D>();
 
-        transform.position = leftPosition.position;
+        transform.position = rightPosition.position;
 
         SwitchSide();
 
@@ -96,16 +96,18 @@ public class BossScript : MonoBehaviour {
         } else if(Vector3.Distance(transform.position, upperPosition.position) <= positionTolerance)
         {
             print("random");
-            int randomSide = Random.Range(0, 1);
+            int randomSide = Random.Range(0, 2);
 
             if (randomSide == 0)
             {
+                print("randomoikea");
                 arcmover.SetTarget(rightPosition.position);
                 arcmover.TargetReached += SwitchSide;
 
             }
             else
             {
+                print("randomvasen");
                 arcmover.SetTarget(leftPosition.position);
                 arcmover.TargetReached += SwitchSide;
             }
