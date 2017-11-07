@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour {
 
+    public Transform upperPosition;
+
+    public Transform leftPosition;
+
+    public Transform rightPosition;
+
+    ArcMover2D arcmover;
+
     public DamageSource aoeDamage;
 
     public List<GameObject> attackAreas;
@@ -16,12 +24,18 @@ public class BossScript : MonoBehaviour {
 
     public bool usedAttack;
 
+    public float positionTolerance;
+
 	// Use this for initialization
 	void Start () {
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
-        
+        arcmover = GetComponent<ArcMover2D>();
+
+        transform.position = leftPosition.position;
+
+        SwitchSide();
 
     }
 	
@@ -33,16 +47,19 @@ public class BossScript : MonoBehaviour {
         attackAreas = aoeDamage.attackAreas;
         }
 
-        if (!usedAttack) {
-            AreaAttack();
+        
 
-        }
+        // if (!usedAttack) {
+        //   AreaAttack();
+
+
+        //}
     }
 
 
     void AreaAttack()
     {
-        print("moi");
+       print("moi");
        for(int i = 0; i < attackAreas.Count - safeAmount;)
         {
             int randomArea = Random.Range(0, 6);
@@ -56,5 +73,46 @@ public class BossScript : MonoBehaviour {
         }
        usedAttack = true;
     }
+
+    void BulletAttack()
+    {
+
+    }
+
+    void SwitchSide()
+    {
+        if(Vector3.Distance(transform.position, rightPosition.position) <= positionTolerance)
+        {
+            arcmover.SetTarget(leftPosition.position);
+            arcmover.TargetReached += SwitchSide;
+            print("vasen");
+
+        } else if (Vector3.Distance(transform.position, leftPosition.position) <= positionTolerance)
+        {
+            arcmover.SetTarget(rightPosition.position);
+            arcmover.TargetReached += SwitchSide;
+            print("oikea");
+
+        } else if(Vector3.Distance(transform.position, upperPosition.position) <= positionTolerance)
+        {
+            print("random");
+            int randomSide = Random.Range(0, 1);
+
+            if (randomSide == 0)
+            {
+                arcmover.SetTarget(rightPosition.position);
+                arcmover.TargetReached += SwitchSide;
+
+            }
+            else
+            {
+                arcmover.SetTarget(leftPosition.position);
+                arcmover.TargetReached += SwitchSide;
+            }
+        }
+
+    }
+
+        
 
 }

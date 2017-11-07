@@ -33,7 +33,7 @@ public class AttackScript : MonoBehaviour {
 						player.dash.EndCoolDown();
 					}
 					robot.GetStunned(stunTicks);
-				} else if (robot.damageable && robot.shielded) {
+				} else if (robot.damageable && robot.shielded && chargeAttack) {
 					robot.DestroyShield();
 				}
 			}
