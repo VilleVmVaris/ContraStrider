@@ -31,6 +31,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public ParticleSystem hitSpark;
 	public GameObject shieldSprite;
 	public Animator shieldAnimator;
+	public GameObject jetpackSprite;
 	SpriteMeshInstance[] sprites;
 
 
@@ -55,11 +56,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
 		rotateTimer = timer.Continuously(RotateY, 3);
-		if (shielded) {
-			shieldSprite.SetActive(true);
-		} else {
-			shieldSprite.SetActive(false);
-		}
+		shieldSprite.SetActive(shielded);
+		jetpackSprite.SetActive(type == RobotType.Flying);
 	}
 
 	// Update is called once per frame
@@ -173,6 +171,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		velocity.x = 0;
 		canShoot = false;
 		timer.RemoveTimer(rotateTimer);
+		jetpackSprite.SetActive(false);
 		int i = Random.Range(0, deathAnimations.Count);
 		coreAnimator.SetTrigger(deathAnimations[i].name);
 		GetComponent<Collider2D>().enabled = false;
