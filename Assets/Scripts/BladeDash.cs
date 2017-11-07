@@ -88,7 +88,7 @@ public class BladeDash : MonoBehaviour {
 		controller.dashingThroughEnemy = false;
 	}
 
-	void EndCoolDown() {
+	public void EndCoolDown() {
 		onCooldown = false;
 	}
 

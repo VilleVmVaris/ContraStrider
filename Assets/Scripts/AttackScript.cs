@@ -29,7 +29,8 @@ public class AttackScript : MonoBehaviour {
 				if (robot.damageable && !robot.shielded) {
 					var died = robot.TakeDamage(damageAmount);
 					if (died && player.dash.dashing) {
-						// end cooldown
+						print("Dash kill!");
+						player.dash.EndCoolDown();
 					}
 					robot.GetStunned(stunTicks);
 				} else if (robot.damageable && robot.shielded) {
