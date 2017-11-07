@@ -136,13 +136,16 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	#region Damageable implementation
 
-	public void TakeDamage(int damage) {
+	public bool TakeDamage(int damage) {
 		print("osuma");
 		health -= damage;
 		hitSpark.Play();
 		animator.SetTrigger("munaosuma");
 		if (health <= 0) {
 			Die();
+			return true;
+		} else {
+			return false;
 		}
 	}
 

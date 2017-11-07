@@ -10,9 +10,11 @@ public class AttackScript : MonoBehaviour {
 
 	public int stunTicks;
 
+	Player player;
+
 	// Use this for initialization
 	void Start() {
-		
+		player = GetComponentInParent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -24,12 +26,11 @@ public class AttackScript : MonoBehaviour {
 		if (collision.CompareTag("Enemy")) {
 			var robot = collision.gameObject.GetComponent<EggRobot>(); //TODO: Generic enemy interface?
 			if (!robot.IsNullOrDestroyed()) {
-				if (!robot.damageable) {
-					print(robot.name + " hit but stunned");
-				}
-
 				if (robot.damageable && !robot.shielded) {
-					robot.TakeDamage(damageAmount);
+					var died = robot.TakeDamage(damageAmount);
+					if (died && player.dash.dashing) {
+						// end cooldown
+					}
 					robot.GetStunned(stunTicks);
 				} else if (robot.damageable && robot.shielded) {
 					robot.DestroyShield();
