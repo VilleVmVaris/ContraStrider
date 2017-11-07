@@ -186,44 +186,40 @@ public class Player : MonoBehaviour, Damageable
     }
     public void Attack(Vector2 input)
     {
-        if (!dash.dashing)
-        {
+		if (!dash.dashing && !dash.aiming) {
+			if ((input.x == 0 && input.y == 0) || crouching) {
+				input.x = controller.collisions.faceDir;
+				input.y = 0;
+			}
 
-        
-        if ((input.x == 0 && input.y == 0) || crouching)
-        {
-            input.x = controller.collisions.faceDir;
-            input.y = 0;
-        }
-        int attackDir = (int)(Vector2.Angle(input, Vector3.up));
+			int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
-        if (input.x < 0)
-        {
-            attackDir = 360 - attackDir;
-        }
+			if (input.x < 0) {
+				attackDir = 360 - attackDir;
+			}
 
-        attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
+			attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
-		var effect = attackEffect.main; // Particle effect 
-		if (attackDir == 0 || attackDir == 180) {
-			animator.SetBool("ninjasword", true);
-			effect.startRotationZ = Mathf.Deg2Rad * 45f;
-		} else if (attackDir == -90) {
-			animator.SetBool("ninjaswordUP", true);
-			effect.startRotationZ = Mathf.Deg2Rad * 135f;
-		} else if (attackDir == -45 || attackDir == 225) {
-			animator.SetBool("ninjaswordUpcorner", true);
-			effect.startRotationZ = Mathf.Deg2Rad * 90f;
-		} else if (attackDir == 45 || attackDir == 135) {
-			animator.SetBool("ninjaswordDOWN", true);
-			effect.startRotationZ = Mathf.Deg2Rad * 0f;
+			var effect = attackEffect.main; // Particle effect 
+			if (attackDir == 0 || attackDir == 180) {
+				animator.SetBool("ninjasword", true);
+				effect.startRotationZ = Mathf.Deg2Rad * 45f;
+			} else if (attackDir == -90) {
+				animator.SetBool("ninjaswordUP", true);
+				effect.startRotationZ = Mathf.Deg2Rad * 135f;
+			} else if (attackDir == -45 || attackDir == 225) {
+				animator.SetBool("ninjaswordUpcorner", true);
+				effect.startRotationZ = Mathf.Deg2Rad * 90f;
+			} else if (attackDir == 45 || attackDir == 135) {
+				animator.SetBool("ninjaswordDOWN", true);
+				effect.startRotationZ = Mathf.Deg2Rad * 0f;
+			}
+			attackEffect.Play();
+
+			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+			groundAttackObject.SetActive(true);
+			timer.Once(EndAttackEffect, attackDurationTicks);
 		}
-		attackEffect.Play();
-
-        groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
-        groundAttackObject.SetActive(true);
-        timer.Once(EndAttackEffect, attackDurationTicks);
-    }
     }
 
     public void ChargedAttack(Vector2 input)
