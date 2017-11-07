@@ -24,6 +24,10 @@ public class AttackScript : MonoBehaviour {
 		if (collision.CompareTag("Enemy")) {
 			var robot = collision.gameObject.GetComponent<EggRobot>(); //TODO: Generic enemy interface?
 			if (!robot.IsNullOrDestroyed()) {
+				if (!robot.damageable) {
+					print(robot.name + " hit but stunned");
+				}
+
 				if (robot.damageable && !robot.shielded) {
 					robot.TakeDamage(damageAmount);
 					robot.GetStunned(stunTicks);

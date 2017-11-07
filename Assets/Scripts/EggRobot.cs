@@ -27,7 +27,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 	[Header("Effects")]
 	public List<AnimationClip> deathAnimations;
 	public float fadeTime;
+	public ParticleSystem hitSpark;
 	SpriteMeshInstance[] sprites;
+
 
 	GameObject player;
 	TimerManager timer;
@@ -137,6 +139,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public void TakeDamage(int damage) {
 		print("osuma");
 		health -= damage;
+		hitSpark.Play();
 		animator.SetTrigger("munaosuma");
 		if (health <= 0) {
 			Die();
