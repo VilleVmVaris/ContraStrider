@@ -76,6 +76,7 @@ public class TimerManager : MonoBehaviour {
 	}
 
 	public System.Guid Once(UnityAction action, int ticks) {
+		ticks = ticks == 0 ? 1 : ticks;
 		Timer t = new Timer();
 		t.id = System.Guid.NewGuid();
 		t.action = action;
@@ -88,6 +89,7 @@ public class TimerManager : MonoBehaviour {
 
 
 	public System.Guid Continuously(UnityAction action, int ticksInterval) {
+		ticksInterval = ticksInterval == 0 ? 1 : ticksInterval;
 		Timer t = new Timer();
 		t.id = System.Guid.NewGuid();
 		t.action = action;
@@ -99,6 +101,7 @@ public class TimerManager : MonoBehaviour {
 	}
 
 	public System.Guid During(UnityAction action, int untilTicks) {
+		untilTicks = untilTicks == 0 ? 1 : untilTicks;
 		Timer t = new Timer();
 		t.id = System.Guid.NewGuid();
 		t.action = action;
