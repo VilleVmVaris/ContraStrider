@@ -31,9 +31,10 @@ public class ArcMover2D : MonoBehaviour {
 			if (elapseTime < flightDuration) {
 				// Rotate projectile
 				// if necessary, or looks cool.
+
 				// Move towards target in arc
 				transform.Translate(
-					Vx * Time.deltaTime,
+					(transform.position.x > target.x ? -Vx : Vx) * Time.deltaTime,
 					(Vy - (gravity * elapseTime)) * Time.deltaTime,
 					0,
 					Space.Self);
