@@ -25,15 +25,17 @@ public class EggRobot : MonoBehaviour, Damageable {
     public bool shielded;
 
 	[Header("Effects")]
+	public Animator coreAnimator;
 	public List<AnimationClip> deathAnimations;
 	public float fadeTime;
 	public ParticleSystem hitSpark;
+	public GameObject shieldSprite;
+	public Animator shieldAnimator;
 	SpriteMeshInstance[] sprites;
 
 
 	GameObject player;
 	TimerManager timer;
-	Animator animator;
 	Controller2D controller;
 	EnemyWeapon weapon;
 
@@ -49,12 +51,15 @@ public class EggRobot : MonoBehaviour, Damageable {
 		controller = GetComponent<Controller2D>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		weapon = GetComponent<EnemyWeapon>();
-		animator = GetComponentInChildren<Animator>();
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
 		rotateTimer = timer.Continuously(RotateY, 3);
-
+		if (shielded) {
+			shieldSprite.SetActive(true);
+		} else {
+			shieldSprite.SetActive(false);
+		}
 	}
 
 	// Update is called once per frame
@@ -79,9 +84,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove()) {
 			velocity.x = moveDirection * moveSpeed;
-			animator.SetBool("munaanimation", true);
+			coreAnimator.SetBool("munaanimation", true);
 		} else {
-			animator.SetBool("munaanimation", false);
+			coreAnimator.SetBool("munaanimation", false);
 			velocity.x = 0f;
 		}
         //Stops flying robots from being affected by gravity 
@@ -110,14 +115,14 @@ public class EggRobot : MonoBehaviour, Damageable {
 		
 	bool CanMove() {
 		// Stop while shooting or taking damage
-		return !animator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
-		&& !animator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
-		&& !animator.IsInTransition(0); 
+		return !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
+			&& !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
+			&& !coreAnimator.IsInTransition(0); 
 	}
 
 	void ShootPlayer() {
 		if (player != null && canShoot) {
-			animator.SetBool("munaammus", true);
+			coreAnimator.SetBool("munaammus", true);
 			weapon.Shoot(player.transform.position);
 		}
 	}
@@ -140,7 +145,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		print("osuma");
 		health -= damage;
 		hitSpark.Play();
-		animator.SetTrigger("munaosuma");
+		coreAnimator.SetTrigger("munaosuma");
 		if (health <= 0) {
 			Die();
 			return true;
@@ -160,6 +165,8 @@ public class EggRobot : MonoBehaviour, Damageable {
     public void DestroyShield()
     {
         shielded = false;
+		shieldSprite.transform.parent = null;
+		shieldAnimator.SetBool("kuoretfly", true);
     }
 
 	void Die() {
@@ -167,7 +174,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		canShoot = false;
 		timer.RemoveTimer(rotateTimer);
 		int i = Random.Range(0, deathAnimations.Count);
-		animator.SetTrigger(deathAnimations[i].name);
+		coreAnimator.SetTrigger(deathAnimations[i].name);
 		GetComponent<Collider2D>().enabled = false;
 		Destroy(gameObject, deathAnimations[i].length + fadeTime);
 
