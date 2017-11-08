@@ -41,6 +41,7 @@ public class ArcMover2D : MonoBehaviour {
 				elapseTime += Time.deltaTime;
 			} else {
 				elapseTime = 0;
+				transform.position = target;
 				target = Vector2.zero;
 				TargetReached();
 			}
