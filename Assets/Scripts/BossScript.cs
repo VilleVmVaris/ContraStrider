@@ -4,30 +4,53 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour {
 
+    public List<GameObject> attackAreas;
+
+    public DamageSource aoeDamage;
+
+    public int safeAreaAmount;
+
     public Transform upperPosition;
 
     public Transform leftPosition;
 
     public Transform rightPosition;
 
-    ArcMover2D arcmover;
+    public float positionTolerance;
 
-    public DamageSource aoeDamage;
+    public GameObject bossBullet;
 
-    public List<GameObject> attackAreas;
+    public Transform bulletSpawner;
 
-    public int safeAmount;
+    public int damage;
+
+    public float bulletSpeed;
+
+    public float bulletLifetime;
+
+    public float bulletTurn;
+
+    public int bulletAmount;
 
     public int health;
 
+    public int bulletAttacksInLoop;
+
+    int attacksDone;
+
+    bool inFirePosition = true;
+
+    bool inBulletMode = true;
+
     TimerManager timer;
 
-    public bool usedAttack;
+    GameObject player;
 
-    public float positionTolerance;
+    ArcMover2D arcmover;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
@@ -35,7 +58,7 @@ public class BossScript : MonoBehaviour {
 
         transform.position = rightPosition.position;
 
-        SwitchSide();
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 	
@@ -47,20 +70,25 @@ public class BossScript : MonoBehaviour {
         attackAreas = aoeDamage.attackAreas;
         }
 
-        
-
-        // if (!usedAttack) {
-        //   AreaAttack();
-
-
-        //}
+        if(inFirePosition && inBulletMode) {
+            StopCoroutine("AreaAttack"); 
+            StartCoroutine("BulletAttack");
+            
+        } else if (inFirePosition && !inBulletMode)
+        {
+            StopCoroutine("BulletAttack");
+            StartCoroutine("AreaAttack");
+        }
     }
 
 
-    void AreaAttack()
+    IEnumerator AreaAttack()
     {
-       print("moi");
-       for(int i = 0; i < attackAreas.Count - safeAmount;)
+        inFirePosition = false;
+
+        yield return new WaitForSeconds(1f);
+       
+       for(int i = 0; i < attackAreas.Count - safeAreaAmount;)
         {
             int randomArea = Random.Range(0, 6);
 
@@ -69,52 +97,119 @@ public class BossScript : MonoBehaviour {
                 attackAreas[randomArea].SetActive(true);
                 print(attackAreas[randomArea].name + " active");
                 i++;
+                yield return new WaitForSeconds(.5f);
             }
         }
-       usedAttack = true;
+        yield return new WaitForSeconds(1f);
+        DeadactivateAttackAreas();
+        print("alueet pistetty hoi");
+
+        SwitchPhase();
+        SwitchSide();
     }
 
-    void BulletAttack()
+    IEnumerator BulletAttack()
     {
+        inFirePosition = false;
+        for (int i = 0; i < bulletAmount; i++)
+        {
+            var fireDirection = player.transform.position - transform.position;
 
+            GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
+
+            bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, fireDirection, bulletLifetime);
+
+            yield return new WaitForSeconds(.2f);
+
+        }
+        yield return new WaitForSeconds(.5f);
+
+        attacksDone++;
+
+        if (attacksDone >= bulletAttacksInLoop)
+        {
+            SwitchPhase();
+        }
+
+        SwitchSide();
+
+        
+    
+    }
+
+    void SwitchPhase()
+    {
+        if(inBulletMode)
+        {
+            inBulletMode = false;
+
+        } else
+        {
+            attacksDone -= bulletAttacksInLoop;
+            inBulletMode = true;
+        }
     }
 
     void SwitchSide()
     {
-        if(Vector3.Distance(transform.position, rightPosition.position) <= positionTolerance)
+        if(!inBulletMode)
+        {
+            //arcmover.SetTarget(upperPosition.position);
+            //arcmover.TargetReached += ReadyToAttack;
+
+            transform.position = upperPosition.position;
+            ReadyToAttack();
+            
+        }
+
+         else if(Vector3.Distance(transform.position, rightPosition.position) <= positionTolerance)
         {
             arcmover.SetTarget(leftPosition.position);
-            arcmover.TargetReached += SwitchSide;
-            print("vasen");
+            arcmover.TargetReached += ReadyToAttack;
+
 
         } else if (Vector3.Distance(transform.position, leftPosition.position) <= positionTolerance)
         {
+            
             arcmover.SetTarget(rightPosition.position);
-            arcmover.TargetReached += SwitchSide;
-            print("oikea");
+            arcmover.TargetReached += ReadyToAttack;
+
 
         } else if(Vector3.Distance(transform.position, upperPosition.position) <= positionTolerance)
         {
-            print("random");
+
+            print("pitäis lähtee");
+
             int randomSide = Random.Range(0, 2);
 
             if (randomSide == 0)
             {
-                print("randomoikea");
+
                 arcmover.SetTarget(rightPosition.position);
-                arcmover.TargetReached += SwitchSide;
+                arcmover.TargetReached += ReadyToAttack;
 
             }
             else
             {
-                print("randomvasen");
+
                 arcmover.SetTarget(leftPosition.position);
-                arcmover.TargetReached += SwitchSide;
+                arcmover.TargetReached += ReadyToAttack;
             }
         }
 
     }
 
-        
+     void ReadyToAttack()
+    {
+        inFirePosition = true;
+    }
+
+    void DeadactivateAttackAreas()
+    {
+        foreach(var area in attackAreas)
+        {
+            area.SetActive(false);
+        }
+    }
 
 }
