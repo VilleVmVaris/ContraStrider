@@ -129,7 +129,8 @@ public class Player : MonoBehaviour, Damageable
 				!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpdown") && 
 				!animator.IsInTransition(0) 
 				&& !dash.dashing && !dash.aiming) {
-				animator.SetBool("jumpup", true);
+				animator.SetBool("jumpdown", false);	
+				animator.SetBool("jumpair", true);
 			}
 		}
 
@@ -152,7 +153,13 @@ public class Player : MonoBehaviour, Damageable
             else
             {
                 velocity.y = 0;
-				animator.SetBool("jumpdown", true);	
+
+				if (velocity.x > 0.5f || velocity.x < -0.5f) {
+					animator.SetBool("jumpair", false);	
+				} else {
+					animator.SetBool("jumpair", false);	
+					animator.SetBool("jumpdown", true);	
+				}
             }
 
         }
