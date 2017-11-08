@@ -87,7 +87,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove()) {
 			velocity.x = moveDirection * moveSpeed;
-			coreAnimator.SetBool("munaanimation", true);
+			if (type == RobotType.Normal) {
+				coreAnimator.SetBool("munaanimation", true);	
+			}
 		} else {
 			coreAnimator.SetBool("munaanimation", false);
 			velocity.x = 0f;
