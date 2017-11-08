@@ -46,6 +46,9 @@ public class BladeDash : MonoBehaviour {
 			Time.timeScale = 0.2f;
 			Time.fixedDeltaTime = Time.timeScale * .2f;
 			aiming = true;
+			foreach(AnimatorControllerParameter parameter in animator.parameters) {            
+				animator.SetBool(parameter.name, false);            
+			}
 			animator.SetBool("ninjastance", true);
 			dashArrow.SetActive(true);
 		}
@@ -53,7 +56,7 @@ public class BladeDash : MonoBehaviour {
 
 	public void Aim(Vector2 input) {
 		if (!onCooldown) {
-			
+
 			// TODO: Aim in 8 directions
 
 			var aimDirection = input.normalized;

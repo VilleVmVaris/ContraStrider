@@ -102,22 +102,22 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
-        //see if character has moved since last frame
-        if (dash.dashing)
-       {
-         if (controller.collisions.left || controller.collisions.right)
-            {
-              dash.StopDash();
-              EndAttackEffect();
-            }
-        }
+		//see if character has moved since last frame
+		if (dash.dashing) {
+			if (controller.collisions.left || controller.collisions.right) {
+				dash.StopDash();
+				EndAttackEffect();
+			}
+		}
 		if (health <= 0) {
 			return; // TODO: Proper handling of death 
+		}
+		if (dash.aiming) {
+			velocity = Vector2.zero;
 		}
 		
         CalculateVelocity();
         HandleWallSliding();
-        CheckCollisionStatus();
 		RotateY();
 
         if(CheckCollisionStatus()) {
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour, Damageable
         {
             controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
         }
-        else
+		else
         {
             controller.Move(velocity * Time.deltaTime, directionalInput);
         }

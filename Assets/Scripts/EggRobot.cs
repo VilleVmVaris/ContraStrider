@@ -66,6 +66,11 @@ public class EggRobot : MonoBehaviour, Damageable {
 			CalculateActions(); 
 		}
 
+		//Stops flying robots from being affected by gravity 
+		if (type != RobotType.Flying) {
+			velocity.y += gravity * Time.deltaTime;
+		}
+
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
 
 		//This stops gravity from accumulating if the controllers detects collisions above or below
@@ -87,11 +92,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 			coreAnimator.SetBool("munaanimation", false);
 			velocity.x = 0f;
 		}
-        //Stops flying robots from being affected by gravity 
-        if (type != RobotType.Flying)
-        {
-            velocity.y += gravity * Time.deltaTime;
-        }
+
 		// Shooting
 		if (Vector3.Distance(player.transform.position, transform.position) < shootingDistance) {
 			canShoot = true;
