@@ -15,13 +15,15 @@ public class TimerManager : MonoBehaviour {
 		public UnityAction action;
 		public int ticks;
 		public int tickCount;
+		public float time;
 		public Schedule schedule;
 	}
 
 	public enum Schedule {
 		Once,
 		Continuous,
-		During
+		During,
+		OnceDelta
 	}
 
 	// Use this for initialization
@@ -32,11 +34,28 @@ public class TimerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		UpdateDeltaTimers();
 		timer -= Time.deltaTime;
 		if (timer < 0) {
 			UpdateTimers();
 			Tick();
 			timer += tickInterval;
+		}
+	}
+
+	void UpdateDeltaTimers() {
+		for (int i = 0; i < timers.Count; i++) {
+			Timer t = timers[i];
+			if (!t.action.Target.IsNullOrDestroyed() && t.schedule == Schedule.OnceDelta) {
+				t.time -= Time.deltaTime;
+				if (t.time < 0) {
+					t.action.Invoke();
+					timers.RemoveAt(i);
+					i--;
+				} else {
+					timers[i] = t;
+				}
+			}
 		}
 	}
 
@@ -51,9 +70,10 @@ public class TimerManager : MonoBehaviour {
 		}
 	}
 
+	//FIXME: This whole thing might be ballooning out of hand a bit
 	void Tick() {
 		for (int i = 0; i < timers.Count; ) {
-			if (timers[i].ticks == 0 && timers[i].schedule != Schedule.Continuous) {
+			if (timers[i].ticks == 0 && timers[i].schedule != Schedule.Continuous && timers[i].schedule != Schedule.OnceDelta) {
 				timers.RemoveAt(i);
 			} else {
 				Timer t = timers[i];
@@ -62,7 +82,7 @@ public class TimerManager : MonoBehaviour {
 					if ((t.action.Target as MonoBehaviour) == null) { // Called object is deleted
 						t.schedule = Schedule.Once;
 						t.ticks = 0;
-					} else if (t.schedule != Schedule.During) {
+					} else if (t.schedule != Schedule.During && t.schedule != Schedule.OnceDelta) {
 						t.action.Invoke();	
 					}
 					if (t.schedule == Schedule.Continuous) {
@@ -87,6 +107,16 @@ public class TimerManager : MonoBehaviour {
 		return t.id;
 	}
 
+	public System.Guid Once(UnityAction action, float time) {
+		time = time <= 0 ? 0.1f : time;
+		var t = new Timer();
+		t.id = System.Guid.NewGuid();
+		t.action = action;
+		t.time = time;
+		t.schedule = Schedule.OnceDelta;
+		timers.Add(t);
+		return t.id;
+	}
 
 	public System.Guid Continuously(UnityAction action, int ticksInterval) {
 		ticksInterval = ticksInterval == 0 ? 1 : ticksInterval;

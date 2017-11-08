@@ -8,7 +8,7 @@ public class AttackScript : MonoBehaviour {
 
 	public bool chargeAttack;
 
-	public int stunTicks;
+	public float stunTime;
 
 	Player player;
 
@@ -32,10 +32,10 @@ public class AttackScript : MonoBehaviour {
 						print("Dash kill!");
 						player.dash.EndCoolDown();
 					}
-					robot.GetStunned(stunTicks);
+					robot.GetStunned(stunTime);
 				} else if (robot.damageable && robot.shielded && chargeAttack) {
 					robot.DestroyShield();
-					robot.GetStunned(stunTicks);
+					robot.GetStunned(stunTime);
 				}
 			}
 		}

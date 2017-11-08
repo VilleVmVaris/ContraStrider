@@ -154,10 +154,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	#endregion
 
-    public void GetStunned(int invulTicks)
+	public void GetStunned(float invulTime)
     {
         damageable = false;
-        timer.Once(ChangeDamageable, invulTicks);
+		timer.Once(ChangeDamageable, invulTime);
     }
 
     public void DestroyShield()
