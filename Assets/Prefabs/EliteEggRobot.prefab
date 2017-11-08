@@ -1005,7 +1005,7 @@ MonoBehaviour:
   shootingDistance: 7
   burstAmount: 3
   burstInterval: 25
-  shielded: 1
+  shielded: 0
   coreAnimator: {fileID: 95599418722498380}
   deathAnimations:
   - {fileID: 7400000, guid: 1a47ee69aff620a4598b006cebd764d3, type: 2}
