@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, Damageable
     float colliderOffSet;
     float crouchColliderY;
 
-    public int attackDurationTicks;
+    public float attackDurationTicks;
 
     public GameObject groundAttackObject;
     public GameObject chargeAttackObject;
@@ -193,6 +193,7 @@ public class Player : MonoBehaviour, Damageable
     }
     public void Attack(Vector2 input)
     {
+
 		if (!dash.dashing && !dash.aiming) {
 			if ((input.x == 0 && input.y == 0) || crouching) {
 				input.x = controller.collisions.faceDir;

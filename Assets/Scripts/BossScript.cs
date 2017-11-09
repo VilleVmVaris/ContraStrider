@@ -133,8 +133,6 @@ public class BossScript : MonoBehaviour {
 
         SwitchSide();
 
-        
-    
     }
 
     void SwitchPhase()
