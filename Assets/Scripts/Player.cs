@@ -316,7 +316,7 @@ public class Player : MonoBehaviour, Damageable
 		dashAttack.SetActive(true);
 		animator.SetBool("ninjadash", true);
 		animator.SetBool("ninjastance", false);
-		//timer.Once(EndAttackEffect, dash.dashTicks);
+		timer.Once(EndAttackEffect, dash.dashTicks);
 	}
     }
 

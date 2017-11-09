@@ -69,7 +69,9 @@ public class AttackScript : MonoBehaviour {
         {
             DealDamage();
         }
-
+        if(!player.dash.dashing) { 
+        gameObject.SetActive(false);
+        }
 
     }
 

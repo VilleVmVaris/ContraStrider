@@ -95,14 +95,13 @@ public class BossScript : MonoBehaviour {
             if(!attackAreas[randomArea].activeSelf)
             {
                 attackAreas[randomArea].SetActive(true);
-                print(attackAreas[randomArea].name + " active");
+                //print(attackAreas[randomArea].name + " active");
                 i++;
                 yield return new WaitForSeconds(.5f);
             }
         }
         yield return new WaitForSeconds(1f);
         DeadactivateAttackAreas();
-        print("alueet pistetty hoi");
 
         SwitchPhase();
         SwitchSide();
