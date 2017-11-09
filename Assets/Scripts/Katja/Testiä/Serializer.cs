@@ -6,10 +6,10 @@ using System.IO;
 public class Serializer : MonoBehaviour {
 
     static readonly string SAVE_FILE = "player.dat";
-
+    
     public GameObject player;
 
-    void Start() {
+    public void SetCheckPoint() {
         SaveData data = new SaveData()
         { health = 100, playerPosition = player.transform.position, powerUpS = new List<string>() };
         data.powerUpS.Add("Test1");
