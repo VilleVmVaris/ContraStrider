@@ -34,6 +34,6 @@ public class HealthBarScript : MonoBehaviour {
         health = fullHealth;
         SetHealthBar(health);
         // PWU.powerUpS.Remove("HealthKit");
-        Debug.Log("health Full");
+        // Debug.Log("health Full");
     }
 }

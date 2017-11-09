@@ -664,6 +664,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4064574397655034, guid: b422acc89a2c5dc41aaf6d38aee2f524,
     type: 2}
   m_PrefabInternal: {fileID: 157384690}
+--- !u!1 &1775631454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1775631456}
+  - component: {fileID: 1775631455}
+  m_Layer: 0
+  m_Name: Testi
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1775631455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775631454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d75770b9730a143a084cb662956cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2051051029}
+--- !u!4 &1775631456
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775631454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -268.6, y: -477.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1873784667 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114687483109431628, guid: b89a69a3c89241049820e4fa25838f4a,
@@ -845,6 +886,7 @@ MonoBehaviour:
   maxSlopeAngle: 80
   playerInput: {x: 0, y: 0}
   canFallThrough: 0
+  dashingThroughEnemy: 0
 --- !u!61 &2051051031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -918,7 +960,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051051029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -946,7 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94abc8e9327b2cb4d95f76b545d25f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpS: []
   HBS: {fileID: 1358950357}
   SS: {fileID: 1873784667}
   CPS: {fileID: 2034149922}
