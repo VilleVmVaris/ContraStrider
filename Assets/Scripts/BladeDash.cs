@@ -21,6 +21,8 @@ public class BladeDash : MonoBehaviour {
 	TimerManager timer;
 	Controller2D controller;
 	Animator animator;
+
+    GameObject dashAttack;
     
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class BladeDash : MonoBehaviour {
 		controller = GetComponent<Controller2D>();
 		animator = GetComponentInChildren<Animator>();
 		dashArrow.SetActive(false);
+        dashAttack = GetComponent<Player>().dashAttack;
 	}
 
 	// Update is called once per frame
@@ -86,6 +89,7 @@ public class BladeDash : MonoBehaviour {
 	}
 
 	public void StopDash() {
+        dashAttack.GetComponent<AttackScript>().DealDamage();
 		dashing = false;
 		direction = Vector2.zero;
 		controller.dashingThroughEnemy = false;

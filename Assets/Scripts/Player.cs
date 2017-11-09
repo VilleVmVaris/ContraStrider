@@ -226,7 +226,7 @@ public class Player : MonoBehaviour, Damageable
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 			groundAttackObject.SetActive(true);
-			timer.Once(EndAttackEffect, attackDurationTicks);
+			//timer.Once(EndAttackEffect, attackDurationTicks);
 		}
     }
 
@@ -255,7 +255,7 @@ public class Player : MonoBehaviour, Damageable
 
             chargeAttackObject.SetActive(true);
 
-            timer.Once(EndAttackEffect, attackDurationTicks);
+            //timer.Once(EndAttackEffect, attackDurationTicks);
 
             ResetCharge();
 
@@ -316,7 +316,7 @@ public class Player : MonoBehaviour, Damageable
 		dashAttack.SetActive(true);
 		animator.SetBool("ninjadash", true);
 		animator.SetBool("ninjastance", false);
-		timer.Once(EndAttackEffect, dash.dashTicks);
+		//timer.Once(EndAttackEffect, dash.dashTicks);
 	}
     }
 

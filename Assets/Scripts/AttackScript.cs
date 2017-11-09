@@ -46,7 +46,7 @@ public class AttackScript : MonoBehaviour {
 			}
 		}
         */
-
+        
         if (collision.CompareTag("Enemy"))
         {
             var robot = collision.gameObject.GetComponent<EggRobot>();
@@ -55,13 +55,26 @@ public class AttackScript : MonoBehaviour {
                 if(robot.damageable && !robot.shielded)
                 {
                    hitTargets.Add(collision.gameObject);
+
+                    if(player.dash.dashing)
+                    {
+                        robot.GetStunned(stunTime);
+                    }
                 }
             }
             
         }
 
-        if (hitTargets.Count != 0)
+        if (!player.dash.dashing && hitTargets.Count != 0)
         {
+            DealDamage();
+        }
+
+
+    }
+
+    public void DealDamage()
+    {
             foreach (var enemy in hitTargets)
             {
                 if (enemy.GetComponent<EggRobot>() != null)
@@ -69,25 +82,25 @@ public class AttackScript : MonoBehaviour {
                     var robot = enemy.GetComponent<EggRobot>();
                     var died = robot.TakeDamage(damageAmount);
 
-                   
+
                     if (died && player.dash.dashing)
                     {
                         print("Dash kill!");
                         player.dash.EndCoolDown();
                     }
-                   
-                
-                else if (robot.damageable && robot.shielded && chargeAttack)
-                {
-                    robot.DestroyShield();
-                }
+
+
+                    else if (robot.damageable && robot.shielded && chargeAttack)
+                    {
+                        robot.DestroyShield();
+                    }
                 }
 
             }
-            }
-            hitTargets.Clear();
-            
         
+        hitTargets.Clear();
+
+
         gameObject.SetActive(false);
     }
 }
