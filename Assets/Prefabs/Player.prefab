@@ -2125,6 +2125,7 @@ MonoBehaviour:
   damageAmount: 1
   chargeAttack: 0
   stunTime: 0.1
+  hitTargets: []
 --- !u!114 &114109481395232726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2848,6 +2849,7 @@ MonoBehaviour:
   damageAmount: 5
   chargeAttack: 1
   stunTime: 0.1
+  hitTargets: []
 --- !u!114 &114702839501227064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3041,7 +3043,8 @@ MonoBehaviour:
   chargeTime: 1
   timeBeforeCharge: 0.15
   timeToCharge: 0
-  moveSpeed: 6
+  moveSpeed: 10
+  maxWalkSpeed: 4
   dash: {fileID: 0}
 --- !u!114 &114843203987159110
 MonoBehaviour:
@@ -3227,6 +3230,7 @@ MonoBehaviour:
   damageAmount: 1
   chargeAttack: 0
   stunTime: 0.1
+  hitTargets: []
 --- !u!114 &114987228911897012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3808,7 +3812,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1515612060
+  randomSeed: 66830407
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7121,7 +7125,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
