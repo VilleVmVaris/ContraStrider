@@ -60,6 +60,7 @@ public class Player : MonoBehaviour, Damageable
 
     public float moveSpeed = 6;
     float velocityXSmoothing;
+	public float maxWalkSpeed = 4;
 
     Controller2D controller;
 
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour, Damageable
 
 		if ((velocity.x > 0.15f || velocity.x < -0.15f ) 
 			&& controller.collisions.below && !wallSliding && !dash.dashing) {
-			if (velocity.x > 2f || velocity.x < -2f ) {
+			if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed ) {
 				animator.SetBool("ninjarun", true);
 				animator.SetBool("ninjawalk", false);
 			} else {
