@@ -124,15 +124,7 @@ public class Player : MonoBehaviour, Damageable
         if(CheckCollisionStatus()) {
             canDoubleJump = true;
 		} else {
-			// If player walks off a cliff
-			if (!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpup") &&
-				!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpair") &&
-				!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpdown") && 
-				!animator.IsInTransition(0) 
-				&& !dash.dashing && !dash.aiming) {
-				animator.SetBool("jumpdown", false);	
-				animator.SetBool("jumpair", true);
-			}
+			PlayInAirAnimation();
 		}
 
         if (dash.dashing)
@@ -279,6 +271,18 @@ public class Player : MonoBehaviour, Damageable
         }
         else return true;
     }
+
+	void PlayInAirAnimation() {
+		// If player walks off a cliff
+		if (!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpup") &&
+			!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpair") &&
+			!animator.GetCurrentAnimatorStateInfo(0).IsName("jumpdown") && 
+			!animator.IsInTransition(0) 
+			&& !dash.dashing && !dash.aiming && !wallSliding) {
+			animator.SetBool("jumpdown", false);	
+			animator.SetBool("jumpair", true);
+		}
+	}
 
     void EnableCrouch()
     {
