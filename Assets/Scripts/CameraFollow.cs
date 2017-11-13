@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
+	public float cameraMinSize = 3f;
+	public float cameraDefaultSize = 5f;
+	public float cameraMaxSize = 7f;
 	public float verticalOffset;
 	public float lookAheadX;
 	public float lookSmoothTimeX;
@@ -20,7 +23,7 @@ public class CameraFollow : MonoBehaviour {
 	float targetLookAheadX;
 	float lookAheadDirectionX;
 	float smoothLookVelocityX;
-	float smoothVelocityY; // TBD when Controller2D is ready
+	float smoothVelocityY;
 
 	bool lookAheadStopped;
 
@@ -95,15 +98,15 @@ public class CameraFollow : MonoBehaviour {
 		transform.position = (Vector3)focusPosition + Vector3.forward * -10;
 
 		// Zoom camera during state transition
-		if (indoors && currentCamera.orthographicSize > 3) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, 3, Time.deltaTime * 5f);
-		} else if (!indoors && currentCamera.orthographicSize < 5) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, 5, Time.deltaTime * 5f);
+		if (indoors && currentCamera.orthographicSize > cameraMinSize) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * 5f);
+		} else if (!indoors && currentCamera.orthographicSize < cameraDefaultSize) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraDefaultSize, Time.deltaTime * 5f);
 		}
 	}
 
 	void OnDrawGizmos() {
-		Gizmos.color = new Color(1, 0, 0, .5f);
+		Gizmos.color = new Color(1, 0, 0, .3f);
 		Gizmos.DrawCube(focusArea.center, focusAreaSize);
 	}
 
