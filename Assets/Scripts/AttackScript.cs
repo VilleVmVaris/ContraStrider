@@ -52,7 +52,7 @@ public class AttackScript : MonoBehaviour {
             var robot = collision.gameObject.GetComponent<EggRobot>();
             if(!robot.IsNullOrDestroyed())
             {
-                if(robot.damageable && !robot.shielded)
+                if(robot.damageable)
                 {
                    hitTargets.Add(collision.gameObject);
 
@@ -77,11 +77,21 @@ public class AttackScript : MonoBehaviour {
 
     public void DealDamage()
     {
+        print("iik");
             foreach (var enemy in hitTargets)
             {
                 if (enemy.GetComponent<EggRobot>() != null)
                 {
                     var robot = enemy.GetComponent<EggRobot>();
+                
+
+                if (robot.shielded && chargeAttack)
+                {
+                    robot.DestroyShield();
+                }
+                else
+                {
+
                     var died = robot.TakeDamage(damageAmount);
 
 
@@ -91,11 +101,9 @@ public class AttackScript : MonoBehaviour {
                         player.dash.EndCoolDown();
                     }
 
+                }
 
-                    else if (robot.damageable && robot.shielded && chargeAttack)
-                    {
-                        robot.DestroyShield();
-                    }
+
                 }
 
             }

@@ -168,6 +168,7 @@ public class EggRobot : MonoBehaviour, Damageable {
         shielded = false;
 		shieldSprite.transform.parent = null;
 		shieldAnimator.SetBool("kuoretfly", true);
+        print("kilpimeni");
     }
 
 	void Die() {
