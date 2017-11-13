@@ -200,21 +200,40 @@ public class Player : MonoBehaviour, Damageable
 			}
 
 			attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
-
-			var effect = attackEffect.main; // Particle effect 
+			 
+			// Hardcoded rotations, cuz i couldn't be arsed
 			if (attackDir == 0 || attackDir == 180) {
 				animator.SetBool("ninjasword", true);
-				effect.startRotationZ = Mathf.Deg2Rad * 45f;
+				attackEffect.transform.rotation = Quaternion.Euler(75f, 0f, 0f);
 			} else if (attackDir == -90) {
 				animator.SetBool("ninjaswordUP", true);
-				effect.startRotationZ = Mathf.Deg2Rad * 135f;
+				if (ninjaSprite.transform.rotation.y > 0) {
+					//left
+					attackEffect.transform.rotation = Quaternion.Euler(2f, -74.9f, -89.4f);
+				} else {
+					// right
+					attackEffect.transform.rotation = Quaternion.Euler(-0.1f, 75f, 90f);	
+				}
 			} else if (attackDir == -45 || attackDir == 225) {
 				animator.SetBool("ninjaswordUpcorner", true);
-				effect.startRotationZ = Mathf.Deg2Rad * 90f;
+				if (attackDir == -45) {
+					// right
+					attackEffect.transform.rotation = Quaternion.Euler(56.3f, 62.1f, 66.2f);
+				} else {
+					// left
+					attackEffect.transform.rotation = Quaternion.Euler(38.1f, -70.7f, -77.8f);	
+				}
+
 			} else if (attackDir == 45 || attackDir == 135) {
 				animator.SetBool("ninjaswordDOWN", true);
-				effect.startRotationZ = Mathf.Deg2Rad * 0f;
-			}
+				if (attackDir == 45) {
+					// right
+					attackEffect.transform.rotation = Quaternion.Euler(39.8f, -70.2f, -77f);
+				} else {
+					// left
+					attackEffect.transform.rotation = Quaternion.Euler(43.6f, 69f, 75.1f);	
+				}
+			}	 
 			attackEffect.Play();
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
