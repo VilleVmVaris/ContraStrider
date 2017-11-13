@@ -5,9 +5,11 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	public float cameraMinSize = 3f;
-	public float cameraDefaultSize = 5f;
-	public float cameraMaxSize = 7f;
+	public float cameraSize = 5f;
 	public float verticalOffset;
+	public float cameraMaxSize = 7f;
+	public float maxVerticalOffset;
+
 	public float lookAheadX;
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
@@ -18,6 +20,8 @@ public class CameraFollow : MonoBehaviour {
 
 	Camera currentCamera;
 	bool indoors = false;
+	bool wideOutdoors = false;
+	float cameraVerticalOffset;
 
 	float currentLookAheadX;
 	float targetLookAheadX;
@@ -75,7 +79,7 @@ public class CameraFollow : MonoBehaviour {
 	void LateUpdate () {
 		focusArea.Update(followTarget.collider.bounds);
 
-		Vector2 focusPosition = focusArea.center + Vector2.up * verticalOffset;
+		Vector2 focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
 		if (!Mathf.Approximately(focusArea.velocity.x, 0)) {
 			lookAheadDirectionX = Mathf.Sign(focusArea.velocity.x);
 			if (Mathf.Approximately(Mathf.Sign(followTarget.playerInput.x), Mathf.Sign(focusArea.velocity.x) ) 
@@ -100,8 +104,13 @@ public class CameraFollow : MonoBehaviour {
 		// Zoom camera during state transition
 		if (indoors && currentCamera.orthographicSize > cameraMinSize) {
 			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * 5f);
-		} else if (!indoors && currentCamera.orthographicSize < cameraDefaultSize) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraDefaultSize, Time.deltaTime * 5f);
+			cameraVerticalOffset = 0f;
+		} else if (!indoors && !wideOutdoors && !Mathf.Approximately(currentCamera.orthographicSize, cameraSize)) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraSize, Time.deltaTime * 5f);
+			cameraVerticalOffset = verticalOffset;
+		} else if (wideOutdoors && currentCamera.orthographicSize < cameraMaxSize) {
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMaxSize, Time.deltaTime * 5f);
+			cameraVerticalOffset = maxVerticalOffset;
 		}
 	}
 
@@ -112,5 +121,11 @@ public class CameraFollow : MonoBehaviour {
 
 	public void ToggleIndoorsMode() {
 		indoors = !indoors;
+		wideOutdoors = false;
+	}
+
+	public void ToggleWideOutdoorsMode() {
+		wideOutdoors = !wideOutdoors;
+		indoors = false;
 	}
 }
