@@ -13,11 +13,6 @@ class Rijndael {
             byte[] iv = Encoding.ASCII.GetBytes("1234567890123456");
             byte[] keyBytes = Encoding.ASCII.GetBytes(key);
 
-
-            // Create a new instance of the RijndaelManaged
-            // class.  This generates a new key and initialization 
-            // vector (IV).
-
             using (RijndaelManaged myRijndael = new RijndaelManaged()) {
                 myRijndael.Key = keyBytes; //myRijndael.GenerateKey();
                 myRijndael.IV = iv; //myRijndael.GenerateIV();
@@ -39,10 +34,6 @@ class Rijndael {
             byte[] iv = Encoding.ASCII.GetBytes("1234567890123456");
             byte[] keyBytes = Encoding.ASCII.GetBytes(key);
 
-
-            // Create a new instance of the RijndaelManaged
-            // class.  This generates a new key and initialization 
-            // vector (IV).
             using (RijndaelManaged myRijndael = new RijndaelManaged()) {
                 myRijndael.Key = keyBytes; //myRijndael.GenerateKey();
                 myRijndael.IV = iv; //myRijndael.GenerateIV();
