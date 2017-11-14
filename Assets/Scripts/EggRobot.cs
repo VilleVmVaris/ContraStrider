@@ -89,6 +89,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 			velocity.x = moveDirection * moveSpeed;
 			if (type == RobotType.Normal) {
 				coreAnimator.SetBool("munaanimation", true);	
+			} else {
+				coreAnimator.SetBool("munafly", true);
 			}
 		} else {
 			coreAnimator.SetBool("munaanimation", false);
@@ -176,13 +178,20 @@ public class EggRobot : MonoBehaviour, Damageable {
 		canShoot = false;
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
-		int i = Random.Range(0, deathAnimations.Count);
-		coreAnimator.SetTrigger(deathAnimations[i].name);
+		var dieLength = 0f;
+		if (type == RobotType.Normal) {
+			int i = Random.Range(0, deathAnimations.Count);
+			coreAnimator.SetTrigger(deathAnimations[i].name);
+			dieLength = deathAnimations[i].length;
+		} else {
+			coreAnimator.SetTrigger("munaflydeath");
+			dieLength = 0f;
+		}
 		GetComponent<Collider2D>().enabled = false;
-		Destroy(gameObject, deathAnimations[i].length + fadeTime);
+		Destroy(gameObject, dieLength + fadeTime);
 
 
-		StartCoroutine(FadeOut(1, 0, fadeTime, deathAnimations[i].length)); // Fading out sprites with coroutine for now
+		StartCoroutine(FadeOut(1, 0, fadeTime, dieLength)); // Fading out sprites with coroutine for now
 	}
 
 	IEnumerator FadeOut(float startIntensity, float endIntensity, float time, float waitTime) {
