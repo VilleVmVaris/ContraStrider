@@ -89,7 +89,7 @@ public class AttackScript : MonoBehaviour {
                 {
                     robot.DestroyShield();
                 }
-                else
+				else if (!robot.shielded)
                 {
 
                     var died = robot.TakeDamage(damageAmount);
