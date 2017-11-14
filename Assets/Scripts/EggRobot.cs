@@ -174,7 +174,7 @@ public class EggRobot : MonoBehaviour, Damageable {
     }
 
 	void Die() {
-		velocity.x = 0;
+		velocity.x = 0f;
 		canShoot = false;
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
@@ -187,7 +187,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 			coreAnimator.SetTrigger("munaflydeath");
 			dieLength = 0f;
 		}
-		GetComponent<Collider2D>().enabled = false;
+		// FIXME: Disabling collider drops robot into the ground while in death animation
+		//        Do we need to do this?
+		//GetComponent<Collider2D>().enabled = false;
 		Destroy(gameObject, dieLength + fadeTime);
 
 
