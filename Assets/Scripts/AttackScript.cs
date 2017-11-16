@@ -109,7 +109,6 @@ public class AttackScript : MonoBehaviour {
 
                 }
 
-
                 } else if(enemy.GetComponent<BossScript>() != null)
             {
                 if(!enemy.GetComponent<BossScript>().undamageable)

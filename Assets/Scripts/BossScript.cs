@@ -49,8 +49,12 @@ public class BossScript : MonoBehaviour, Damageable {
 
     ArcMover2D arcmover;
 
+    Vector2 fireDirection;
+
     [HideInInspector]
     public bool undamageable;
+
+    float fireSegment;
 
 
     // Use this for initialization
@@ -63,6 +67,8 @@ public class BossScript : MonoBehaviour, Damageable {
         transform.position = rightPosition.position;
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        fireSegment = (float) 2/bulletAmount;
 
     }
 	
@@ -132,14 +138,22 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator BulletAttack()
     {
+        print(fireSegment);
+        fireDirection.y = -1;
+
         inFirePosition = false;
         for (int i = 0; i < bulletAmount; i++)
         {
-            var fireDirection = player.transform.position - transform.position;
+            //float dirToPlayerX = player.transform.position.x - transform.position.x;
+
+            //print(dirToPlayerX);
 
             GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
 
             bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, fireDirection, bulletLifetime);
+
+            fireDirection.y += fireSegment;
+            
 
             yield return new WaitForSeconds(.2f);
 
@@ -187,20 +201,22 @@ public class BossScript : MonoBehaviour, Damageable {
             
         }
 
-         else if(Vector3.Distance(transform.position, rightPosition.position) <= positionTolerance)
+         else if(Vector2.Distance(transform.position, rightPosition.position) <= positionTolerance)
         {
             arcmover.SetTarget(leftPosition.position);
             arcmover.TargetReached += ReadyToAttack;
+            fireDirection.x = 1;
 
 
-        } else if (Vector3.Distance(transform.position, leftPosition.position) <= positionTolerance)
+        } else if (Vector2.Distance(transform.position, leftPosition.position) <= positionTolerance)
         {
             
             arcmover.SetTarget(rightPosition.position);
             arcmover.TargetReached += ReadyToAttack;
+            fireDirection.x = -1;
 
 
-        } else if(Vector3.Distance(transform.position, upperPosition.position) <= positionTolerance)
+        } else if(Vector2.Distance(transform.position, upperPosition.position) <= positionTolerance)
         {
 
             int randomSide = Random.Range(0, 2);
@@ -210,6 +226,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
                 arcmover.SetTarget(rightPosition.position);
                 arcmover.TargetReached += ReadyToAttack;
+                fireDirection.x = -1;
 
             }
             else
@@ -217,6 +234,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
                 arcmover.SetTarget(leftPosition.position);
                 arcmover.TargetReached += ReadyToAttack;
+                fireDirection.x = 1;
             }
         }
 
