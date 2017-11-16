@@ -63,6 +63,16 @@ public class AttackScript : MonoBehaviour {
                 }
             }
             
+        } else if(collision.CompareTag("Boss"))
+        {
+            print("wutface");
+            var boss = collision.gameObject.GetComponent<BossScript>();
+
+            if(!boss.undamageable)
+            {
+                boss.TakeDamage(damageAmount);
+                print("pitäis ottaa damaa");
+            }
         }
 
         if (!player.dash.dashing && hitTargets.Count != 0)
@@ -77,7 +87,6 @@ public class AttackScript : MonoBehaviour {
 
     public void DealDamage()
     {
-        print("iik");
             foreach (var enemy in hitTargets)
             {
                 if (enemy.GetComponent<EggRobot>() != null)

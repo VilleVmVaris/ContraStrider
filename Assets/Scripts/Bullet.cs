@@ -29,7 +29,9 @@ public class Bullet : MonoBehaviour {
             print("Player hit");
             go.GetComponent<Damageable>().TakeDamage(bulletDamage);
         }
+        if(go.tag != "Boss") { 
         Destroy(gameObject);
+        }
     }
     public static float AngleInRad(Vector3 vec1, Vector3 vec2) {
         return Mathf.Atan2(vec2.y - vec1.y, vec2.x - vec1.x);

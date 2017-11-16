@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Anima2D;
 
-public class BossScript : MonoBehaviour {
+public class BossScript : MonoBehaviour, Damageable {
 
     public List<GameObject> attackAreas;
 
@@ -47,6 +48,9 @@ public class BossScript : MonoBehaviour {
     GameObject player;
 
     ArcMover2D arcmover;
+
+    [HideInInspector]
+    public bool undamageable;
 
 
     // Use this for initialization
@@ -107,6 +111,25 @@ public class BossScript : MonoBehaviour {
         SwitchSide();
     }
 
+    #region Damageable implementation
+
+    public bool TakeDamage(int damage)
+    {
+        print("osuma");
+        health -= damage; 
+        if (health <= 0)
+        {
+            Die();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    #endregion
+
     IEnumerator BulletAttack()
     {
         inFirePosition = false;
@@ -132,6 +155,11 @@ public class BossScript : MonoBehaviour {
 
         SwitchSide();
 
+    }
+
+    void Die()
+    {
+        print("bossi kuoli xD");
     }
 
     void SwitchPhase()
@@ -174,8 +202,6 @@ public class BossScript : MonoBehaviour {
 
         } else if(Vector3.Distance(transform.position, upperPosition.position) <= positionTolerance)
         {
-
-            print("pitäis lähtee");
 
             int randomSide = Random.Range(0, 2);
 
