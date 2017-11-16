@@ -52,7 +52,7 @@ public class AttackScript : MonoBehaviour {
             var robot = collision.gameObject.GetComponent<EggRobot>();
             if(!robot.IsNullOrDestroyed())
             {
-                if(robot.damageable)
+                if(robot.damageable && !hitTargets.Contains(collision.gameObject))
                 {
                    hitTargets.Add(collision.gameObject);
 
@@ -65,13 +65,10 @@ public class AttackScript : MonoBehaviour {
             
         } else if(collision.CompareTag("Boss"))
         {
-            print("wutface");
-            var boss = collision.gameObject.GetComponent<BossScript>();
+            if(!hitTargets.Contains(collision.gameObject)) { 
 
-            if(!boss.undamageable)
-            {
-                boss.TakeDamage(damageAmount);
-                print("pitäis ottaa damaa");
+            hitTargets.Add(collision.gameObject);
+
             }
         }
 
@@ -113,7 +110,13 @@ public class AttackScript : MonoBehaviour {
                 }
 
 
+                } else if(enemy.GetComponent<BossScript>() != null)
+            {
+                if(!enemy.GetComponent<BossScript>().undamageable)
+                {
+                    enemy.GetComponent<BossScript>().TakeDamage(damageAmount);
                 }
+            }
 
             }
         
