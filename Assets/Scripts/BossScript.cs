@@ -100,17 +100,36 @@ public class BossScript : MonoBehaviour, Damageable {
        
        for(int i = 0; i < attackAreas.Count - safeAreaAmount;)
         {
-            int randomArea = Random.Range(0, 6);
+            int randomArea = Random.Range(0, attackAreas.Count);
 
-            if(!attackAreas[randomArea].activeSelf)
+            if(!attackAreas[randomArea].GetComponent<AreaDamageScript>().enabled)
             {
-                attackAreas[randomArea].SetActive(true);
+                //attackAreas[randomArea].SetActive(true);
                 //print(attackAreas[randomArea].name + " active");
+
+                var area = attackAreas[randomArea];
+
+                area.SetActive(true);
+
+                area.GetComponent<MeshRenderer>().enabled = true;
+
+                yield return new WaitForSeconds(1f);
+
+                
+                area.GetComponent<MeshRenderer>().enabled = false;
+
+
+                //Add cool particle effect here
+
+                
+                area.GetComponent<AreaDamageScript>().enabled = true;
+                area.GetComponent<BoxCollider2D>().enabled = true;
+
                 i++;
-                yield return new WaitForSeconds(.5f);
             }
         }
         yield return new WaitForSeconds(1f);
+
         DeadactivateAttackAreas();
 
         SwitchPhase();
@@ -249,6 +268,9 @@ public class BossScript : MonoBehaviour, Damageable {
     {
         foreach(var area in attackAreas)
         {
+            area.GetComponent<BoxCollider2D>().enabled = false;
+            area.GetComponent<AreaDamageScript>().enabled = false;
+            
             area.SetActive(false);
         }
     }
