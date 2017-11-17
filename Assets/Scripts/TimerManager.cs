@@ -89,8 +89,17 @@ public class TimerManager : MonoBehaviour {
 						t.ticks = t.tickCount;
 					}
 				}
-				timers[i] = t;
+				Replace(t);
 				i++;
+			}
+		}
+	}
+
+	//FIXME: OK this is staring to get bad, this whole thing needs a rewrite
+	void Replace(Timer timer) {
+		for (int i = 0; i < timers.Count; i++) {
+			if (timer.id == timers[i].id) {
+				timers[i] = timer;
 			}
 		}
 	}
