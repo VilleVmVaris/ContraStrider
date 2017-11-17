@@ -558,7 +558,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816449596618418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 55.28, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003804942187808}
@@ -1240,7 +1240,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43908250367072952, guid: 06662ef84cc47194d8062f355a9ee405, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4139816819023186}
   - {fileID: 4536416851316780}
@@ -1289,7 +1289,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43288770692951380, guid: 8ac20db478ae36847a5634357c9a8cf9, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4493690327450486}
   m_BlendShapeWeights: []
@@ -1336,7 +1336,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43487670878652134, guid: f2a783d62cedf2e4499e75a84b7cd309, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4934206335703264}
   m_BlendShapeWeights: []
@@ -1383,7 +1383,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43068176222221452, guid: 8063cc4aaec131046ac68126eed421e3, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4239069482700058}
   - {fileID: 4004294674737498}
@@ -1454,7 +1454,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -566092618
+  randomSeed: -433823996
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1544,7 +1544,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.3931034, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.80689657, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1856,7 +1856,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4752,8 +4752,8 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0
-  m_LengthScale: 3
+  m_VelocityScale: 0.08
+  m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
