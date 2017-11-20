@@ -1045,6 +1045,8 @@ MonoBehaviour:
   moveSpeed: 2.2
   chaseDistance: 10
   distanceAllowance: 10
+  floatingAmplitude: 0
+  floatingSpeed: 0
   damageable: 1
   shootingDistance: 7
   burstAmount: 3

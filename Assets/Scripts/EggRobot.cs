@@ -15,6 +15,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public float moveSpeed;
 	public float chaseDistance;
     public float distanceAllowance;
+	public float floatingAmplitude;
+	public float floatingSpeed;
 
     public bool damageable = true;
 
@@ -71,9 +73,12 @@ public class EggRobot : MonoBehaviour, Damageable {
 			CalculateActions(); 
 		}
 
-		//Stops flying robots from being affected by gravity 
-		if (type != RobotType.Flying) {
+		if (type == RobotType.Normal) {
+			// Apply gravity to grounded enemies
 			velocity.y += gravity * Time.deltaTime;
+		} else if (type == RobotType.Flying) { 
+			// Float flying robots up and down
+			velocity.y = floatingAmplitude * Mathf.Sin(floatingSpeed * Time.time);
 		}
 
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
@@ -93,7 +98,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && Vector3.Distance(transform.position, startPoint) < distanceAllowance) {
 			velocity.x = moveDirection * moveSpeed;
 			if (type == RobotType.Normal) {
-				coreAnimator.SetBool("munaanimation", true);	
+				coreAnimator.SetBool("munaanimation", true);
 			} else {
 				coreAnimator.SetBool("munafly", true);
 			}

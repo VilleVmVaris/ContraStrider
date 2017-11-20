@@ -163,7 +163,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4242543021189596, guid: 42d687e6b6190494985b6b8804b73ce0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 55.28
+      value: 64.28
       objectReference: {fileID: 0}
     - target: {fileID: 4242543021189596, guid: 42d687e6b6190494985b6b8804b73ce0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3171,7 +3171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1292986533851408, guid: 74c1e9e3d5e38a5498c46a53095134d0, type: 2}
       propertyPath: m_Name
-      value: EggRobot (1)
+      value: EggRobot (flying)
       objectReference: {fileID: 0}
     - target: {fileID: 137601047899124450, guid: 74c1e9e3d5e38a5498c46a53095134d0,
         type: 2}
@@ -3210,6 +3210,16 @@ Prefab:
         type: 2}
       propertyPath: shielded
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114669416245588102, guid: 74c1e9e3d5e38a5498c46a53095134d0,
+        type: 2}
+      propertyPath: flyingFloatAmplitude
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114669416245588102, guid: 74c1e9e3d5e38a5498c46a53095134d0,
+        type: 2}
+      propertyPath: flyingFloatSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74c1e9e3d5e38a5498c46a53095134d0, type: 2}
