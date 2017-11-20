@@ -84,8 +84,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4265572889611476}
   - component: {fileID: 212047502860452150}
+  - component: {fileID: 114427615602551456}
   m_Layer: 0
-  m_Name: varjo (1)
+  m_Name: varjo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,6 +1016,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Poses: []
+--- !u!114 &114427615602551456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221290600645228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c0c2462e69f3f4da1163cf7ebd47ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowDistance: 3
 --- !u!114 &114491614096327748
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,11 +8,13 @@ public class CharacterShadow : MonoBehaviour {
 
 	SpriteRenderer sr;
 	Transform player;
+	Vector3 maxScale;
 
 	// Use this for initialization
 	void Start () {
 		sr = GetComponent<SpriteRenderer>();
 		player = transform.root;
+		maxScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -20,11 +22,11 @@ public class CharacterShadow : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(player.position, Vector2.down, shadowDistance, Helpers.ObstacleLayerMask);
 		if (hit.collider != null) {
 			sr.enabled = true;
+			// Position
 			transform.position = hit.point;
-// 			//TODO: Fade and/or scale?
-//			Color color = sr.material.color;
-//			color.a = ??
-//			sr.material.color = color;
+			// Scale
+			var t = Mathf.InverseLerp(0, shadowDistance, hit.distance);
+			transform.localScale = Vector3.Lerp(maxScale, Vector3.zero, t);
 		} else {
 			sr.enabled = false;
 		}
