@@ -47,6 +47,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 	bool canShoot;
 	System.Guid rotateTimer;
 
+    Vector2 startPoint;
+
+    public float distanceAllowance;
+
 	// Use this for initialization
 	void Start() {
 		controller = GetComponent<Controller2D>();
@@ -58,6 +62,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 		rotateTimer = timer.Continuously(RotateY, 3);
 		shieldSprite.SetActive(shielded);
 		jetpackSprite.SetActive(type == RobotType.Flying);
+
+        startPoint = transform.position;
 	}
 
 	// Update is called once per frame
@@ -85,7 +91,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	void CalculateActions() {
 		// Moving
-		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove()) {
+		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && Vector3.Distance(transform.position, startPoint) < distanceAllowance) {
 			velocity.x = moveDirection * moveSpeed;
 			if (type == RobotType.Normal) {
 				coreAnimator.SetBool("munaanimation", true);	
