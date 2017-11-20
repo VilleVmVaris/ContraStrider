@@ -24,6 +24,8 @@ public class PlatformController : RaycastController
     [Range(0, 2)]
     public float easeAmount;
 
+    bool currentlyRiding;
+
     public override void Start()
     {
         base.Start();
@@ -42,6 +44,7 @@ public class PlatformController : RaycastController
     {
         UpdaterayCastOrigins();
 
+        
         Vector3 velocity = CalculatePlatformMovement();
 
         CalculatePassangerMovement(velocity);

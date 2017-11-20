@@ -14,8 +14,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 	[Header("Movement")]
 	public float moveSpeed;
 	public float chaseDistance;
+    public float distanceAllowance;
 
-	public bool damageable = true;
+    public bool damageable = true;
 
 	[Header("Weapon Use")]
 	public float shootingDistance;
@@ -48,8 +49,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 	System.Guid rotateTimer;
 
     Vector2 startPoint;
-
-    public float distanceAllowance;
 
 	// Use this for initialization
 	void Start() {
