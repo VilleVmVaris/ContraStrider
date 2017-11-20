@@ -189,7 +189,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
-        GetComponent<BoxCollider2D>().enabled = false;
 		if (type == RobotType.Normal) {
 			int i = Random.Range(0, deathAnimations.Count);
 			coreAnimator.SetTrigger(deathAnimations[i].name);

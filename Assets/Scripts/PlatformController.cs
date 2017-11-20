@@ -24,8 +24,6 @@ public class PlatformController : RaycastController
     [Range(0, 2)]
     public float easeAmount;
 
-    bool currentlyRiding;
-
     public override void Start()
     {
         base.Start();
@@ -48,9 +46,15 @@ public class PlatformController : RaycastController
         Vector3 velocity = CalculatePlatformMovement();
 
         CalculatePassangerMovement(velocity);
+        
+
         MovePassengers(true);
+
         transform.Translate(velocity);
+
         MovePassengers(false);
+
+        
     }
 
     //Ease / slow down when approaching a waypoint
@@ -158,6 +162,9 @@ public class PlatformController : RaycastController
 
                 if (hit && hit.distance != 0)
                 {
+                    
+                   
+
                     if (!movedPassengers.Contains(hit.transform))
                     {
                         movedPassengers.Add(hit.transform);
@@ -171,6 +178,7 @@ public class PlatformController : RaycastController
                     }
 
                 }
+                
             }
         }
 
@@ -188,7 +196,7 @@ public class PlatformController : RaycastController
 
                 if (hit && hit.distance != 0)
                 {
-                   
+
                     if (!movedPassengers.Contains(hit.transform))
                     {
                         movedPassengers.Add(hit.transform);
@@ -199,6 +207,7 @@ public class PlatformController : RaycastController
                     }
 
                 }
+
             }
         }
     }
