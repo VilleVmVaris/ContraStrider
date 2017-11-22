@@ -159,7 +159,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator BulletAttack()
     {
-        bossAnimator.SetBool("veliammus", true);
+        bossAnimator.SetBool("valiammus", true);
 
         fireDirection.y = -1;
 
@@ -184,7 +184,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
         attacksDone++;
 
-        bossAnimator.SetBool("veliammus", false);
+        bossAnimator.SetBool("valiammus", false);
 
         if (attacksDone >= bulletAttacksInLoop)
         {
@@ -197,6 +197,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void Die()
     {
+		bossAnimator.SetBool("velikuolee", true);
         print("bossi kuoli xD");
     }
 
@@ -215,7 +216,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void SwitchSide()
     {
-        bossAnimator.SetBool("veliJumpUP", true);
+        bossAnimator.SetBool("jumpup", true);
 
         if(!inBulletMode)
         {
@@ -268,6 +269,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
      void ReadyToAttack()
     {
+		bossAnimator.SetBool("jumpDOWN", true);
         inFirePosition = true;
         
     }

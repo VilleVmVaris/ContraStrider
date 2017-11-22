@@ -24,7 +24,6 @@ public class AreaDamageScript : MonoBehaviour {
     {
         if(collision.gameObject.layer == 8 && collision.GetComponent<Player>() != null)
         {
-            print("täällä se on");
             if(!damager.damageTargets.Contains(collision.gameObject))
             { 
             damager.damageTargets.Add(collision.gameObject);
