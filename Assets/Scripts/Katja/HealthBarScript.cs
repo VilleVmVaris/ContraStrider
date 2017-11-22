@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarScript : MonoBehaviour {
+
+	// TODO: Player script should send health amount at start?
+
     public PowerUP PWU;
     public Image bar;
     public float health = 0;
