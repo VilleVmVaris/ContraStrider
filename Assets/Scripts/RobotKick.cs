@@ -5,25 +5,29 @@ using UnityEngine;
 public class RobotKick : MonoBehaviour {
 
     public float force;
-    Vector2 knockDir;
-    public float directionX;
-    public float directionY;
+    public int damage;
+    [HideInInspector]
+    public float duration;
+    [HideInInspector]
+    public Vector2 direction;
+
 
 	// Use this for initialization
 	void Start () {
-        knockDir = new Vector2(directionX, directionY);
+   
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        print("kickscript direction is " + direction);
 	}
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 && collision.GetComponent<Player>() != null)
         {
-            collision.GetComponent<Player>().KnockBack(knockDir, force);
+            if(!collision.gameObject.GetComponent<Player>().knockedBack)
+            collision.GetComponent<Player>().KnockBack(direction, force, duration);
         }
     }
 

@@ -75,11 +75,14 @@ public class Player : MonoBehaviour, Damageable
     [HideInInspector]
     public BladeDash dash;
 
-    bool knockedBack;
+    [HideInInspector]
+    public bool knockedBack;
 
     float knockForce;
 
     Vector2 knockDirection;
+
+    float knockDuration;
 
     // Use this for initialization
     void Start()
@@ -116,7 +119,8 @@ public class Player : MonoBehaviour, Damageable
 				EndAttackEffect();
 			}
 		}
-		if (health <= 0) {
+
+        if (health <= 0) {
 			return; // TODO: Proper handling of death 
 		}
 		if (dash.aiming) {
@@ -136,13 +140,15 @@ public class Player : MonoBehaviour, Damageable
         if (dash.dashing)
         {
             controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
+
+        } else if(knockedBack)
+        {
+            print("knockdirection " + knockDirection);
+            controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
+            timer.Once(StopKnockBack, knockDuration);
         }
 
-        else if(knockedBack)
-        {
-            controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
-        }
-		else
+        else
         {
             controller.Move(velocity * Time.deltaTime, directionalInput);
         }
@@ -578,11 +584,17 @@ public class Player : MonoBehaviour, Damageable
 
     }
 
-    public void KnockBack(Vector2 direction, float force)
+    public void KnockBack(Vector2 direction, float force, float duration)
     {
-        knockedBack = true;
         knockDirection = direction;
+        knockDuration = duration;
         knockForce = force;
+        knockedBack = true;
+    }
+
+    void StopKnockBack()
+    {
+        knockedBack = false;
     }
 
     void Die()

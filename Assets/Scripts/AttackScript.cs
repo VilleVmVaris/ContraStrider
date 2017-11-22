@@ -46,7 +46,7 @@ public class AttackScript : MonoBehaviour {
 			}
 		}
         */
-        
+        if(collision.GetComponent<EggRobot>() != null || collision.GetComponent<BossScript>() != null) { 
         if (collision.CompareTag("Enemy"))
         {
             var robot = collision.gameObject.GetComponent<EggRobot>();
@@ -80,6 +80,7 @@ public class AttackScript : MonoBehaviour {
         gameObject.SetActive(false);
         }
 
+    }
     }
 
     public void DealDamage()

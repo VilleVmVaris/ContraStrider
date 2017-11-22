@@ -3101,6 +3101,7 @@ MonoBehaviour:
   moveSpeed: 10
   maxWalkSpeed: 4
   dash: {fileID: 0}
+  knockedBack: 0
 --- !u!114 &114843203987159110
 MonoBehaviour:
   m_ObjectHideFlags: 1
