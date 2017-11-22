@@ -93,7 +93,6 @@ public class BossScript : MonoBehaviour, Damageable {
         }
     }
 
-
     IEnumerator AreaAttack()
     {
         bossAnimator.SetBool("velileijuu", true);
@@ -118,21 +117,17 @@ public class BossScript : MonoBehaviour, Damageable {
                 area.GetComponent<MeshRenderer>().enabled = true;
 
                 yield return new WaitForSeconds(1f);
-
                 
                 area.GetComponent<MeshRenderer>().enabled = false;
 
-
                 //Add cool particle effect here
 
-                
                 area.GetComponent<AreaDamageScript>().enabled = true;
                 area.GetComponent<BoxCollider2D>().enabled = true;
 
                 i++;
             }
             bossAnimator.SetBool("velileijuu", false);
-
 
         }
         yield return new WaitForSeconds(1f);
@@ -165,10 +160,11 @@ public class BossScript : MonoBehaviour, Damageable {
     IEnumerator BulletAttack()
     {
         bossAnimator.SetBool("veliammus", true);
-        print(fireSegment);
+
         fireDirection.y = -1;
 
         inFirePosition = false;
+
         for (int i = 0; i < bulletAmount; i++)
         {
             //float dirToPlayerX = player.transform.position.x - transform.position.x;
@@ -182,8 +178,6 @@ public class BossScript : MonoBehaviour, Damageable {
             fireDirection.y += fireSegment;
             
             yield return new WaitForSeconds(.2f);
-
-            
 
         }
         yield return new WaitForSeconds(.5f);
