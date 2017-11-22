@@ -75,6 +75,12 @@ public class Player : MonoBehaviour, Damageable
     [HideInInspector]
     public BladeDash dash;
 
+    bool knockedBack;
+
+    float knockForce;
+
+    Vector2 knockDirection;
+
     // Use this for initialization
     void Start()
     {
@@ -130,6 +136,11 @@ public class Player : MonoBehaviour, Damageable
         if (dash.dashing)
         {
             controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
+        }
+
+        else if(knockedBack)
+        {
+            controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
         }
 		else
         {
@@ -559,8 +570,17 @@ public class Player : MonoBehaviour, Damageable
 			return true;
 		} else {
 			return false;
-		}
+		} 
+
     }
+
+    public void KnockBack(Vector2 direction, float force)
+    {
+        knockedBack = true;
+        knockDirection = direction;
+        knockForce = force;
+    }
+
     void Die()
     {
 		animator.SetBool("ninjadeath", true);

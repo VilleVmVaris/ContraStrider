@@ -56,6 +56,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
     float fireSegment;
 
+    public Animator bossAnimator;
+
 
     // Use this for initialization
     void Start () {
@@ -94,6 +96,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator AreaAttack()
     {
+        bossAnimator.SetBool("velileijuu", true);
+
         inFirePosition = false;
 
         yield return new WaitForSeconds(1f);
@@ -127,6 +131,9 @@ public class BossScript : MonoBehaviour, Damageable {
 
                 i++;
             }
+            bossAnimator.SetBool("velileijuu", false);
+
+
         }
         yield return new WaitForSeconds(1f);
 
@@ -157,6 +164,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator BulletAttack()
     {
+        bossAnimator.SetBool("veliammus", true);
         print(fireSegment);
         fireDirection.y = -1;
 
@@ -173,13 +181,16 @@ public class BossScript : MonoBehaviour, Damageable {
 
             fireDirection.y += fireSegment;
             
-
             yield return new WaitForSeconds(.2f);
+
+            
 
         }
         yield return new WaitForSeconds(.5f);
 
         attacksDone++;
+
+        bossAnimator.SetBool("veliammus", false);
 
         if (attacksDone >= bulletAttacksInLoop)
         {
@@ -210,6 +221,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void SwitchSide()
     {
+        bossAnimator.SetBool("veliJumpUP", true);
+
         if(!inBulletMode)
         {
             //arcmover.SetTarget(upperPosition.position);
@@ -262,6 +275,7 @@ public class BossScript : MonoBehaviour, Damageable {
      void ReadyToAttack()
     {
         inFirePosition = true;
+        
     }
 
     void DeadactivateAttackAreas()
