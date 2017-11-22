@@ -22,6 +22,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	[Header("Weapon Use")]
 	public float shootingDistance;
+    public float kickDistance;
+    public float kickDuration;
+    public float kickDelay;
+    public GameObject kickObject;
 	public int burstAmount;
 	public int burstInterval;
 
@@ -50,6 +54,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	float moveDirection;
 	bool canShoot;
 	System.Guid rotateTimer;
+    bool kicking;
 
     Vector2 startPoint;
 
@@ -112,11 +117,19 @@ public class EggRobot : MonoBehaviour, Damageable {
 		}
 
 		// Shooting
-		if (Vector3.Distance(player.transform.position, transform.position) < shootingDistance) {
+		if (Vector3.Distance(player.transform.position, transform.position) < shootingDistance && !kicking) {
 			canShoot = true;
 		} else {
 			canShoot = false;
 		}
+
+        //Kicking
+
+        if(Vector3.Distance(player.transform.position, transform.position) < kickDistance)
+        {
+            kicking = true;
+            timer.Once(ActivateKick, kickDelay);
+        }
 	}
 
 	void RotateY() { // Rotates enemy sprite to face player
@@ -192,6 +205,31 @@ public class EggRobot : MonoBehaviour, Damageable {
 		shieldSprite.transform.parent = null;
 		shieldAnimator.SetBool("kuoretfly", true);
         print("kilpimeni");
+    }
+
+    public void ActivateKick()
+    {
+        if(player.transform.position.x < transform.position.x)
+        {
+            kickObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            kickObject.GetComponent<RobotKick>().direction = new Vector2(-1, 0);
+
+        } else
+        {
+            kickObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+            kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
+        }
+
+        kickObject.SetActive(true);
+        timer.Once(DeactivateKick, kickDuration);
+
+
+    }
+
+    public void DeactivateKick()
+    {
+        kicking = false;
+        kickObject.SetActive(false);
     }
 
 	void Die() {
