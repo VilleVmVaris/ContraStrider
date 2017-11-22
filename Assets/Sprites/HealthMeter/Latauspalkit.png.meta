@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: ad568f75d6722dd468d5de2017fd0b96
-timeCreated: 1508323179
-licenseType: Pro
+timeCreated: 1511356109
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Latauspalkit_0
@@ -102,12 +102,12 @@ TextureImporter:
       name: Latauspalkit_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 402
-        width: 497
-        height: 100
+        x: 38
+        y: 400
+        width: 1638
+        height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -116,12 +116,12 @@ TextureImporter:
       name: Latauspalkit_1
       rect:
         serializedVersion: 2
-        x: 8
+        x: 38
         y: 290
-        width: 497
-        height: 100
+        width: 1638
+        height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -130,12 +130,12 @@ TextureImporter:
       name: Latauspalkit_2
       rect:
         serializedVersion: 2
-        x: 9
+        x: 38
         y: 178
-        width: 497
-        height: 100
+        width: 1638
+        height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
