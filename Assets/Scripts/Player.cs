@@ -214,7 +214,11 @@ public class Player : MonoBehaviour, Damageable
 			 
 			// Hardcoded rotations, cuz i couldn't be arsed
 			if (attackDir == 0 || attackDir == 180) {
-				animator.SetBool("ninjasword", true);
+				if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed ) {
+					animator.SetBool("ninjasword", true);
+				} else {
+					animator.SetBool("ninjaswordSTAND", true);
+				}
 				attackEffect.transform.rotation = Quaternion.Euler(75f, 0f, 0f);
 			} else if (attackDir == -90) {
 				animator.SetBool("ninjaswordUP", true);
