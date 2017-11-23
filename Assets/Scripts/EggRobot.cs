@@ -129,13 +129,13 @@ public class EggRobot : MonoBehaviour, Damageable {
 
         if(Vector3.Distance(player.transform.position, transform.position) < kickDistance && !kicking && !kickOnCooldown)
         {
-            if (player.transform.position.x < transform.position.x)
+            if (player.transform.position.x < transform.position.x && !kicking)
             {
                 kickObject.transform.rotation = Quaternion.Euler(0, 0, 0);
                 kickObject.GetComponent<RobotKick>().direction = new Vector2(-1, 0);
 
             }
-            else
+            else if(player.transform.position.x > transform.position.x && !kicking)
             {
                 kickObject.transform.rotation = Quaternion.Euler(0, 0, 180);
                 kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
