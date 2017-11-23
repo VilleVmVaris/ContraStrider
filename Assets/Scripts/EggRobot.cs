@@ -262,12 +262,13 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	void Die() {
 		velocity.x = 0f;
-		canShoot = false;
+        DeactivateKick();
+        gameObject.layer = 26;
+        canShoot = false;
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
-        DeactivateKick();
-		if (type == RobotType.Normal) {
+        if (type == RobotType.Normal) {
 			int i = Random.Range(0, deathAnimations.Count);
 			coreAnimator.SetTrigger(deathAnimations[i].name);
 			dieLength = deathAnimations[i].length;

@@ -400,7 +400,7 @@ public class Player : MonoBehaviour, Damageable
 
         //Check for collisions on sides and below and make sure velocity.y is negative to enable wall slide
         wallSliding = false;
-        if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
+        if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0 && controller.collisions.collisionLayer == 9)
         {
             wallSliding = true;
 

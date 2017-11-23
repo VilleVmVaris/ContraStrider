@@ -86,7 +86,7 @@ public class Controller2D : RaycastController {
             if (hit)
             {
 
-
+                collisions.collisionLayer = hit.collider.gameObject.layer;
                 //Check is platform is passable
 
                 if (hit.collider.tag == "PassablePlatform" || (hit.collider.tag == "Enemy" && dashingThroughEnemy))
@@ -180,6 +180,8 @@ public class Controller2D : RaycastController {
             //Check for collisions
             if (hit)
             {
+                collisions.collisionLayer = hit.collider.gameObject.layer;
+
                 if(hit.collider.tag == "Enemy" && dashingThroughEnemy)
                 {
                     continue;
@@ -332,6 +334,7 @@ public class Controller2D : RaycastController {
         public Vector2 moveAmountOld;
         public bool fallingThroughPlatform;
         public Vector2 slopeNormal;
+        public int collisionLayer;
 
         //Used for remembering which way the character is facing
         public int faceDir;
