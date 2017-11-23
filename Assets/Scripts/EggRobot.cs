@@ -28,6 +28,8 @@ public class EggRobot : MonoBehaviour, Damageable {
     public GameObject kickObject;
 	public int burstAmount;
 	public int burstInterval;
+    public float kickCooldown;
+    bool kickOnCooldown;
 
     public bool shielded;
 
@@ -104,7 +106,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	void CalculateActions() {
 		// Moving
-		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && Vector3.Distance(transform.position, startPoint) < distanceAllowance) {
+		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && Vector3.Distance(transform.position, startPoint) < distanceAllowance && !kicking) {
 			velocity.x = moveDirection * moveSpeed;
 			if (type == RobotType.Normal) {
 				coreAnimator.SetBool("munaanimation", true);
@@ -125,7 +127,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 
         //Kicking
 
-        if(Vector3.Distance(player.transform.position, transform.position) < kickDistance)
+        if(Vector3.Distance(player.transform.position, transform.position) < kickDistance && !kicking && !kickOnCooldown)
         {
             kicking = true;
             timer.Once(ActivateKick, kickDelay);
@@ -224,13 +226,19 @@ public class EggRobot : MonoBehaviour, Damageable {
         kickObject.SetActive(true);
         timer.Once(DeactivateKick, kickDuration);
 
-
     }
 
     public void DeactivateKick()
     {
         kicking = false;
         kickObject.SetActive(false);
+        kickOnCooldown = true;
+        timer.Once(EndKickCooldown, kickCooldown);
+    }
+
+    void EndKickCooldown()
+    {
+        kickOnCooldown = false;
     }
 
 	void Die() {
@@ -239,6 +247,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
+        DeactivateKick();
 		if (type == RobotType.Normal) {
 			int i = Random.Range(0, deathAnimations.Count);
 			coreAnimator.SetTrigger(deathAnimations[i].name);
