@@ -85,17 +85,17 @@ public class BossScript : MonoBehaviour, Damageable {
         if(inFirePosition && inBulletMode) {
             StopCoroutine("AreaAttack"); 
             StartCoroutine("BulletAttack");
-            
         } else if (inFirePosition && !inBulletMode)
         {
             StopCoroutine("BulletAttack");
             StartCoroutine("AreaAttack");
+			bossAnimator.SetBool("velileijuu", true);
         }
     }
 
     IEnumerator AreaAttack()
     {
-        bossAnimator.SetBool("velileijuu", true);
+        
 
         inFirePosition = false;
 
@@ -127,8 +127,6 @@ public class BossScript : MonoBehaviour, Damageable {
 
                 i++;
             }
-            bossAnimator.SetBool("velileijuu", false);
-
         }
         yield return new WaitForSeconds(1f);
 
@@ -165,6 +163,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
         inFirePosition = false;
 
+		yield return new WaitForSeconds(.8f);
+
         for (int i = 0; i < bulletAmount; i++)
         {
             //float dirToPlayerX = player.transform.position.x - transform.position.x;
@@ -197,6 +197,10 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void Die()
     {
+		inFirePosition = false;
+		inBulletMode = false;
+		StopCoroutine("BulletAttack");
+		StopCoroutine("AreaAttack");
 		bossAnimator.SetBool("velikuolee", true);
         print("bossi kuoli xD");
     }
@@ -283,6 +287,7 @@ public class BossScript : MonoBehaviour, Damageable {
             
             area.SetActive(false);
         }
+		bossAnimator.SetBool("velileijuu", false);
     }
 
 }
