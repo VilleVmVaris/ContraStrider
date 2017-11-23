@@ -141,9 +141,11 @@ public class EggRobot : MonoBehaviour, Damageable {
                 kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
             }
 
-            kicking = true;
-            coreAnimator.SetBool("munapotku", true);
-            timer.Once(ActivateKick, kickDelay);
+			if (!coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")) {
+				kicking = true;
+				coreAnimator.SetBool("munapotku", true);
+				timer.Once(ActivateKick, kickDelay);
+			}
         }
 	}
 
