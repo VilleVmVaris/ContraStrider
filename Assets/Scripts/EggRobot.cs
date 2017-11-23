@@ -105,17 +105,30 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	void CalculateActions() {
+        print("liikelaskelma "+Vector3.Distance(transform.position, startPoint)+" " + moveDirection + " " + moveSpeed);
 		// Moving
-		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && Vector3.Distance(transform.position, startPoint) < distanceAllowance && !kicking) {
-			velocity.x = moveDirection * moveSpeed;
-			if (type == RobotType.Normal) {
-				coreAnimator.SetBool("munaanimation", true);
-			} else {
-				coreAnimator.SetBool("munafly", true);
-			}
-		} else {
-			coreAnimator.SetBool("munaanimation", false);
-			velocity.x = 0f;
+		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && !kicking) {
+            if ((Vector3.Distance(transform.position, startPoint) < distanceAllowance || (Vector3.Distance(transform.position + new Vector3(moveDirection, 0, 0), startPoint) < Vector3.Distance(transform.position, startPoint)))) 
+            {
+                velocity.x = moveDirection * moveSpeed;
+
+                if (type == RobotType.Normal)
+                {
+                    coreAnimator.SetBool("munaanimation", true);
+                }
+                else
+                {
+                    coreAnimator.SetBool("munafly", true);
+                }
+            }
+            else
+            {
+                velocity.x = 0;
+                coreAnimator.SetBool("munaanimation", false);
+
+
+            }
+
 		}
 
 		// Shooting
