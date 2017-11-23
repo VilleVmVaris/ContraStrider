@@ -259,7 +259,7 @@ public class Player : MonoBehaviour, Damageable
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 			groundAttackObject.SetActive(true);
-			//timer.Once(EndAttackEffect, attackDurationTicks);
+			timer.Once(EndAttackEffect, attackDurationTicks);
 		}
     }
 
@@ -288,7 +288,7 @@ public class Player : MonoBehaviour, Damageable
 
             chargeAttackObject.SetActive(true);
 
-            //timer.Once(EndAttackEffect, attackDurationTicks);
+            timer.Once(EndAttackEffect, attackDurationTicks);
 
             ResetCharge();
 

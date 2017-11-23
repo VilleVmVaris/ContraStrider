@@ -127,8 +127,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 
         //Kicking
 
-
-
         if(Vector3.Distance(player.transform.position, transform.position) < kickDistance && !kicking && !kickOnCooldown)
         {
             if (player.transform.position.x < transform.position.x)
