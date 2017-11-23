@@ -911,8 +911,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292986533851408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: -2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -277.2, y: 51.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470216261233724}
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4961216
+  m_Length: 2.4961658
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4343735075165502}
   m_AttachedIK: {fileID: 0}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.15805
+  m_Length: 2.158091
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4474885553115092}
   m_AttachedIK: {fileID: 0}
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.0823047
+  m_Length: 2.0823557
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4280816168414210}
   m_AttachedIK: {fileID: 0}
@@ -1321,11 +1321,11 @@ MonoBehaviour:
   shootingDistance: 7
   kickDistance: 3
   kickDuration: 0.5
-  kickDelay: 0.5
+  kickDelay: 0.2
   kickObject: {fileID: 1531271582154036}
   burstAmount: 3
   burstInterval: 35
-  kickCooldown: 0
+  kickCooldown: 1
   shielded: 0
   coreAnimator: {fileID: 95236070025867518}
   deathAnimations:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127ccc6c7e43a154a83c0628bd9baeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 5
   damage: 5
   duration: 0
   direction: {x: 0, y: 0}
@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586234
+  m_Length: 2.45863
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4436227326209812}
   m_AttachedIK: {fileID: 0}

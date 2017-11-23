@@ -221,8 +221,8 @@ public class EggRobot : MonoBehaviour, Damageable {
             kickObject.transform.rotation = Quaternion.Euler(0, 0, 180);
             kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
         }
-
-        coreAnimator.SetBool("munapotkuanimaatio", true);
+        kickObject.GetComponent<RobotKick>().duration = kickDuration;
+        coreAnimator.SetBool("munapotku", true);
         kickObject.SetActive(true);
         timer.Once(DeactivateKick, kickDuration);
 
