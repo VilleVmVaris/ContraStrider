@@ -127,15 +127,30 @@ public class EggRobot : MonoBehaviour, Damageable {
 
         //Kicking
 
+
+
         if(Vector3.Distance(player.transform.position, transform.position) < kickDistance && !kicking && !kickOnCooldown)
         {
+            if (player.transform.position.x < transform.position.x)
+            {
+                kickObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                kickObject.GetComponent<RobotKick>().direction = new Vector2(-1, 0);
+
+            }
+            else
+            {
+                kickObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+                kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
+            }
+
             kicking = true;
+            coreAnimator.SetBool("munapotku", true);
             timer.Once(ActivateKick, kickDelay);
         }
 	}
 
 	void RotateY() { // Rotates enemy sprite to face player
-		if (player != null) {
+		if (player != null && !kicking) {
 			if (transform.position.x < player.transform.position.x) {
 				robotSprite.transform.rotation = new Quaternion(0, 180f, 0, 0);
 			} else {
@@ -146,10 +161,11 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 		
 	bool CanMove() {
-		// Stop while shooting or taking damage
-		return !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
-			&& !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
-			&& !coreAnimator.IsInTransition(0); 
+        // Stop while shooting or taking damage
+        return !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
+            && !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
+            && !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munapotku")
+            && !coreAnimator.IsInTransition(0); 
 	}
 
 	void ShootPlayer() {
@@ -211,18 +227,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 
     public void ActivateKick()
     {
-        if(player.transform.position.x < transform.position.x)
-        {
-            kickObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            kickObject.GetComponent<RobotKick>().direction = new Vector2(-1, 0);
-
-        } else
-        {
-            kickObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-            kickObject.GetComponent<RobotKick>().direction = new Vector2(1, 0);
-        }
+        
         kickObject.GetComponent<RobotKick>().duration = kickDuration;
-        coreAnimator.SetBool("munapotku", true);
         kickObject.SetActive(true);
         timer.Once(DeactivateKick, kickDuration);
 
