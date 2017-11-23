@@ -26,7 +26,7 @@ public class RobotKick : MonoBehaviour {
     {
         if(collision.gameObject.layer == 8 && collision.GetComponent<Player>() != null)
         {
-            if(!collision.gameObject.GetComponent<Player>().knockedBack && collision.gameObject.GetComponent<Player>().CheckCollisionStatus())
+            if(!collision.gameObject.GetComponent<Player>().knockedBack && collision.gameObject.GetComponent<Player>().CheckCollisionStatus() && !collision.gameObject.GetComponent<Player>().dash.dashing)
             collision.GetComponent<Player>().KnockBack(direction, force, duration);
         }
     }

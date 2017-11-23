@@ -1325,6 +1325,7 @@ MonoBehaviour:
   kickObject: {fileID: 1531271582154036}
   burstAmount: 3
   burstInterval: 35
+  kickCooldown: 0
   shielded: 0
   coreAnimator: {fileID: 95236070025867518}
   deathAnimations:
