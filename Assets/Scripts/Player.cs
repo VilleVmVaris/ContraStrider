@@ -220,7 +220,7 @@ public class Player : MonoBehaviour, Damageable
 			 
 			// Hardcoded rotations, cuz i couldn't be arsed
 			if (attackDir == 0 || attackDir == 180) {
-				if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed ) {
+				if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed || wallSliding) {
 					animator.SetBool("ninjasword", true);
 				} else {
 					animator.SetBool("ninjaswordSTAND", true);
