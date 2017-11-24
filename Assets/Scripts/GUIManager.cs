@@ -7,14 +7,15 @@ public class GUIManager : MonoBehaviour {
 	public HealthBarScript HealthBar;
 	public ScoreScript Score;
 	public CheckpointScript Checkpoint;
+	public BladeDashMeter BladeDash;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 		
 	}
 
@@ -26,4 +27,13 @@ public class GUIManager : MonoBehaviour {
 	public void DoubleScoreFactor() {
 		Score.scoreFactor = 2; //(Timelimit?)
 	}
+
+	public void ReFillDashCharge(int ticks) {
+		BladeDash.FillDash(ticks);
+	}
+
+	public void SetFullDashCharge() {
+		BladeDash.FullCharge();
+	}
+
 }

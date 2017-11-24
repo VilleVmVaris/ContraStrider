@@ -616,26 +616,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
-        type: 2}
-      propertyPath: hitFlashColor.r
-      value: 0.9485294
-      objectReference: {fileID: 0}
-    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
-        type: 2}
-      propertyPath: hitFlashColor.g
-      value: 0.55098397
-      objectReference: {fileID: 0}
-    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
-        type: 2}
-      propertyPath: hitFlashColor.b
-      value: 0.55098397
-      objectReference: {fileID: 0}
-    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
-        type: 2}
-      propertyPath: hitFlashColor.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
   m_IsPrefabParent: 0
@@ -3398,15 +3378,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224838876222196090, guid: 62272e519121d244e940a6fa065ec194,
+    - target: {fileID: 224085893586653244, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -200
+      value: -320
       objectReference: {fileID: 0}
-    - target: {fileID: 224838876222196090, guid: 62272e519121d244e940a6fa065ec194,
+    - target: {fileID: 224085893586653244, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 774.31964
+      value: -724.31964
       objectReference: {fileID: 0}
     - target: {fileID: 224382324860823752, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
@@ -3417,6 +3397,16 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 789.31964
+      objectReference: {fileID: 0}
+    - target: {fileID: 224838876222196090, guid: 62272e519121d244e940a6fa065ec194,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224838876222196090, guid: 62272e519121d244e940a6fa065ec194,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 774.31964
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62272e519121d244e940a6fa065ec194, type: 2}

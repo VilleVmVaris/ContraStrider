@@ -21,7 +21,7 @@ public class BladeDash : MonoBehaviour {
 	TimerManager timer;
 	Controller2D controller;
 	Animator animator;
-
+	GUIManager gui;
     GameObject dashAttack;
     
 
@@ -32,6 +32,7 @@ public class BladeDash : MonoBehaviour {
 		animator = GetComponentInChildren<Animator>();
 		dashArrow.SetActive(false);
         dashAttack = GetComponent<Player>().dashAttack;
+		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
 	}
 
 	// Update is called once per frame
@@ -84,6 +85,7 @@ public class BladeDash : MonoBehaviour {
 			Time.timeScale = 1f;
 			timer.Once(StopDash, dashTicks);
 			timer.Once(EndCoolDown, coolDown);
+			gui.ReFillDashCharge(coolDown);
 			controller.dashingThroughEnemy = true;
 		}
 	}
@@ -96,6 +98,7 @@ public class BladeDash : MonoBehaviour {
 	}
 
 	public void EndCoolDown() {
+		gui.SetFullDashCharge();
 		onCooldown = false;
 	}
 
