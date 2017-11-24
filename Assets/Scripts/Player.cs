@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, Damageable
 	Color originalColor;
 	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
 
+	public GameObject swordChargeEffect;
     bool swordCharged;
 
     [HideInInspector]
@@ -117,6 +118,7 @@ public class Player : MonoBehaviour, Damageable
 		attackEffectRenerer = attackEffect.GetComponent<ParticleSystemRenderer>();
 		sprites = ninjaSprite.GetComponentsInChildren<SpriteMeshInstance>();
 		originalColor = sprites[0].color;
+		swordChargeEffect.SetActive(false);
 	}
 
     // Update is called once per frame
@@ -184,15 +186,13 @@ public class Player : MonoBehaviour, Damageable
 
         }
 
-        if (chargingSword)
-        {
-            charged += Time.deltaTime;
-
-            if (charged >= chargeTime)
-            {
-                swordCharged = true;
-            }
-        }
+		if (chargingSword) {
+			charged += Time.deltaTime;
+			if (charged >= chargeTime) {
+				swordCharged = true;
+				swordChargeEffect.SetActive(true);
+			}
+		}
 
 		if ((velocity.x > 0.15f || velocity.x < -0.15f ) 
 			&& controller.collisions.below && !wallSliding && !dash.dashing) {
@@ -260,7 +260,8 @@ public class Player : MonoBehaviour, Damageable
 
             chargeAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 
-            chargeAttackObject.SetActive(true);
+			chargeAttackObject.SetActive(true);
+			swordChargeEffect.SetActive(false);
 
             timer.Once(EndAttackEffect, attackDurationTicks);
 
