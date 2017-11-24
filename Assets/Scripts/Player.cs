@@ -42,6 +42,9 @@ public class Player : MonoBehaviour, Damageable
 	public GameObject ninjaSprite;
 	public GameObject dashAttack;
 	public ParticleSystem attackEffect;
+	public Material slash;
+	public Material chargeSlash;
+	ParticleSystemRenderer attackEffectRenerer;
 
     bool swordCharged;
 
@@ -107,6 +110,8 @@ public class Player : MonoBehaviour, Damageable
         colliderOffSet = -collider.size.y / 4;
     
 		animator = GetComponentInChildren<Animator>();
+
+		attackEffectRenerer = attackEffect.GetComponent<ParticleSystemRenderer>();
 	}
 
     // Update is called once per frame
@@ -218,44 +223,7 @@ public class Player : MonoBehaviour, Damageable
 
 			attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 			 
-			// Hardcoded rotations, cuz i couldn't be arsed
-			if (attackDir == 0 || attackDir == 180) {
-				if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed || wallSliding) {
-					animator.SetBool("ninjasword", true);
-				} else {
-					animator.SetBool("ninjaswordSTAND", true);
-				}
-				attackEffect.transform.rotation = Quaternion.Euler(75f, 0f, 0f);
-			} else if (attackDir == -90) {
-				animator.SetBool("ninjaswordUP", true);
-				if (ninjaSprite.transform.rotation.y > 0) {
-					//left
-					attackEffect.transform.rotation = Quaternion.Euler(2f, -74.9f, -89.4f);
-				} else {
-					// right
-					attackEffect.transform.rotation = Quaternion.Euler(-0.1f, 75f, 90f);	
-				}
-			} else if (attackDir == -45 || attackDir == 225) {
-				animator.SetBool("ninjaswordUpcorner", true);
-				if (attackDir == -45) {
-					// right
-					attackEffect.transform.rotation = Quaternion.Euler(56.3f, 62.1f, 66.2f);
-				} else {
-					// left
-					attackEffect.transform.rotation = Quaternion.Euler(38.1f, -70.7f, -77.8f);	
-				}
-
-			} else if (attackDir == 45 || attackDir == 135) {
-				animator.SetBool("ninjaswordDOWN", true);
-				if (attackDir == 45) {
-					// right
-					attackEffect.transform.rotation = Quaternion.Euler(39.8f, -70.2f, -77f);
-				} else {
-					// left
-					attackEffect.transform.rotation = Quaternion.Euler(43.6f, 69f, 75.1f);	
-				}
-			}	 
-			attackEffect.Play();
+			PlaySlashEffect(attackDir);
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 			groundAttackObject.SetActive(true);
@@ -283,6 +251,7 @@ public class Player : MonoBehaviour, Damageable
 
             attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
+			PlaySlashEffect(attackDir, true);
 
             chargeAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 
@@ -302,6 +271,56 @@ public class Player : MonoBehaviour, Damageable
 
     }
     }
+
+	void PlaySlashEffect(int attackDir, bool chargeAttack = false) {
+		var psMain = attackEffect.GetComponent<ParticleSystem>().main;
+		if (chargeAttack) {
+			psMain.startSizeMultiplier = 9f;
+			attackEffectRenerer.material = chargeSlash;
+		} else {
+			psMain.startSizeMultiplier = 5.5f;
+			attackEffectRenerer.material = slash;
+		}
+
+		// Hardcoded rotations, cuz i couldn't be arsed
+		if (attackDir == 0 || attackDir == 180) {
+			if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed || wallSliding) {
+				animator.SetBool("ninjasword", true);
+			} else {
+				animator.SetBool("ninjaswordSTAND", true);
+			}
+			attackEffect.transform.rotation = Quaternion.Euler(75f, 0f, 0f);
+		} else if (attackDir == -90) {
+			animator.SetBool("ninjaswordUP", true);
+			if (ninjaSprite.transform.rotation.y > 0) {
+				//left
+				attackEffect.transform.rotation = Quaternion.Euler(2f, -74.9f, -89.4f);
+			} else {
+				// right
+				attackEffect.transform.rotation = Quaternion.Euler(-0.1f, 75f, 90f);	
+			}
+		} else if (attackDir == -45 || attackDir == 225) {
+			animator.SetBool("ninjaswordUpcorner", true);
+			if (attackDir == -45) {
+				// right
+				attackEffect.transform.rotation = Quaternion.Euler(56.3f, 62.1f, 66.2f);
+			} else {
+				// left
+				attackEffect.transform.rotation = Quaternion.Euler(38.1f, -70.7f, -77.8f);	
+			}
+
+		} else if (attackDir == 45 || attackDir == 135) {
+			animator.SetBool("ninjaswordDOWN", true);
+			if (attackDir == 45) {
+				// right
+				attackEffect.transform.rotation = Quaternion.Euler(39.8f, -70.2f, -77f);
+			} else {
+				// left
+				attackEffect.transform.rotation = Quaternion.Euler(43.6f, 69f, 75.1f);	
+			}
+		}	 
+		attackEffect.Play();
+	}
 
     public bool CheckCollisionStatus()
     {
