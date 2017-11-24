@@ -453,6 +453,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1991171542195580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4367358992914660}
+  - component: {fileID: 61062062185372188}
+  - component: {fileID: 50305815109894064}
+  - component: {fileID: 114379501151593064}
+  m_Layer: 11
+  m_Name: KickObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4003804942187808
 Transform:
   m_ObjectHideFlags: 1
@@ -559,12 +577,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816449596618418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.28, y: -2, z: 0}
+  m_LocalPosition: {x: 64.28, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003804942187808}
   - {fileID: 4050894070051284}
   - {fileID: 4265572889611476}
+  - {fileID: 4367358992914660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -593,6 +612,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4003804942187808}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4367358992914660
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991171542195580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4242543021189596}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4412260204887380
 Transform:
@@ -850,6 +882,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &50305815109894064
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991171542195580}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61062062185372188
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991171542195580}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5931778, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1863556, y: 1}
+  m_EdgeRadius: 0
 --- !u!61 &61066816286117152
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -957,7 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.49612
+  m_Length: 2.496132
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4536416851316780}
   m_AttachedIK: {fileID: 0}
@@ -1016,6 +1093,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Poses: []
+--- !u!114 &114379501151593064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991171542195580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127ccc6c7e43a154a83c0628bd9baeae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 5
+  damage: 5
+  duration: 0
+  direction: {x: 0, y: 0}
 --- !u!114 &114427615602551456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,12 +1137,17 @@ MonoBehaviour:
   moveSpeed: 2.2
   chaseDistance: 10
   distanceAllowance: 10
-  floatingAmplitude: 0
-  floatingSpeed: 0
+  floatingAmplitude: 0.5
+  floatingSpeed: 5
   damageable: 1
   shootingDistance: 7
+  kickDistance: 2
+  kickDuration: 0.3
+  kickDelay: 0.9
+  kickObject: {fileID: 1991171542195580}
   burstAmount: 3
   burstInterval: 25
+  kickCooldown: 1
   shielded: 0
   coreAnimator: {fileID: 95599418722498380}
   deathAnimations:
@@ -1127,7 +1224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.0822997
+  m_Length: 2.082313
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4599062176018970}
   m_AttachedIK: {fileID: 0}

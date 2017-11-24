@@ -1319,7 +1319,7 @@ MonoBehaviour:
   floatingSpeed: 5
   damageable: 1
   shootingDistance: 20
-  kickDistance: 5
+  kickDistance: 3
   kickDuration: 0.3
   kickDelay: 0.9
   kickObject: {fileID: 1531271582154036}
