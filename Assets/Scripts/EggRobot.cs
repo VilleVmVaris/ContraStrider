@@ -108,7 +108,9 @@ public class EggRobot : MonoBehaviour, Damageable {
         print("liikelaskelma "+Vector3.Distance(transform.position, startPoint)+" " + moveDirection + " " + moveSpeed);
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && !kicking) {
-            if ((Vector3.Distance(transform.position, startPoint) < distanceAllowance || (Vector3.Distance(transform.position + new Vector3(moveDirection, 0, 0), startPoint) < Vector3.Distance(transform.position, startPoint)))) 
+            // Limit how far robots can move from their start position
+			if ((Vector3.Distance(transform.position, startPoint) < distanceAllowance || 
+				(Vector3.Distance(transform.position + new Vector3(moveDirection, 0, 0), startPoint) < Vector3.Distance(transform.position, startPoint)))) 
             {
                 velocity.x = moveDirection * moveSpeed;
 
@@ -121,14 +123,9 @@ public class EggRobot : MonoBehaviour, Damageable {
                     coreAnimator.SetBool("munafly", true);
                 }
             }
-            else
-            {
-                velocity.x = 0;
-                coreAnimator.SetBool("munaanimation", false);
-
-
-            }
-
+		} else {
+			velocity.x = 0;
+			coreAnimator.SetBool("munaanimation", false);
 		}
 
 		// Shooting
@@ -139,7 +136,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 		}
 
         //Kicking
-
         if(Vector3.Distance(player.transform.position, transform.position) < kickDistance && !kicking && !kickOnCooldown)
         {
             if (player.transform.position.x < transform.position.x && !kicking)
@@ -177,7 +173,7 @@ public class EggRobot : MonoBehaviour, Damageable {
         // Stop while shooting or taking damage
         return !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaammus")
             && !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munaosuma")
-            && !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munapotku")
+            && !coreAnimator.GetCurrentAnimatorStateInfo(0).IsName("munapotkuanimaatio")
             && !coreAnimator.IsInTransition(0); 
 	}
 
