@@ -58,6 +58,9 @@ public class BossScript : MonoBehaviour, Damageable {
 
     public Animator bossAnimator;
 
+	SpriteMeshInstance[] sprites;
+	Color originalColor;
+	Color flashColor;
 
     // Use this for initialization
     void Start () {
@@ -72,6 +75,10 @@ public class BossScript : MonoBehaviour, Damageable {
 
         fireSegment = (float) 2/bulletAmount;
 
+		sprites = GetComponentsInChildren<SpriteMeshInstance>();
+		originalColor = sprites[0].color;
+		flashColor = Color.white;
+		flashColor.a = 0.5f;
     }
 	
 	// Update is called once per frame
@@ -142,6 +149,10 @@ public class BossScript : MonoBehaviour, Damageable {
     {
         print("osuma");
         health -= damage; 
+		foreach (var sprite in sprites) {
+			sprite.color = flashColor;
+		}
+		timer.Once(FlashSpriteColorBack, .1f);
         if (health <= 0)
         {
             Die();
@@ -154,6 +165,12 @@ public class BossScript : MonoBehaviour, Damageable {
     }
 
     #endregion
+
+	void FlashSpriteColorBack() {
+		foreach (var sprite in sprites) {
+			sprite.color = originalColor;
+		}
+	}
 
     IEnumerator BulletAttack()
     {

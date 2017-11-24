@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using Anima2D;
 
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour, Damageable
@@ -45,6 +44,10 @@ public class Player : MonoBehaviour, Damageable
 	public Material slash;
 	public Material chargeSlash;
 	ParticleSystemRenderer attackEffectRenerer;
+
+	SpriteMeshInstance[] sprites;
+	Color originalColor;
+	Color flashColor;
 
     bool swordCharged;
 
@@ -112,6 +115,10 @@ public class Player : MonoBehaviour, Damageable
 		animator = GetComponentInChildren<Animator>();
 
 		attackEffectRenerer = attackEffect.GetComponent<ParticleSystemRenderer>();
+		sprites = ninjaSprite.GetComponentsInChildren<SpriteMeshInstance>();
+		originalColor = sprites[0].color;
+		flashColor = Color.white;
+		flashColor.a = 0.5f;
 	}
 
     // Update is called once per frame
@@ -592,8 +599,11 @@ public class Player : MonoBehaviour, Damageable
 	public bool TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
-        {
+		foreach (var sprite in sprites) {
+			sprite.color = flashColor;
+		}
+		timer.Once(FlashSpriteColorBack, .1f);
+        if (health <= 0) {
             print("Player died");
             Die();
 			return true;
@@ -602,6 +612,12 @@ public class Player : MonoBehaviour, Damageable
 		} 
 
     }
+
+	void FlashSpriteColorBack() {
+		foreach (var sprite in sprites) {
+			sprite.color = originalColor;
+		}
+	}
 
     public void KnockBack(Vector2 direction, float force, float duration)
     {
