@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, Damageable
 
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
-	Color flashColor;
+	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
 
     bool swordCharged;
 
@@ -117,8 +117,6 @@ public class Player : MonoBehaviour, Damageable
 		attackEffectRenerer = attackEffect.GetComponent<ParticleSystemRenderer>();
 		sprites = ninjaSprite.GetComponentsInChildren<SpriteMeshInstance>();
 		originalColor = sprites[0].color;
-		flashColor = Color.white;
-		flashColor.a = 0.5f;
 	}
 
     // Update is called once per frame
@@ -600,7 +598,7 @@ public class Player : MonoBehaviour, Damageable
     {
         health -= damage;
 		foreach (var sprite in sprites) {
-			sprite.color = flashColor;
+			sprite.color = hitFlashColor;
 		}
 		timer.Once(FlashSpriteColorBack, .1f);
         if (health <= 0) {

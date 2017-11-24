@@ -60,7 +60,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
-	Color flashColor;
+	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
 
     // Use this for initialization
     void Start () {
@@ -77,8 +77,6 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
 		originalColor = sprites[0].color;
-		flashColor = Color.white;
-		flashColor.a = 0.5f;
     }
 	
 	// Update is called once per frame
@@ -150,7 +148,7 @@ public class BossScript : MonoBehaviour, Damageable {
         print("osuma");
         health -= damage; 
 		foreach (var sprite in sprites) {
-			sprite.color = flashColor;
+			sprite.color = hitFlashColor;
 		}
 		timer.Once(FlashSpriteColorBack, .1f);
         if (health <= 0)

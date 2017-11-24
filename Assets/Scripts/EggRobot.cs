@@ -43,7 +43,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public GameObject jetpackSprite;
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
-	Color flashColor;
+	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
 
 	GameObject player;
 	TimerManager timer;
@@ -72,8 +72,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 		shieldSprite.SetActive(shielded);
 		jetpackSprite.SetActive(type == RobotType.Flying);
 		originalColor = sprites[0].color;
-		flashColor = Color.white;
-		flashColor.a = 0.5f;
 
         startPoint = transform.position;
 	}
@@ -207,7 +205,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		hitSpark.Play();
 		coreAnimator.SetTrigger("munaosuma");
 		foreach (var sprite in sprites) {
-			sprite.color = flashColor;
+			sprite.color = hitFlashColor;
 		}
 		timer.Once(ChangeDamageable, .1f);
 		if (health <= 0) {

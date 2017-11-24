@@ -616,6 +616,26 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: hitFlashColor.r
+      value: 0.9485294
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: hitFlashColor.g
+      value: 0.55098397
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: hitFlashColor.b
+      value: 0.55098397
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: hitFlashColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
   m_IsPrefabParent: 0
