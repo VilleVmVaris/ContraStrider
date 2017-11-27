@@ -30,6 +30,7 @@ public class RobotKick : MonoBehaviour {
             {
                 print(duration);
                 collision.GetComponent<Player>().KnockBack(direction, force, duration);
+                collision.GetComponent<Player>().TakeDamage(damage);
             }
         }
     }
