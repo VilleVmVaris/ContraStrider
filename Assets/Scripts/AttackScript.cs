@@ -14,13 +14,14 @@ public class AttackScript : MonoBehaviour {
 
     public List<GameObject> hitTargets;
 
+    [HideInInspector]
+    public int attackRot;
+
 	// Use this for initialization
 	void Start() {
 		player = GetComponentInParent<Player>();
         hitTargets = new List<GameObject>();
 	}
-
-
 
     // Update is called once per frame
     void Update() {
@@ -80,7 +81,15 @@ public class AttackScript : MonoBehaviour {
         gameObject.SetActive(false);
         }
 
-    }
+    } else if(collision.gameObject.layer == 10 && collision.gameObject.GetComponentInParent<Bullet>() != null)
+        {
+            print("luoti");
+            if(!collision.GetComponentInParent<Bullet>().SeeIfDeflected())
+            {
+                collision.GetComponentInParent<Bullet>().GetDeflected(transform.right);
+            }
+        }
+
     }
 
     public void DealDamage()

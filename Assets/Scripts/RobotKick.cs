@@ -19,7 +19,7 @@ public class RobotKick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print("kickscript direction is " + direction);
+        
 	}
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -270,9 +270,7 @@ public class Player : MonoBehaviour, Damageable
         }
         else
         {
-           
             ResetCharge();
-            
         }
 
     }

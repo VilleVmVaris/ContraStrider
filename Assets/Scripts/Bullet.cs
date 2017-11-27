@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
     Vector2 bulletDirection;
     public Transform graphics;
     Transform player;
+    bool deflected;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -24,12 +25,33 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject, destroyDelay);
     }
     private void OnTriggerEnter2D(Collider2D collision) {
+
         GameObject go = collision.gameObject;
-        if (go.tag == "Player") {
+        if (go.layer == 8) {
+            if(go.tag != "Attack") { 
             print("Player hit");
             go.GetComponent<Damageable>().TakeDamage(bulletDamage);
+            Destroy(gameObject);
+            }
+
+        } else if(go.layer == 11)
+        {
+            print("kimmoke");
+            if (deflected)
+            {
+                if(go.GetComponent<EggRobot>() != null) {
+
+                    go.GetComponent<EggRobot>().TakeDamage(1);
+
+                } else if(go.GetComponent<BossScript>() != null)
+                {
+                    go.GetComponent<BossScript>().TakeDamage(2);
+                }
+            }
         }
-        if(go.tag != "Boss") { 
+
+        else if(go.layer != 11) {
+        
         Destroy(gameObject);
         }
     }
@@ -43,4 +65,20 @@ public class Bullet : MonoBehaviour {
         var angle = AngleInDeg(player.position, transform.position);
         graphics.Rotate(Vector3.forward, angle);
     }
+
+    public void GetDeflected(Vector2 direction)
+    {
+        deflected = true;
+
+        bulletDirection = direction;
+        
+        bulletSpeed = bulletSpeed * 2;
+    }
+
+    public bool SeeIfDeflected()
+    {
+        return deflected;
+    }
+
+
 }

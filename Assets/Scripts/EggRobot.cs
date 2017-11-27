@@ -103,7 +103,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	void CalculateActions() {
-        print("liikelaskelma "+Vector3.Distance(transform.position, startPoint)+" " + moveDirection + " " + moveSpeed);
+        
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && !kicking) {
             // Limit how far robots can move from their start position
