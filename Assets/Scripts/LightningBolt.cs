@@ -71,15 +71,15 @@ public class LightningBolt : MonoBehaviour {
 
 		positions.Sort();
 
-		var sway = 80;
-		var jaggies = 1 / sway;
-		var spread = 1f;
+		const float sway = 80f;
+		const float jaggies = 1 / sway;
+		const float spread = 1f;
 
 		// Start at source
 		var previous = source;
 		var previousDisplacement = 0f;
 
-		for (int i = 0; i < positions.Count; i++) {
+		for (int i = 1; i < positions.Count; i++) {
 			// Stop at pool size
 			if (inactiveSegments.Count <= 0) {
 				break;
@@ -97,12 +97,13 @@ public class LightningBolt : MonoBehaviour {
 			displacement *= envelope;
 
 			// End point
-			var point = source + (pos * slope) + (displacement * normal);
+			Vector2 point = source + (pos * slope) + (displacement * normal);
 
 			activateLineSegment(previous, point, thickness);
 			previous = point;
 			previousDisplacement = displacement;
 		}
+		activateLineSegment(previous, destination, thickness);
 	}
 
 	void activateLineSegment(Vector2 start, Vector2 end, float thickness) {
@@ -142,7 +143,7 @@ public class LightningBolt : MonoBehaviour {
 		}
 	}
 
-	public void UpdateComponent() {
+	public void UpdateBolt() {
 		alpha -= fadeOutRate;
 	}
 }

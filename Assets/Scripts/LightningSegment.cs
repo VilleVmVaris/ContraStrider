@@ -27,7 +27,7 @@ public class LightningSegment : MonoBehaviour {
 
 	public void Draw() {
 		var direction = end - start;
-		var rotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+		var rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 		// Scale to lenght and distance
 		body.transform.localScale = new Vector3(
