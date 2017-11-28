@@ -244,7 +244,7 @@ public class Player : MonoBehaviour, Damageable
 
     public void ChargedAttack(Vector2 input)
     {
-        if(!dash.dashing) { 
+        if(!dash.dashing && !dash.aiming && !knockedBack) { 
 
         if (swordCharged)
         {

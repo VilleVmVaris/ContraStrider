@@ -79,6 +79,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 	// Update is called once per frame
 	void Update() {
+
 		if (health > 0) { // Alive
 			CalculateActions(); 
 		}

@@ -17,6 +17,8 @@ public class AttackScript : MonoBehaviour {
     [HideInInspector]
     public int attackRot;
 
+    public bool dashAttack;
+
 	// Use this for initialization
 	void Start() {
 		player = GetComponentInParent<Player>();
@@ -73,10 +75,11 @@ public class AttackScript : MonoBehaviour {
             }
         }
 
-        if (!player.dash.dashing && hitTargets.Count != 0)
+        if (!dashAttack && hitTargets.Count != 0)
         {
             DealDamage();
         }
+        //not sure if this is needed?
         if(!player.dash.dashing) { 
         gameObject.SetActive(false);
         }
@@ -133,6 +136,7 @@ public class AttackScript : MonoBehaviour {
 
 
         gameObject.SetActive(false);
+        
     }
 }
 
