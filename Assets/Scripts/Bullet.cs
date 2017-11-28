@@ -41,7 +41,15 @@ public class Bullet : MonoBehaviour {
             {
                 if(go.GetComponent<EggRobot>() != null) {
 
+                    if(!go.GetComponent<EggRobot>().shielded) { 
+
                     go.GetComponent<EggRobot>().TakeDamage(1);
+                    }
+
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
 
                 } else if(go.GetComponent<BossScript>() != null)
                 {
