@@ -405,7 +405,7 @@ public class Player : MonoBehaviour, Damageable
         else if (chargeAttackObject.activeSelf)
         {
             chargeAttackObject.SetActive(false);
-		} else if (dashAttack.activeSelf && dash.dashing) {
+		} else if (dashAttack.activeSelf && !dash.dashing) {
 			dashAttack.SetActive(false);
 			animator.SetBool("ninjadash", false);
 		}
