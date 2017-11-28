@@ -15,7 +15,7 @@ public class PowerUP : MonoBehaviour {
 		if (other.gameObject.layer == 20) {
 			string power = other.gameObject.name;
 			// powerUpS.Add("" + power);
-			Destroy(other.gameObject);
+			//Destroy(other.gameObject);
 			SetPowerUp(power);
 		}
 
