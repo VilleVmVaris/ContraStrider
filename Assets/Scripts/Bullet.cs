@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
 
         GameObject go = collision.gameObject;
         if (go.layer == 8) {
-            if(go.tag != "Attack") { 
+            if(go.tag != "Attack" && go.GetComponent<Player>() != null) { 
             print("Player hit");
             go.GetComponent<Damageable>().TakeDamage(bulletDamage);
             Destroy(gameObject);
@@ -36,7 +36,6 @@ public class Bullet : MonoBehaviour {
 
         } else if(go.layer == 11)
         {
-            print("kimmoke");
             if (deflected)
             {
                 if(go.GetComponent<EggRobot>() != null) {
