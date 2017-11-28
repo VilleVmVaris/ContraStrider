@@ -275,7 +275,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		// FIXME: Disabling collider drops robot into the ground while in death animation
 		//        Do we need to do this?
 		//GetComponent<Collider2D>().enabled = false;
-		Destroy(gameObject, dieLength + fadeTime + 2f);
+		Destroy(gameObject, dieLength + fadeTime + 5f);
 
 
 		StartCoroutine(FadeOut(1, 0, fadeTime, dieLength)); // Fading out sprites with coroutine for now
