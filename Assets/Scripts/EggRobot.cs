@@ -41,6 +41,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public GameObject shieldSprite;
 	public Animator shieldAnimator;
 	public GameObject jetpackSprite;
+	public GameObject deathSmoke;
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
 	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
@@ -263,6 +264,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
         if (type == RobotType.Normal) {
+			deathSmoke.SetActive(true);
 			int i = Random.Range(0, deathAnimations.Count);
 			coreAnimator.SetTrigger(deathAnimations[i].name);
 			dieLength = deathAnimations[i].length;
@@ -273,13 +275,16 @@ public class EggRobot : MonoBehaviour, Damageable {
 		// FIXME: Disabling collider drops robot into the ground while in death animation
 		//        Do we need to do this?
 		//GetComponent<Collider2D>().enabled = false;
-		Destroy(gameObject, dieLength + fadeTime);
+		Destroy(gameObject, dieLength + fadeTime + 2f);
 
 
 		StartCoroutine(FadeOut(1, 0, fadeTime, dieLength)); // Fading out sprites with coroutine for now
 	}
 
 	IEnumerator FadeOut(float startIntensity, float endIntensity, float time, float waitTime) {
+
+		// FIXME: This fading does not work correctly..
+
 		float t = 0f;
 		Color original = sprites[0].color;
 		yield return new WaitForSeconds(waitTime);
