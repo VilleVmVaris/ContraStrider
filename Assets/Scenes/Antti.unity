@@ -235,12 +235,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
-    - target: {fileID: 137195056901570476, guid: 42d687e6b6190494985b6b8804b73ce0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137684078326432628, guid: 42d687e6b6190494985b6b8804b73ce0,
+    - target: {fileID: 137055166295307768, guid: 42d687e6b6190494985b6b8804b73ce0,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -250,7 +245,12 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 137055166295307768, guid: 42d687e6b6190494985b6b8804b73ce0,
+    - target: {fileID: 137684078326432628, guid: 42d687e6b6190494985b6b8804b73ce0,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137195056901570476, guid: 42d687e6b6190494985b6b8804b73ce0,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -2561,6 +2561,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1071422683 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198497693620757360, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1496415704}
 --- !u!1 &1080152637
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,6 +4120,40 @@ Prefab:
       value: 
       objectReference: {fileID: 21810719761690172, guid: 62b7702482e77f845849439487ebfd86,
         type: 2}
+    - target: {fileID: 114798630360245918, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: m_Length
+      value: 1.8297443
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021065296646712, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: m_Length
+      value: 1.0959051
+      objectReference: {fileID: 0}
+    - target: {fileID: 114875086589564426, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: m_Length
+      value: 1.7144382
+      objectReference: {fileID: 0}
+    - target: {fileID: 114886987848043248, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: m_Length
+      value: 2.327599
+      objectReference: {fileID: 0}
+    - target: {fileID: 114388676825332094, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: m_Length
+      value: 2.8540058
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638451664493684, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
+      propertyPath: m_Name
+      value: StepSandCloudEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: stepSandCloud
+      value: 
+      objectReference: {fileID: 1071422683}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
   m_IsPrefabParent: 0

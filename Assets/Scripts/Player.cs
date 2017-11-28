@@ -43,6 +43,7 @@ public class Player : MonoBehaviour, Damageable
 	public ParticleSystem attackEffect;
 	public Material slash;
 	public Material chargeSlash;
+	public ParticleSystem stepSandCloud;
 	ParticleSystemRenderer attackEffectRenerer;
 
 	SpriteMeshInstance[] sprites;
@@ -120,6 +121,7 @@ public class Player : MonoBehaviour, Damageable
 		sprites = ninjaSprite.GetComponentsInChildren<SpriteMeshInstance>();
 		originalColor = sprites[0].color;
 		swordChargeEffect.SetActive(false);
+		stepSandCloud.Stop();
 	}
 
     // Update is called once per frame
@@ -204,8 +206,11 @@ public class Player : MonoBehaviour, Damageable
 				animator.SetBool("ninjawalk", true);
 				animator.SetBool("ninjarun", false);
 			}
-
+			if (!stepSandCloud.isPlaying) {
+				stepSandCloud.Play();	
+			}
 		} else {
+			stepSandCloud.Stop();
 			animator.SetBool("ninjarun", false);
 			animator.SetBool("ninjawalk", false);	
 		}

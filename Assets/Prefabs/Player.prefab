@@ -3066,6 +3066,7 @@ MonoBehaviour:
   attackEffect: {fileID: 198919238609744014}
   slash: {fileID: 2100000, guid: 55d49719a646d1f43baad17cd1efb5db, type: 2}
   chargeSlash: {fileID: 2100000, guid: 570a99976c5f77e43890ee0e9d8df5dd, type: 2}
+  stepSandCloud: {fileID: 0}
   swordChargeEffect: {fileID: 1159279912918072}
   chargingSword: 0
   chargeTime: 1
