@@ -407,9 +407,8 @@ public class Player : MonoBehaviour, Damageable
             chargeAttackObject.SetActive(false);
 		} else if (dashAttack.activeSelf) {
 			dashAttack.SetActive(false);
+			animator.SetBool("ninjadash", false);
 		}
-
-		animator.SetBool("ninjadash", false);
     }
 
     void CalculateVelocity()
