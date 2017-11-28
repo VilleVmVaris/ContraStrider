@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class HealthBarScript : MonoBehaviour {
 
-	// TODO: Player script should send health amount at start?
-
     public PowerUP PWU;
     public Image bar;
     public Player player;
@@ -26,12 +24,11 @@ public class HealthBarScript : MonoBehaviour {
             SetHealthBar(health);
         }
         //***Testing***
-
-        bar.fillAmount = player.health / fullHealth;
     }
     public void SetHealthBar(float healthNow) {
+		health = healthNow;
         if (healthNow >= 0) {
-            bar.fillAmount = healthNow / fullHealth;
+			bar.fillAmount = health / fullHealth;
             if (healthNow <= 0) {
                 print("GAME OVER");
             }

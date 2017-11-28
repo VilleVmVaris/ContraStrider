@@ -78,6 +78,7 @@ public class Player : MonoBehaviour, Damageable
 
 	Animator animator;
     TimerManager timer;
+	GUIManager gui;
 
     [HideInInspector]
     public BladeDash dash;
@@ -105,7 +106,7 @@ public class Player : MonoBehaviour, Damageable
         print("Gravity: " + gravity + " Jump velocity: " + maxJumpVelocity);
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
-
+		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         collider = GetComponent<BoxCollider2D>();
 
         origColliderX = collider.size.x;
@@ -596,6 +597,7 @@ public class Player : MonoBehaviour, Damageable
 	public bool TakeDamage(int damage)
     {
         health -= damage;
+		gui.SetHealth(health);
 		foreach (var sprite in sprites) {
 			sprite.color = hitFlashColor;
 		}

@@ -24,6 +24,10 @@ public class GUIManager : MonoBehaviour {
 		HealthBar.SetFullHealth();
 	}
 
+	public void SetHealth(int health) {
+		HealthBar.SetHealthBar(health);
+	}
+
 	public void DoubleScoreFactor() {
 		Score.scoreFactor = 2; //(Timelimit?)
 	}
