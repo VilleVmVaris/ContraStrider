@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PowerUP : MonoBehaviour {
 	
-	GUIManager gui;
+	 public GUIManager gui;
 
 	void Start() {
-		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
+		//gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {

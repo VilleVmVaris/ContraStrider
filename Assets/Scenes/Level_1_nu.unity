@@ -6674,12 +6674,12 @@ Prefab:
     - target: {fileID: 224541575049782416, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 412.5
+      value: 573.5
       objectReference: {fileID: 0}
     - target: {fileID: 224541575049782416, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 236.5
+      value: 252.5
       objectReference: {fileID: 0}
     - target: {fileID: 224541575049782416, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
@@ -6799,6 +6799,16 @@ Prefab:
     - target: {fileID: 1546428072558604, guid: 62272e519121d244e940a6fa065ec194, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504364463747294, guid: 62272e519121d244e940a6fa065ec194,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1898893980}
+    - target: {fileID: 114504364463747294, guid: 62272e519121d244e940a6fa065ec194,
+        type: 2}
+      propertyPath: fullHealth
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62272e519121d244e940a6fa065ec194, type: 2}
@@ -8187,6 +8197,11 @@ Prefab:
         type: 2}
       propertyPath: attackDurationTicks
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+        type: 2}
+      propertyPath: health
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47cfa4410589ad4d91f9225ff29ba1f, type: 2}
@@ -19244,6 +19259,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4777368589180344, guid: 74c1e9e3d5e38a5498c46a53095134d0,
     type: 2}
   m_PrefabInternal: {fileID: 1897081864}
+--- !u!114 &1898893980 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114820504358465122, guid: f47cfa4410589ad4d91f9225ff29ba1f,
+    type: 2}
+  m_PrefabInternal: {fileID: 903843996}
+  m_Script: {fileID: 11500000, guid: 1702a4fdcd457b746afb3e97b3cd3c75, type: 3}
 --- !u!1 &1919628273
 GameObject:
   m_ObjectHideFlags: 0

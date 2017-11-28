@@ -9,10 +9,12 @@ public class HealthBarScript : MonoBehaviour {
 
     public PowerUP PWU;
     public Image bar;
-    public float health = 0;
-    public float fullHealth = 100;
+    public Player player;
+    public float health;
+    public float fullHealth;
 
     void Start () {
+        fullHealth = player.health;
         SetFullHealth();
     }
 	
@@ -24,6 +26,8 @@ public class HealthBarScript : MonoBehaviour {
             SetHealthBar(health);
         }
         //***Testing***
+
+        bar.fillAmount = player.health / fullHealth;
     }
     public void SetHealthBar(float healthNow) {
         if (healthNow >= 0) {
