@@ -99,12 +99,12 @@ AnimationClip:
       - serializedVersion: 2
         time: 0.1
         value: {x: 0, y: 0, z: -49.958336}
-        inSlope: {x: 0, y: 0, z: -143.4618}
-        outSlope: {x: 0, y: 0, z: -143.4618}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.21666667
-        value: {x: 0, y: 0, z: -99.05701}
+        value: {x: 0, y: 0, z: -40.663002}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -130,6 +130,12 @@ AnimationClip:
       - serializedVersion: 2
         time: 0.1
         value: {x: 0, y: 0, z: -97.02234}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.21666667
+        value: {x: 0, y: 0, z: -139.412}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -790,12 +796,12 @@ AnimationClip:
       - serializedVersion: 2
         time: 0.1
         value: -49.958336
-        inSlope: -143.4618
-        outSlope: -143.4618
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.21666667
-        value: -99.05701
+        value: -40.663002
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -823,6 +829,12 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.21666667
         value: 0
         inSlope: 0
         outSlope: 0
@@ -855,6 +867,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.21666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -880,6 +898,12 @@ AnimationClip:
       - serializedVersion: 2
         time: 0.1
         value: -97.02234
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.21666667
+        value: -139.412
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1630,7 +1654,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
+    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1640,7 +1664,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
+    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1650,7 +1674,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
+    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1870,7 +1894,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
+    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1880,7 +1904,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
+    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1890,7 +1914,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: 6vartalosprite/4oikeajalkasprite/oikeareisiluu
+    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1990,7 +2014,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
+    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2000,7 +2024,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
+    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2010,7 +2034,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "6vartalosprite/core/rinta/kaula/p\xE4\xE4"
+    path: "6vartalosprite/4oikeajalkasprite/oikeareisiluu/oikeas\xE4\xE4riluu"
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
