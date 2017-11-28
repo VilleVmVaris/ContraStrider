@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Lightning : MonoBehaviour {
-
+	
+	public Transform startPoint;
+	public Transform endPoint;
 	public GameObject boltPrefab;
 
 	// Pooling
 	List<GameObject> activeBolts;
 	List<GameObject> inactiveBolts;
 
-	int maxBolts = 5;
+	static readonly int MAX_BOLTS = 5;
 
 	// Use this for initialization
 	void Start () {
 		activeBolts = new List<GameObject>(); 
 		inactiveBolts = new List<GameObject>();
 	
-		for (int i = 0; i < maxBolts; i++) {
+		for (int i = 0; i < MAX_BOLTS; i++) {
 			var bolt = Instantiate(boltPrefab, transform);
-			bolt.GetComponent<LightningBolt>().Init(5);
+			bolt.GetComponent<LightningBolt>().Init(25);
 			bolt.SetActive(false);
 			inactiveBolts.Add(bolt);
 		}
@@ -44,15 +46,10 @@ public class Lightning : MonoBehaviour {
 			}
 		}
 
-		// TODO: create bolts
 		if (Input.GetKeyDown(KeyCode.L)) {
-			var pos1 = new Vector2(100, 100);
-			var pos2 = new Vector2(-100, -100);
-
-			pos1 = transform.InverseTransformPoint(pos1);
-			pos2 = transform.InverseTransformPoint(pos2);
-
-			CreatePooledBolt(pos1, pos2, Color.white, 1f);
+			CreatePooledBolt(startPoint.position, endPoint.position, Color.white, .3f);
+			CreatePooledBolt(startPoint.position, endPoint.position, Color.white, .5f);
+			CreatePooledBolt(startPoint.position, endPoint.position, Color.white, .8f);
 		}
 
 		// Update and draw active bolts

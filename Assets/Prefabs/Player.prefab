@@ -2138,6 +2138,7 @@ MonoBehaviour:
   stunTime: 0.1
   hitTargets: []
   attackRot: 0
+  dashAttack: 0
 --- !u!114 &114109481395232726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2875,6 +2876,7 @@ MonoBehaviour:
   stunTime: 0.1
   hitTargets: []
   attackRot: 0
+  dashAttack: 0
 --- !u!114 &114702839501227064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3274,6 +3276,7 @@ MonoBehaviour:
   stunTime: 0.2
   hitTargets: []
   attackRot: 0
+  dashAttack: 0
 --- !u!114 &114987228911897012
 MonoBehaviour:
   m_ObjectHideFlags: 1

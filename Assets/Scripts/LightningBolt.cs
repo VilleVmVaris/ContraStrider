@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LightningBolt : MonoBehaviour {
 
+
+
 	public List<GameObject> activeSegments;
 	public List<GameObject> inactiveSegments;
 
@@ -66,14 +68,14 @@ public class LightningBolt : MonoBehaviour {
 
 		// Generate random positions
 		for (int i = 0; i < distance / 4; i++) {
-			positions.Add(Random.Range(.25f, .75f));
+			positions.Add(Random.Range(.15f, .95f));
 		}
 
 		positions.Sort();
 
-		const float sway = 80f;
+		const float sway = 40f;
 		const float jaggies = 1 / sway;
-		const float spread = 1f;
+		const float spread = .5f;
 
 		// Start at source
 		var previous = source;

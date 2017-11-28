@@ -26,8 +26,8 @@ public class LightningSegment : MonoBehaviour {
 	}
 
 	public void Draw() {
-		var direction = end - start;
-		var rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+		Vector2 direction = end - start;
+		float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 		// Scale to lenght and distance
 		body.transform.localScale = new Vector3(
@@ -38,17 +38,22 @@ public class LightningSegment : MonoBehaviour {
 		startCap.transform.localScale = new Vector3(
 			startCap.transform.localScale.x,
 			thickness, 
-			body.transform.localScale.z);
+			startCap.transform.localScale.z);
 
 		endCap.transform.localScale = new Vector3(
-			startCap.transform.localScale.x,
+			endCap.transform.localScale.x,
 			thickness, 
-			body.transform.localScale.z);
+			endCap.transform.localScale.z);
 	
 		// Rotate
 		body.transform.rotation = Quaternion.Euler(0, 0, rotation);
 		startCap.transform.rotation = Quaternion.Euler(0, 0, rotation);
-		endCap.transform.rotation = Quaternion.Euler(0, 0, rotation);
+		endCap.transform.rotation = Quaternion.Euler(0, 0, rotation + 180);
+
+		// Move to be centered on the starting point
+		body.transform.position = new Vector3(start.x, start.y, body.transform.position.z);
+		startCap.transform.position = new Vector3(start.x, start.y, startCap.transform.position.z);
+		endCap.transform.position = new Vector3(start.x, start.y, endCap.transform.position.z);
 
 		// Convert rotation to radians for Cos/Sin later
 		rotation *= Mathf.Deg2Rad;
