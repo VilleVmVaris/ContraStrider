@@ -394,7 +394,7 @@ public class Player : MonoBehaviour, Damageable
 	}
     }
 
-    void EndAttackEffect()
+    public void EndAttackEffect()
     {
         if (groundAttackObject.activeSelf)
         {
@@ -405,7 +405,7 @@ public class Player : MonoBehaviour, Damageable
         else if (chargeAttackObject.activeSelf)
         {
             chargeAttackObject.SetActive(false);
-		} else if (dashAttack.activeSelf) {
+		} else if (dashAttack.activeSelf && dash.dashing) {
 			dashAttack.SetActive(false);
 			animator.SetBool("ninjadash", false);
 		}

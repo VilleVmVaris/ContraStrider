@@ -23,7 +23,7 @@ public class BladeDash : MonoBehaviour {
 	Animator animator;
 	GUIManager gui;
     GameObject dashAttack;
-    
+	Player player;
 
 	// Use this for initialization
 	void Start() {
@@ -33,6 +33,7 @@ public class BladeDash : MonoBehaviour {
 		dashArrow.SetActive(false);
         dashAttack = GetComponent<Player>().dashAttack;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
+		player = GetComponentInParent<Player>();
 	}
 
 	// Update is called once per frame
@@ -95,6 +96,7 @@ public class BladeDash : MonoBehaviour {
 		dashing = false;
 		direction = Vector2.zero;
 		controller.dashingThroughEnemy = false;
+		player.EndAttackEffect();
 	}
 
 	public void EndCoolDown() {
