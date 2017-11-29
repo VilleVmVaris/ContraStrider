@@ -607,7 +607,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816449596618418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.28, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003804942187808}
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.496132
+  m_Length: 2.4961224
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4536416851316780}
   m_AttachedIK: {fileID: 0}
@@ -1256,7 +1256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.082313
+  m_Length: 2.0823047
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4599062176018970}
   m_AttachedIK: {fileID: 0}
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 20
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4139816819023186}
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.158053
+  m_Length: 2.1580482
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4978002368389640}
   m_AttachedIK: {fileID: 0}
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586263
+  m_Length: 2.4586227
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4004294674737498}
   m_AttachedIK: {fileID: 0}
@@ -1380,7 +1380,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 20
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -4916,7 +4916,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -433823996
+  randomSeed: -1386880628
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5006,7 +5006,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.80689657, b: 0, a: 1}
+      maxColor: {r: 0.9044118, g: 0.22610295, b: 0.66115624, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5068,7 +5068,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8242,7 +8242,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
