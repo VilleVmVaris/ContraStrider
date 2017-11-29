@@ -62,6 +62,8 @@ public class BossScript : MonoBehaviour, Damageable {
 	Color originalColor;
 	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
 
+	Lightning lightning;
+
     // Use this for initialization
     void Start () {
 
@@ -77,6 +79,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
 		originalColor = sprites[0].color;
+
+		lightning = GetComponentInChildren<Lightning>();
     }
 	
 	// Update is called once per frame
@@ -125,7 +129,8 @@ public class BossScript : MonoBehaviour, Damageable {
                 
                 area.GetComponent<MeshRenderer>().enabled = false;
 
-                //Add cool particle effect here
+                // We now have a cool particle effect here
+				lightning.Strike(area.transform.position + Vector3.down);
 
                 area.GetComponent<AreaDamageScript>().enabled = true;
                 area.GetComponent<BoxCollider2D>().enabled = true;
@@ -295,6 +300,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void DeadactivateAttackAreas()
     {
+		lightning.Stop();
         foreach(var area in attackAreas)
         {
             area.GetComponent<BoxCollider2D>().enabled = false;
