@@ -92,7 +92,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 			// Float flying robots up and down
 			velocity.y = floatingAmplitude * Mathf.Sin(floatingSpeed * Time.time);
 		}
-
 		controller.Move(velocity * Time.deltaTime, false); // TODO: Platforms?
 
 		//This stops gravity from accumulating if the controllers detects collisions above or below

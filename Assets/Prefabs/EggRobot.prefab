@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292986533851408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: -2, z: 0}
+  m_LocalPosition: {x: -18, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470216261233724}
@@ -1503,14 +1503,14 @@ MonoBehaviour:
   floatingSpeed: 5
   damageable: 1
   shootingDistance: 20
-  kickDistance: 3
+  kickDistance: 2
   kickDuration: 0.3
   kickDelay: 0.9
   kickObject: {fileID: 1531271582154036}
   burstAmount: 3
-  burstInterval: 35
+  burstInterval: 15
   kickCooldown: 1
-  shielded: 0
+  shielded: 1
   coreAnimator: {fileID: 95236070025867518}
   deathAnimations:
   - {fileID: 7400000, guid: 1a47ee69aff620a4598b006cebd764d3, type: 2}
@@ -1689,7 +1689,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43487670878652134, guid: c8dcbd48cba8dd247996e5ef56615497, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4249107878508924}
   m_BlendShapeWeights: []
@@ -1736,7 +1736,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43288770692951380, guid: c286571ff038dff449341fcfa03bd11a, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4880805430896010}
   m_BlendShapeWeights: []
@@ -1783,7 +1783,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43908250367072952, guid: 06662ef84cc47194d8062f355a9ee405, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4792968422829312}
   - {fileID: 4343735075165502}
@@ -1832,7 +1832,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 43068176222221452, guid: 8063cc4aaec131046ac68126eed421e3, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 4341201585595094}
   - {fileID: 4436227326209812}
