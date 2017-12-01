@@ -237,6 +237,8 @@ public class Player : MonoBehaviour, Damageable
 			PlaySlashEffect(attackDir);
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
+			// TODO: Maybe disable only script/collider instead of entire gameobject?
+			//       Would make positioning and playing effects easier.
 			groundAttackObject.SetActive(true);
 			timer.Once(EndAttackEffect, attackDurationTicks);
 		}
@@ -581,7 +583,6 @@ public class Player : MonoBehaviour, Damageable
 
 	// Rotates player sprite to movement direction
 	void RotateY() { 
-
 		if (velocity.x < -0.1f || (wallSliding && controller.collisions.right) ) {
 			ninjaSprite.transform.rotation = Helpers.FlipYRotation;
 			var effect = attackEffect.main;
@@ -595,7 +596,6 @@ public class Player : MonoBehaviour, Damageable
 			// HAX: Animation positioning 
 			ninjaSprite.transform.localPosition = new Vector3(-0.725f, 0f, 0f);
 		}
-
 	}
 
 	public bool TakeDamage(int damage)
