@@ -128,10 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5abb4354fbb3014faa082ae808d519a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMinSize: 3
+  cameraMinSize: 5
   cameraSize: 8
   verticalOffset: 1
-  cameraMaxSize: 7
+  cameraMaxSize: 10
   maxVerticalOffset: 3
   lookAheadX: 2
   lookSmoothTimeX: 0.2
