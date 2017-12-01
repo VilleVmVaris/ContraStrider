@@ -244,8 +244,8 @@ public class PlatformController : RaycastController
         }
     }
 
-    public void SetSpeed()
+    public void SetSpeed(int newSpeed)
     {
-        speed = 1;
+        speed = newSpeed;
     }
 }
