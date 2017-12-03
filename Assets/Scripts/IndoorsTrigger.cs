@@ -21,18 +21,20 @@ public class IndoorsTrigger : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c) {
 		if (c.CompareTag("Player")) {
-			Vector3 direction = c.transform.position - transform.position;
+			var contactPoint = GetComponent<Collider2D>().bounds.ClosestPoint(c.transform.position);
+			var contactNormal = (c.transform.position - contactPoint).normalized;
 
-
-			var angle = Vector3.Angle(direction, Vector3.up);
-
-			print("Enter angle " + angle);
-
-			if (Vector3.Dot(transform.right, direction) > 0) {
+			if (Vector3.Dot(transform.right, contactNormal) > 0) {
 				enterDirection = Direction.Right;
 			} 
-			if (Vector3.Dot(transform.right, direction) < 0) {
+			if (Vector3.Dot(transform.right, contactNormal) < 0) {
 				enterDirection = Direction.Left;
+			}
+			if (Vector3.Dot(transform.up, contactNormal) > 0) {
+				enterDirection = Direction.Top;
+			} 
+			if (Vector3.Dot(transform.up, contactNormal) < 0) {
+				enterDirection = Direction.Bottom;
 			}
 		}
 	}
@@ -46,7 +48,13 @@ public class IndoorsTrigger : MonoBehaviour {
 			} 
 			if (Vector3.Dot (transform.right, direction) < 0 && enterDirection == Direction.Right) {
 				mainCamera.ToggleIndoorsMode();
-			}	
+			}
+
+			// TODO: Top/Bottom toggles
+
+			if (enterDirection == Direction.Top) {
+				print("exit top");
+			}
 		}
 	}
 
