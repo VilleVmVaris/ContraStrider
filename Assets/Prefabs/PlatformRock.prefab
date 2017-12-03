@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4375127059046892}
   - component: {fileID: 212883994866673564}
   - component: {fileID: 61226255329558864}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlatformRock
-  m_TagString: Untagged
+  m_TagString: PassablePlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

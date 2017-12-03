@@ -9,7 +9,9 @@ public class IndoorsTrigger : MonoBehaviour {
 
 	enum Direction {
 		Right,
-		Left
+		Left,
+		Top,
+		Bottom
 	}
 
 	// Use this for initialization
@@ -20,6 +22,12 @@ public class IndoorsTrigger : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D c) {
 		if (c.CompareTag("Player")) {
 			Vector3 direction = c.transform.position - transform.position;
+
+
+			var angle = Vector3.Angle(direction, Vector3.up);
+
+			print("Enter angle " + angle);
+
 			if (Vector3.Dot(transform.right, direction) > 0) {
 				enterDirection = Direction.Right;
 			} 
