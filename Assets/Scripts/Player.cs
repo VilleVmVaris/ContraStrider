@@ -624,10 +624,12 @@ public class Player : MonoBehaviour, Damageable
 
     public void KnockBack(Vector2 direction, float force, float duration)
     {
+        if(!dash.dashing) { 
         knockDirection = direction;
         knockDuration = duration;
         knockForce = force;
         knockedBack = true;
+        }
     }
 
     void StopKnockBack()
