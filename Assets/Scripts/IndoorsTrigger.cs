@@ -6,6 +6,7 @@ public class IndoorsTrigger : MonoBehaviour {
 
 	CameraFollow mainCamera;
 	Direction enterDirection;
+	BoxCollider2D boxCollider2D;
 
 	enum Direction {
 		Right,
@@ -15,13 +16,14 @@ public class IndoorsTrigger : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		mainCamera = Camera.main.GetComponent<CameraFollow>();
+		boxCollider2D = GetComponent<BoxCollider2D>();
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
 		if (c.CompareTag("Player")) {
-			var contactPoint = GetComponent<Collider2D>().bounds.ClosestPoint(c.transform.position);
+			var contactPoint = boxCollider2D.bounds.ClosestPoint(c.transform.position);
 			var contactNormal = (c.transform.position - contactPoint).normalized;
 
 			if (Vector3.Dot(transform.right, contactNormal) > 0) {
@@ -39,21 +41,23 @@ public class IndoorsTrigger : MonoBehaviour {
 		}
 	}
 
-
 	void OnTriggerExit2D(Collider2D c) {
 		if (c.CompareTag("Player")) {
-			Vector3 direction = c.transform.position - transform.position;
-			if (Vector3.Dot (transform.right, direction) > 0 && enterDirection == Direction.Left) {
+
+			var contactPoint = boxCollider2D.bounds.ClosestPoint(c.transform.position);
+			var contactNormal = (c.transform.position - contactPoint).normalized;
+
+			if (Vector3.Dot(transform.right, contactNormal) > 0 && enterDirection == Direction.Left) {
 				mainCamera.ToggleIndoorsMode();
 			} 
-			if (Vector3.Dot (transform.right, direction) < 0 && enterDirection == Direction.Right) {
+			if (Vector3.Dot(transform.right, contactNormal) < 0 && enterDirection == Direction.Right) {
 				mainCamera.ToggleIndoorsMode();
 			}
-
-			// TODO: Top/Bottom toggles
-
-			if (enterDirection == Direction.Top) {
-				print("exit top");
+			if (Vector3.Dot(transform.up, contactNormal) > 0 && enterDirection == Direction.Bottom) {
+				mainCamera.ToggleIndoorsMode();
+			} 
+			if (Vector3.Dot(transform.up, contactNormal) < 0 && enterDirection == Direction.Top) {
+				mainCamera.ToggleIndoorsMode();
 			}
 		}
 	}
