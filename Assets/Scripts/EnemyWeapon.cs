@@ -13,8 +13,8 @@ public class EnemyWeapon : MonoBehaviour {
 	public float speed;
 	public float lifetime;
 
-	// TODO: Implement fire modes
-	WeaponFireMode weapon = WeaponFireMode.Burst;
+    // TODO: Implement fire modes
+    public WeaponFireMode weapon;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +33,14 @@ public class EnemyWeapon : MonoBehaviour {
 			bullet.GetComponent<Bullet>().Projectile(damage, speed, dir, lifetime);
 		}
 		if(weapon == WeaponFireMode.Shotgun) {
+            dir.y = -1;
+            for(int i = 0; i < 3; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, bulletSpawner.position, Quaternion.identity);
+                bullet.GetComponent<Bullet>().Projectile(damage, speed, new Vector3(dir.x, dir.y), lifetime);
+                dir.y += 1;
+                
+            }
 
 		}
 	}

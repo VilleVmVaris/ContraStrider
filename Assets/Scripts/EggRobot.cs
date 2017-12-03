@@ -192,6 +192,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		}
 	}
 
+
 	void ChangeDamageable() {
 		foreach (var sprite in sprites) {
 			sprite.color = originalColor;
