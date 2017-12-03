@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, Damageable
     public float accelerationTimeAirborne = .2f;
     public float accelerationTimeGrounded = .1f;
     public float wallSlideSpeedMax = 3;
+    public float wallSlideSpeedMultiplier;
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
@@ -437,6 +438,11 @@ public class Player : MonoBehaviour, Damageable
             if (velocity.y < -wallSlideSpeedMax)
             {
                 velocity.y = -wallSlideSpeedMax;
+            }
+
+            if(directionalInput.y < -0.5)
+            {
+                velocity.y *= wallSlideSpeedMultiplier;
             }
 
             if (timeToWallUnstick > 0)
