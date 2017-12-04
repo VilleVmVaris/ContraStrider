@@ -132,7 +132,7 @@ public class Player : MonoBehaviour, Damageable
 		if (dash.dashing) {
 			if (controller.collisions.left || controller.collisions.right) {
 				dash.StopDash();
-				EndAttackEffect();
+				EndDashAttackEffect();
 			}
 		}
 
@@ -159,7 +159,6 @@ public class Player : MonoBehaviour, Damageable
 
         } else if(knockedBack)
         {
-            print("knockdirection " + knockDirection);
             controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
             timer.Once(StopKnockBack, knockDuration);
         }
@@ -227,7 +226,6 @@ public class Player : MonoBehaviour, Damageable
 				input.y = 0;
 			} if (wallSliding)
             {
-                print("hii");
                 input.x = -controller.collisions.faceDir;
             }
 
@@ -245,7 +243,7 @@ public class Player : MonoBehaviour, Damageable
 			// TODO: Maybe disable only script/collider instead of entire gameobject?
 			//       Would make positioning and playing effects easier.
 			groundAttackObject.SetActive(true);
-			timer.Once(EndAttackEffect, attackDurationTicks);
+			timer.Once(EndNormalAttackEffect, attackDurationTicks);
 		}
     }
 
@@ -283,7 +281,7 @@ public class Player : MonoBehaviour, Damageable
 			chargeAttackObject.SetActive(true);
 			swordChargeEffect.SetActive(false);
 
-            timer.Once(EndAttackEffect, attackDurationTicks);
+            timer.Once(EndChargeAttackEffect, attackDurationTicks);
 
             ResetCharge();
 
@@ -404,25 +402,25 @@ public class Player : MonoBehaviour, Damageable
 		dashAttack.SetActive(true);
 		animator.SetBool("ninjadash", true);
 		animator.SetBool("ninjastance", false);
-		timer.Once(EndAttackEffect, dash.dashTicks);
+		timer.Once(EndDashAttackEffect, dash.dashTicks);
 	}
     }
 
-    public void EndAttackEffect()
+    public void EndNormalAttackEffect()
     {
-        if (groundAttackObject.activeSelf)
-        {
+        groundAttackObject.SetActive(false);
+    }
 
-            groundAttackObject.SetActive(false);
+    public void EndChargeAttackEffect()
+    {
 
-        }
-        if (chargeAttackObject.activeSelf)
-        {
             chargeAttackObject.SetActive(false);
-		} if (dashAttack.activeSelf && !dash.dashing) {
-			dashAttack.SetActive(false);
-			animator.SetBool("ninjadash", false);
-		}
+    }
+
+    public void EndDashAttackEffect()
+    {
+        dashAttack.SetActive(false);
+        animator.SetBool("ninjadash", false);
     }
 
     void CalculateVelocity()

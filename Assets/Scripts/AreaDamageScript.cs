@@ -11,7 +11,6 @@ public class AreaDamageScript : MonoBehaviour {
 
        damager = GetComponentInParent<DamageSource>();
 
-		
 	}
 	
 	// Update is called once per frame
