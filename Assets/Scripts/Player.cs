@@ -261,7 +261,7 @@ public class Player : MonoBehaviour, Damageable
 
             if (wallSliding)
                 {
-                    print("hii");
+                    
                     input.x = -controller.collisions.faceDir;
                 }
 
