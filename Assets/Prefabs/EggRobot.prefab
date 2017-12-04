@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292986533851408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18, y: 3, z: 0}
+  m_LocalPosition: {x: 33, y: -2.7000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470216261233724}
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4961216
+  m_Length: 2.4961278
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4343735075165502}
   m_AttachedIK: {fileID: 0}
@@ -1422,7 +1422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.1580443
+  m_Length: 2.158053
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4474885553115092}
   m_AttachedIK: {fileID: 0}
@@ -1482,6 +1482,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   lifetime: 5
+  weapon: 0
 --- !u!114 &114669416245588102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1510,7 +1511,7 @@ MonoBehaviour:
   burstAmount: 3
   burstInterval: 15
   kickCooldown: 1
-  shielded: 1
+  shielded: 0
   coreAnimator: {fileID: 95236070025867518}
   deathAnimations:
   - {fileID: 7400000, guid: 1a47ee69aff620a4598b006cebd764d3, type: 2}
@@ -1521,7 +1522,7 @@ MonoBehaviour:
   shieldAnimator: {fileID: 95327286070359896}
   jetpackSprite: {fileID: 1232299234063232}
   deathSmoke: {fileID: 1729833013548020}
-  flyingDeathExplosion: {fileID: 1956112243191142}
+  deathExplosion: {fileID: 1956112243191142}
 --- !u!114 &114697462915519222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1581,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586215
+  m_Length: 2.4586263
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4436227326209812}
   m_AttachedIK: {fileID: 0}
@@ -34883,7 +34884,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 1
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -34991,7 +34992,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -35153,7 +35154,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 1
   m_MinParticleSize: 0

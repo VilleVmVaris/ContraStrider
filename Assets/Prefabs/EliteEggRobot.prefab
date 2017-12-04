@@ -717,7 +717,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816449596618418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.28, y: -2, z: 0}
+  m_LocalPosition: {x: 88.7, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003804942187808}
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   shieldAnimator: {fileID: 95929431754826892}
   jetpackSprite: {fileID: 1117916813546756}
   deathSmoke: {fileID: 1540337946585206}
-  flyingDeathExplosion: {fileID: 1974369601607036}
+  deathExplosion: {fileID: 1974369601607036}
 --- !u!114 &114514569249537064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1453,6 +1453,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   lifetime: 5
+  weapon: 0
 --- !u!114 &114840622376123856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1465,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.158053
+  m_Length: 2.1580362
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4978002368389640}
   m_AttachedIK: {fileID: 0}
@@ -21723,7 +21724,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -21777,7 +21778,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 1
   m_MinParticleSize: 0
@@ -21831,7 +21832,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_RenderMode: 1
   m_SortMode: 1
   m_MinParticleSize: 0

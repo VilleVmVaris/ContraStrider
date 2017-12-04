@@ -42,7 +42,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public Animator shieldAnimator;
 	public GameObject jetpackSprite;
 	public GameObject deathSmoke;
-	public GameObject flyingDeathExplosion;
+	public GameObject deathExplosion;
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
 	Color hitFlashColor = new Color(.9f, .3f, .3f, 1f);
@@ -265,6 +265,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
+		deathExplosion.SetActive(true);
         if (type == RobotType.Normal) {
 			deathSmoke.SetActive(true);
 			int i = Random.Range(0, deathAnimations.Count);
@@ -272,7 +273,6 @@ public class EggRobot : MonoBehaviour, Damageable {
 			dieLength = deathAnimations[i].length;
 		} else {
 			coreAnimator.SetTrigger("munaflydeath");
-			flyingDeathExplosion.SetActive(true);
 			dieLength = 0f;
 		}
 		// FIXME: Disabling collider drops robot into the ground while in death animation
