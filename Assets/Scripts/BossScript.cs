@@ -196,12 +196,22 @@ public class BossScript : MonoBehaviour, Damageable {
 
             //print(dirToPlayerX);
 
-            GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
+            //GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
 
-            bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, fireDirection, bulletLifetime);
+            //bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, fireDirection, bulletLifetime);
 
             fireDirection.y += fireSegment;
-            
+
+            var dir = player.transform.position - bulletSpawner.position;
+            dir.y = -1;
+
+            for (int j = 0; j < 3; j++) { 
+            GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, new Vector3(fireDirection.x, fireDirection.y - dir.y), bulletLifetime);
+            dir.y += 1;
+
+            }
+
             yield return new WaitForSeconds(.2f);
 
         }
