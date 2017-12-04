@@ -129,11 +129,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMinSize: 5
-  minVerticalOffset: 1
+  minVerticalOffset: 2
   cameraSize: 8
-  verticalOffset: 3
+  verticalOffset: 5
   cameraMaxSize: 10
-  maxVerticalOffset: 6
+  maxVerticalOffset: 8
   lookAheadX: 2
   lookSmoothTimeX: 0.2
   verticalSmoothTime: 0.1
