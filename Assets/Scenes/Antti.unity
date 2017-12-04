@@ -1906,6 +1906,7 @@ MonoBehaviour:
   accelerationTimeAirborne: 0.1
   accelerationTimeGrounded: 0.05
   wallSlideSpeedMax: 3
+  wallSlideSpeedMultiplier: 0
   wallJumpClimb: {x: 7.5, y: 16}
   wallJumpOff: {x: 8, y: 7}
   wallLeap: {x: 20, y: 17}

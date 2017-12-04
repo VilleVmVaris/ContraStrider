@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	public float cameraMinSize = 3f;
+	public float minVerticalOffset;
 	public float cameraSize = 5f;
 	public float verticalOffset;
 	public float cameraMaxSize = 7f;
@@ -73,6 +74,7 @@ public class CameraFollow : MonoBehaviour {
 		currentCamera = GetComponent<Camera>();
 		followTarget = GameObject.Find("Player").GetComponent<Controller2D>();
 		focusArea = new FocusArea(followTarget.collider.bounds, focusAreaSize);
+		cameraVerticalOffset = verticalOffset;
 	}
 	
 	// Update is called once per frame
@@ -96,6 +98,7 @@ public class CameraFollow : MonoBehaviour {
 
 		currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 		focusPosition.y = Mathf.SmoothDamp(transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
+		//focusPosition.y += Vector2.up.y * cameraVerticalOffset;
 		focusPosition += Vector2.right * currentLookAheadX;
 
 		// Move camera
@@ -104,7 +107,7 @@ public class CameraFollow : MonoBehaviour {
 		// Zoom camera during state transition
 		if (indoors && currentCamera.orthographicSize > cameraMinSize) {
 			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * 5f);
-			cameraVerticalOffset = 0f;
+			cameraVerticalOffset = minVerticalOffset;
 		} else if (!indoors && !wideOutdoors && !Mathf.Approximately(currentCamera.orthographicSize, cameraSize)) {
 			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraSize, Time.deltaTime * 5f);
 			cameraVerticalOffset = verticalOffset;
