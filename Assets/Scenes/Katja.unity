@@ -166,8 +166,8 @@ GameObject:
   - component: {fileID: 192604322}
   - component: {fileID: 192604321}
   - component: {fileID: 192604320}
-  m_Layer: 0
-  m_Name: hamays
+  m_Layer: 11
+  m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 192604318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -252.8, y: -477.5, z: 0}
+  m_LocalPosition: {x: -258.9, y: -477.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 504959391}
@@ -957,7 +957,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2034149916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -259.6, y: -477.49, z: 0}
+  m_LocalPosition: {x: -253.1, y: -477.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 504959391}
@@ -1241,13 +1241,13 @@ GameObject:
   - component: {fileID: 2076570997}
   - component: {fileID: 2076570996}
   - component: {fileID: 2076570995}
-  m_Layer: 20
-  m_Name: DoubleScore
+  m_Layer: 11
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2076570994
 Transform:
   m_ObjectHideFlags: 0
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076570993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -253.03, y: -477.5, z: 0}
+  m_LocalPosition: {x: -257.3, y: -477.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 504959391}
