@@ -225,7 +225,11 @@ public class Player : MonoBehaviour, Damageable
 			if ((input.x == 0 && input.y == 0) || crouching) {
 				input.x = controller.collisions.faceDir;
 				input.y = 0;
-			}
+			} if (wallSliding)
+            {
+                print("hii");
+                input.x = -controller.collisions.faceDir;
+            }
 
 			int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
@@ -256,6 +260,13 @@ public class Player : MonoBehaviour, Damageable
                 input.x = controller.collisions.faceDir;
                 input.y = 0;
             }
+
+            if (wallSliding)
+                {
+                    print("hii");
+                    input.x = -controller.collisions.faceDir;
+                }
+
             int attackDir = (int)(Vector2.Angle(input, Vector3.up));
 
             if (input.x < 0)
@@ -405,10 +416,10 @@ public class Player : MonoBehaviour, Damageable
             groundAttackObject.SetActive(false);
 
         }
-        else if (chargeAttackObject.activeSelf)
+        if (chargeAttackObject.activeSelf)
         {
             chargeAttackObject.SetActive(false);
-		} else if (dashAttack.activeSelf && !dash.dashing) {
+		} if (dashAttack.activeSelf && !dash.dashing) {
 			dashAttack.SetActive(false);
 			animator.SetBool("ninjadash", false);
 		}
