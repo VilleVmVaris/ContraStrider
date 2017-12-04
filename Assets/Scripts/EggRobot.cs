@@ -203,7 +203,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	#region Damageable implementation
 
 	public bool TakeDamage(int damage) {
-		print("osuma");
+
 		health -= damage;
 		hitSpark.Play();
 		coreAnimator.SetTrigger("munaosuma");
@@ -232,7 +232,7 @@ public class EggRobot : MonoBehaviour, Damageable {
         shielded = false;
 		shieldSprite.transform.parent = null;
 		shieldAnimator.SetBool("kuoretfly", true);
-        print("kilpimeni");
+
     }
 
     public void ActivateKick()

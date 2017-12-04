@@ -96,7 +96,7 @@ public class BladeDash : MonoBehaviour {
 		dashing = false;
 		direction = Vector2.zero;
 		controller.dashingThroughEnemy = false;
-		player.EndAttackEffect();
+		player.EndDashAttackEffect();
 	}
 
 	public void EndCoolDown() {

@@ -86,7 +86,7 @@ public class AttackScript : MonoBehaviour {
 
     } else if(collision.gameObject.layer == 10 && collision.gameObject.GetComponentInParent<Bullet>() != null)
         {
-            print("luoti");
+
             if(!collision.GetComponentInParent<Bullet>().SeeIfDeflected())
             {
                 collision.GetComponentInParent<Bullet>().GetDeflected(transform.right);
