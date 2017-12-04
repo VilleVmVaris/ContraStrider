@@ -15,6 +15,7 @@ public class CameraFollow : MonoBehaviour {
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
 	public Vector2 focusAreaSize;
+	public Transform bossLockPosition;
 
 	Controller2D followTarget;
 	FocusArea focusArea;
@@ -31,6 +32,7 @@ public class CameraFollow : MonoBehaviour {
 	float smoothVelocityY;
 
 	bool lookAheadStopped;
+	bool bossMode = false;
 
 	struct FocusArea {
 		public Vector2 center;
@@ -68,7 +70,6 @@ public class CameraFollow : MonoBehaviour {
 		}
 	}
 
-
 	// Use this for initialization
 	void Start () {
 		currentCamera = GetComponent<Camera>();
@@ -79,9 +80,13 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		focusArea.Update(followTarget.collider.bounds);
-
-		Vector2 focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
+		Vector2 focusPosition;
+		if (bossMode) {
+			focusPosition = bossLockPosition.transform.position;
+		} else {
+			focusArea.Update(followTarget.collider.bounds);
+			focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
+		}
 		if (!Mathf.Approximately(focusArea.velocity.x, 0)) {
 			lookAheadDirectionX = Mathf.Sign(focusArea.velocity.x);
 			if (Mathf.Approximately(Mathf.Sign(followTarget.playerInput.x), Mathf.Sign(focusArea.velocity.x) ) 
@@ -98,7 +103,6 @@ public class CameraFollow : MonoBehaviour {
 
 		currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 		focusPosition.y = Mathf.SmoothDamp(transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
-		//focusPosition.y += Vector2.up.y * cameraVerticalOffset;
 		focusPosition += Vector2.right * currentLookAheadX;
 
 		// Move camera
@@ -130,5 +134,9 @@ public class CameraFollow : MonoBehaviour {
 	public void ToggleWideOutdoorsMode() {
 		wideOutdoors = !wideOutdoors;
 		indoors = false;
+	}
+
+	public void ActivateBossMode() {
+		bossMode = true;
 	}
 }

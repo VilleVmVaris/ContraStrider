@@ -88,6 +88,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		if (Vector3.Distance(player.transform.position, transform.position) < 12f) {
 			gui.ShowBossHealthBar(this);
+			Camera.main.GetComponent<CameraFollow>().ActivateBossMode();
 		}
 
         if(attackAreas.Count != aoeDamage.attackAreas.Count)
