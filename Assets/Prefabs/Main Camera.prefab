@@ -129,14 +129,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMinSize: 5
+  minVerticalOffset: 2
   cameraSize: 8
-  verticalOffset: 1
+  verticalOffset: 5
   cameraMaxSize: 10
-  maxVerticalOffset: 3
+  maxVerticalOffset: 8
   lookAheadX: 2
   lookSmoothTimeX: 0.2
   verticalSmoothTime: 0.1
   focusAreaSize: {x: 3, y: 4}
+  bossLockPosition: {fileID: 0}
 --- !u!114 &114229784384207764
 MonoBehaviour:
   m_ObjectHideFlags: 1

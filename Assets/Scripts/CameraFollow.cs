@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	public float cameraMinSize = 3f;
+	public float minVerticalOffset;
 	public float cameraSize = 5f;
 	public float verticalOffset;
 	public float cameraMaxSize = 7f;
@@ -14,6 +15,7 @@ public class CameraFollow : MonoBehaviour {
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
 	public Vector2 focusAreaSize;
+	public Transform bossLockPosition;
 
 	Controller2D followTarget;
 	FocusArea focusArea;
@@ -30,6 +32,7 @@ public class CameraFollow : MonoBehaviour {
 	float smoothVelocityY;
 
 	bool lookAheadStopped;
+	bool bossMode = false;
 
 	struct FocusArea {
 		public Vector2 center;
@@ -67,19 +70,23 @@ public class CameraFollow : MonoBehaviour {
 		}
 	}
 
-
 	// Use this for initialization
 	void Start () {
 		currentCamera = GetComponent<Camera>();
 		followTarget = GameObject.Find("Player").GetComponent<Controller2D>();
 		focusArea = new FocusArea(followTarget.collider.bounds, focusAreaSize);
+		cameraVerticalOffset = verticalOffset;
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		focusArea.Update(followTarget.collider.bounds);
-
-		Vector2 focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
+		Vector2 focusPosition;
+		if (bossMode) {
+			focusPosition = bossLockPosition.transform.position;
+		} else {
+			focusArea.Update(followTarget.collider.bounds);
+			focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
+		}
 		if (!Mathf.Approximately(focusArea.velocity.x, 0)) {
 			lookAheadDirectionX = Mathf.Sign(focusArea.velocity.x);
 			if (Mathf.Approximately(Mathf.Sign(followTarget.playerInput.x), Mathf.Sign(focusArea.velocity.x) ) 
@@ -104,7 +111,7 @@ public class CameraFollow : MonoBehaviour {
 		// Zoom camera during state transition
 		if (indoors && currentCamera.orthographicSize > cameraMinSize) {
 			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * 5f);
-			cameraVerticalOffset = 0f;
+			cameraVerticalOffset = minVerticalOffset;
 		} else if (!indoors && !wideOutdoors && !Mathf.Approximately(currentCamera.orthographicSize, cameraSize)) {
 			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraSize, Time.deltaTime * 5f);
 			cameraVerticalOffset = verticalOffset;
@@ -127,5 +134,9 @@ public class CameraFollow : MonoBehaviour {
 	public void ToggleWideOutdoorsMode() {
 		wideOutdoors = !wideOutdoors;
 		indoors = false;
+	}
+
+	public void ActivateBossMode() {
+		bossMode = true;
 	}
 }
