@@ -30,7 +30,7 @@ public class PowerUP : MonoBehaviour {
 	void SetPowerUp(string power) {
         
 		if (power == ("HealthKit")) {
-			gui.SetFullHealth();
+//			gui.SetFullHealth();
 		}
 
 		if (power == ("DoubleScore")) {
@@ -39,8 +39,8 @@ public class PowerUP : MonoBehaviour {
 
 		// TODO: Checkpoint logic under game manager maybe?
 		if (power == ("Checkpoint")) {
-			PlayerPrefs.SetFloat("PlayerX", transform.position.x);
-			PlayerPrefs.SetFloat("PlayerY", transform.position.y);
+			//PlayerPrefs.SetFloat("PlayerX", transform.position.x);
+			//PlayerPrefs.SetFloat("PlayerY", transform.position.y);
 			// PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
 			// What else need to save?
 		}

@@ -6,5 +6,6 @@ using UnityEngine;
 public class SaveData {
     public float health;
     public Vector3 playerPosition; // CheckPoint
-    public List<string> powerUpS;
+    // public float score; Optio
+    public List<string> enemyList;
 }

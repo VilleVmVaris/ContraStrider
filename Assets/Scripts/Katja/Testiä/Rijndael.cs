@@ -21,15 +21,18 @@ class Rijndael {
                 outstring = DecryptStringFromBytes(soup, myRijndael.Key, myRijndael.IV);
 
             }
-
         }
+
         catch (Exception e) {
             Debug.LogFormat("Error: {0}", e.Message);
         }
         return outstring;
     }
+
     public byte[] Encrypt(string original, string key) { // Key 32 chars
+
         byte[] encrypted = null;
+
         try {
             byte[] iv = Encoding.ASCII.GetBytes("1234567890123456");
             byte[] keyBytes = Encoding.ASCII.GetBytes(key);
@@ -41,13 +44,14 @@ class Rijndael {
                 // Encrypt the string to an array of bytes.
                 encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
             }
-
         }
+
         catch (Exception e) {
             Debug.LogFormat("Error: {0}", e.Message);
         }
         return encrypted;
     }
+
     static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) {
         // Check arguments.
         if (plainText == null || plainText.Length <= 0)
@@ -56,9 +60,11 @@ class Rijndael {
             throw new ArgumentNullException("Key");
         if (IV == null || IV.Length <= 0)
             throw new ArgumentNullException("IV");
+
         byte[] encrypted;
         // Create an RijndaelManaged object
         // with the specified key and IV.
+
         using (RijndaelManaged rijAlg = new RijndaelManaged()) {
             rijAlg.Key = Key;
             rijAlg.IV = IV;
@@ -67,6 +73,7 @@ class Rijndael {
             ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
             // Create the streams used for encryption.
+
             using (MemoryStream msEncrypt = new MemoryStream()) {
                 using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)) {
                     using (StreamWriter swEncrypt = new StreamWriter(csEncrypt)) {
@@ -79,10 +86,9 @@ class Rijndael {
             }
         }
 
-
+    
         // Return the encrypted bytes from the memory stream.
         return encrypted;
-
     }
 
     static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) {
@@ -118,10 +124,7 @@ class Rijndael {
                     }
                 }
             }
-
         }
-
         return plaintext;
-
     }
 }
