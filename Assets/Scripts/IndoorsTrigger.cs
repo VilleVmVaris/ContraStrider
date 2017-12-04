@@ -7,6 +7,7 @@ public class IndoorsTrigger : MonoBehaviour {
 	CameraFollow mainCamera;
 	Direction enterDirection;
 	BoxCollider2D boxCollider2D;
+	Player player;
 
 	enum Direction {
 		Right,
@@ -19,6 +20,7 @@ public class IndoorsTrigger : MonoBehaviour {
 	void Start() {
 		mainCamera = Camera.main.GetComponent<CameraFollow>();
 		boxCollider2D = GetComponent<BoxCollider2D>();
+		player = GameObject.Find("Player").GetComponent<Player>();
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
@@ -49,15 +51,19 @@ public class IndoorsTrigger : MonoBehaviour {
 
 			if (Vector3.Dot(transform.right, contactNormal) > 0 && enterDirection == Direction.Left) {
 				mainCamera.ToggleIndoorsMode();
+				player.ToggleStepDustEffect();
 			} 
 			if (Vector3.Dot(transform.right, contactNormal) < 0 && enterDirection == Direction.Right) {
 				mainCamera.ToggleIndoorsMode();
+				player.ToggleStepDustEffect();
 			}
 			if (Vector3.Dot(transform.up, contactNormal) > 0 && enterDirection == Direction.Bottom) {
 				mainCamera.ToggleIndoorsMode();
+				player.ToggleStepDustEffect();
 			} 
 			if (Vector3.Dot(transform.up, contactNormal) < 0 && enterDirection == Direction.Top) {
 				mainCamera.ToggleIndoorsMode();
+				player.ToggleStepDustEffect();
 			}
 		}
 	}

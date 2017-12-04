@@ -647,6 +647,10 @@ public class Player : MonoBehaviour, Damageable
     {
 		animator.SetBool("ninjadeath", true);
     }
+
+	public void ToggleStepDustEffect() {
+		stepSandCloud.gameObject.SetActive(!stepSandCloud.gameObject.activeSelf);
+	}
 }
 
 
