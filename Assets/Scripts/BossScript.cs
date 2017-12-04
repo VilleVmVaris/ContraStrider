@@ -44,7 +44,7 @@ public class BossScript : MonoBehaviour, Damageable {
     bool inBulletMode = true;
 
     TimerManager timer;
-
+	GUIManager gui;
     GameObject player;
 
     ArcMover2D arcmover;
@@ -66,7 +66,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     // Use this for initialization
     void Start () {
-
+		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
         arcmover = GetComponent<ArcMover2D>();
@@ -85,6 +85,10 @@ public class BossScript : MonoBehaviour, Damageable {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (Vector3.Distance(player.transform.position, transform.position) < 12f) {
+			gui.ShowBossHealthBar(this);
+		}
 
         if(attackAreas.Count != aoeDamage.attackAreas.Count)
         { 

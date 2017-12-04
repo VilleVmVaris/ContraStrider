@@ -8,6 +8,7 @@ public class GUIManager : MonoBehaviour {
 	public ScoreScript Score;
 	public CheckpointScript Checkpoint;
 	public BladeDashMeter BladeDash;
+	public BossHealthBar BossHealthBar;
 
 	// Use this for initialization
 	void Start() {
@@ -40,4 +41,10 @@ public class GUIManager : MonoBehaviour {
 		BladeDash.FullCharge();
 	}
 
+	public void ShowBossHealthBar(BossScript boss) {
+		if (!BossHealthBar.bossHealthPanel.activeSelf) {
+			BossHealthBar.bossHealthPanel.SetActive(true);
+			BossHealthBar.boss = boss;	
+		}
+	}
 }
