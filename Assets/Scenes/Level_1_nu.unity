@@ -9603,7 +9603,7 @@ MonoBehaviour:
     m_Bits: 0
   passengerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   localWaypoints:
   - {x: 0, y: 0, z: 0}
   - {x: 139.1, y: 0, z: 0}
@@ -10507,7 +10507,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1546428072558604, guid: 62272e519121d244e940a6fa065ec194, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114504364463747294, guid: 62272e519121d244e940a6fa065ec194,
         type: 2}
