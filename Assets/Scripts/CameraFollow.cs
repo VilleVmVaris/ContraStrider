@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
 	public float lookAheadX;
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
+	public float zoomSmoothSpeed;
 	public Vector2 focusAreaSize;
 	public Transform bossLockPosition;
 
@@ -110,13 +111,13 @@ public class CameraFollow : MonoBehaviour {
 
 		// Zoom camera during state transition
 		if (indoors && currentCamera.orthographicSize > cameraMinSize) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * 5f);
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMinSize, Time.deltaTime * zoomSmoothSpeed);
 			cameraVerticalOffset = minVerticalOffset;
 		} else if (!indoors && !wideOutdoors && !Mathf.Approximately(currentCamera.orthographicSize, cameraSize)) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraSize, Time.deltaTime * 5f);
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraSize, Time.deltaTime * zoomSmoothSpeed);
 			cameraVerticalOffset = verticalOffset;
 		} else if (wideOutdoors && currentCamera.orthographicSize < cameraMaxSize) {
-			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMaxSize, Time.deltaTime * 5f);
+			currentCamera.orthographicSize = Mathf.Lerp(currentCamera.orthographicSize, cameraMaxSize, Time.deltaTime * zoomSmoothSpeed);
 			cameraVerticalOffset = maxVerticalOffset;
 		}
 	}
