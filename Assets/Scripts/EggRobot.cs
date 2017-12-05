@@ -119,6 +119,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 				if (type == RobotType.Normal) {
 					coreAnimator.SetBool("munaanimation", true);
+					sound.RobotStep();
 				} else {
 					coreAnimator.SetBool("munafly", true);
 				}

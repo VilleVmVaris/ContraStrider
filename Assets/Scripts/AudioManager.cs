@@ -20,6 +20,9 @@ public class AudioManager : MonoBehaviour {
 
 	Transform player;
 	float footstepTimer;
+	float robotstepTimer;
+	bool flyingClose = false;
+	bool walkingClose = false;
 
 	// Use this for initialization
 	void Start () {
@@ -30,20 +33,26 @@ public class AudioManager : MonoBehaviour {
 	void Update () {
 		if (footstepTimer >= 0f) {
 			footstepTimer -= Time.deltaTime;
+		}		
+		if (robotstepTimer >= 0f) {
+			robotstepTimer -= Time.deltaTime;
 		}
 
 		// TODO: Make this a bit more generic?
-		var playJetpack = false;
+		flyingClose = false;
+		walkingClose = false;
 		var enemies = Physics2D.OverlapCircleAll(player.position, 15f, Helpers.EnemyLayerMask);
 		for (int i = 0; i < enemies.Length; i++) {
 			var enemy = enemies[i].GetComponent<EggRobot>();
 			if (!enemy.IsNullOrDestroyed() && enemy.type == EggRobot.RobotType.Flying) {
-				playJetpack = true;		
+				flyingClose = true;		
+			} else if(!enemy.IsNullOrDestroyed() && enemy.type == EggRobot.RobotType.Normal) {
+				walkingClose = true;
 			}
 		}
-		if (playJetpack && !jetpack.isPlaying) {
+		if (flyingClose && !jetpack.isPlaying) {
 			jetpack.Play();
-		} else if (!playJetpack && jetpack.isPlaying) {
+		} else if (!flyingClose && jetpack.isPlaying) {
 			jetpack.Stop();
 		}
 	}
@@ -55,13 +64,17 @@ public class AudioManager : MonoBehaviour {
 	public void NinjaStep() {
 		if (footstepTimer < 0f) {
 			footsteps[Random.Range(0, footsteps.Count)].Play();
-			footstepTimer = .2f;
+			footstepTimer =+ .1f;
 		}
 
 	}
 
 	public void RobotStep() {
-		robotsteps[Random.Range(0, robotsteps.Count)].Play();
+		if (walkingClose && robotstepTimer < 0f) {
+			robotsteps[Random.Range(0, robotsteps.Count)].Play();
+			robotstepTimer = +.2f;
+		}
+
 	}
 
 }
