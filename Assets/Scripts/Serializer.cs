@@ -22,7 +22,7 @@ public class Serializer : MonoBehaviour {
     public void SetCheckPoint() {
         
     SaveData data = new SaveData()
-        {health = 100, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
+		{health = player.GetComponent<Player>().health, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
         GameObject[] enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var g in enemyGameObjects) {
             data.enemyList.Add(g);
