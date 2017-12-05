@@ -1080,8 +1080,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292986533851408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: -2.7000008, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -278.04, y: 51.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470216261233724}
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4961278
+  m_Length: 2.4961658
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4343735075165502}
   m_AttachedIK: {fileID: 0}
@@ -1422,7 +1422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.158053
+  m_Length: 2.157999
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4474885553115092}
   m_AttachedIK: {fileID: 0}
@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.0823047
+  m_Length: 2.0823557
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4280816168414210}
   m_AttachedIK: {fileID: 0}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1918939347452766, guid: db844470cbdde334aae0cf537fbd78bb,
     type: 2}
   bulletSpawner: {fileID: 4188483540438612}
-  damage: 1
+  damage: 3
   speed: 5
   lifetime: 5
   weapon: 0
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586263
+  m_Length: 2.4586015
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4436227326209812}
   m_AttachedIK: {fileID: 0}

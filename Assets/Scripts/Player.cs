@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, Damageable
 {
     BoxCollider2D collider;
     public int health;
+    GameManager gm;
 
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour, Damageable
 
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         collider = GetComponent<BoxCollider2D>();
 		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
 
@@ -638,6 +640,12 @@ public class Player : MonoBehaviour, Damageable
 
     }
 
+    public void GetHealed(int amount)
+    {
+        health += amount;
+        gui.SetHealth(health);
+    }
+
 	void FlashSpriteColorBack() {
 		foreach (var sprite in sprites) {
 			sprite.color = originalColor;
@@ -662,6 +670,7 @@ public class Player : MonoBehaviour, Damageable
     public void Die()
     {
 		animator.SetBool("ninjadeath", true);
+        timer.Once(gm.LoadGame, 20);
 
     }
 

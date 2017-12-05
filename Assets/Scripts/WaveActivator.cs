@@ -20,6 +20,7 @@ public class WaveActivator : MonoBehaviour {
         if(collision.gameObject.layer == 8)
         {
             wave.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

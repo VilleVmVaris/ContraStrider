@@ -716,8 +716,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816449596618418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.7, y: -2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -216.77, y: 51.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003804942187808}
@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.496132
+  m_Length: 2.4961395
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4536416851316780}
   m_AttachedIK: {fileID: 0}
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.082313
+  m_Length: 2.0822875
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4599062176018970}
   m_AttachedIK: {fileID: 0}
@@ -1450,10 +1450,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1918939347452766, guid: db844470cbdde334aae0cf537fbd78bb,
     type: 2}
   bulletSpawner: {fileID: 4358735177776228}
-  damage: 1
+  damage: 5
   speed: 5
   lifetime: 5
-  weapon: 0
+  weapon: 2
 --- !u!114 &114840622376123856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.1580362
+  m_Length: 2.1580722
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4978002368389640}
   m_AttachedIK: {fileID: 0}
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.4586263
+  m_Length: 2.4586122
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4004294674737498}
   m_AttachedIK: {fileID: 0}

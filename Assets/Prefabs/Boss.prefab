@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4585929542185922}
   - component: {fileID: 114117649842585738}
   - component: {fileID: 137342483353914872}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velioikeaarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4295097853175486}
   - component: {fileID: 114574717693224148}
   - component: {fileID: 114623706090997718}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaETUkaapubone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114365592644755952}
   - component: {fileID: 61767200350073658}
   - component: {fileID: 50105017885645508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4951019933834156}
   - component: {fileID: 114353016061157880}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: headbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4134647212484680}
   - component: {fileID: 114122225332148814}
   - component: {fileID: 114155569117115182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaTAKAkaapubone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4283832950806828}
   - component: {fileID: 212821215484831362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velitikku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4827248943145552}
   - component: {fileID: 114415188666197810}
   - component: {fileID: 114974055478616572}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaETUkaapubone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4369215446886822}
   - component: {fileID: 114592036597098118}
   - component: {fileID: 114582031721999980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaTAKAkaapubone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4719988470561920}
   - component: {fileID: 114450298503062560}
   - component: {fileID: 114444201140897916}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenTAKAkaapubone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4910051371662920}
   - component: {fileID: 114603463632431442}
   - component: {fileID: 114914157896707022}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4163270935460132}
   - component: {fileID: 114596041253354592}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenvarvasbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4480202080045912}
   - component: {fileID: 114396274149610890}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vatsabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4946060230357822}
   - component: {fileID: 114118149258742478}
   - component: {fileID: 114266087849377358}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenTAKAkaapubone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4616491767073978}
   - component: {fileID: 198678612785077772}
   - component: {fileID: 199022470775351634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hienompi particle system
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 4610858861077888}
   - component: {fileID: 114260896628430354}
   - component: {fileID: 114790028461041158}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaETUkaapubone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 4213029328974512}
   - component: {fileID: 114720661039737054}
   - component: {fileID: 137708884687454066}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velihelma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4939089179318668}
   - component: {fileID: 114180128386446460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeanillkabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4515601644257560}
   - component: {fileID: 114969091788377636}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasennillkabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 4682979609095078}
   - component: {fileID: 114221584399097228}
   - component: {fileID: 137569448582132224}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velioikeajalka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4495660411306398}
   - component: {fileID: 114966640129955074}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeavarvasbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4493752214249512}
   - component: {fileID: 114192865303798528}
   - component: {fileID: 114894479062257456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 4433076202005406}
   - component: {fileID: 114715839127325218}
   - component: {fileID: 114521940574042940}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenTAKAkaapubone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 4958816070815564}
   - component: {fileID: 114205612605309912}
   - component: {fileID: 114847619947959464}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenTAKAkaapubone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4237175690761686}
   - component: {fileID: 114695013958825398}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenreisibone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 4161108249175392}
   - component: {fileID: 114079346179880270}
   - component: {fileID: 114999536977497820}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4853382597310418}
   - component: {fileID: 114696500052369392}
   - component: {fileID: 114205226759943930}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 4832196858927674}
   - component: {fileID: 114856647853293154}
   - component: {fileID: 114386422295025040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenetukaapubone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 4073187676374252}
   - component: {fileID: 114922485122352312}
   - component: {fileID: 114952362547909184}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaETUkaapubone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4898456238613590}
   - component: {fileID: 114164386754219914}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenhandbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 4090282949980268}
   - component: {fileID: 114225417621071208}
   - component: {fileID: 114125905137717948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaTAKAkaapubone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 4466269023463642}
   - component: {fileID: 114725640873376386}
   - component: {fileID: 137850423395494796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velivasenETUkaapu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 4178506789571414}
   - component: {fileID: 114132204504657054}
   - component: {fileID: 114278561425645032}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4172656922698796}
   - component: {fileID: 114751963688997886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikealegbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4830356844428692}
   - component: {fileID: 114636998856585390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaarmbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016401177504394}
   - component: {fileID: 114973121273223672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeajalkabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556015819689100}
   - component: {fileID: 114406030972040232}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenlegbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224501325518760}
   - component: {fileID: 114359218489104796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenjalkabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 4168828133264818}
   - component: {fileID: 114256190926882266}
   - component: {fileID: 137706162215904594}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velioikeaETUkaapu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4374579092850820}
   - component: {fileID: 114479168842628034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeahandbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4256880367915008}
   - component: {fileID: 114525440003216866}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: corebone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 4717665230918400}
   - component: {fileID: 114212724431265982}
   - component: {fileID: 137524397722959524}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velivasenarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 4659990747361602}
   - component: {fileID: 114809707986088088}
   - component: {fileID: 137614331906896008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velivasenjalka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 4157325391743676}
   - component: {fileID: 198010841651060346}
   - component: {fileID: 199024939533168618}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 114057185416688324}
   - component: {fileID: 33992443379005714}
   - component: {fileID: 23660029465801020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velibelt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 4962686792913016}
   - component: {fileID: 114812183515339862}
   - component: {fileID: 114423428937581132}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenETUkaapubone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4488779239938428}
   - component: {fileID: 114883434116393464}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeahauisbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4760473043350488}
   - component: {fileID: 114298949771843170}
   - component: {fileID: 137754060748886764}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velihuivi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,13 +814,13 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1849694228217924
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4981183959771852}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bulletSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 4151841426073360}
   - component: {fileID: 114543202294632430}
   - component: {fileID: 114615794160825580}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: huivibone5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 4344652268531240}
   - component: {fileID: 114208277274713778}
   - component: {fileID: 114639379723926748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeaTAKAkaapubone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 4980268401348060}
   - component: {fileID: 114758980026773624}
   - component: {fileID: 95423417250416246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VELI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 4879690887039066}
   - component: {fileID: 114585759365706900}
   - component: {fileID: 114751677326456898}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenetukaapubone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4120278143931320}
   - component: {fileID: 114693219417632904}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: helmabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4037090491886850}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Velisprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 4209498624918516}
   - component: {fileID: 114318291693413692}
   - component: {fileID: 137762107744873356}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velicore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 4576665737849904}
   - component: {fileID: 114839589087056988}
   - component: {fileID: 114464133384473124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenetukaapubone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4888072217564568}
   - component: {fileID: 114982289868502508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenhauisbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 4595418022786000}
   - component: {fileID: 114243328518202586}
   - component: {fileID: 137878909455841048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velioikeaTAKAkaapu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644611882176076}
   - component: {fileID: 114523961658016934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: oikeareisibone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 4616266598581214}
   - component: {fileID: 114356135925127798}
   - component: {fileID: 137865023949030982}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: velivasenTAKAkaapu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4830007793080730}
   - component: {fileID: 114439319152028226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: vasenarmbone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4190732445561662}
   - component: {fileID: 114027594051695644}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: kaulabone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1127,9 +1127,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114490176925602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105, y: 18, z: 0}
+  m_LocalPosition: {x: 524.96, y: 68.23, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4981183959771852}
   - {fileID: 4980268401348060}
   - {fileID: 4289416000508700}
   m_Father: {fileID: 0}
@@ -1366,8 +1367,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.97575957, w: -0.21884565}
   m_LocalPosition: {x: 0.8366132, y: -0.3126905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4981183959771852}
+  m_Children: []
   m_Father: {fileID: 4374579092850820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 101.886}
@@ -1382,7 +1382,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097791412983850}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4295097853175486
 Transform:
@@ -1922,7 +1922,7 @@ Transform:
   m_Children:
   - {fileID: 4037090491886850}
   m_Father: {fileID: 4097791412983850}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4981183959771852
 Transform:
@@ -1930,13 +1930,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849694228217924}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7765173, w: 0.63009596}
-  m_LocalPosition: {x: -0.17, y: 5.45, z: 0.23838341}
-  m_LocalScale: {x: 6.7060924, y: 6.7060895, z: 6.7060857}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18, y: -0.6842766, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4157325391743676}
   - {fileID: 4616491767073978}
-  m_Father: {fileID: 4283832950806828}
+  m_Father: {fileID: 4097791412983850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23660029465801020
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.62940687
+  m_Length: 0.6293687
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4951019933834156}
   m_AttachedIK: {fileID: 0}
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.6734366
+  m_Length: 0.67342716
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4853382597310418}
   m_AttachedIK: {fileID: 0}
@@ -2143,7 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.3967257
+  m_Length: 1.3966588
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4344652268531240}
   m_AttachedIK: {fileID: 0}
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.7191033
+  m_Length: 0.7189612
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4493752214249512}
   m_AttachedIK: {fileID: 0}
@@ -2214,14 +2214,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAreas: []
   aoeDamage: {fileID: 0}
-  safeAreaAmount: 0
+  safeAreaAmount: 3
   upperPosition: {fileID: 0}
   leftPosition: {fileID: 0}
   rightPosition: {fileID: 0}
   positionTolerance: 1
   bossBullet: {fileID: 1918939347452766, guid: db844470cbdde334aae0cf537fbd78bb, type: 2}
   bulletSpawner: {fileID: 4981183959771852}
-  damage: 0
+  damage: 5
   bulletSpeed: 20
   bulletLifetime: 5
   bulletTurn: 0
@@ -2258,7 +2258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.7596243
+  m_Length: 0.75961906
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4016401177504394}
   m_AttachedIK: {fileID: 0}
@@ -2274,7 +2274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0514528
+  m_Length: 1.0513065
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4161108249175392}
   m_AttachedIK: {fileID: 0}
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.43569
+  m_Length: 1.4357204
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4946060230357822}
   m_AttachedIK: {fileID: 0}
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0000125
+  m_Length: 0.99990857
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4090282949980268}
   m_AttachedIK: {fileID: 0}
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.484319
+  m_Length: 1.484257
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4827248943145552}
   m_AttachedIK: {fileID: 0}
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.1708319
+  m_Length: 1.170832
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4163270935460132}
   m_AttachedIK: {fileID: 0}
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.168046
+  m_Length: 2.168064
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4515601644257560}
   m_AttachedIK: {fileID: 0}
@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.1656536
+  m_Length: 1.1657
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4295097853175486}
   m_AttachedIK: {fileID: 0}
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.8198792
+  m_Length: 1.8198451
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4898456238613590}
   m_AttachedIK: {fileID: 0}
@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.1839395
+  m_Length: 1.1838601
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4958816070815564}
   m_AttachedIK: {fileID: 0}
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.5595233
+  m_Length: 2.5595329
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4172656922698796}
   m_AttachedIK: {fileID: 0}
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.7148613
+  m_Length: 1.7148621
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4190732445561662}
   m_AttachedIK: {fileID: 0}
@@ -2842,7 +2842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.1025149
+  m_Length: 1.1027157
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4910051371662920}
   m_AttachedIK: {fileID: 0}
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0000048
+  m_Length: 1.0000061
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4073187676374252}
   m_AttachedIK: {fileID: 0}
@@ -2893,7 +2893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0616589
+  m_Length: 1.0616632
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4832196858927674}
   m_AttachedIK: {fileID: 0}
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0000057
+  m_Length: 0.99998796
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4134647212484680}
   m_AttachedIK: {fileID: 0}
@@ -2995,7 +2995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.8487065
+  m_Length: 1.8487439
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4374579092850820}
   m_AttachedIK: {fileID: 0}
@@ -3060,7 +3060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.448601
+  m_Length: 2.4486136
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4556015819689100}
   m_AttachedIK: {fileID: 0}
@@ -3076,7 +3076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.6321554
+  m_Length: 0.6321494
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4151841426073360}
   m_AttachedIK: {fileID: 0}
@@ -3092,7 +3092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.2896749
+  m_Length: 1.2896862
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4719988470561920}
   m_AttachedIK: {fileID: 0}
@@ -3170,7 +3170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.1811223
+  m_Length: 2.1811237
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4939089179318668}
   m_AttachedIK: {fileID: 0}
@@ -3302,7 +3302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.3878822
+  m_Length: 1.3878388
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4879690887039066}
   m_AttachedIK: {fileID: 0}
@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.3876774
+  m_Length: 2.387763
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4830356844428692}
   m_AttachedIK: {fileID: 0}
@@ -3474,7 +3474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.56996083
+  m_Length: 0.5699005
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4224501325518760}
   m_AttachedIK: {fileID: 0}
@@ -3490,7 +3490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 0.9999937
+  m_Length: 0.9998468
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4495660411306398}
   m_AttachedIK: {fileID: 0}
@@ -3525,7 +3525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.1019068
+  m_Length: 2.101921
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4830007793080730}
   m_AttachedIK: {fileID: 0}

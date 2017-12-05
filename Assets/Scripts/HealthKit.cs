@@ -8,6 +8,10 @@ public class HealthKit : MonoBehaviour {
 
 	BoxCollider2D boxCollider;
 
+    int HealAmount;
+
+
+
 	// Use this for initialization
 	void Start () {
 		boxCollider = GetComponent<BoxCollider2D>();
@@ -22,6 +26,7 @@ public class HealthKit : MonoBehaviour {
 		if (collider.CompareTag("Player")) {
 			teapot.SetActive(false);
 			boxCollider.enabled = false;
+            collider.GetComponent<Player>().GetHealed(HealAmount);
 		}
 	}
 }

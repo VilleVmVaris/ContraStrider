@@ -197,7 +197,7 @@ public class BossScript : MonoBehaviour, Damageable {
         bossAnimator.SetBool("valiammus", true);
 
         //fireDirection.y = -1;
-        fireDirection = player.transform.position - bulletSpawner.transform.position;
+        
         inFirePosition = false;
 
 		yield return new WaitForSeconds(.8f);
@@ -211,8 +211,9 @@ public class BossScript : MonoBehaviour, Damageable {
             //GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
 
             //bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, fireDirection, bulletLifetime);
+            fireDirection = player.transform.position - bulletSpawner.transform.position;
 
-            fireDirection.y += fireSegment;
+            //fireDirection.y += fireSegment;
 
             var dir = player.transform.position - bulletSpawner.position;
             dir.y = -1;
@@ -221,6 +222,7 @@ public class BossScript : MonoBehaviour, Damageable {
             GameObject bullet = Instantiate(bossBullet, bulletSpawner.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().Projectile(damage, bulletSpeed, new Vector3(fireDirection.x, fireDirection.y - dir.y), bulletLifetime);
             dir.y += 1;
+                
 
             }
 

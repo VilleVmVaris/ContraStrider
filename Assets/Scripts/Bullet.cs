@@ -60,6 +60,7 @@ public class Bullet : MonoBehaviour {
         else if(go.layer != 11) {
         
         Destroy(gameObject);
+
         }
     }
     public static float AngleInRad(Vector3 vec1, Vector3 vec2) {
