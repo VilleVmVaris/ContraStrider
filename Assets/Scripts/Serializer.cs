@@ -52,8 +52,10 @@ public class Serializer : MonoBehaviour {
         jsonFromFile = crypto.Decrypt(soupBackIn, JSON_ENCRYPTED_KEY);
 
         copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
-        Debug.Log(copy.enemyList);
+        //Debug.Log(copy.enemyList);
         player.transform.position = copy.playerPosition;
-        Debug.Log("HEP");
+        player.GetComponent<Player>().health = copy.health;
+
+
     }
 }
