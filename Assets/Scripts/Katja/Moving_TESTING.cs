@@ -8,14 +8,15 @@ public class Moving_TESTING: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        x = transform.position.x;
-        y = transform.position.y;
+
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Return)) {
+            x = transform.position.x;
+            y = transform.position.y;
             transform.position = new Vector2(x + 1, y);
             x = transform.position.x;
         }
