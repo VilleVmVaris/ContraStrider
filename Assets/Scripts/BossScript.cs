@@ -47,6 +47,7 @@ public class BossScript : MonoBehaviour, Damageable {
     TimerManager timer;
 	GUIManager gui;
     GameObject player;
+    GameManager gm;
 
     ArcMover2D arcmover;
 
@@ -70,6 +71,7 @@ public class BossScript : MonoBehaviour, Damageable {
         maxHealth = health;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
+        gm = GameObject.Find("GameCanvas").GetComponent<GameManager>();
 
         arcmover = GetComponent<ArcMover2D>();
 
@@ -248,6 +250,7 @@ public class BossScript : MonoBehaviour, Damageable {
 		StopCoroutine("AreaAttack");
 		bossAnimator.SetBool("velikuolee", true);
         print("bossi kuoli xD");
+        gm.EndGame();
     }
 
     void SwitchPhase()
