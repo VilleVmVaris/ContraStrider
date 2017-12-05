@@ -7,41 +7,52 @@ public class Serializer : MonoBehaviour {
 
     static readonly string SAVE_FILE = "player.dat";
     static readonly string JSON_ENCRYPTED_KEY = "katjakatjakatjakatjakatjakatjaZY";
-    
+
+    byte[] soup;
+    byte[] soupBackIn;
+
+    string filename;
+    string jsonFromFile;
+
+    SaveData copy;
+    Rijndael crypto;
+
     public GameObject player;
 
     public void SetCheckPoint() {
+        
     SaveData data = new SaveData()
-        {health = 100, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<string>() };
+        {health = 100, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
         //data.enemyList.Add("Test1");
-        //data.enemyList.Add("Test2");
-
+        //GameObject g = GameObject.Find("NameOfGameObject");
+        //data.enemyList.Add(g);
+        //GameObject g = GameObject.FindObjectOfType;
 
         string json = JsonUtility.ToJson(data);
 
-        Rijndael crypto = new Rijndael();
+        crypto = new Rijndael();
 
-        byte[] soup =crypto.Encrypt(json, JSON_ENCRYPTED_KEY);
-        Debug.Log(json);
-        string filename = Path.Combine(Application.persistentDataPath, SAVE_FILE);
+        soup =crypto.Encrypt(json, JSON_ENCRYPTED_KEY);
+
+        filename = Path.Combine(Application.persistentDataPath, SAVE_FILE);
         
-
         if (File.Exists(filename)) {
             File.Delete(filename);
         }
 
         File.WriteAllBytes(filename, soup);
-        Debug.Log("Player saved to " + filename);
-        //string jsonFromFile = File.ReadAllText(filename);
-        //byte[] soupBackIn = File.ReadAllBytes(filename);
-        //string jsonFromFile = crypto.Decrypt(soupBackIn, JSON_ENCRYPTED_KEY);
-        
-        //SaveData copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
-        //Debug.Log(copy.playerPosition);
+
     }
     public void LoadCheckPoint() {
-        //player.transform.position = copy.playerPosition;
-        //health = copy.health;
 
+        //health = copy.health;
+        jsonFromFile = File.ReadAllText(filename);
+        soupBackIn = File.ReadAllBytes(filename);
+        jsonFromFile = crypto.Decrypt(soupBackIn, JSON_ENCRYPTED_KEY);
+
+        copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
+        //Debug.Log(copy.playerPosition);
+        player.transform.position = copy.playerPosition;
+        Debug.Log("HEP");
     }
 }
