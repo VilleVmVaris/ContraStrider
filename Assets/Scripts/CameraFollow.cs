@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
+	[Header("Size and Offset")]
 	public float cameraMinSize = 3f;
 	public float minVerticalOffset;
 	public float cameraSize = 5f;
@@ -11,6 +12,7 @@ public class CameraFollow : MonoBehaviour {
 	public float cameraMaxSize = 7f;
 	public float maxVerticalOffset;
 
+	[Header("Movement")]
 	public float lookAheadX;
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
