@@ -23,10 +23,11 @@ public class Serializer : MonoBehaviour {
         
     SaveData data = new SaveData()
         {health = 100, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
-        //data.enemyList.Add("Test1");
-        //GameObject g = GameObject.Find("NameOfGameObject");
-        //data.enemyList.Add(g);
-        //GameObject g = GameObject.FindObjectOfType;
+        GameObject[] enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var g in enemyGameObjects) {
+            data.enemyList.Add(g);
+        }
+
 
         string json = JsonUtility.ToJson(data);
 
@@ -51,7 +52,7 @@ public class Serializer : MonoBehaviour {
         jsonFromFile = crypto.Decrypt(soupBackIn, JSON_ENCRYPTED_KEY);
 
         copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
-        //Debug.Log(copy.playerPosition);
+        Debug.Log(copy.enemyList);
         player.transform.position = copy.playerPosition;
         Debug.Log("HEP");
     }
