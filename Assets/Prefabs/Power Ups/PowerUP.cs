@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PowerUP : MonoBehaviour {
 	
-	 public GUIManager gui;
+	public GUIManager gui;
+	Player player;
 
 	void Start() {
 		//gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
+		player = GameObject.Find("Player").GetComponent<Player>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -30,6 +32,7 @@ public class PowerUP : MonoBehaviour {
 	void SetPowerUp(string power) {
         
 		if (power == ("HealthKit")) {
+			player.health = 100; // HAX: Quick fix to make health kits work
 			gui.SetFullHealth();
 		}
 
