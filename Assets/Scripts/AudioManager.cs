@@ -5,19 +5,21 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
 	[Header("Ninja")]
-	public AudioSource slashHigh;
-	public AudioSource slashLow;
+	public List<AudioSource> slashes;
+	public List<AudioSource> footsteps;
 	public AudioSource chargeSlash;
 	public AudioSource hit;
 	public AudioSource dashCharged;
 
 	[Header("Robot")]
+	public List<AudioSource> robotsteps;
 	public AudioSource jetpack;
 	public AudioSource explosion;
 	public AudioSource shot;
 	public AudioSource shieldBreaks;
 
 	Transform player;
+	float footstepTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,10 @@ public class AudioManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (footstepTimer >= 0f) {
+			footstepTimer -= Time.deltaTime;
+		}
+
 		// TODO: Make this a bit more generic?
 		var playJetpack = false;
 		var enemies = Physics2D.OverlapCircleAll(player.position, 15f, Helpers.EnemyLayerMask);
@@ -40,6 +46,22 @@ public class AudioManager : MonoBehaviour {
 		} else if (!playJetpack && jetpack.isPlaying) {
 			jetpack.Stop();
 		}
+	}
+
+	public void Slash() {
+		slashes[Random.Range(0, slashes.Count)].Play();
+	}
+
+	public void NinjaStep() {
+		if (footstepTimer < 0f) {
+			footsteps[Random.Range(0, footsteps.Count)].Play();
+			footstepTimer = .2f;
+		}
+
+	}
+
+	public void RobotStep() {
+		robotsteps[Random.Range(0, robotsteps.Count)].Play();
 	}
 
 }

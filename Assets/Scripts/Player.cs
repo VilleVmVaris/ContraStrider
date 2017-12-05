@@ -208,6 +208,7 @@ public class Player : MonoBehaviour, Damageable
 				animator.SetBool("ninjawalk", true);
 				animator.SetBool("ninjarun", false);
 			}
+			sounds.NinjaStep();
 			if (!stepSandCloud.isPlaying) {
 				stepSandCloud.Play();	
 			}
@@ -240,6 +241,7 @@ public class Player : MonoBehaviour, Damageable
 			attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 			 
 			PlaySlashEffect(attackDir);
+			sounds.Slash();
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 			// TODO: Maybe disable only script/collider instead of entire gameobject?
