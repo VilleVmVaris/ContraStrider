@@ -11,6 +11,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public GameObject robotSprite;
 	public int health;
 
+	[HideInInspector]
+	bool dead = false;
+
 	[Header("Movement")]
 	public float moveSpeed;
 	public float chaseDistance;
@@ -210,7 +213,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 			sprite.color = hitFlashColor;
 		}
 		timer.Once(ChangeDamageable, .1f);
-		if (health <= 0) {
+		if (health <= 0 && !dead) {
 			Die();
 			return true;
 		} else {
@@ -258,6 +261,7 @@ public class EggRobot : MonoBehaviour, Damageable {
     }
 
 	void Die() {
+		dead = true;
 		velocity.x = 0f;
         DeactivateKick();
         gameObject.layer = 26;

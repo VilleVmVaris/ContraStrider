@@ -24,6 +24,7 @@ public class BladeDash : MonoBehaviour {
 	GUIManager gui;
     GameObject dashAttack;
 	Player player;
+	AudioManager sounds;
 
 	// Use this for initialization
 	void Start() {
@@ -34,6 +35,7 @@ public class BladeDash : MonoBehaviour {
         dashAttack = GetComponent<Player>().dashAttack;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
 		player = GetComponentInParent<Player>();
+		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
 	}
 
 	// Update is called once per frame
@@ -101,6 +103,7 @@ public class BladeDash : MonoBehaviour {
 
 	public void EndCoolDown() {
 		gui.SetFullDashCharge();
+		sounds.dashCharged.Play();
 		onCooldown = false;
 	}
 

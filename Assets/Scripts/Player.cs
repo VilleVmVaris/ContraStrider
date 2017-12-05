@@ -42,6 +42,7 @@ public class Player : MonoBehaviour, Damageable
 	public GameObject ninjaSprite;
 	public GameObject dashAttack;
 	public ParticleSystem attackEffect;
+	public ParticleSystem hitGlow;
 	public Material slash;
 	public Material chargeSlash;
 	public ParticleSystem stepSandCloud;
@@ -208,6 +209,7 @@ public class Player : MonoBehaviour, Damageable
 				animator.SetBool("ninjawalk", true);
 				animator.SetBool("ninjarun", false);
 			}
+			sounds.NinjaStep();
 			if (!stepSandCloud.isPlaying) {
 				stepSandCloud.Play();	
 			}
@@ -240,6 +242,7 @@ public class Player : MonoBehaviour, Damageable
 			attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 			 
 			PlaySlashEffect(attackDir);
+			sounds.Slash();
 
 			groundAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 			// TODO: Maybe disable only script/collider instead of entire gameobject?
@@ -664,6 +667,10 @@ public class Player : MonoBehaviour, Damageable
 
 	public void ToggleStepDustEffect() {
 		stepSandCloud.gameObject.SetActive(!stepSandCloud.gameObject.activeSelf);
+	}
+
+	public void AttackHitEnemy() {
+		hitGlow.Play();
 	}
 }
 

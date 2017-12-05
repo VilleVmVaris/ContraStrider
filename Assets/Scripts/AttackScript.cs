@@ -58,6 +58,7 @@ public class AttackScript : MonoBehaviour {
                 if(robot.damageable && !hitTargets.Contains(collision.gameObject))
                 {
                    hitTargets.Add(collision.gameObject);
+					player.AttackHitEnemy();
 
                     if(player.dash.dashing)
                     {
@@ -71,6 +72,7 @@ public class AttackScript : MonoBehaviour {
             if(!hitTargets.Contains(collision.gameObject)) { 
 
             hitTargets.Add(collision.gameObject);
+			player.AttackHitEnemy();
 
             }
         }
