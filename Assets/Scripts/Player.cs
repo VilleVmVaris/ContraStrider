@@ -652,9 +652,10 @@ public class Player : MonoBehaviour, Damageable
         knockedBack = false;
     }
 
-    void Die()
+    public void Die()
     {
 		animator.SetBool("ninjadeath", true);
+
     }
 
 	public void ToggleStepDustEffect() {

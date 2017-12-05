@@ -34,6 +34,7 @@ public class BossScript : MonoBehaviour, Damageable {
     public int bulletAmount;
 
     public int health;
+    int maxHealth;
 
     public int bulletAttacksInLoop;
 
@@ -66,6 +67,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     // Use this for initialization
     void Start () {
+        maxHealth = health;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 
@@ -109,7 +111,15 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator AreaAttack()
     {
-        
+        if(((health / maxHealth) * 100) <= 60)
+        {
+            safeAreaAmount = 2;
+        }
+
+        if(((health / maxHealth) * 100) <= 40)
+        {
+            safeAreaAmount = 1;
+        }
 
         inFirePosition = false;
 
@@ -184,8 +194,8 @@ public class BossScript : MonoBehaviour, Damageable {
     {
         bossAnimator.SetBool("valiammus", true);
 
-        fireDirection.y = -1;
-
+        //fireDirection.y = -1;
+        fireDirection = player.transform.position - bulletSpawner.transform.position;
         inFirePosition = false;
 
 		yield return new WaitForSeconds(.8f);
