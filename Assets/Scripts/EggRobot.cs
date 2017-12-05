@@ -178,6 +178,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	void ShootPlayer() {
 		if (player != null && canShoot) {
 			coreAnimator.SetBool("munaammus", true);
+			sound.shot.Play();
 			weapon.Shoot(player.transform.position);
 		}
 	}
@@ -229,6 +230,7 @@ public class EggRobot : MonoBehaviour, Damageable {
     {
         shielded = false;
 		shieldSprite.transform.parent = null;
+		sound.shieldBreaks.Play();
 		shieldAnimator.SetBool("kuoretfly", true);
 
     }

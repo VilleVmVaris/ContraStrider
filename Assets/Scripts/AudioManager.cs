@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-	
+
+	[Header("Ninja")]
+	public AudioSource slashHigh;
+	public AudioSource slashLow;
+	public AudioSource chargeSlash;
+	public AudioSource hit;
+	public AudioSource dashCharged;
+
 	[Header("Robot")]
 	public AudioSource jetpack;
 	public AudioSource explosion;
+	public AudioSource shot;
+	public AudioSource shieldBreaks;
 
 	Transform player;
 
