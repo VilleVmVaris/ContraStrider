@@ -42,6 +42,7 @@ public class Player : MonoBehaviour, Damageable
 	public GameObject ninjaSprite;
 	public GameObject dashAttack;
 	public ParticleSystem attackEffect;
+	public ParticleSystem hitGlow;
 	public Material slash;
 	public Material chargeSlash;
 	public ParticleSystem stepSandCloud;
@@ -666,6 +667,10 @@ public class Player : MonoBehaviour, Damageable
 
 	public void ToggleStepDustEffect() {
 		stepSandCloud.gameObject.SetActive(!stepSandCloud.gameObject.activeSelf);
+	}
+
+	public void AttackHitEnemy() {
+		hitGlow.Play();
 	}
 }
 

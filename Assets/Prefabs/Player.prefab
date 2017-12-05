@@ -1828,7 +1828,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657960399845552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4725102952094542}
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.0959058
+  m_Length: 1.095905
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4252929414558084}
   m_AttachedIK: {fileID: 0}
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.8313994
+  m_Length: 2.8314006
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4056595454624294}
   m_AttachedIK: {fileID: 0}
@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.6329823
+  m_Length: 1.632982
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4598977281569364}
   m_AttachedIK: {fileID: 0}
@@ -2863,7 +2863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.732484
+  m_Length: 0.7324849
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4751316436907228}
   m_AttachedIK: {fileID: 0}
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 1.8297434
+  m_Length: 1.8297439
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4310028959780440}
   m_AttachedIK: {fileID: 0}
@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1702a4fdcd457b746afb3e97b3cd3c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 10
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -3129,6 +3129,7 @@ MonoBehaviour:
   ninjaSprite: {fileID: 1707845931388744}
   dashAttack: {fileID: 1464710748584240}
   attackEffect: {fileID: 198919238609744014}
+  hitGlow: {fileID: 198107558772280148}
   slash: {fileID: 2100000, guid: 55d49719a646d1f43baad17cd1efb5db, type: 2}
   chargeSlash: {fileID: 2100000, guid: 570a99976c5f77e43890ee0e9d8df5dd, type: 2}
   stepSandCloud: {fileID: 198497693620757360}
@@ -3153,7 +3154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 3.1600025
+  m_Length: 3.1600027
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4594031810988694}
   m_AttachedIK: {fileID: 0}
@@ -3261,7 +3262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Length: 2.3275983
+  m_Length: 2.3275986
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4676067758164794}
   m_AttachedIK: {fileID: 0}
@@ -3871,9 +3872,9 @@ ParticleSystem:
   lengthInSec: 1
   simulationSpeed: 10
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
