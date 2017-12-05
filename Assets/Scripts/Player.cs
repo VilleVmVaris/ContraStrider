@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, Damageable
 	Animator animator;
     TimerManager timer;
 	GUIManager gui;
+	AudioManager sounds;
 
     [HideInInspector]
     public BladeDash dash;
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour, Damageable
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         collider = GetComponent<BoxCollider2D>();
+		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         origColliderX = collider.size.x;
         origColliderY = collider.size.y;
@@ -275,6 +277,7 @@ public class Player : MonoBehaviour, Damageable
             attackDir = (attackDir + 22) / 45 * 45 % 360 - 90;
 
 			PlaySlashEffect(attackDir, true);
+			sounds.chargeSlash.Play();
 
             chargeAttackObject.transform.rotation = Quaternion.Euler(0, 0, -attackDir);
 
@@ -620,6 +623,7 @@ public class Player : MonoBehaviour, Damageable
 		foreach (var sprite in sprites) {
 			sprite.color = hitFlashColor;
 		}
+		sounds.hit.Play();
 		timer.Once(FlashSpriteColorBack, .1f);
         if (health <= 0) {
             print("Player died");
