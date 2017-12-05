@@ -48,6 +48,7 @@ public class BossScript : MonoBehaviour, Damageable {
 	GUIManager gui;
     GameObject player;
     GameManager gm;
+	AudioManager sounds;
 
     ArcMover2D arcmover;
 
@@ -66,12 +67,16 @@ public class BossScript : MonoBehaviour, Damageable {
 
 	Lightning lightning;
 
+	bool dead = false;
+	bool active = false;
+
     // Use this for initialization
     void Start () {
         maxHealth = health;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
         gm = GameObject.Find("GameCanvas").GetComponent<GameManager>();
+		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         arcmover = GetComponent<ArcMover2D>();
 
@@ -88,28 +93,27 @@ public class BossScript : MonoBehaviour, Damageable {
     }
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update() {
 		if (Vector3.Distance(player.transform.position, transform.position) < 10f) {
 			gui.ShowBossHealthBar(this);
+			sounds.ambient.Play();
 			Camera.main.GetComponent<CameraFollow>().ActivateBossMode();
+			active = true;
 		}
-
-        if(attackAreas.Count != aoeDamage.attackAreas.Count)
-        { 
-        attackAreas = aoeDamage.attackAreas;
-        }
-
-        if(inFirePosition && inBulletMode) {
-            StopCoroutine("AreaAttack"); 
-            StartCoroutine("BulletAttack");
-        } else if (inFirePosition && !inBulletMode)
-        {
-            StopCoroutine("BulletAttack");
-            StartCoroutine("AreaAttack");
-			bossAnimator.SetBool("velileijuu", true);
-        }
-    }
+		if (active) {
+			if (attackAreas.Count != aoeDamage.attackAreas.Count) { 
+				attackAreas = aoeDamage.attackAreas;
+			}
+			if (inFirePosition && inBulletMode) {
+				StopCoroutine("AreaAttack"); 
+				StartCoroutine("BulletAttack");
+			} else if (inFirePosition && !inBulletMode) {
+				StopCoroutine("BulletAttack");
+				StartCoroutine("AreaAttack");
+				bossAnimator.SetBool("velileijuu", true);
+			}			
+		}
+	}
 
     IEnumerator AreaAttack()
     {
@@ -124,6 +128,8 @@ public class BossScript : MonoBehaviour, Damageable {
         }
 
         inFirePosition = false;
+
+		sounds.magick.Play();
 
         yield return new WaitForSeconds(1f);
        
@@ -147,6 +153,7 @@ public class BossScript : MonoBehaviour, Damageable {
                 area.GetComponent<MeshRenderer>().enabled = false;
 
                 // We now have a cool particle effect here
+				sounds.lightning.Play();
 				lightning.Strike(area.transform.position + Vector3.down);
 
                 area.GetComponent<AreaDamageScript>().enabled = true;
@@ -202,6 +209,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		yield return new WaitForSeconds(.8f);
 
+		sounds.spell.Play();
+
         for (int i = 0; i < bulletAmount; i++)
         {
             //float dirToPlayerX = player.transform.position.x - transform.position.x;
@@ -246,6 +255,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void Die()
     {
+		dead = true;
+		sounds.death.Play();
 		inFirePosition = false;
 		inBulletMode = false;
 		StopCoroutine("BulletAttack");

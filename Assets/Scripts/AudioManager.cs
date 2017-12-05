@@ -18,6 +18,14 @@ public class AudioManager : MonoBehaviour {
 	public AudioSource shot;
 	public AudioSource shieldBreaks;
 
+	[Header("Boss")]
+	public AudioSource death;
+	public AudioSource spell;
+	public AudioSource magick;
+	public AudioSource lightning;
+	public AudioSource ambient;
+
+
 	Transform player;
 	float footstepTimer;
 	float robotstepTimer;
