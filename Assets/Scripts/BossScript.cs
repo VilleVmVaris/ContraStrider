@@ -86,7 +86,7 @@ public class BossScript : MonoBehaviour, Damageable {
 	// Update is called once per frame
 	void Update () {
 
-		if (Vector3.Distance(player.transform.position, transform.position) < 12f) {
+		if (Vector3.Distance(player.transform.position, transform.position) < 10f) {
 			gui.ShowBossHealthBar(this);
 			Camera.main.GetComponent<CameraFollow>().ActivateBossMode();
 		}

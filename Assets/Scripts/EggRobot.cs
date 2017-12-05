@@ -51,6 +51,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	TimerManager timer;
 	Controller2D controller;
 	EnemyWeapon weapon;
+	AudioManager sound;
 
 	readonly float gravity = -20f;
 
@@ -68,6 +69,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		player = GameObject.FindGameObjectWithTag("Player");
 		weapon = GetComponent<EnemyWeapon>();
 		sprites = GetComponentsInChildren<SpriteMeshInstance>();
+		sound = GameObject.Find("Audio").GetComponent<AudioManager>();
 		timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
 		timer.Continuously(ShootingTimer, burstInterval);
 		rotateTimer = timer.Continuously(RotateY, 3);
@@ -266,6 +268,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 		jetpackSprite.SetActive(false);
 		var dieLength = 0f;
 		deathExplosion.SetActive(true);
+		sound.explosion.Play();
         if (type == RobotType.Normal) {
 			deathSmoke.SetActive(true);
 			int i = Random.Range(0, deathAnimations.Count);
