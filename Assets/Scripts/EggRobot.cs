@@ -107,25 +107,21 @@ public class EggRobot : MonoBehaviour, Damageable {
 	}
 
 	void CalculateActions() {
-        
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && !kicking) {
-            // Limit how far robots can move from their start position
-			if ((Vector3.Distance(transform.position, startPoint) < distanceAllowance || 
-				(Vector3.Distance(transform.position + new Vector3(moveDirection, 0, 0), startPoint) < Vector3.Distance(transform.position, startPoint)))) 
-            {
-                velocity.x = moveDirection * moveSpeed;
+			// Limit how far robots can move from their start position
+			if ((Vector3.Distance(transform.position, startPoint) < distanceAllowance ||
+			    (Vector3.Distance(transform.position + new Vector3(moveDirection, 0, 0), startPoint) < Vector3.Distance(transform.position, startPoint)))) {
+				velocity.x = moveDirection * moveSpeed;
 
-                if (type == RobotType.Normal)
-                {
-                    coreAnimator.SetBool("munaanimation", true);
-                }
-                else
-                {
-                    coreAnimator.SetBool("munafly", true);
-                }
-            }
+				if (type == RobotType.Normal) {
+					coreAnimator.SetBool("munaanimation", true);
+				} else {
+					coreAnimator.SetBool("munafly", true);
+				}
+			}
 		} else {
+			
 			velocity.x = 0;
 			coreAnimator.SetBool("munaanimation", false);
 		}
