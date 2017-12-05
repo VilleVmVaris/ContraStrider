@@ -30,7 +30,7 @@ public class PowerUP : MonoBehaviour {
 	void SetPowerUp(string power) {
         
 		if (power == ("HealthKit")) {
-//			gui.SetFullHealth();
+			gui.SetFullHealth();
 		}
 
 		if (power == ("DoubleScore")) {
