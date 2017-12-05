@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1702a4fdcd457b746afb3e97b3cd3c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -3869,7 +3869,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215888358944900}
   serializedVersion: 5
-  lengthInSec: 1
+  lengthInSec: 2
   simulationSpeed: 10
   stopAction: 0
   looping: 0
