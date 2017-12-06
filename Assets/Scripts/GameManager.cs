@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	GUIManager gui;
 	Player player;
     TimerManager timer;
+    GameObject[] activators;
 
 	// Use this for initialization
 	void Start() {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour {
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
 		player = GameObject.Find("Player").GetComponent<Player>();
         timer = GetComponent<TimerManager>();
+        activators = GameObject.FindGameObjectsWithTag("Spawner");
 
 	}
 	
@@ -35,8 +37,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoadGame() {
-		serializer.LoadCheckPoint();
+        foreach (GameObject go in activators)
+        {
+            go.SetActive(true);
+            go.GetComponent<WaveActivator>().wave.GetComponent<WaveSpawner>().OnReload();
+            go.GetComponent<WaveActivator>().spawned = false;
+        }
+        serializer.LoadCheckPoint();
 		player.Restart();
+
 	}
 
     public void Pause()

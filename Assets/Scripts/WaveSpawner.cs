@@ -57,4 +57,13 @@ public class WaveSpawner : MonoBehaviour {
             Destroy(go);
         }
     }
+
+    public void OnReload()
+    {
+        foreach(GameObject enemy in newEnemies)
+        {
+            Destroy(enemy);
+        }
+        newEnemies.Clear();
+    }
 }

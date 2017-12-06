@@ -31,7 +31,7 @@ public class Serializer : MonoBehaviour
 			var activator = wa.GetComponent<WaveActivator>();
 			if (activator.spawned)
             {
-				foreach (var enemy in activator.wave.enemies)
+				foreach (var enemy in activator.wave.newEnemies)
                 {
                     data.enemyList.Add(enemy);
                 }
