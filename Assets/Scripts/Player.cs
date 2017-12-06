@@ -24,6 +24,7 @@ public class Player : MonoBehaviour, Damageable
     float timeToWallUnstick;
     bool wallSliding;
     int wallDirX;
+    int maxHealth;
 
     [HideInInspector]
     public bool crouching;
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour, Damageable
 		originalColor = sprites[0].color;
 		swordChargeEffect.SetActive(false);
 		stepSandCloud.Stop();
+        maxHealth = health;
 	}
 
     // Update is called once per frame
@@ -643,6 +645,10 @@ public class Player : MonoBehaviour, Damageable
     public void GetHealed(int amount)
     {
         health += amount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
         gui.SetHealth(health);
     }
 
