@@ -59,7 +59,10 @@ public class Serializer : MonoBehaviour {
         //Debug.Log(copy.enemyList);
         player.transform.position = copy.playerPosition;
         player.GetComponent<Player>().health = copy.health;
-
+        foreach (var go in copy.enemyList) {
+            var temp = go.GetComponent<EggRobot>().startPoint;
+            go.transform.position = temp;
+        }
 
     }
 }

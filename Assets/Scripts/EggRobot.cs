@@ -66,7 +66,7 @@ public class EggRobot : MonoBehaviour, Damageable {
     bool kicking;
     
 
-    Vector2 startPoint;
+    public Vector2 startPoint;
 
 
 	// Use this for initialization

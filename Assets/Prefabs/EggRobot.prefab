@@ -1524,6 +1524,7 @@ MonoBehaviour:
   jetpackSprite: {fileID: 1232299234063232}
   deathSmoke: {fileID: 1729833013548020}
   deathExplosion: {fileID: 1956112243191142}
+  startPoint: {x: 0, y: 0}
 --- !u!114 &114697462915519222
 MonoBehaviour:
   m_ObjectHideFlags: 1
