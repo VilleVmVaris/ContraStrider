@@ -620,7 +620,7 @@ public class Player : MonoBehaviour, Damageable
 			ninjaSprite.transform.localPosition = new Vector3(-0.725f, 0f, 0f);
 		}
 	}
-
+    
 	public bool TakeDamage(int damage)
     {
         health -= damage;
