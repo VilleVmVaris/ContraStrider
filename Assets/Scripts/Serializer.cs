@@ -25,14 +25,15 @@ public class Serializer : MonoBehaviour
 
         SaveData data = new SaveData()
         { health = player.GetComponent<Player>().health, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
-        GameObject[] enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var g in enemyGameObjects)
+		GameObject[] waveActivators = GameObject.FindGameObjectsWithTag("Spawner");
+		foreach (var wa in waveActivators)
         {
-            if (g.GetComponent<WaveActivator>().spawned)
+			var activator = wa.GetComponent<WaveActivator>();
+			if (activator.spawned)
             {
-                foreach (var go in g.GetComponent<WaveSpawner>().enemies)
+				foreach (var enemy in activator.wave.enemies)
                 {
-                    data.enemyList.Add(go);
+                    data.enemyList.Add(enemy);
                 }
             }
         }

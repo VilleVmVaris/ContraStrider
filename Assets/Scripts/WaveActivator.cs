@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveActivator : MonoBehaviour {
-    public GameObject wave;
+	public WaveSpawner wave;
     public bool spawned;
 
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class WaveActivator : MonoBehaviour {
         if(collision.gameObject.layer == 8)
         {if(!spawned) { 
             //wave.SetActive(true);
-            wave.GetComponent<WaveSpawner>().SpawnWave();
+            wave.SpawnWave();
             gameObject.SetActive(false);
             spawned = true;
             }
