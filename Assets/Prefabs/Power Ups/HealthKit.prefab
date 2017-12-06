@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teapot: {fileID: 1289978273979288}
+  HealAmount: 10
 --- !u!212 &212745262341375998
 SpriteRenderer:
   m_ObjectHideFlags: 1

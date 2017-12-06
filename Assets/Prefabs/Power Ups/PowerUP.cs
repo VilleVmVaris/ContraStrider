@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUP : MonoBehaviour {
 	
 	public GUIManager gui;
+
 	Player player;
 
 	void Start() {
@@ -32,8 +33,8 @@ public class PowerUP : MonoBehaviour {
 	void SetPowerUp(string power) {
         
 		if (power == ("HealthKit")) {
-			player.health = 100; // HAX: Quick fix to make health kits work
-			gui.SetFullHealth();
+			// NOT USED ANYMORE SEE HealthKit.cs
+			// gui.SetFullHealth();
 		}
 
 		if (power == ("DoubleScore")) {

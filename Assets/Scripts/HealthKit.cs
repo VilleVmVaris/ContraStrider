@@ -5,12 +5,9 @@ using UnityEngine;
 public class HealthKit : MonoBehaviour {
 
 	public GameObject teapot;
+	public int HealAmount;
 
 	BoxCollider2D boxCollider;
-
-    int HealAmount;
-
-
 
 	// Use this for initialization
 	void Start () {
