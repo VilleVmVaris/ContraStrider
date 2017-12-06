@@ -25,7 +25,11 @@ public class Serializer : MonoBehaviour {
 		{health = player.GetComponent<Player>().health, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
         GameObject[] enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var g in enemyGameObjects) {
-            data.enemyList.Add(g);
+            if (g.GetComponent<WaveActivator>().spawned) {
+               foreach (var go in g.GetComponent<WaveSpawner>().enemies) {
+                    data.enemyList.Add(go);
+                }
+            }
         }
 
 
