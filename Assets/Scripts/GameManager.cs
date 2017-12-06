@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    Serializer serializer;
+    
+	Serializer serializer;
+	GUIManager gui;
+
 	// Use this for initialization
 	void Start () {
         serializer = GetComponentInChildren<Serializer>();
+		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
 	}
 	
 	// Update is called once per frame
@@ -17,7 +21,8 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame()
     {
-        //Fade to black and load credits scene?
+		gui.FadeToBlack(5f);
+        // wait and load credits scene?
     }
 
     public void LoadGame()

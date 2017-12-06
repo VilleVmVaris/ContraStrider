@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class GUIManager : MonoBehaviour {
 	public CheckpointScript Checkpoint;
 	public BladeDashMeter BladeDash;
 	public BossHealthBar BossHealthBar;
+	public Image FadeImage;
 
 	// Use this for initialization
 	void Start() {
@@ -47,4 +49,11 @@ public class GUIManager : MonoBehaviour {
 			BossHealthBar.boss = boss;	
 		}
 	}
+
+	public void FadeToBlack(float duration) {
+		FadeImage.enabled = true;
+		FadeImage.canvasRenderer.SetAlpha(0f);
+		FadeImage.CrossFadeAlpha(1.0f, duration, true);
+	}
+
 }
