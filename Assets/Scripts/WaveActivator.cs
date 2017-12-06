@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveActivator : MonoBehaviour {
     public GameObject wave;
+    public bool spawned;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +20,10 @@ public class WaveActivator : MonoBehaviour {
     {
         if(collision.gameObject.layer == 8)
         {
-            wave.SetActive(true);
+            //wave.SetActive(true);
+            wave.GetComponent<WaveSpawner>().SpawnWave();
             gameObject.SetActive(false);
+            spawned = true;
         }
     }
 }

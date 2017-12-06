@@ -63,8 +63,10 @@ public class EggRobot : MonoBehaviour, Damageable {
 	bool canShoot;
 	System.Guid rotateTimer;
     bool kicking;
+    
 
     Vector2 startPoint;
+
 
 	// Use this for initialization
 	void Start() {
@@ -81,6 +83,8 @@ public class EggRobot : MonoBehaviour, Damageable {
 		originalColor = sprites[0].color;
 
         startPoint = transform.position;
+
+
 	}
 
 	// Update is called once per frame
