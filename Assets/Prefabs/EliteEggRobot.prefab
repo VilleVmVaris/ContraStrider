@@ -1324,6 +1324,7 @@ MonoBehaviour:
   floatingAmplitude: 0.5
   floatingSpeed: 5
   damageable: 1
+  dropObject: {fileID: 1532771070915130, guid: ef753b8dbfcbe6f42a3ab5e89441bd3b, type: 2}
   shootingDistance: 7
   kickDistance: 2
   kickDuration: 0.3

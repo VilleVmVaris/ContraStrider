@@ -22,6 +22,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 	public float floatingSpeed;
 
     public bool damageable = true;
+    public GameObject dropObject;
 
 	[Header("Weapon Use")]
 	public float shootingDistance;
@@ -273,6 +274,7 @@ public class EggRobot : MonoBehaviour, Damageable {
         canShoot = false;
 		timer.RemoveTimer(rotateTimer);
 		jetpackSprite.SetActive(false);
+        DropStuff();
 		var dieLength = 0f;
 		deathExplosion.SetActive(true);
 		sound.explosion.Play();
@@ -293,7 +295,13 @@ public class EggRobot : MonoBehaviour, Damageable {
 
 		StartCoroutine(FadeOut(1, 0, fadeTime, dieLength)); // Fading out sprites with coroutine for now
 	}
-
+    void DropStuff()
+    {
+        int random = Random.Range(0, 2);
+        if(random == 1) { 
+        Instantiate(dropObject, gameObject.transform.position, Quaternion.identity);
+        }
+    }
 	IEnumerator FadeOut(float startIntensity, float endIntensity, float time, float waitTime) {
 
 		// FIXME: This fading does not work correctly..
