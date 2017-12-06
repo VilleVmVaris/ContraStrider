@@ -64,9 +64,14 @@ public class EggRobot : MonoBehaviour, Damageable {
 	bool canShoot;
 	System.Guid rotateTimer;
     bool kicking;
+
+    [HideInInspector]
+    public bool spawned;
     
 
     public Vector2 startPoint;
+
+    GameManager gm;
 
 
 	// Use this for initialization
@@ -85,12 +90,15 @@ public class EggRobot : MonoBehaviour, Damageable {
 
         startPoint = transform.position;
 
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-	}
+
+
+    }
 
 	// Update is called once per frame
 	void Update() {
-
+        if(gm.state != GameManager.Gamestate.Paused) { 
 		if (health > 0) { // Alive
 			CalculateActions(); 
 		}
@@ -113,8 +121,9 @@ public class EggRobot : MonoBehaviour, Damageable {
 			}
 		}
 	}
+    }
 
-	void CalculateActions() {
+    void CalculateActions() {
 		// Moving
 		if (Vector3.Distance(player.transform.position, transform.position) < chaseDistance && CanMove() && !kicking) {
 			// Limit how far robots can move from their start position
@@ -164,6 +173,7 @@ public class EggRobot : MonoBehaviour, Damageable {
 			}
         }
 	}
+
 
 	void RotateY() { // Rotates enemy sprite to face player
 		if (player != null && !kicking) {

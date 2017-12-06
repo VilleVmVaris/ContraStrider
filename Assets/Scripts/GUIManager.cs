@@ -11,6 +11,10 @@ public class GUIManager : MonoBehaviour {
 	public BladeDashMeter BladeDash;
 	public BossHealthBar BossHealthBar;
 	public Image FadeImage;
+    public Image PauseImage;
+    public GameObject Resume;
+    public GameObject Controls;
+    public GameObject Quit;
 
 	// Use this for initialization
 	void Start() {
@@ -55,5 +59,22 @@ public class GUIManager : MonoBehaviour {
 		FadeImage.canvasRenderer.SetAlpha(0f);
 		FadeImage.CrossFadeAlpha(1.0f, duration, true);
 	}
+
+    public void ShowPause()
+    {
+        PauseImage.enabled = true;
+        Resume.SetActive(true);
+        Controls.SetActive(true);
+        Quit.SetActive(true);
+
+    }
+
+    public void HidePause()
+    {
+        PauseImage.enabled = false;
+        Resume.SetActive(false);
+        Controls.SetActive(false);
+        Quit.SetActive(false);
+    }
 
 }

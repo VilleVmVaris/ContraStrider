@@ -37,6 +37,10 @@ public class WaveSpawner : MonoBehaviour {
             if(previousWave != null) { 
             previousWave.GetComponent<WaveSpawner>().ClearPrevious();
             }
+            foreach(var enemy in newEnemies)
+            {
+                enemy.GetComponent<EggRobot>().spawned = true;
+            }
 
         }
     }

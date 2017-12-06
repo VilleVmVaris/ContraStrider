@@ -135,95 +135,117 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
-		//see if character has moved since last frame
-		if (dash.dashing) {
-			if (controller.collisions.left || controller.collisions.right) {
-				dash.StopDash();
-				EndDashAttackEffect();
-			}
-		}
-
-        if (health <= 0) {
-			return; // TODO: Proper handling of death 
-		}
-		if (dash.aiming) {
-			velocity = Vector2.zero;
-		}
-		
-        CalculateVelocity();
-        HandleWallSliding();
-		RotateY();
-
-        if(CheckCollisionStatus()) {
-            canDoubleJump = true;
-		} else {
-			PlayInAirAnimation();
-		}
-
-        if (dash.dashing)
+        if (gm.state != GameManager.Gamestate.Paused)
         {
-            controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
-
-        } else if(knockedBack)
-        {
-            controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
-            timer.Once(StopKnockBack, knockDuration);
-        }
-
-        else
-        {
-            controller.Move(velocity * Time.deltaTime, directionalInput);
-        }
-
-        //This stops gravity from accumulating if the controllers detects collisions above or below or while dashing
-        if (controller.collisions.above || controller.collisions.below || dash.dashing)
-        {
-            if (controller.collisions.slidingDownMaxSlope)
+            //see if character has moved since last frame
+            if (dash.dashing)
             {
-                velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
+                if (controller.collisions.left || controller.collisions.right)
+                {
+                    dash.StopDash();
+                    EndDashAttackEffect();
+                }
+            }
+
+            if (health <= 0)
+            {
+                return; // TODO: Proper handling of death 
+            }
+            if (dash.aiming)
+            {
+                velocity = Vector2.zero;
+            }
+
+            CalculateVelocity();
+            HandleWallSliding();
+            RotateY();
+
+            if (CheckCollisionStatus())
+            {
+                canDoubleJump = true;
             }
             else
             {
-                velocity.y = 0;
+                PlayInAirAnimation();
+            }
 
-				if (velocity.x > 0.5f || velocity.x < -0.5f) {
-					animator.SetBool("jumpair", false);	
-				} else {
-					animator.SetBool("jumpair", false);	
-					animator.SetBool("jumpdown", true);	
-				}
+            if (dash.dashing)
+            {
+                controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
+
+            }
+            else if (knockedBack)
+            {
+                controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
+                timer.Once(StopKnockBack, knockDuration);
+            }
+
+            else
+            {
+                controller.Move(velocity * Time.deltaTime, directionalInput);
+            }
+
+            //This stops gravity from accumulating if the controllers detects collisions above or below or while dashing
+            if (controller.collisions.above || controller.collisions.below || dash.dashing)
+            {
+                if (controller.collisions.slidingDownMaxSlope)
+                {
+                    velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
+                }
+                else
+                {
+                    velocity.y = 0;
+
+                    if (velocity.x > 0.5f || velocity.x < -0.5f)
+                    {
+                        animator.SetBool("jumpair", false);
+                    }
+                    else
+                    {
+                        animator.SetBool("jumpair", false);
+                        animator.SetBool("jumpdown", true);
+                    }
+                }
+
+            }
+
+            if (chargingSword)
+            {
+                charged += Time.deltaTime;
+                if (charged >= chargeTime)
+                {
+                    swordCharged = true;
+                    swordChargeEffect.SetActive(true);
+                }
+            }
+
+            if ((velocity.x > 0.15f || velocity.x < -0.15f)
+                && controller.collisions.below && !wallSliding && !dash.dashing)
+            {
+                if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed)
+                {
+                    animator.SetBool("ninjarun", true);
+                    animator.SetBool("ninjawalk", false);
+                }
+                else
+                {
+                    animator.SetBool("ninjawalk", true);
+                    animator.SetBool("ninjarun", false);
+                }
+                sounds.NinjaStep();
+                if (!stepSandCloud.isPlaying)
+                {
+                    stepSandCloud.Play();
+                }
+            }
+            else
+            {
+                stepSandCloud.Stop();
+                animator.SetBool("ninjarun", false);
+                animator.SetBool("ninjawalk", false);
             }
 
         }
-
-		if (chargingSword) {
-			charged += Time.deltaTime;
-			if (charged >= chargeTime) {
-				swordCharged = true;
-				swordChargeEffect.SetActive(true);
-			}
-		}
-
-		if ((velocity.x > 0.15f || velocity.x < -0.15f ) 
-			&& controller.collisions.below && !wallSliding && !dash.dashing) {
-			if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed ) {
-				animator.SetBool("ninjarun", true);
-				animator.SetBool("ninjawalk", false);
-			} else {
-				animator.SetBool("ninjawalk", true);
-				animator.SetBool("ninjarun", false);
-			}
-			sounds.NinjaStep();
-			if (!stepSandCloud.isPlaying) {
-				stepSandCloud.Play();	
-			}
-		} else {
-			stepSandCloud.Stop();
-			animator.SetBool("ninjarun", false);
-			animator.SetBool("ninjawalk", false);	
-		}
-
-
     }
     public void Attack(Vector2 input)
     {

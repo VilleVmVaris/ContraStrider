@@ -7,6 +7,7 @@ public class TimerManager : MonoBehaviour {
 
 	public float tickInterval;
 	float timer;
+    GameManager gm;
 
 	readonly List<Timer> timers = new List<Timer>();
 
@@ -30,17 +31,22 @@ public class TimerManager : MonoBehaviour {
 	void Start () {
 		tickInterval = Mathf.Max(tickInterval, 0.05f);
 		timer = tickInterval;
+        gm = GetComponent<GameManager>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(gm.state != GameManager.Gamestate.Paused) { 
 		UpdateDeltaTimers();
 		timer -= Time.deltaTime;
 		if (timer < 0) {
 			UpdateTimers();
 			Tick();
 			timer += tickInterval;
-		}
+
+            }
+        }
 	}
 
 	void UpdateDeltaTimers() {

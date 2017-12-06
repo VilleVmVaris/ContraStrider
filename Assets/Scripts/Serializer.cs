@@ -22,16 +22,21 @@ public class Serializer : MonoBehaviour {
     public void SetCheckPoint() {
         
     SaveData data = new SaveData()
-		{health = player.GetComponent<Player>().health, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>() };
+		{health = player.GetComponent<Player>().health, playerPosition = player.transform.position, /*score = 0,*/enemyList = new List<GameObject>(), spawnList = new List<GameObject>() };
         GameObject[] enemyGameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] allSpawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach (var g in enemyGameObjects) {
-            if (g.GetComponent<WaveActivator>().spawned) {
-               foreach (var go in g.GetComponent<WaveSpawner>().enemies) {
-                    data.enemyList.Add(go);
-                }
+            if (g.GetComponent<EggRobot>().spawned) {
+                    data.enemyList.Add(g);
             }
         }
-
+        foreach(var s in allSpawners)
+        {
+          //  if(!s.GetComponent<WaveActivator>().spawned)
+           // {
+                data.spawnList.Add(s);
+            //}
+        }
 
         string json = JsonUtility.ToJson(data);
 
@@ -62,6 +67,19 @@ public class Serializer : MonoBehaviour {
         foreach (var go in copy.enemyList) {
             var temp = go.GetComponent<EggRobot>().startPoint;
             go.transform.position = temp;
+        }
+        foreach(var go in copy.spawnList)
+        {
+            go.SetActive(true);
+            if(go.GetComponent<WaveActivator>().spawned) {
+            foreach(var enemy in go.GetComponent<WaveActivator>().wave.GetComponent<WaveSpawner>().newEnemies)
+            {
+                Destroy(enemy);
+                    
+            }
+                go.GetComponent<WaveActivator>().wave.GetComponent<WaveSpawner>().newEnemies.Clear();
+            }
+            go.GetComponent<WaveActivator>().spawned = false;
         }
 
     }

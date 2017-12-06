@@ -17,7 +17,8 @@ public class KillBox : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 8 && collision.GetComponent<Player>() != null) {
-            collision.GetComponent<Player>().Die();
+            print("killbox");
+            collision.GetComponent<Player>().TakeDamage(100);
     }
     }
 }

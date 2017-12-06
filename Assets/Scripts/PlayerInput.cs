@@ -96,10 +96,17 @@ public class PlayerInput : MonoBehaviour
         }
 
 		if (Input.GetButtonDown("Start")) {
-			// Just reload the scene for testing during development
-			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Just reload the scene for testing during development
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(gm.state != GameManager.Gamestate.Paused) { 
+            gm.Pause();
+            }
+            else
+            {
+                gm.Unpause();
+            }
 
-		}
+        }
     }
 }
 

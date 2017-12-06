@@ -9,14 +9,19 @@ public class Bullet : MonoBehaviour {
     public Transform graphics;
     Transform player;
     bool deflected;
+    GameManager gm;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         SetBulletRotation();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	void Update () {
-        transform.Translate(bulletDirection.normalized * Time.deltaTime * bulletSpeed);
+        if (gm.state != GameManager.Gamestate.Paused)
+        {
+            transform.Translate(bulletDirection.normalized * Time.deltaTime * bulletSpeed);
+        }
 	}
     public void Projectile(int damage, float speed, Vector2 direction, float destroyDelay) {
         bulletDamage = damage;

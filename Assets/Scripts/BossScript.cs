@@ -44,6 +44,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
     bool inBulletMode = true;
 
+    bool paused;
+
     TimerManager timer;
 	GUIManager gui;
     GameObject player;
@@ -75,7 +77,7 @@ public class BossScript : MonoBehaviour, Damageable {
         maxHealth = health;
 		gui = GameObject.Find("GameCanvas").GetComponent<GUIManager>();
         timer = GameObject.Find("GameManager").GetComponent<TimerManager>();
-        gm = GameObject.Find("GameCanvas").GetComponent<GameManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         arcmover = GetComponent<ArcMover2D>();
@@ -91,32 +93,49 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		lightning = GetComponentInChildren<Lightning>();
     }
-	
-	// Update is called once per frame
-	void Update() {
-		if (Vector3.Distance(player.transform.position, transform.position) < 10f) {
-			gui.ShowBossHealthBar(this);
-			sounds.ambient.Play();
-			Camera.main.GetComponent<CameraFollow>().ActivateBossMode();
-			active = true;
-		}
-		if (active) {
-			if (attackAreas.Count != aoeDamage.attackAreas.Count) { 
-				attackAreas = aoeDamage.attackAreas;
-			}
-			if (inFirePosition && inBulletMode) {
-				StopCoroutine("AreaAttack"); 
-				StartCoroutine("BulletAttack");
-			} else if (inFirePosition && !inBulletMode) {
-				StopCoroutine("BulletAttack");
-				StartCoroutine("AreaAttack");
-				bossAnimator.SetBool("velileijuu", true);
-			}			
-		}
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (gm.state != GameManager.Gamestate.Paused)
+        {
+            paused = false;
+
+            if (Vector3.Distance(player.transform.position, transform.position) < 10f)
+            {
+                gui.ShowBossHealthBar(this);
+                sounds.ambient.Play();
+                Camera.main.GetComponent<CameraFollow>().ActivateBossMode();
+                active = true;
+            }
+            if (active)
+            {
+                if (attackAreas.Count != aoeDamage.attackAreas.Count)
+                {
+                    attackAreas = aoeDamage.attackAreas;
+                }
+                if (inFirePosition && inBulletMode)
+                {
+                    StopCoroutine("AreaAttack");
+                    StartCoroutine("BulletAttack");
+                }
+                else if (inFirePosition && !inBulletMode)
+                {
+                    StopCoroutine("BulletAttack");
+                    StartCoroutine("AreaAttack");
+                    bossAnimator.SetBool("velileijuu", true);
+                }
+            }
+        }
+        else paused = true;
+    }
 
     IEnumerator AreaAttack()
     {
+        if(paused)
+        {
+            yield return new WaitForSeconds(1f);
+        }
         if(((health / maxHealth) * 100) <= 60)
         {
             safeAreaAmount = 2;
@@ -201,6 +220,11 @@ public class BossScript : MonoBehaviour, Damageable {
 
     IEnumerator BulletAttack()
     {
+        if (paused)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
         bossAnimator.SetBool("valiammus", true);
 
         //fireDirection.y = -1;

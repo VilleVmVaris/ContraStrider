@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 
 	public void EndGame() {
 		gui.FadeToBlack(5f);
-        timer.Once(ShowCredits, 10);
+        timer.Once(ShowCredits, 30);
 		// wait and load credits scene?
 	}
 
@@ -42,6 +42,18 @@ public class GameManager : MonoBehaviour {
     public void Pause()
     {
         state = Gamestate.Paused;
+        gui.ShowPause();
+        if (!Mathf.Approximately(Time.timeScale, 0f))
+        {
+            Time.timeScale = 0;
+        }
+    }
+
+    public void Unpause()
+    {
+        state = Gamestate.Running;
+        gui.HidePause();
+        Time.timeScale = 1;
     }
 
     void ShowCredits()

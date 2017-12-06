@@ -9,6 +9,7 @@ public class CheckpointScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if (!triggered) {
             triggered = true;
+            print(gameObject.name);
             serializer.SetCheckPoint();
         }
     }
