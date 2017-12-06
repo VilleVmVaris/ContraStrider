@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
-    public GameObject menuPanel;
-    public GameObject helpPanel;
 
     // Use this for initialization
     void Start()
@@ -21,20 +19,10 @@ public class MenuManager : MonoBehaviour {
 
     public void Play()
     {
-        SceneManager.LoadScene("Level_1_nu");
+        SceneManager.LoadScene("Level_0");
     }
 
-    public void ShowHelp()
-    {
-        helpPanel.SetActive(true);
-        menuPanel.SetActive(false);
-    }
 
-    public void ShowMenu()
-    {
-        helpPanel.SetActive(false);
-        menuPanel.SetActive(true);
-    }
 
     public void Quit()
     {

@@ -277,6 +277,10 @@ public class EggRobot : MonoBehaviour, Damageable {
     }
 
 	void Die() {
+        if(GetComponent<TutorialHack>() != null)
+        {
+            GetComponent<TutorialHack>().EndTutorial();
+        }
 		dead = true;
 		velocity.x = 0f;
         DeactivateKick();
