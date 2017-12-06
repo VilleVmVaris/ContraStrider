@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour {
-    public Serializer serializer;
-    public bool triggered = false;
+	public Serializer serializer;
+	public bool triggered = false;
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (!triggered) {
-            triggered = true;
-            print(gameObject.name);
-            serializer.SetCheckPoint();
-        }
-    }
+	void OnTriggerEnter2D(Collider2D other) {
+		if (!triggered && other.CompareTag("Player")) {
+			triggered = true;
+			print(gameObject.name);
+			serializer.SetCheckPoint();
+		}
+	}
 }
