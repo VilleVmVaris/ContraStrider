@@ -9,12 +9,14 @@ public class PlayerInput : MonoBehaviour
 {
 
     Player player;
+    GameManager gm;
 
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<Player>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -95,7 +97,8 @@ public class PlayerInput : MonoBehaviour
 
 		if (Input.GetButtonDown("Start")) {
 			// Just reload the scene for testing during development
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
 		}
     }
 }

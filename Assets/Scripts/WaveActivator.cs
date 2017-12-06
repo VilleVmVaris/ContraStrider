@@ -19,11 +19,12 @@ public class WaveActivator : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 8)
-        {
+        {if(!spawned) { 
             //wave.SetActive(true);
             wave.GetComponent<WaveSpawner>().SpawnWave();
             gameObject.SetActive(false);
             spawned = true;
+            }
         }
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     
+    public enum Gamestate {Running, Paused};
+
+    public Gamestate state;
+
 	Serializer serializer;
 	GUIManager gui;
 	Player player;
@@ -34,6 +38,11 @@ public class GameManager : MonoBehaviour {
 		serializer.LoadCheckPoint();
 		player.Restart();
 	}
+
+    public void Pause()
+    {
+        state = Gamestate.Paused;
+    }
 
     void ShowCredits()
     {
