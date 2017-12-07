@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
 		player = GameObject.Find("Player").GetComponent<Player>();
         timer = GetComponent<TimerManager>();
         activators = GameObject.FindGameObjectsWithTag("Spawner");
-
+		Unpause();
 	}
 	
 	// Update is called once per frame
