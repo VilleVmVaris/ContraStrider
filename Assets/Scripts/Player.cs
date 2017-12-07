@@ -696,20 +696,20 @@ public class Player : MonoBehaviour, Damageable
         knockedBack = false;
     }
 
-    public void Die()
-    {
-        if (!dead) {
+	public void Die() {
+		if (!dead) {
+			dead = true; 
+			animator.SetBool("ninjadeath", true);
+			animator.SetBool("KUOLEMAJATKUU", true);
+			timer.Once(gm.LoadGame, 20);
+		}
 
-            dead = true; 
-		animator.SetBool("ninjadeath", true);
-        timer.Once(gm.LoadGame, 20);
-        }
-
-    }
+	}
 
 	public void Restart() {
         // HAX: Hard reset animator
         dead = false;
+		animator.SetBool("KUOLEMAJATKUU", false);
 		animator.SetBool("ninjadeath", false);
 	}
 
