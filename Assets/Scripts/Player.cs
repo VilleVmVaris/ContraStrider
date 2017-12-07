@@ -710,8 +710,7 @@ public class Player : MonoBehaviour, Damageable
 	public void Restart() {
         // HAX: Hard reset animator
         dead = false;
-		animator.gameObject.SetActive(false);
-		animator.gameObject.SetActive(true);
+		animator.SetBool("ninjadeath", false);
 	}
 
 	public void ToggleStepDustEffect() {
