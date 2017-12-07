@@ -129,6 +129,18 @@ public class CameraFollow : MonoBehaviour {
 		Gizmos.DrawCube(focusArea.center, focusAreaSize);
 	}
 
+	// *** fuk
+	public void SetIndoors() {
+		indoors = true;
+		wideOutdoors = false;
+	}
+
+	public void SetOutdoors() {
+		indoors = false;
+		wideOutdoors = false;
+	}
+	// ***
+
 	public void ToggleIndoorsMode() {
 		indoors = !indoors;
 		wideOutdoors = false;

@@ -171,9 +171,7 @@ public class BossScript : MonoBehaviour, Damageable {
                 area.GetComponent<MeshRenderer>().enabled = true;
 
                 yield return new WaitForSeconds(1f);
-                
-                area.GetComponent<MeshRenderer>().enabled = false;
-
+            
                 // We now have a cool particle effect here
 				sounds.lightning.Play();
 				lightning.Strike(area.transform.position + Vector3.down);
@@ -373,6 +371,7 @@ public class BossScript : MonoBehaviour, Damageable {
         {
             area.GetComponent<BoxCollider2D>().enabled = false;
             area.GetComponent<AreaDamageScript>().enabled = false;
+			area.GetComponent<MeshRenderer>().enabled = false;
             
             area.SetActive(false);
         }

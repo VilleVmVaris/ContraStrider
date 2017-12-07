@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class IndoorsTrigger : MonoBehaviour {
 
+	public bool isIndoors;
+
 	CameraFollow mainCamera;
 	Direction enterDirection;
 	BoxCollider2D boxCollider2D;
 	Player player;
+
 
 	enum Direction {
 		Right,
@@ -45,6 +48,15 @@ public class IndoorsTrigger : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D c) {
 		if (c.CompareTag("Player")) {
+
+			// *** fukfuk
+			if (isIndoors) {
+				mainCamera.SetIndoors();
+			} else {
+				mainCamera.SetOutdoors();
+			}
+			return;
+			// ***
 
 			var contactPoint = boxCollider2D.bounds.ClosestPoint(c.transform.position);
 			var contactNormal = (c.transform.position - contactPoint).normalized;
