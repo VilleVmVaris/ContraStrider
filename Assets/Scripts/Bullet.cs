@@ -60,6 +60,9 @@ public class Bullet : MonoBehaviour {
                     go.GetComponent<BossScript>().TakeDamage(2);
                 }
             }
+        } else if (go.layer == 21)
+        {
+            
         }
 
         else if(go.layer != 11) {
