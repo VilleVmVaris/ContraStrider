@@ -11,14 +11,13 @@ public class GUIManager : MonoBehaviour {
 	public BladeDashMeter BladeDash;
 	public BossHealthBar BossHealthBar;
 	public Image FadeImage;
-    public Image PauseImage;
-    public GameObject Resume;
-    public GameObject Controls;
-    public GameObject Quit;
+	public GameObject PausePanel;
+
+	GameManager gm;
 
 	// Use this for initialization
 	void Start() {
-		
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -62,19 +61,17 @@ public class GUIManager : MonoBehaviour {
 
     public void ShowPause()
     {
-        PauseImage.enabled = true;
-        Resume.SetActive(true);
-        Controls.SetActive(true);
-        Quit.SetActive(true);
+		PausePanel.SetActive(true);
 
     }
 
     public void HidePause()
     {
-        PauseImage.enabled = false;
-        Resume.SetActive(false);
-        Controls.SetActive(false);
-        Quit.SetActive(false);
+		PausePanel.SetActive(false);
     }
+
+	public void Restart() {
+		gm.Restart();
+	}
 
 }
