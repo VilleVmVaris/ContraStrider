@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
     TimerManager timer;
     GameObject[] activators;
 
+    public GameObject boss;
+
 	// Use this for initialization
 	void Start() {
 		serializer = GetComponentInChildren<Serializer>();
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour {
         serializer.LoadCheckPoint();
 		player.Restart();
         gui.SetHealth(player.health);
+        if(boss.activeSelf)
+        {
+            boss.GetComponent<BossScript>().Reset();
+        }
 
 	}
 

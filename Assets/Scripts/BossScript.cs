@@ -72,6 +72,7 @@ public class BossScript : MonoBehaviour, Damageable {
 	bool dead = false;
 	bool active = false;
 
+
     // Use this for initialization
     void Start () {
         maxHealth = health;
@@ -92,6 +93,8 @@ public class BossScript : MonoBehaviour, Damageable {
 		originalColor = sprites[0].color;
 
 		lightning = GetComponentInChildren<Lightning>();
+
+       
     }
 
     // Update is called once per frame
@@ -374,6 +377,11 @@ public class BossScript : MonoBehaviour, Damageable {
             area.SetActive(false);
         }
 		bossAnimator.SetBool("velileijuu", false);
+    }
+
+    public void Reset()
+    {
+        health = maxHealth;
     }
 
 }
