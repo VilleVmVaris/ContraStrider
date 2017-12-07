@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1702a4fdcd457b746afb3e97b3cd3c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -3138,7 +3138,7 @@ MonoBehaviour:
   chargeTime: 1
   timeBeforeCharge: 0.15
   timeToCharge: 0
-  moveSpeed: 50
+  moveSpeed: 15
   maxWalkSpeed: 4
   dash: {fileID: 114263118089404456}
   knockedBack: 0

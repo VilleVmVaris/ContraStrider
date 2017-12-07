@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour {
             go.GetComponent<WaveActivator>().spawned = false;
         }
         serializer.LoadCheckPoint();
-        print("ladataan");
 		player.Restart();
         gui.SetHealth(player.health);
 
@@ -74,5 +73,10 @@ public class GameManager : MonoBehaviour {
     void ShowCredits()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }

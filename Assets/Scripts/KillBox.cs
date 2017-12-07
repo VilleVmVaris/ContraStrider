@@ -18,7 +18,7 @@ public class KillBox : MonoBehaviour {
     {
         if(collision.gameObject.layer == 8 && collision.GetComponent<Player>() != null) {
             print("killbox");
-            collision.GetComponent<Player>().TakeDamage(100);
+            collision.GetComponent<Player>().TakeDamage(500);
     }
     }
 }
