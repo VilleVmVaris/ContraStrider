@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour {
         serializer.LoadCheckPoint();
         print("ladataan");
 		player.Restart();
+        gui.SetHealth(player.health);
 
 	}
 
