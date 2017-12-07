@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
             go.GetComponent<WaveActivator>().spawned = false;
         }
         serializer.LoadCheckPoint();
+        print("ladataan");
 		player.Restart();
 
 	}

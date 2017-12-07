@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, Damageable
     bool wallSliding;
     int wallDirX;
     int maxHealth;
+    bool dead;
 
     [HideInInspector]
     public bool crouching;
@@ -250,7 +251,7 @@ public class Player : MonoBehaviour, Damageable
     public void Attack(Vector2 input)
     {
 
-		if (!dash.dashing && !dash.aiming && !knockedBack) {
+		if (!dash.dashing && !dash.aiming && !knockedBack && !dead) {
 			if ((input.x == 0 && input.y == 0) || crouching) {
 				input.x = controller.collisions.faceDir;
 				input.y = 0;
@@ -280,7 +281,7 @@ public class Player : MonoBehaviour, Damageable
 
     public void ChargedAttack(Vector2 input)
     {
-        if(!dash.dashing && !dash.aiming && !knockedBack) { 
+        if(!dash.dashing && !dash.aiming && !knockedBack && !dead) { 
 
         if (swordCharged)
         {
@@ -418,7 +419,7 @@ public class Player : MonoBehaviour, Damageable
     }
 
 	public void BladeDashAttack(Vector2 input) {
-        if(!dash.onCooldown) { 
+        if(!dash.onCooldown && !dead) { 
 		if (input == Vector2.zero) {
 			input.x = controller.collisions.faceDir;
 		}
@@ -697,13 +698,18 @@ public class Player : MonoBehaviour, Damageable
 
     public void Die()
     {
+        if (!dead) {
+
+            dead = true; 
 		animator.SetBool("ninjadeath", true);
         timer.Once(gm.LoadGame, 20);
+        }
 
     }
 
 	public void Restart() {
-		// HAX: Hard reset animator
+        // HAX: Hard reset animator
+        dead = false;
 		animator.gameObject.SetActive(false);
 		animator.gameObject.SetActive(true);
 	}
