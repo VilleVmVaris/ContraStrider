@@ -36,6 +36,7 @@ public class CameraFollow : MonoBehaviour {
 
 	bool lookAheadStopped;
 	bool bossMode = false;
+	bool chrouch = false;
 
 	struct FocusArea {
 		public Vector2 center;
@@ -88,7 +89,11 @@ public class CameraFollow : MonoBehaviour {
 			focusPosition = bossLockPosition.transform.position;
 		} else {
 			focusArea.Update(followTarget.collider.bounds);
-			focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;
+			if (chrouch) {
+				focusPosition = focusArea.center + Vector2.up;
+			} else {
+				focusPosition = focusArea.center + Vector2.up * cameraVerticalOffset;	
+			}
 		}
 		if (!Mathf.Approximately(focusArea.velocity.x, 0)) {
 			lookAheadDirectionX = Mathf.Sign(focusArea.velocity.x);
@@ -153,5 +158,18 @@ public class CameraFollow : MonoBehaviour {
 
 	public void ActivateBossMode() {
 		bossMode = true;
+	}
+
+	public void SetChrouchMode(bool chrouch) {
+		if (chrouch) {
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 10f, Helpers.KillBoxMask);
+			if (!hit.collider.IsNullOrDestroyed()) {
+				this.chrouch = false;
+			} else {
+				this.chrouch = chrouch;
+			}			
+		} else {
+			this.chrouch = chrouch;
+		}
 	}
 }

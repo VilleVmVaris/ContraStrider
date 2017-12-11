@@ -86,6 +86,7 @@ public class Player : MonoBehaviour, Damageable
     TimerManager timer;
 	GUIManager gui;
 	AudioManager sounds;
+	CameraFollow cameraFollow;
 
     [HideInInspector]
     public BladeDash dash;
@@ -117,7 +118,7 @@ public class Player : MonoBehaviour, Damageable
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         collider = GetComponent<BoxCollider2D>();
 		sounds = GameObject.Find("Audio").GetComponent<AudioManager>();
-
+		cameraFollow = Camera.main.GetComponent<CameraFollow>();
         origColliderX = collider.size.x;
         origColliderY = collider.size.y;
         crouchColliderY = collider.size.y / 2;
@@ -246,6 +247,7 @@ public class Player : MonoBehaviour, Damageable
                 animator.SetBool("ninjawalk", false);
             }
 
+			cameraFollow.SetChrouchMode(crouching);
         }
     }
     public void Attack(Vector2 input)
