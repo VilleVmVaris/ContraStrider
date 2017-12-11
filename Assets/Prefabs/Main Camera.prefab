@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627194141312498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -173.4, y: 14.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4422544217486420}
@@ -132,8 +132,8 @@ MonoBehaviour:
   minVerticalOffset: 2
   cameraSize: 8
   verticalOffset: 5
-  cameraMaxSize: 10
-  maxVerticalOffset: 8
+  cameraMaxSize: 9
+  maxVerticalOffset: 5
   lookAheadX: 2
   lookSmoothTimeX: 0.2
   verticalSmoothTime: 0.1
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveParallaxLayers: 1
-  storedPosition: {x: 0, y: 0, z: -10}
+  storedPosition: {x: -174.2, y: 15.7, z: -10}
 --- !u!124 &124425861940203104
 Behaviour:
   m_ObjectHideFlags: 1
