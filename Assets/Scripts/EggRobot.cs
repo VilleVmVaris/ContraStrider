@@ -249,6 +249,7 @@ public class EggRobot : MonoBehaviour, Damageable {
     {
         shielded = false;
 		shieldSprite.transform.parent = null;
+		shieldSprite.GetComponent<DropToGround>().enabled = true;
 		sound.shieldBreaks.Play();
 		shieldAnimator.SetBool("kuoretfly", true);
 

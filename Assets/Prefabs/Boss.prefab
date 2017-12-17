@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114365592644755952}
   - component: {fileID: 61767200350073658}
   - component: {fileID: 50105017885645508}
+  - component: {fileID: 114439558918902860}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
@@ -2226,8 +2227,8 @@ MonoBehaviour:
   bulletLifetime: 5
   bulletTurn: 0
   bulletAmount: 7
-  health: 100
-  bulletAttacksInLoop: 9
+  health: 50
+  bulletAttacksInLoop: 3
   undamageable: 0
   bossAnimator: {fileID: 95423417250416246}
 --- !u!114 &114164386754219914
@@ -2709,6 +2710,18 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4898456238613590}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114439558918902860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114490176925602}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e1279d617fd284d87cea87d3b6e39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddOffset: 1
 --- !u!114 &114444201140897916
 MonoBehaviour:
   m_ObjectHideFlags: 1

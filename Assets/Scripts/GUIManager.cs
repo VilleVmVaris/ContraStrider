@@ -53,10 +53,10 @@ public class GUIManager : MonoBehaviour {
 		}
 	}
 
-	public void FadeToBlack(float duration) {
+	public void FadeToBlack() {
 		FadeImage.enabled = true;
 		FadeImage.canvasRenderer.SetAlpha(0f);
-		FadeImage.CrossFadeAlpha(1.0f, duration, true);
+		FadeImage.CrossFadeAlpha(alpha: 1.0f, duration: 5f, ignoreTimeScale: true);
 	}
 
     public void ShowPause()

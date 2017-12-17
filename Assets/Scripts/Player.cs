@@ -75,7 +75,7 @@ public class Player : MonoBehaviour, Damageable
     float velocityXSmoothing;
 	public float maxWalkSpeed = 4;
 
-    Controller2D controller;
+	Controller2D controller2D;
 
     Vector2 directionalInput;
 
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour, Damageable
     // Use this for initialization
     void Start()
     {
-        controller = GetComponent<Controller2D>();
+        controller2D = GetComponent<Controller2D>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -142,17 +142,14 @@ public class Player : MonoBehaviour, Damageable
             //see if character has moved since last frame
             if (dash.dashing)
             {
-                if (controller.collisions.left || controller.collisions.right)
+                if (controller2D.collisions.left || controller2D.collisions.right)
                 {
                     dash.StopDash();
                     EndDashAttackEffect();
                 }
             }
 
-            if (health <= 0)
-            {
-                return; // TODO: Proper handling of death 
-            }
+            
             if (dash.aiming)
             {
                 velocity = Vector2.zero;
@@ -161,6 +158,12 @@ public class Player : MonoBehaviour, Damageable
             CalculateVelocity();
             HandleWallSliding();
             RotateY();
+
+			if (health <= 0) {
+				// TODO: Proper handling of death 
+				controller2D.Move(Vector2.down * 8f * Time.deltaTime, directionalInput);
+				return; 
+			}
 
             if (CheckCollisionStatus())
             {
@@ -173,26 +176,26 @@ public class Player : MonoBehaviour, Damageable
 
             if (dash.dashing)
             {
-                controller.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
+                controller2D.Move(dash.direction * dash.speed * Time.deltaTime, directionalInput);
 
             }
             else if (knockedBack)
             {
-                controller.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
+                controller2D.Move(knockDirection * knockForce * Time.deltaTime, directionalInput);
                 timer.Once(StopKnockBack, knockDuration);
             }
 
             else
             {
-                controller.Move(velocity * Time.deltaTime, directionalInput);
+                controller2D.Move(velocity * Time.deltaTime, directionalInput);
             }
 
             //This stops gravity from accumulating if the controllers detects collisions above or below or while dashing
-            if (controller.collisions.above || controller.collisions.below || dash.dashing)
+            if (controller2D.collisions.above || controller2D.collisions.below || dash.dashing)
             {
-                if (controller.collisions.slidingDownMaxSlope)
+                if (controller2D.collisions.slidingDownMaxSlope)
                 {
-                    velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
+                    velocity.y += controller2D.collisions.slopeNormal.y * -gravity * Time.deltaTime;
                 }
                 else
                 {
@@ -222,7 +225,7 @@ public class Player : MonoBehaviour, Damageable
             }
 
             if ((velocity.x > 0.15f || velocity.x < -0.15f)
-                && controller.collisions.below && !wallSliding && !dash.dashing)
+                && controller2D.collisions.below && !wallSliding && !dash.dashing)
             {
                 if (velocity.x > maxWalkSpeed || velocity.x < -maxWalkSpeed)
                 {
@@ -255,11 +258,11 @@ public class Player : MonoBehaviour, Damageable
 
 		if (!dash.dashing && !dash.aiming && !knockedBack && !dead) {
 			if ((input.x == 0 && input.y == 0) || crouching) {
-				input.x = controller.collisions.faceDir;
+				input.x = controller2D.collisions.faceDir;
 				input.y = 0;
 			} if (wallSliding)
             {
-                input.x = -controller.collisions.faceDir;
+                input.x = -controller2D.collisions.faceDir;
             }
 
 			int attackDir = (int)(Vector2.Angle(input, Vector3.up));
@@ -289,14 +292,14 @@ public class Player : MonoBehaviour, Damageable
         {
             if ((input.x == 0 && input.y == 0) || crouching)
             {
-                input.x = controller.collisions.faceDir;
+                input.x = controller2D.collisions.faceDir;
                 input.y = 0;
             }
 
             if (wallSliding)
                 {
                     
-                    input.x = -controller.collisions.faceDir;
+                    input.x = -controller2D.collisions.faceDir;
                 }
 
             int attackDir = (int)(Vector2.Angle(input, Vector3.up));
@@ -381,7 +384,7 @@ public class Player : MonoBehaviour, Damageable
 
     public bool CheckCollisionStatus()
     {
-        if (!controller.collisions.below && !controller.collisions.right && !controller.collisions.left)
+        if (!controller2D.collisions.below && !controller2D.collisions.right && !controller2D.collisions.left)
         {
             return false;
         }
@@ -423,7 +426,7 @@ public class Player : MonoBehaviour, Damageable
 	public void BladeDashAttack(Vector2 input) {
         if(!dash.onCooldown && !dead) { 
 		if (input == Vector2.zero) {
-			input.x = controller.collisions.faceDir;
+			input.x = controller2D.collisions.faceDir;
 		}
 
 		int attackDir = (int)(Vector2.Angle(input, Vector3.up));
@@ -464,18 +467,18 @@ public class Player : MonoBehaviour, Damageable
 
         //Smoothen change from initial velocity to target velocity, by default making it slower while airborne but faster while grounded
         //Will want to test this and see what feels better
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller2D.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
 
         velocity.y += gravity * Time.deltaTime;
     }
 
     void HandleWallSliding()
     {
-        wallDirX = (controller.collisions.left) ? -1 : 1;
+        wallDirX = (controller2D.collisions.left) ? -1 : 1;
 
         //Check for collisions on sides and below and make sure velocity.y is negative to enable wall slide
         wallSliding = false;
-        if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0 && controller.collisions.collisionLayer == 9)
+        if ((controller2D.collisions.left || controller2D.collisions.right) && !controller2D.collisions.below && velocity.y < 0 && controller2D.collisions.collisionLayer == 9)
         {
             wallSliding = true;
 
@@ -514,7 +517,7 @@ public class Player : MonoBehaviour, Damageable
 
     public void Crouch()
     {
-        if (controller.collisions.below && crouching == false && !justJumped)
+        if (controller2D.collisions.below && crouching == false && !justJumped)
         {
 
             crouching = true;
@@ -581,22 +584,22 @@ public class Player : MonoBehaviour, Damageable
             }
 
         }
-        if (controller.collisions.below)
+        if (controller2D.collisions.below)
         {
-            if (controller.collisions.slidingDownMaxSlope)
+            if (controller2D.collisions.slidingDownMaxSlope)
             {
-                if (directionalInput.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
+                if (directionalInput.x != -Mathf.Sign(controller2D.collisions.slopeNormal.x))
                 { // not jumping against max slope
-                    velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
-                    velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
+                    velocity.y = maxJumpVelocity * controller2D.collisions.slopeNormal.y;
+                    velocity.x = maxJumpVelocity * controller2D.collisions.slopeNormal.x;
                 }
             }
             else
             {
 				animator.SetBool("jumpup", true);
-                if (controller.canFallThrough)
+                if (controller2D.canFallThrough)
                 {
-                    controller.collisions.fallingThroughPlatform = true;
+                    controller2D.collisions.fallingThroughPlatform = true;
                     Invoke("ResetFallingThroughPlatform", .15f);
                     Invoke("StandUp", .15f);
 
@@ -628,18 +631,18 @@ public class Player : MonoBehaviour, Damageable
 
     void ResetFallingThroughPlatform()
     {
-        controller.collisions.fallingThroughPlatform = false;
+        controller2D.collisions.fallingThroughPlatform = false;
     }
 
 	// Rotates player sprite to movement direction
 	void RotateY() { 
-		if (velocity.x < -0.1f || (wallSliding && controller.collisions.right) ) {
+		if (velocity.x < -0.1f || (wallSliding && controller2D.collisions.right) ) {
 			ninjaSprite.transform.rotation = Helpers.FlipYRotation;
 			var effect = attackEffect.main;
 			effect.startRotationY = Mathf.Deg2Rad * 180f;
 			// HAX: Animation positioning
 			ninjaSprite.transform.localPosition = new Vector3(0.725f, 0f, 0f);	
-		} else if (velocity.x > 0.1f || (wallSliding && controller.collisions.left) ) {
+		} else if (velocity.x > 0.1f || (wallSliding && controller2D.collisions.left) ) {
 			ninjaSprite.transform.rotation = Quaternion.identity;
 			var effect = attackEffect.main;
 			effect.startRotationY = 0f;
@@ -700,16 +703,16 @@ public class Player : MonoBehaviour, Damageable
 
 	public void Die() {
 		if (!dead) {
-			dead = true; 
+			dead = true;
 			animator.SetBool("ninjadeath", true);
 			animator.SetBool("KUOLEMAJATKUU", true);
 			timer.Once(gm.LoadGame, 20);
 		}
-
 	}
 
 	public void Restart() {
         // HAX: Hard reset animator
+		controller2D.enabled = true;
         dead = false;
 		animator.SetBool("KUOLEMAJATKUU", false);
 		animator.SetBool("ninjadeath", false);

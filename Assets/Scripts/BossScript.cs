@@ -69,6 +69,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
 	Lightning lightning;
 
+	DropToGround dropper;
+
 	bool dead = false;
 	bool active = false;
 
@@ -94,7 +96,8 @@ public class BossScript : MonoBehaviour, Damageable {
 
 		lightning = GetComponentInChildren<Lightning>();
 
-       
+		dropper = GetComponent<DropToGround>();
+		dropper.enabled = false;
     }
 
     // Update is called once per frame
@@ -166,9 +169,10 @@ public class BossScript : MonoBehaviour, Damageable {
 
                 var area = attackAreas[randomArea];
 
-                area.SetActive(true);
+                //area.SetActive(true);
 
-                area.GetComponent<MeshRenderer>().enabled = true;
+				area.GetComponent<AreaAttackWarning>().Play();
+				area.GetComponent<MeshRenderer>().enabled = true;
 
                 yield return new WaitForSeconds(1f);
             
@@ -286,6 +290,7 @@ public class BossScript : MonoBehaviour, Damageable {
 		inBulletMode = false;
 		StopCoroutine("BulletAttack");
 		StopCoroutine("AreaAttack");
+		dropper.enabled = true;
 		bossAnimator.SetBool("velikuolee", true);
         print("bossi kuoli xD");
         gm.EndGame();
@@ -372,15 +377,17 @@ public class BossScript : MonoBehaviour, Damageable {
             area.GetComponent<BoxCollider2D>().enabled = false;
             area.GetComponent<AreaDamageScript>().enabled = false;
 			area.GetComponent<MeshRenderer>().enabled = false;
+			area.GetComponent<AreaAttackWarning>().Stop();
             
-            area.SetActive(false);
+            //area.SetActive(false);
         }
 		bossAnimator.SetBool("velileijuu", false);
     }
 
     public void Reset()
     {
-        health = maxHealth;
+		dropper.enabled = false;
+		health = maxHealth;
     }
 
 }

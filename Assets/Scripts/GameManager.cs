@@ -33,9 +33,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndGame() {
-		gui.FadeToBlack(5f);
+		timer.Once(gui.FadeToBlack, 15);
         timer.Once(ShowCredits, 30);
-		// wait and load credits scene?
 	}
 
 	public void LoadGame() {
