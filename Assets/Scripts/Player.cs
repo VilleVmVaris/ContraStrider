@@ -651,8 +651,11 @@ public class Player : MonoBehaviour, Damageable
 		}
 	}
     
-	public bool TakeDamage(int damage)
-    {
+	public bool TakeDamage(int damage) {
+		if (dash.dashing) {
+			// Invunerable during blade dash
+			return false;
+		}
         health -= damage;
 		gui.SetHealth(health);
 		foreach (var sprite in sprites) {
