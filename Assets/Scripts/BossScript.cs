@@ -62,6 +62,7 @@ public class BossScript : MonoBehaviour, Damageable {
     float fireSegment;
 
     public Animator bossAnimator;
+	public GameObject bossSprite;
 
 	SpriteMeshInstance[] sprites;
 	Color originalColor;
@@ -284,6 +285,7 @@ public class BossScript : MonoBehaviour, Damageable {
 
     void Die()
     {
+		DeadactivateAttackAreas();
 		dead = true;
 		sounds.death.Play();
 		inFirePosition = false;
@@ -366,8 +368,18 @@ public class BossScript : MonoBehaviour, Damageable {
     {
 		bossAnimator.SetBool("jumpDOWN", true);
         inFirePosition = true;
-        
+		RotateY();
     }
+
+	// Rotates boss sprite to stage center
+	void RotateY() { 
+		if ( upperPosition.position.x > transform.position.x) {
+			bossSprite.transform.rotation = Helpers.FlipYRotation;
+		} else {
+			bossSprite.transform.rotation = Quaternion.identity;
+
+		}
+	}
 
     void DeadactivateAttackAreas()
     {
