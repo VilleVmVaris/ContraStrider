@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthKit : MonoBehaviour {
 
 	public GameObject teapot;
+	public GameObject ashes;
 	public int HealAmount;
 
 	BoxCollider2D boxCollider;

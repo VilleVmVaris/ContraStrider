@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 61119263403308948}
   - component: {fileID: 50335436711471788}
   - component: {fileID: 114481022608713914}
+  - component: {fileID: 114215367495977654}
   m_Layer: 20
   m_Name: SmallHealthKit
   m_TagString: Untagged
@@ -147,6 +148,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &114215367495977654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532771070915130}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e1279d617fd284d87cea87d3b6e39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddOffset: 0
 --- !u!114 &114481022608713914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teapot: {fileID: 1205175636298022}
-  HealAmount: 10
+  ashes: {fileID: 1989222234960616}
+  HealAmount: 20
 --- !u!212 &212679448455617488
 SpriteRenderer:
   m_ObjectHideFlags: 1
