@@ -137,6 +137,11 @@ public class Player : MonoBehaviour, Damageable
     // Update is called once per frame
     void Update()
     {
+		// Reset animation state after death animation
+		if (!animator.GetCurrentAnimatorStateInfo(0).IsName("ninjadeath") && !animator.GetBool("KUOLEMAJATKUU")) {
+			animator.SetBool("KUOLEMAJATKUU", true);
+		}
+
         if (gm.state != GameManager.Gamestate.Paused)
         {
             //see if character has moved since last frame
@@ -708,17 +713,15 @@ public class Player : MonoBehaviour, Damageable
 		if (!dead) {
 			dead = true;
 			animator.SetBool("ninjadeath", true);
-			animator.SetBool("KUOLEMAJATKUU", true);
 			timer.Once(gm.LoadGame, 20);
 		}
 	}
 
 	public void Restart() {
-        // HAX: Hard reset animator
+		animator.SetBool("KUOLEMAJATKUU", false);
 		controller2D.enabled = true;
         dead = false;
-		animator.SetBool("KUOLEMAJATKUU", false);
-		animator.SetBool("ninjadeath", false);
+
 	}
 
 	public void ToggleStepDustEffect() {
