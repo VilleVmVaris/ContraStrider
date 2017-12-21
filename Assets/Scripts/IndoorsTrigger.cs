@@ -52,31 +52,33 @@ public class IndoorsTrigger : MonoBehaviour {
 			// *** fukfuk
 			if (isIndoors) {
 				mainCamera.SetIndoors();
+				player.SetStepDustEffect(false);
 			} else {
 				mainCamera.SetOutdoors();
+				player.SetStepDustEffect(true);
 			}
 			return;
 			// ***
-
-			var contactPoint = boxCollider2D.bounds.ClosestPoint(c.transform.position);
-			var contactNormal = (c.transform.position - contactPoint).normalized;
-
-			if (Vector3.Dot(transform.right, contactNormal) > 0 && enterDirection == Direction.Left) {
-				mainCamera.ToggleIndoorsMode();
-				player.ToggleStepDustEffect();
-			} 
-			if (Vector3.Dot(transform.right, contactNormal) < 0 && enterDirection == Direction.Right) {
-				mainCamera.ToggleIndoorsMode();
-				player.ToggleStepDustEffect();
-			}
-			if (Vector3.Dot(transform.up, contactNormal) > 0 && enterDirection == Direction.Bottom) {
-				mainCamera.ToggleIndoorsMode();
-				player.ToggleStepDustEffect();
-			} 
-			if (Vector3.Dot(transform.up, contactNormal) < 0 && enterDirection == Direction.Top) {
-				mainCamera.ToggleIndoorsMode();
-				player.ToggleStepDustEffect();
-			}
+//
+//			var contactPoint = boxCollider2D.bounds.ClosestPoint(c.transform.position);
+//			var contactNormal = (c.transform.position - contactPoint).normalized;
+//
+//			if (Vector3.Dot(transform.right, contactNormal) > 0 && enterDirection == Direction.Left) {
+//				mainCamera.ToggleIndoorsMode();
+//				player.ToggleStepDustEffect();
+//			} 
+//			if (Vector3.Dot(transform.right, contactNormal) < 0 && enterDirection == Direction.Right) {
+//				mainCamera.ToggleIndoorsMode();
+//				player.ToggleStepDustEffect();
+//			}
+//			if (Vector3.Dot(transform.up, contactNormal) > 0 && enterDirection == Direction.Bottom) {
+//				mainCamera.ToggleIndoorsMode();
+//				player.ToggleStepDustEffect();
+//			} 
+//			if (Vector3.Dot(transform.up, contactNormal) < 0 && enterDirection == Direction.Top) {
+//				mainCamera.ToggleIndoorsMode();
+//				player.ToggleStepDustEffect();
+//			}
 		}
 	}
 

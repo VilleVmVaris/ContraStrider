@@ -724,8 +724,8 @@ public class Player : MonoBehaviour, Damageable
 
 	}
 
-	public void ToggleStepDustEffect() {
-		stepSandCloud.gameObject.SetActive(!stepSandCloud.gameObject.activeSelf);
+	public void SetStepDustEffect(bool active) {
+		stepSandCloud.gameObject.SetActive(active);
 	}
 
 	public void AttackHitEnemy() {
