@@ -5,27 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    // Use this for initialization
-    void Start()
-    {
+	// Use this for initialization
+	void Start() {
 
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update() {
 
-    }
+	}
 
-    public void Play()
-    {
-        SceneManager.LoadScene("Level_0");
-    }
+	public void Play() {
+		SceneManager.LoadScene("Level_1_nu");
+	}
 
+	public void PlayTutorial() {
+		SceneManager.LoadScene("Level_0");
+	}
 
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
+	public void Quit() {
+		Application.Quit();
+	}
 }

@@ -719,6 +719,7 @@ public class Player : MonoBehaviour, Damageable
 
 	public void Restart() {
 		animator.SetBool("KUOLEMAJATKUU", false);
+		animator.Rebind();
 		controller2D.enabled = true;
         dead = false;
 
