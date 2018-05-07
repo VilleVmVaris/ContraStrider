@@ -5,109 +5,91 @@ using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(Player))]
-public class PlayerInput : MonoBehaviour
-{
+public class PlayerInput : MonoBehaviour {
 
-    Player player;
-    GameManager gm;
+	Player player;
+	GameManager gm;
 
 
-    // Use this for initialization
-    void Start()
-    {
-        player = GetComponent<Player>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
+	// Use this for initialization
+	void Start() {
+		player = GetComponent<Player>();
+		gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update() {
 
-        Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+		if(Input.GetButtonDown("Start")) {
+			if(gm.state != GameManager.Gamestate.Paused) { 
+				gm.Pause();
+			} else {
+				gm.Unpause();
+			}
+		}
 
-        if (player.dash.aiming)
-        {
-            player.dash.Aim(directionalInput);
-        }
-        else
-        {
-            player.SetDirectionalInput(directionalInput);
-        }
+		if(gm.state == GameManager.Gamestate.Paused) {
+			return; // Do not take player input during pause
+		}
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            player.JumpInputDown();
-        }
+		Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            player.JumpInputUp();
-        }
+		if(player.dash.aiming) {
+			player.dash.Aim(directionalInput);
+		} else {
+			player.SetDirectionalInput(directionalInput);
+		}
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            player.Attack(directionalInput);
-        }
+		if(Input.GetButtonDown("Jump")) {
+			player.JumpInputDown();
+		}
 
-        if (Input.GetButton("Fire1"))
-        {
-            player.timeToCharge += Time.deltaTime;
+		if(Input.GetButtonUp("Jump")) {
+			player.JumpInputUp();
+		}
 
-            if (player.timeToCharge >= player.timeBeforeCharge)
-            {
-                player.StartChargingSword();
-            }
-        }
+		if(Input.GetButtonDown("Fire1")) {
+			player.Attack(directionalInput);
+		}
 
-        if (Input.GetButtonUp("Fire1"))
-        {
-            if (player.chargingSword)
-            {
-                player.ChargedAttack(directionalInput);
+		if(Input.GetButton("Fire1")) {
+			player.timeToCharge += Time.deltaTime;
 
-            }
-            else
-            {
-                player.ResetCharge();
-            }
-        }
+			if(player.timeToCharge >= player.timeBeforeCharge) {
+				player.StartChargingSword();
+			}
+		}
 
-        if (Input.GetButtonDown("Fire2") && !player.dash.dashing)
-        {
-            if (!player.dash.aiming)
-            {
-                player.dash.StartAiming(directionalInput);
-            }
+		if(Input.GetButtonUp("Fire1")) {
+			if(player.chargingSword) {
+				player.ChargedAttack(directionalInput);
+
+			} else {
+				player.ResetCharge();
+			}
+		}
+
+		if(Input.GetButtonDown("Fire2") && !player.dash.dashing) {
+			if(!player.dash.aiming) {
+				player.dash.StartAiming(directionalInput);
+			}
             
-        }
-		if (Input.GetButtonUp("Fire2") && !player.dash.dashing) {
+		}
+		if(Input.GetButtonUp("Fire2") && !player.dash.dashing) {
 			player.BladeDashAttack(directionalInput);
 			player.dash.DoDash();
 		}
 
-        if (directionalInput.y <= -.8f)
-        {
-            player.Crouch();
-        }
+		if(directionalInput.y <= -.8f) {
+			player.Crouch();
+		}
 
-        if (player.crouching && directionalInput.y > -.8f)
-        {
-            player.StandUp();
-        }
+		if(player.crouching && directionalInput.y > -.8f) {
+			player.StandUp();
+		}
 
-		if (Input.GetButtonDown("Start")) {
-            // Just reload the scene for testing during development
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            if(gm.state != GameManager.Gamestate.Paused) { 
-            gm.Pause();
-            }
-            else
-            {
-                gm.Unpause();
-            }
 
-        }
-    }
+	}
 }
 
 
